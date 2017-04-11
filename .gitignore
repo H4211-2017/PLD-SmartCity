@@ -1,0 +1,6 @@
+#Qt files
+*.pro.user
+
+#compiled files
+*.o
+*.out
