@@ -2,9 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb77030e-665b-4764-810d-43d03190e6f6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projects/IHM/Build XML/OutputGenerator.js" afterPath="$PROJECT_DIR$/projects/IHM/Build XML/OutputGenerator.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/IHM/app/homeMenu/homeMenu.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/IHM/app/homeMenu/homeMenu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/IHM/app/programmeMenu/programmeMenu.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/IHM/app/programmeMenu/programmeMenu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/IHM/app/programmeMenu/programmeMenu_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/IHM/app/roomTab/roomTab.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/IHM/app/roomTab/roomTab.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/IHM/app/roomTab/roomTab_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/IHM/app/schoolInformationMenu/schoolInformationMenu.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/IHM/app/schoolInformationMenu/schoolInformationMenu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/IHM/app/schoolInformationMenu/schoolInformationMenu_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/IHM/app/teacherMenu/teacherMenu.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/IHM/app/teacherMenu/teacherMenu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/IHM/app/teacherMenu/teacherMenu_test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/IHM/app/teacherMenu/teacherTab/teacherTab.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/IHM/builderXml/builder.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/projects/IHM/app/hometab/hometab.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/projects/IHM/app/hometab/hometab.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/projects/IHM/app/hometab/hometab_test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/projects/IHM/app/teacherTab/teacherTab.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/projects/IHM/app/view1/view1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/projects/IHM/app/view1/view1.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/projects/IHM/app/view1/view1_test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/projects/IHM/app/view2/view2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/projects/IHM/app/view2/view2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/projects/IHM/app/view2/view2_test.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/projects/IHM/Build XML/OutputGenerator.js" afterPath="$PROJECT_DIR$/projects/IHM/builderXml/outputGenerator.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/projects/IHM/app/teacherTab/teacherTab.html" afterPath="$PROJECT_DIR$/projects/IHM/app/teacherMenu/teacherTab/teacherTab.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/projects/IHM/app/teacherTab/teacherTab_test.js" afterPath="$PROJECT_DIR$/projects/IHM/app/teacherMenu/teacherTab/teacherTab_test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projects/IHM/.gitignore" afterPath="$PROJECT_DIR$/projects/IHM/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projects/IHM/Build XML/builder.js" afterPath="$PROJECT_DIR$/projects/IHM/Build XML/builder.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projects/IHM/README.md" afterPath="$PROJECT_DIR$/projects/IHM/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projects/IHM/app/app.css" afterPath="$PROJECT_DIR$/projects/IHM/app/app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projects/IHM/app/app.js" afterPath="$PROJECT_DIR$/projects/IHM/app/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projects/IHM/app/index.html" afterPath="$PROJECT_DIR$/projects/IHM/app/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projects/IHM/app/roomTypeTab/roomTypeTab.js" afterPath="$PROJECT_DIR$/projects/IHM/app/roomTypeTab/roomTypeTab.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,21 +53,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="OutputGenerator.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/projects/IHM/Build XML/OutputGenerator.js">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/projects/IHM/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="builder.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/projects/IHM/Build XML/builder.js">
+      <file leaf-file-name="builder.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/projects/IHM/builderXml/builder.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="187">
+              <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -44,7 +78,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+              <folding>
+                <marker date="1492095599385" expanded="true" signature="315:318" ph="{...}" />
+                <marker date="1492095599385" expanded="true" signature="315:319" ph="[...]" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,8 +104,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/projects/IHM/Build XML/builder.js" />
         <option value="$PROJECT_DIR$/projects/IHM/Build XML/OutputGenerator.js" />
+        <option value="$PROJECT_DIR$/projects/IHM/Build XML/builder.js" />
+        <option value="$PROJECT_DIR$/projects/IHM/builderXml/builder.js" />
       </list>
     </option>
   </component>
@@ -162,7 +200,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Build XML" />
+              <option name="myItemId" value="builderXml" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -278,12 +316,12 @@
       <option name="presentableId" value="Default" />
       <updated>1492090127413</updated>
       <workItem from="1492090136293" duration="1868000" />
-      <workItem from="1492092292489" duration="3134000" />
+      <workItem from="1492092292489" duration="3576000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5002000" />
+    <option name="totallyTimeSpent" value="5444000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1456" height="876" extended-state="6" />
@@ -338,7 +376,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1492095599385" expanded="true" signature="315:318" ph="{...}" />
+            <marker date="1492095599385" expanded="true" signature="315:319" ph="[...]" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -350,18 +391,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/projects/IHM/Build XML/builder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/projects/IHM/Build XML/OutputGenerator.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projects/IHM/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projects/IHM/Build XML/builder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/projects/IHM/builderXml/builder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
           <folding />
         </state>
       </provider>

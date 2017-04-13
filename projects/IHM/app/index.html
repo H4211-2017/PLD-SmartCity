@@ -20,19 +20,22 @@
   <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div class="tab">
-    <a class="btn" href="#!/hometab"><button class="tablinks" onclick="openTab(event)">Accueil</button></a>
-    <a class="btn" href="#!/hometab"><button class="tablinks" onclick="openTab(event)">Classes</button></a>
-    <a class="btn" href="#!/teacherTab"><button class="tablinks" onclick="openTab(event)">Professeurs</button></a>
-    <a class="btn" href="#!/roomTypeTab"><button class="tablinks" onclick="openTab(event)">Type de salle</button></a>
-    <a class="btn" href="#!/hometab"><button class="tablinks" onclick="openTab(event)">Horaires</button></a>
-    <a class="btn" href="#!/hometab"><button class="tablinks" onclick="openTab(event)">Matières</button></a>
-    <a class="btn" href="#!/view2"><button class="tablinks" onclick="openTab(event)">Vue 2</button></a>
+
+  <div class="topnav">
+    <a class="btn" href="#!/homeMenu"><button class="menulinks" onclick="openTab(event)">Accueil</button></a>
+    <a class="btn" href="#!/schoolInformationMenu"><button class="menulinks" onclick="openTab(event)">Info Collège</button></a>
+    <a class="btn" href="#!/programmeMenu"><button class="menulinks" onclick="openTab(event)">Programme</button></a>
+    <a class="btn" href="#!/teacherMenu"><button class="menulinks" onclick="openTab(event)">Prof - Cours</button></a>
+
+    <!--<a class="btn" href="#!/teacherTab"><button class="menulinks" onclick="openTab(event)">Professeurs</button></a>-->
+    <!--<a class="btn" href="#!/roomTypeTab"><button class="menulinks" onclick="openTab(event)">Type de salle</button></a>-->
+    <!--<a class="btn" href="#!/hometab"><button class="menulinks" onclick="openTab(event)">Horaires</button></a>-->
+    <!--<a class="btn" href="#!/hometab"><button class="menulinks" onclick="openTab(event)">Matières</button></a>-->
+    <!--<a class="btn" href="#!/view2"><button class="menulinks" onclick="openTab(event)">Vue 2</button></a>-->
   </div>
 
-  <div class="tabcontent">
-    <div ng-view></div>
-  </div>
+  <div ng-view></div>
+
 
   <link rel="stylesheet" type="text/css" href="./bower_components/chosen/chosen.css" />
   <script src="./bower_components/jquery/dist/jquery.min.js"></script>
@@ -43,14 +46,18 @@
   <script src="./bower_components/chosen/chosen.jquery.js"></script>
   <script src="./bower_components/angular-chosen-localytics/dist/angular-chosen.min.js"></script>
 
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="./bower_components/angular/angular.js"></script>
+  <script src="./bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
-  <script src="view2/view2.js"></script>
   <!--Add the scripts used for the differnet tab here-->
-  <script src="hometab/hometab.js"></script>
-  <script src="teacherTab/teacherTab.js"></script>
+  <script src="teacherMenu/teacherTab/teacherTab.js"></script>
   <script src="roomTypeTab/roomTypeTab.js"></script>
+  <script src="roomTab/roomTab.js"></script>
+
+  <script src="homeMenu/homeMenu.js"></script>
+  <script src="schoolInformationMenu/schoolInformationMenu.js"></script>
+  <script src="programmeMenu/programmeMenu.js"></script>
+  <script src="teacherMenu/teacherMenu.js"></script>
 
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
