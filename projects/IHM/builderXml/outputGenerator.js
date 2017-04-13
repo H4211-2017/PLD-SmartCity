@@ -58,14 +58,25 @@ var outputJsonGenerator = {
     },
 
     addTeacher : function(stringTeacherName, numberTargetOfHours = 0, stringComments = '\0') {
-        var teacher = {name : 'Teacher', children : [
-            {name : 'Name', text : stringTeacherName},
-            {name : 'Target_Number_of_Hours', text : numberTargetOfHours},
-            {name : 'Qualified_Subjects', children : []},
-            {name : 'Comments', text : stringComments}
+        var teacher = {name: 'Teacher', children: [
+            {name: 'Name', text: stringTeacherName},
+            {name: 'Target_Number_of_Hours', text: numberTargetOfHours},
+            {name: 'Qualified_Subjects', children: []},
+            {name: 'Comments', text: stringComments}
         ]};
 
         var tableActivityTagList = this.outputJsonObject[0].children[6].children;
-        tableActivityTagList.push(teacher);
+        tableActivityTagList.push(teacher)
+    }
+
+    addYear : function(stringYear, numberOfStudents = 0, stringComments = '\0') {
+        var year = {name: 'Teacher', children: [
+            {name: 'Name', text: stringYear},
+            {name: 'Number_of_Students', text: numberOfStudents},
+            {name: 'Comments', text: stringComments}
+        ]};
+
+        var tableActivityTagList = this.outputJsonObject[0].children[7].children;
+        tableActivityTagList.push(year)
     }
 };
