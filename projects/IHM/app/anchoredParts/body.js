@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('myApp')
+angular.module('myApp.body')
 
     .controller('BodyCtrl', ['$scope', function($scope) {
         $scope.homeMenu = 'homeMenu/homeMenu.html';

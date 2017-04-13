@@ -12,8 +12,9 @@ var app = angular.module('myApp', [
   'myApp.schoolInformationMenu',
   'myApp.programmeMenu',
   'myApp.teacherMenu',
+  'myApp.body',
   'localytics.directives',
-    'ngMaterial'
+  'ngMaterial'
 ]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
 
