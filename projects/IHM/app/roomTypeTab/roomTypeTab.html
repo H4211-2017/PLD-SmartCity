@@ -6,12 +6,15 @@
     <tr>
         <td>
                 <md-inputcontainer>
-                    <textarea id="subjectInput" ng-keypress="pressKeyInput($event.keyCode)" cols="25" rows = "1" style="resize: none"></textarea>
+                    <input type="text" id="subjectInput" ng-keypress="pressKeyInput($event.keyCode)" cols="25" rows = "1" style="resize: none"></input>
                 </md-inputcontainer>
 
         </td>
         <td>
-            <md-button class="md-raised md-primary" ng-click="addSubject()">+</md-button>
+            <!--<md-button class="md-raised md-primary" ng-click="addSubject()">+</md-button>-->
+            <md-button class="md-fab md-mini md-primary" aria-label="Use Android" ng-click="addSubject()">
+                <i class="material-icons">done</i>
+            </md-button>
         </td>
     </tr>
     <tr ng-repeat="subject in subjects">
@@ -19,7 +22,10 @@
                 {{subject.name}}
             </td>
             <td>
-                <md-button ng-click="removeSubject(subject.number)">X</md-button>
+                <!--<md-button ng-click="removeSubject(subject.number)">X</md-button>-->
+                <md-button class="md-fab md-mini md-primary" aria-label="Use Android" ng-click="removeSubject(subject.number)">
+                    <i class="material-icons">delete</i>
+                </md-button>
             </td>
     </tr>
 </table>

@@ -38,10 +38,10 @@ angular.module('myApp.roomTypeTab', ['ngRoute'])
           $scope.rowNumber --;
       };
         $scope.pressKeyInput = function(key){
-
           // If the user has pressed enter
           if (key === 13) {
             $scope.addSubject();
+            document.getElementById("subjectInput").value ='';
             return false;
           }
           else {
