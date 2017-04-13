@@ -6,6 +6,7 @@ var app = angular.module('myApp', [
   'myApp.hometab',
   'myApp.teacherTab',
   'myApp.roomTypeTab',
+  'myApp.roomTab',
   'myApp.view2',
   'myApp.version',
   'localytics.directives'

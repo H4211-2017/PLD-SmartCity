@@ -2,13 +2,13 @@
 
 angular.module('myApp.roomTypeTab', ['ngRoute'])
 
-    .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/roomTypeTab', {
-            templateUrl: 'roomTypeTab/roomTypeTab.html',
-            controller: 'roomTypeTabCtrl'
-        });
-    }])
+  .config(['$routeProvider', function ($routeProvider) {
+    $routeProvider.when('/roomTypeTab', {
+      templateUrl: 'roomTypeTab/roomTypeTab.html',
+      controller: 'roomTypeTabCtrl'
+    });
+  }])
 
-    .controller('roomTypeTabCtrl', [function() {
+  .controller('roomTypeTabCtrl', [function () {
 
-    }]);
+  }]);
