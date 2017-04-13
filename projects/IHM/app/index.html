@@ -23,7 +23,7 @@
   <div class="tab">
     <a class="btn" href="#!/hometab"><button class="tablinks" onclick="openTab(event)">Accueil</button></a>
     <a class="btn" href="#!/hometab"><button class="tablinks" onclick="openTab(event)">Classes</button></a>
-    <a class="btn" href="#!/hometab"><button class="tablinks" onclick="openTab(event)">Professeurs</button></a>
+    <a class="btn" href="#!/teacherTab"><button class="tablinks" onclick="openTab(event)">Professeurs</button></a>
     <a class="btn" href="#!/hometab"><button class="tablinks" onclick="openTab(event)">Horaires</button></a>
     <a class="btn" href="#!/hometab"><button class="tablinks" onclick="openTab(event)">Matières</button></a>
     <a class="btn" href="#!/view2"><button class="tablinks" onclick="openTab(event)">Vue 2</button></a>
@@ -32,15 +32,23 @@
   <div class="tabcontent">
     <div ng-view></div>
   </div>
+
+  <link rel="stylesheet" type="text/css" href="./bower_components/chosen/chosen.css" />
+  <script src="./bower_components/jquery/dist/jquery.min.js"></script>
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
+  <script src="./bower_components/angular/angular.min.js"></script>
+  <script src="./bower_components/chosen/chosen.jquery.js"></script>
+  <script src="./bower_components/angular-chosen-localytics/dist/angular-chosen.min.js"></script>
+
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
   <script src="view2/view2.js"></script>
   <!--Add the scripts used for the differnet tab here-->
   <script src="hometab/hometab.js"></script>
+  <script src="teacherTab/teacherTab.js"></script>
 
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
