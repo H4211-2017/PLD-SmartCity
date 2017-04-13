@@ -3,74 +3,64 @@
 <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" href="app.css">
-  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-</head>
-<body>
 
-  <!--[if lt IE 7]>
-  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
+  <section ng-controller="IndexCtrl">
 
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>My AngularJS App</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+      <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+      <link rel="stylesheet" href="app.css">
+      <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+      <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
 
-  <div class="topnav">
-    <a class="btn" href="#!/homeMenu"><button class="menulinks" onclick="openTab(event)">Accueil</button></a>
-    <a class="btn" href="#!/schoolInformationMenu"><button class="menulinks" onclick="openTab(event)">Info Collège</button></a>
-    <a class="btn" href="#!/programmeMenu"><button class="menulinks" onclick="openTab(event)">Programme</button></a>
-    <a class="btn" href="#!/teacherMenu"><button class="menulinks" onclick="openTab(event)">Prof - Cours</button></a>
+    <body>
 
-    <!--<a class="btn" href="#!/teacherTab"><button class="menulinks" onclick="openTab(event)">Professeurs</button></a>-->
-    <!--<a class="btn" href="#!/roomTypeTab"><button class="menulinks" onclick="openTab(event)">Type de salle</button></a>-->
-    <!--<a class="btn" href="#!/hometab"><button class="menulinks" onclick="openTab(event)">Horaires</button></a>-->
-    <!--<a class="btn" href="#!/hometab"><button class="menulinks" onclick="openTab(event)">Matières</button></a>-->
-    <!--<a class="btn" href="#!/view2"><button class="menulinks" onclick="openTab(event)">Vue 2</button></a>-->
-  </div>
+      <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
 
-  <div ng-view></div>
+      <div ng-include="body"></div>
 
+      <link rel="stylesheet" type="text/css" href="./bower_components/chosen/chosen.css" />
+      <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+      <!-- In production use:
+      <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+      -->
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+      <script src="./bower_components/chosen/chosen.jquery.js"></script>
+      <script src="./bower_components/angular-chosen-localytics/dist/angular-chosen.min.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="./bower_components/chosen/chosen.css" />
-  <script src="./bower_components/jquery/dist/jquery.min.js"></script>
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
-  <script src="./bower_components/angular/angular.min.js"></script>
-  <script src="./bower_components/chosen/chosen.jquery.js"></script>
-  <script src="./bower_components/angular-chosen-localytics/dist/angular-chosen.min.js"></script>
+      <script src="./bower_components/angular/angular.js"></script>
+      <script src="./bower_components/angular-route/angular-route.js"></script>
+      <script src="app.js"></script>
+      <!--Add the scripts used for the differnet tab here-->
+      <script src="anchoredParts/body.js"></script>
+      <script src="teacherMenu/teacherTab/teacherTab.js"></script>
+      <script src="roomTypeTab/roomTypeTab.js"></script>
+      <script src="roomTab/roomTab.js"></script>
+      <script src="homeMenu/homeMenu.js"></script>
+      <script src="schoolInformationMenu/schoolInformationMenu.js"></script>
+      <script src="programmeMenu/programmeMenu.js"></script>
+      <script src="teacherMenu/teacherMenu.js"></script>
 
-  <script src="./bower_components/angular/angular.js"></script>
-  <script src="./bower_components/angular-route/angular-route.js"></script>
-  <script src="app.js"></script>
-  <!--Add the scripts used for the differnet tab here-->
-  <script src="teacherMenu/teacherTab/teacherTab.js"></script>
-  <script src="roomTypeTab/roomTypeTab.js"></script>
-  <script src="roomTab/roomTab.js"></script>
-
-  <script src="homeMenu/homeMenu.js"></script>
-  <script src="schoolInformationMenu/schoolInformationMenu.js"></script>
-  <script src="programmeMenu/programmeMenu.js"></script>
-  <script src="teacherMenu/teacherMenu.js"></script>
-
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.0-rc2/angular-material.min.css">
+      <script src="components/version/version.js"></script>
+      <script src="components/version/version-directive.js"></script>
+      <script src="components/version/interpolate-filter.js"></script>
 
 
-  <!-- Angular Material Library -->
-  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
-</body>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.0-rc2/angular-material.min.css">
+
+    </body>
+  </section>
+
 </html>
