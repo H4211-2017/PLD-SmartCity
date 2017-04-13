@@ -6,7 +6,9 @@ var app = angular.module('myApp', [
   'myApp.hometab',
   'myApp.roomTypeTab',
   'myApp.view2',
-  'myApp.version'
+  'myApp.version',
+  'ngMaterial'
+
 
 ]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
