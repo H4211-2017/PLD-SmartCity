@@ -5,7 +5,7 @@ eval(fs.readFileSync('./outputGenerator.js').toString());
 
 outputJsonGenerator.addHour('8.35 - 9.30');
 outputJsonGenerator.addDay('Lundi');
-outputJsonGenerator.addSubject('Mathematiques');
+outputJsonGenerator.addRoomType('Mathematiques');
 outputJsonGenerator.addActivityTags('LOLOL');
 outputJsonGenerator.addTeacher('Dupont Agnan');
 

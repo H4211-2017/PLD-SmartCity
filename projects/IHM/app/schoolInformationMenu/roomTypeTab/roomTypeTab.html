@@ -6,24 +6,24 @@
     <tr>
         <td>
                 <md-inputcontainer>
-                    <input type="text" id="subjectInput" ng-keypress="pressKeyInput($event.keyCode)" cols="25" rows = "1" style="resize: none"></input>
+                    <input type="text" id="roomTypeInput" ng-keypress="pressKeyInput($event.keyCode)" cols="25" rows = "1" style="resize: none"></input>
                 </md-inputcontainer>
 
         </td>
         <td>
-            <!--<md-button class="md-raised md-primary" ng-click="addSubject()">+</md-button>-->
-            <md-button class="md-fab md-mini md-primary" aria-label="Use Android" ng-click="addSubject()">
+            <!--<md-button class="md-raised md-primary" ng-cliaddRoomTypeject()">+</md-button>-->
+            <md-button class="md-fab md-mini md-primary" aria-label="Use Android" ng-click="addRoomType()">
                 <md-icon>done</md-icon>
             </md-button>
         </td>
     </tr>
-    <tr ng-repeat="subject in subjects">
+    <tr ng-repeat="roomType in roomTypes">
             <td>
-                {{subject.name}}
+                {{roomType.name}}
             </td>
             <td>
                 <!--<md-button ng-click="removeSubject(subject.number)">X</md-button>-->
-                <md-button  class="md-fab md-mini md-warn" style ="min-width:10px" aria-label="supprimmer ce type de salle" ng-click="removeSubject(subject.number)">
+                <md-button  class="md-fab md-mini md-warn" style ="min-width:10px" aria-label="supprimmer ce type de salle" ng-click="removeRoomType(roomType.number)">
                     <md-icon >highlight_off</md-icon>
                 </md-button>
             </td>
