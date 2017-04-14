@@ -9,6 +9,10 @@ angular.module('myApp.schoolInformationMenu', ['ngRoute'])
     });
   }])
   
-  .controller('schoolInformationMenuCtrl', [function() {
-  
+  .controller('schoolInformationMenuCtrl', ['$scope', function($scope) {
+
+      $scope.openTab = function(nom) {
+        console.log("changement page "+nom);
+        $scope.page = nom;
+      };
   }]);

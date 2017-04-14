@@ -4,7 +4,7 @@ angular.module('myApp.roomTypeTab', ['ngRoute'])
 
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/roomTypeTab', {
-      templateUrl: 'roomTypeTab/roomTypeTab.html',
+      templateUrl: 'schoolInformationMenu/roomTypeTab/roomTypeTab.html',
       controller: 'roomTypeTabCtrl'
     });
   }])
