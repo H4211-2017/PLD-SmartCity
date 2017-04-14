@@ -1,3 +1,17 @@
+<div ng-controller="homeMenuCtrl">
+	<div style="display:none" ng-model="page"></div>
+	<div class="tab">
+		<button id="homeSave" class="tablinks" ng-click="save()">Sauver la configuration <br/> actuelle</button>
+		<button id="homeLoad" class="tablinks" ng-click="load()">Charger une configuration <br/>  </button>
+		<input type="file" id="fileUploader">Charger une configuration</input>
+	</div>
 
-<h3>Accueil</h3>
-<p>Vous êtes bien à l'accueil</p>
+	<div class="tabcontent" ng-include="page"></div>
+</div>
+
+
+
+<div id="homeBody" class="mainDiv">
+	<h3>Accueil</h3>
+	<p>Vous êtes bien à l'accueil</p>
+</div>
