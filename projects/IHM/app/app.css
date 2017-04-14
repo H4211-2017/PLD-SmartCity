@@ -124,3 +124,24 @@ div.tab button.active {
   height: 4px;
 }
 
+
+
+/** CSS for tables **/
+.selectionTable{
+  width: 100%;
+}
+.coursName{
+  min-width: 200px;
+}
+
+.inputCom{
+  min-height: inherit;
+  max-height: 27px;
+  resize: none;
+}
+
+.inputCom:focus{
+  min-height: 100px;
+  max-height: inherit;
+}
+/** end of CSS for tables **/
