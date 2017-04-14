@@ -17,13 +17,12 @@
             </md-button>
         </td>
     </tr>
-    <tr ng-repeat="roomType in roomTypes">
+    <tr ng-repeat="roomType in roomTypes ">
             <td>
-                {{roomType.name}}
+                {{roomType}}
             </td>
             <td>
-                <!--<md-button ng-click="removeSubject(subject.number)">X</md-button>-->
-                <md-button  class="md-fab md-mini md-warn" style ="min-width:10px" aria-label="supprimmer ce type de salle" ng-click="removeRoomType(roomType.number)">
+                <md-button  class="md-fab md-mini md-warn" aria-label="supprimmer ce type de salle" ng-click="removeRoomType($index)">
                     <md-icon >highlight_off</md-icon>
                 </md-button>
             </td>

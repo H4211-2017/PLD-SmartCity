@@ -12,7 +12,7 @@ angular.module('myApp.roomTypeTab', ['ngRoute'])
     .controller('roomTypeTabCtrl', [function() {
         console.log("room type table");
     }])
-    .controller('secondController',function($scope){
+    .controller('secondController',function($scope, $q, $timeout){
       //TODO:LANG
         $scope.myVar = "Ajoutez/ supprimmez des type de salle";
         $scope.rowNumber = 0;
@@ -20,21 +20,43 @@ angular.module('myApp.roomTypeTab', ['ngRoute'])
 
         $scope.addRoomType = function(){
           var roomTypeInput = document.getElementById("roomTypeInput");
-
+          var isDuplicate = false;
           if(roomTypeInput.value === null || roomTypeInput.value === ""){
           }
           else{
-            var roomType = {name:roomTypeInput.value,number:$scope.rowNumber}
-            $scope.roomTypes.unshift(roomType);
-            $scope.rowNumber++;
-            roomTypeInput.value = null;
+            angular.forEach($scope.roomTypes, function(roomType){
+              if(roomType.name===roomTypeInput.value){
+                isDuplicate = true;
+                return;
+              }
+            });
+            if(isDuplicate === false)
+            {
+              var roomType = roomTypeInput.value
+              $scope.roomTypes.unshift(roomType);
+              $scope.rowNumber++;
+              roomTypeInput.value = null;
+            }
+            else{
+              alert("Ce type de salle existe déjà");
+            }
+
           }
         };
 
         $scope.removeRoomType = function(row){
-          var rowTodelete = $scope.rowNumber - row -1;
+          var rowTodelete = row;
           console.log(rowTodelete);
-          $scope.roomTypes.splice(rowTodelete,1);
+
+          //We splice behaves weirdly on end of array, so we use pop instead.
+          if(rowTodelete === $scope.roomTypes.length)
+          {
+            $scope.roomTypes.pop();
+          }
+          else
+          {
+            $scope.roomTypes.splice(rowTodelete,1);
+          }
           $scope.rowNumber --;
       };
         $scope.pressKeyInput = function(key){
@@ -47,5 +69,7 @@ angular.module('myApp.roomTypeTab', ['ngRoute'])
             return true;
           }
         };
+
+
     });
 
