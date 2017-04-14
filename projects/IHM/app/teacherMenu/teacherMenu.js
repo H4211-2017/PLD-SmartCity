@@ -10,9 +10,6 @@ angular.module('myApp.teacherMenu', [
       templateUrl: 'teacherMenu/teacherMenu.html',
       controller: 'teacherMenuCtrl'
     });
-    // $scope.selectedTemplate = {
-    //   "path":"teacherMenu/teacherTab/teacherTab.html"
-    // };
   }])
   
   .controller('teacherMenuCtrl', [function() {
