@@ -1,8 +1,10 @@
-
+<div ng-controller="programmeMenuCtrl">
+  <div style="display:none" ng-model="page"></div>
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event)">Matières</button>
-  <button class="tablinks" onclick="openTab(event)">Classes</button>
-  <button class="tablinks" onclick="openTab(event)">Professeurs</button>
+  <button id="prgNiveauxClasses" class="tablinks" ng-click="openTab('programmeMenu/gradeClassesTab/gradeClassesTab.html', 'prgNiveauxClasses')">Niveaux - Classes</button>
+  <button id="prgMatieres" class="tablinks" ng-click="openTab('programmeMenu/gradeClassesTab/gradeClassesTab.html', 'prgMatieres')">Matières</button>
+  <button id="prgRepartition" class="tablinks" ng-click="openTab('programmeMenu/gradeClassesTab/gradeClassesTab.html', 'prgRepartition')">Répartition horaire par niveau</button>
 </div>
 
-<div class="tabcontent"></div>
+  <div class="tabcontent" ng-include="page"></div>
+</div>

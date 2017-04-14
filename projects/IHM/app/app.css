@@ -54,6 +54,10 @@ div.tab button:hover {
   background-color: #ddd;
 }
 
+div.tab button[selected] {
+    background-color: #ccc;
+}
+
 /* Create an active/current "tab button" class */
 div.tab button.active {
   background-color: #ccc;
