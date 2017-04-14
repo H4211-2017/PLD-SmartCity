@@ -4,3 +4,4 @@
 #compiled files
 *.o
 *.out
+.idea/workspace

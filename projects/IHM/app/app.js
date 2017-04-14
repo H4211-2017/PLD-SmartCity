@@ -5,18 +5,28 @@ var app = angular.module('myApp', [
   'ngRoute',
   'myApp.roomTypeTab',
   'myApp.version',
+  'ngMaterial',
+  'myApp.roomTab',
+  'myApp.version',
   'myApp.homeMenu',
   'myApp.schoolInformationMenu',
   'myApp.programmeMenu',
   'myApp.teacherMenu',
-  'localytics.directives'
+  'localytics.directives',
+    'ngMaterial'
 ]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
 
   $routeProvider.otherwise({redirectTo: '/homeMenu'});
 }]);
 
-/* Js for Menu */
+
+app.controller("IndexCtrl", ["$scope", function($scope) {
+
+  $scope.body = "anchoredParts/body.html";
+}]);
+
+/* Js for Menu
 function openTab(evt) {
   // Declare all variables
   var i, menulinks;
@@ -27,4 +37,4 @@ function openTab(evt) {
     menulinks[i].className = menulinks[i].className.replace(" active", "");
   }
   evt.currentTarget.className += " active";
-}
+}*/
