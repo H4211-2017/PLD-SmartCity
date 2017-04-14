@@ -37,7 +37,7 @@ var outputJsonGenerator = {
         tableHourList.push(hour);
     },
 
-    addSubject : function(stringSubjectName, stringComments = '\0') {
+    addRoomType : function(stringSubjectName, stringComments = '\0') {
         var subject = {name : 'Subject', children : {
             Name : stringSubjectName,
             Comments : stringComments

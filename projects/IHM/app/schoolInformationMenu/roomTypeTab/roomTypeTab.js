@@ -4,7 +4,7 @@ angular.module('myApp.roomTypeTab', ['ngRoute'])
 
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/roomTypeTab', {
-      templateUrl: 'roomTypeTab/roomTypeTab.html',
+      templateUrl: 'schoolInformationMenu/roomTypeTab/roomTypeTab.html',
       controller: 'roomTypeTabCtrl'
     });
   }])
@@ -14,34 +14,33 @@ angular.module('myApp.roomTypeTab', ['ngRoute'])
     }])
     .controller('secondController',function($scope){
       //TODO:LANG
-        $scope.myVar = "Entrez vos matière";
+        $scope.myVar = "Ajoutez/ supprimmez des type de salle";
         $scope.rowNumber = 0;
-        $scope.subjects = [];
+        $scope.roomTypes = [];
 
-        $scope.addSubject = function(){
-          var subjectInput = document.getElementById("subjectInput");
+        $scope.addRoomType = function(){
+          var roomTypeInput = document.getElementById("roomTypeInput");
 
-          if(subjectInput.value === null || subjectInput.value === ""){
+          if(roomTypeInput.value === null || roomTypeInput.value === ""){
           }
           else{
-            var subject = {name:subjectInput.value,number:$scope.rowNumber}
-            $scope.subjects.unshift(subject);
+            var roomType = {name:roomTypeInput.value,number:$scope.rowNumber}
+            $scope.roomTypes.unshift(roomType);
             $scope.rowNumber++;
-            subjectInput.value = null;
+            roomTypeInput.value = null;
           }
         };
 
-        $scope.removeSubject = function(row){
+        $scope.removeRoomType = function(row){
           var rowTodelete = $scope.rowNumber - row -1;
           console.log(rowTodelete);
-          $scope.subjects.splice(rowTodelete,1);
+          $scope.roomTypes.splice(rowTodelete,1);
           $scope.rowNumber --;
       };
         $scope.pressKeyInput = function(key){
           // If the user has pressed enter
           if (key === 13) {
-            $scope.addSubject();
-            document.getElementById("subjectInput").value ='';
+            $scope.addRoomType();
             return false;
           }
           else {
