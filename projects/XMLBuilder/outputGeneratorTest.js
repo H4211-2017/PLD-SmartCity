@@ -28,3 +28,4 @@ var jsonToXml = function (jsonObject) {
 var toXml = jsonToXml(outputJsonGenerator.outputJsonObject);
 
 console.log(toXml);
+alert(toXml);

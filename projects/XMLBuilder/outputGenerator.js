@@ -22,14 +22,14 @@ var OutputJsonGenerator = {
                 {name: 'ConstraintBasicCompulsoryTime', children: [
                     {name: 'Weight_Percentage', text: 100},
                     {name: 'Active', text: 'true'},
-                    {name: 'Comments', text: '\0'}
+                    {name: 'Comments', text: ''}
                 ]}
             ]},
             {name: 'Space_Constraints_List', children: [
                 {name: 'ConstraintBasicCompulsorySpace', children: [
                     {name: 'Weight_Percentage', text: 100},
                     {name: 'Active', text: 'true'},
-                    {name: 'Comments', text: '\0'}
+                    {name: 'Comments', text: ''}
                 ]}
             ]}
         ]}
@@ -134,24 +134,32 @@ var OutputJsonGenerator = {
         testedYear.children.push(group);
     },
 
-    IntActivities: 0, //for id of each activity
+    intActivities: 0, //for id of each activity
 
-    addActivity: function(stringTeacherName, stringSubjectName, stringStudentGroupName, intDuration, intTotalDuration, stringComments) {
+    addActivity: function(stringTeacherName, stringSubjectName, stringStudentGroupName, intDuration, intSplits, stringComments) {
 
         this.intActivities++;
 
         // TODO verify if elements exist in hierarchy
-        var activity = {name: 'Activity', children: [
-            {name: 'Teacher', text: stringTeacherName},
-            {name: 'Subject', text: stringSubjectName},
-            {name: 'Students', text: stringStudentGroupName},
-            {name: 'Duration', text: IntDuration},
-            {name: 'TotalDuration', text: intTotalDuration},
-            {name: 'Id', text: intActivities},
-            {name: 'Activity_Group_Id', text: 0},
-            {name: 'Active', text: 'true'},
-            {name: 'Comments', text: stringComments}
-        ]};
+		var intSplitId = this.intActivities;
+		var tableActivityList = this.outputJsonObject[0].children[8].children;
+		
+		for(var i = 0; i < intSplits; i++) {
+
+			tableActivityList.push({name: 'Activity', children: [
+				{name: 'Teacher', text: stringTeacherName},
+				{name: 'Subject', text: stringSubjectName},
+				{name: 'Students', text: stringStudentGroupName},
+				{name: 'Duration', text: intDuration},
+				{name: 'Total_Duration', text: (intDuration * intSplits)},
+				{name: 'Id', text: this.intActivities},
+				{name: 'Activity_Group_Id', text: intSplitId},
+				{name: 'Active', text: 'true'},
+				{name: 'Comments', text: stringComments}
+			]});
+			
+			this.intActivities++;
+		}
     },
 	
 	getHourName	: function(numberHourIndice) {
@@ -174,4 +182,4 @@ var getXmlName = function(outputJsonXmlObjectWithName) {
 }
 
 exports.getXmlName = getXmlName;
-exports.OutputJsonGenerator = OutputJsonGenerator
+exports.OutputJsonGenerator = OutputJsonGenerator;

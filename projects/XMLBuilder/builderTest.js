@@ -1,4 +1,5 @@
 var builder = require('./builder');
+var fileGenerator = require('./fileGenerator');
 
 var jsonObjectEntry = {
     SchoolInformation: {
@@ -66,6 +67,11 @@ var jsonObjectEntry = {
             {
                 Year: '3e',
                 Name: '3B'
+            },
+			{
+                Year: '6e',
+                Name: '6A',
+				StudentsNumber: 32
             } // Other classes to add
         ], // End of classes
 
@@ -77,7 +83,15 @@ var jsonObjectEntry = {
             {
                 Name: 'Musique',
                 TypeRoom: 'Musique'
-            } // Other subject to add
+            },
+			{
+				Name: 'Math',
+				TypeRoom: 'Normal'
+			},
+			{
+				Name: 'Latin',
+				TypeRoom: 'Normal'
+			}// Other subject to add
         ], // End of Subjects
 
         Programme: [
@@ -92,6 +106,23 @@ var jsonObjectEntry = {
                         Subject: 'Physique',
                         WeekHours: 4
                     } // Other subject to add
+                ]
+			},
+			{
+				Year: '6e',
+                Programme: [
+                    {
+                        Subject: 'Math',
+                        WeekHours: 5
+                    },
+                    {
+                        Subject: 'Physique',
+                        WeekHours: 4
+                    },
+					{
+                        Subject: 'Latin',
+                        WeekHours: 3
+					}// Other subject to add
                 ]
             } // Other years to add
         ] // End of Programme
@@ -138,6 +169,45 @@ var jsonObjectEntry = {
                     } // Other days to add
                 ], // End Schedule
 				Comments: ''
+            },
+			{
+                FirstName: 'Beatrice',
+                LastName: 'Beaugrand',
+                Subject: [
+                    'Mathematiques',
+                    'Physique'
+                ],
+                Class: [
+                    '4C',
+                    '6A',
+                    '5C'
+                ],
+                Disponibility: [
+                    {
+                        DayName: 'Lundi',
+                        HoursSlot: [
+                            0,
+                            1,
+                            2,
+                            7,
+                            8
+                        ]
+                    },
+                    {
+                        DayName: 'Mardi',
+                        HoursSlot: [
+                            0,
+                            1,
+                            2,
+                            3,
+                            4,
+                            5,
+                            6,
+                            7
+                        ]
+                    } // Other days to add
+                ], // End Schedule
+				Comments: 'Quelques commentaires'
             } // Other teacher to add
         ], // End of TeacherList
 
@@ -168,3 +238,5 @@ var jsonObjectEntry = {
 var  outputXml = builder.jsonObjectEntryToXml(jsonObjectEntry);
 
 console.log(outputXml);
+
+fileGenerator.saveStringAs(outputXml, 'first.fet');
