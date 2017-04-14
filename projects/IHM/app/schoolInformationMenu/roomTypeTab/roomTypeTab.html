@@ -13,7 +13,7 @@
         <td>
             <!--<md-button class="md-raised md-primary" ng-click="addSubject()">+</md-button>-->
             <md-button class="md-fab md-mini md-primary" aria-label="Use Android" ng-click="addSubject()">
-                <i class="material-icons">done</i>
+                <md-icon>done</md-icon>
             </md-button>
         </td>
     </tr>
@@ -23,13 +23,13 @@
             </td>
             <td>
                 <!--<md-button ng-click="removeSubject(subject.number)">X</md-button>-->
-                <md-button class="md-fab md-mini md-primary" aria-label="Use Android" ng-click="removeSubject(subject.number)">
-                    <i class="material-icons">delete</i>
+                <md-button  class="md-fab md-mini md-warn" style ="min-width:10px" aria-label="supprimmer ce type de salle" ng-click="removeSubject(subject.number)">
+                    <md-icon >highlight_off</md-icon>
                 </md-button>
             </td>
     </tr>
 </table>
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </div>
 

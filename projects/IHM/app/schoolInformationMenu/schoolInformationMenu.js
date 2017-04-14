@@ -12,7 +12,8 @@ angular.module('myApp.schoolInformationMenu', ['ngRoute'])
   .controller('schoolInformationMenuCtrl', ['$scope', function($scope) {
 
       $scope.openTab = function(nom) {
-        console.log("changement page "+nom);
+
         $scope.page = nom;
+        console.log("changement page "+$scope.page);
       };
   }]);
