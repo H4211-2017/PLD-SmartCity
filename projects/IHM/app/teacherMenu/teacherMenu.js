@@ -12,6 +12,6 @@ angular.module('myApp.teacherMenu', [
     });
   }])
   
-  .controller('teacherMenuCtrl', [function() {
-  
+  .controller('teacherMenuCtrl', ['$scope', function($scope) {
+      $scope.teacherTab = "teacherMenu/teacherTab/teacherTab.html";
   }]);

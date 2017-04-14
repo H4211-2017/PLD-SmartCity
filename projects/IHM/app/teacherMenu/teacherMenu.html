@@ -1,8 +1,12 @@
 
-<div class="tab">
-  <button class="tablinks" onclick="openTab(event)">Enseignant</button>
-</div>
+<section ng-controller="teacherMenuCtrl">
 
-<div class="tabcontent">
-  <!--<div data-ng-include="selectedTemplate.path"></div>-->
-</div>
+  <div class="tab">
+    <button class="tablinks" onclick="openTab(event)">Enseignant</button>
+  </div>
+
+  <div ng-include="teacherTab">
+    <!--<div data-ng-include="selectedTemplate.path"></div>-->
+  </div>
+
+</section>

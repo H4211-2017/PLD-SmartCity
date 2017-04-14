@@ -1,69 +1,125 @@
-<h3>Professeurs</h3>
-<p>defini la liste des profs</p>
+<section ng-controller="teacherTabCtrl">
+
+  <!--<div class="tabcontent" onload="genereTableau()">-->
+  <div class="tabcontent">
+
+    <table>
+      <tr>
+        <th>Prenom</th>
+        <th>Nom</th>
+        <th>Matières</th>
+        <th>Groupes</th>
+        <th>Disponibilitées</th>
+        <th>Comentaire</th>
+      </tr>
+      <tr ng-repeat="t in teachers">
+        <td>
+          <input type="text" name="firstname" ng-model="t.FirstName">
+        </td>
+        <td>
+          <input type="text" name="lastname" ng-model="t.LastName" >
+        </td>
+        <td class="coursName">
+          <select chosen
+                  multiple
+                  class="coursName"
+                  no-results-text="'Pas de Matière trouvé pour:'"
+                  placeholder-text-multiple="'Pas de Matière selectionné pour le moment'"
+                  ng-options="c.Name for c in cours"
+                  ng-model="t.Subject">
+            <option value=""></option>
+          </select>
+        </td>
+        <td>
+          {{ t.Class }}
+        </td>
+        <td>
+          ...
+        </td>
+        <td>
+          <textarea class="inputCom" name="com" rows="5">{{ t.Comments }}</textarea>
+        </td>
+      </tr>
+    </table>
+
+    <!--<code>{{teachers}}</code>-->
+    <!--<h3>Professeurs</h3>-->
+    <!--<p>defini la liste des profs</p>-->
 
 
-<table style="width:100%">
-  <tr>
-    <th>Nom</th>
-    <th>Matières</th>
-    <th>Groupes</th>
-    <th>Disponibilitées</th>
-    <th>Comentaire</th>
-  </tr>
-  <tr>
-    <td>
-      <input type="text" name="name" value="Jill Smith">
-    </td>
-    <td>
-      <select chosen multiple>
-        <option value="maths">Math</option>
-        <option selected value="anglais">Anglais</option>
-        <option value="latin">Latin</option>
-        <option value="espagnol">Espagnol</option>
-        <option value="francais">francais</option>
-        <option selected value="allemand">allemand</option>
-        <option value="histoire">histoire</option>
-        <option value="musique">musique</option>
-        <option value="art">art</option>
-        <option value="thechno">thechno</option>
-        <option value="grec">grec</option>
-        <option value="SVT">SVT</option>
-        <option value="phisique">phisique</option>
-        <option value="EPS">EPS</option>
-      </select>
-    </td>
-    <td>3A, 3D, 5C</td>
-    <td>...</td>
-    <td>
-      <input type="text" name="name" value="">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <input type="text" name="name" value="Eve Jackson">
-    </td>
-    <td>
-      <select chosen multiple>
-        <option value="maths">Math</option>
-        <option value="anglais">Anglais</option>
-        <option value="latin">Latin</option>
-        <option value="espagnol">Espagnol</option>
-        <option value="francais">francais</option>
-        <option value="allemand">allemand</option>
-        <option value="histoire">histoire</option>
-        <option value="musique">musique</option>
-        <option value="art">art</option>
-        <option value="thechno">thechno</option>
-        <option value="grec">grec</option>
-        <option value="SVT">SVT</option>
-        <option value="phisique">phisique</option>
-        <option value="EPS">EPS</option>
-      </select>
-    </td>
-    <td>6A, 4D, 5B</td>
-    <td>...</td>
-    <td>
-      <input type="text" name="name" value="">
-    </td>
-  </tr>
-</table>
+    <!--<table class="selectionTable">-->
+      <!--<tr>-->
+        <!--<th>Nom</th>-->
+        <!--<th>Matières</th>-->
+        <!--<th>Groupes</th>-->
+        <!--<th>Disponibilitées</th>-->
+        <!--<th>Comentaire</th>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<input type="text" name="name" value="Jill Smith" >-->
+        <!--</td>-->
+        <!--<td class="coursName">-->
+          <!--<select chosen multiple class="coursName">-->
+            <!--<option value="maths">Math</option>-->
+            <!--<option selected value="anglais">Anglais</option>-->
+            <!--<option value="latin">Latin</option>-->
+            <!--<option value="espagnol">Espagnol</option>-->
+            <!--<option value="francais">francais</option>-->
+            <!--<option selected value="allemand">allemand</option>-->
+            <!--<option value="histoire">histoire</option>-->
+            <!--<option value="musique">musique</option>-->
+            <!--<option value="art">art</option>-->
+            <!--<option value="thechno">thechno</option>-->
+            <!--<option value="grec">grec</option>-->
+            <!--<option value="SVT">SVT</option>-->
+            <!--<option value="phisique">phisique</option>-->
+            <!--<option value="EPS">EPS</option>-->
+          <!--</select>-->
+        <!--</td>-->
+        <!--<td>3A, 3D, 5C</td>-->
+        <!--<td>...</td>-->
+        <!--<td>-->
+          <!--<textarea class="inputCom" name="com" rows="5" value=""></textarea>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<input type="text" name="name" value="Eve Jackson">-->
+        <!--</td>-->
+        <!--<td class="coursName">-->
+          <!--<select chosen multiple class="coursName">-->
+            <!--<option value="maths">Math</option>-->
+            <!--<option value="anglais">Anglais</option>-->
+            <!--<option value="latin">Latin</option>-->
+            <!--<option value="espagnol">Espagnol</option>-->
+            <!--<option value="francais">francais</option>-->
+            <!--<option value="allemand">allemand</option>-->
+            <!--<option value="histoire">histoire</option>-->
+            <!--<option value="musique">musique</option>-->
+            <!--<option value="art">art</option>-->
+            <!--<option value="thechno">thechno</option>-->
+            <!--<option value="grec">grec</option>-->
+            <!--<option value="SVT">SVT</option>-->
+            <!--<option value="phisique">phisique</option>-->
+            <!--<option value="EPS">EPS</option>-->
+          <!--</select>-->
+        <!--</td>-->
+        <!--<td>6A, 4D, 5B</td>-->
+        <!--<td>...</td>-->
+        <!--<td>-->
+          <!--<textarea class="inputCom" name="com" rows="5" value=""></textarea>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <tr>
+        <td>
+          <md-button class="md-icon-button">
+            <i class="material-icons">add</i>
+          </md-button>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+
+</section>
