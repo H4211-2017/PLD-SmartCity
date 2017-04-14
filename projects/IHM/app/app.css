@@ -31,7 +31,8 @@ div.tab {
   border: 1px solid #ccc;
   background-color: #f1f1f1;
   width: 15%;
-  min-height: 300px;
+  min-height: 400px;
+  box-sizing: border-box;
 }
 
 /* Style the buttons inside the tab */
@@ -65,11 +66,13 @@ div.tab button.active {
 /* Style the tab content */
 .tabcontent {
   float: left;
-  padding: 0px 12px;
+  padding: 10px;
   border: 1px solid #ccc;
-  width: 80%;
+  width: 85%;
+  box-sizing: border-box;
   border-left: none;
-  min-height: 300px;
+  min-height: 400px;
+  height : auto;
   display: block;
 }
 /** CSS for Menu end **/
@@ -128,3 +131,24 @@ div.tab button.active {
   height: 4px;
 }
 
+
+
+/** CSS for tables **/
+.selectionTable{
+  width: 100%;
+}
+.coursName{
+  min-width: 200px;
+}
+
+.inputCom{
+  min-height: inherit;
+  max-height: 27px;
+  resize: none;
+}
+
+.inputCom:focus{
+  min-height: 100px;
+  max-height: inherit;
+}
+/** end of CSS for tables **/
