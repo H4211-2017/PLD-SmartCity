@@ -137,6 +137,7 @@ var jsonObjectEntry = {
                         ]
                     } // Other days to add
                 ], // End Schedule
+                Comments: 'A very good teacher'
             } // Other teacher to add
         ], // End of TeacherList
 
