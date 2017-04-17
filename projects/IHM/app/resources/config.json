@@ -1,0 +1,7 @@
+{
+	"fake" : true,
+	"name" : "dummy",
+	"config" : {
+		"default" : true
+	}
+}
