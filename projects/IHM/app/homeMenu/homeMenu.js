@@ -2,13 +2,11 @@
  * Created by nicolas on 13/04/17.
  */
 'use strict';
-// Check for the various File API support.
-if (window.File && window.FileReader && window.FileList && window.Blob) {
-  console.log("File API support enabled on this browser")
-} else {
-  alert('The File APIs are not fully supported in this browser.');
-}
-//
+
+
+var config;//TODO initialise higher and make it read config.json
+//TODO AJAX CALL TO INITIALISE config
+
 angular.module('myApp.homeMenu', ['ngRoute'])
   
   .config(['$routeProvider', function($routeProvider) {
@@ -42,9 +40,9 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 			}
 			
 			
-			// Function to download data to a file
+			
 		/*
-		//TODO test this stub to support IE10
+		//TODO test this stub to support download with IE10
 		var a = document.createElement("a"),
 			file = new Blob([data], {type: type});
 		if (window.navigator.msSaveOrOpenBlob) // IE10+
@@ -54,7 +52,7 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 	  };
 	  
 	  $scope.load = function() {
-			console.log("Load Pressed")
+			console.log("Load Pressed")//Test for development
 			//simulate an input of type file
 			var newElem = document.createElement('input');
 			newElem.id = 'fileSelecter';
@@ -63,7 +61,7 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 			document.body.appendChild(newElem);
 			//set interaction
 			var loadButton = $('#fileSelecter');
-			console.log(loadButton)
+			//console.log(loadButton);//Debug Log
 			loadButton.change(function (evt) {
 				console.log("fichier detecté");
 				var file = evt.target.files[0];
@@ -71,13 +69,14 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 				
 				//defining callback
 				reader.onload = function (finished_event) {
-					console.log(finished_event.target.result)
-					//TODO do things with caught file on the server
+					config = JSON.parse(finished_event.target.result);
+					console.log(config.stringify());
+					//TODO AJAX CALL TO SAVE INSIDE config.json.
 				};
-				reader.readAsText(file)
+				reader.readAsText(file);
 			});
 			//simulate a click
-			newElem.click()
+			newElem.click();
 			//remove it
 			setTimeout(function() {
 				document.body.removeChild(newElem);
