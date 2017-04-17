@@ -32,7 +32,7 @@ angular.module('myApp.roomTypeTab', ['ngRoute'])
             });
             if(isDuplicate === false)
             {
-              var roomType = roomTypeInput.value
+              var roomType = roomTypeInput.value;
               $scope.roomTypes.unshift(roomType);
               $scope.rowNumber++;
               roomTypeInput.value = null;

@@ -2,10 +2,10 @@
 <section ng-controller="teacherMenuCtrl">
 
   <div class="tab">
-    <button class="tablinks" onclick="openTab(event)">Enseignant</button>
+    <button id='tchEnseignants' class="tablinks" onclick="openTab('teacherMenu/teacherTab/teacherTab.html', 'tchEnseignants')">Enseignant</button>
   </div>
 
-  <div ng-include="teacherTab">
+  <div ng-include="page">
     <!--<div data-ng-include="selectedTemplate.path"></div>-->
   </div>
 

@@ -55,6 +55,7 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 			console.log("Load Pressed")//Test for development
 			//simulate an input of type file
 			var newElem = document.createElement('input');
+			newElem.hidden = true;
 			newElem.id = 'fileSelecter';
 			newElem.setAttribute("type", "file")
 			//add it

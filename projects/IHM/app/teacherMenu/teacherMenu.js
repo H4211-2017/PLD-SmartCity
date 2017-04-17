@@ -13,5 +13,16 @@ angular.module('myApp.teacherMenu', [
   }])
   
   .controller('teacherMenuCtrl', ['$scope', function($scope) {
-      $scope.teacherTab = "teacherMenu/teacherTab/teacherTab.html";
+
+      $scope.openTab = function(nom, id) {
+          var lastButt = angular.element($scope.lastIdSelected);
+          $scope.lastIdSelected = '#' + id;
+          var butt = angular.element($scope.lastIdSelected);
+          lastButt.attr("selected", false);
+          butt.attr("selected", true);
+          $scope.page = nom;
+      };
+
+      $scope.openTab('teacherMenu/teacherTab/teacherTab.html', 'tchEnseignants');
+
   }]);

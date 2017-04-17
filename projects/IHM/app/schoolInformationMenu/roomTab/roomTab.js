@@ -9,6 +9,22 @@ angular.module('myApp.roomTab', ['ngRoute'])
     });
   }])
 
-  .controller('roomTabCtrl', [function () {
+  .controller('roomTabCtrl', ['$scope', function ($scope) {
+      $scope.rooms = [{
+          roomName: "B213",
+          roomType: "TP physiquess"
+      }];
+
+      $scope.roomTypes = [
+              {
+                  roomType: "TP physique"
+              },
+              {
+                  roomType: "TP chimie"
+              },
+              {
+                  roomType: "salle normale"
+              }
+          ];
 
   }]);

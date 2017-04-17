@@ -3,14 +3,14 @@
   <!--<div class="tabcontent" onload="genereTableau()">-->
   <div class="tabcontent">
 
-    <table>
+    <table id="teacherTab">
       <tr>
         <th>Prenom</th>
         <th>Nom</th>
         <th>Matières</th>
         <th>Groupes</th>
-        <th>Disponibilitées</th>
-        <th>Comentaire</th>
+        <th>Disponibilités</th>
+        <th>Commentaire</th>
       </tr>
       <tr ng-repeat="t in teachers">
         <td>
@@ -38,6 +38,12 @@
         </td>
         <td>
           <textarea class="inputCom" name="com" rows="5">{{ t.Comments }}</textarea>
+        </td>
+        <td>
+          <!-- TODO fonction supprimer après discussion -->
+          <md-button class="md-icon-button" ng-click="addTeacherLine()">
+            <i class="material-icons">delete</i>
+          </md-button>
         </td>
       </tr>
     </table>
@@ -111,9 +117,11 @@
           <!--<textarea class="inputCom" name="com" rows="5" value=""></textarea>-->
         <!--</td>-->
       <!--</tr>-->
+
+    <!-- TODO ajout ligne par ligne "meh" ==> vers un assistant d'ajout de professeur"-->
       <tr>
         <td>
-          <md-button class="md-icon-button">
+          <md-button class="md-icon-button" ng-click="addTeacherLine()">
             <i class="material-icons">add</i>
           </md-button>
         </td>

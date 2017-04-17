@@ -9,6 +9,17 @@ angular.module('myApp.programmeMenu', ['ngRoute'])
     });
   }])
   
-  .controller('programmeMenuCtrl', [function() {
-  
+  .controller('programmeMenuCtrl', ['$scope', function($scope) {
+
+      $scope.openTab = function(nom, id) {
+          var lastButt = angular.element($scope.lastIdSelected);
+          $scope.lastIdSelected = '#' + id;
+          var butt = angular.element($scope.lastIdSelected);
+          lastButt.attr("selected", false);
+          butt.attr("selected", true);
+          $scope.page = nom;
+      };
+
+      $scope.openTab('programmeMenu/gradeClassesTab/gradeClassesTab.html', 'prgNiveauxClasses');
+
   }]);

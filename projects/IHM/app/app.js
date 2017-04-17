@@ -25,21 +25,6 @@ app.controller("IndexCtrl", ["$scope", function($scope) {
 
   $scope.body = "anchoredParts/body.html";
 
-  $scope.openTab = function(nom) {
-
-    $scope.page = nom;
-    console.log("changement page "+$scope.page);
-  };
-
-  $scope.lastIdSelected = '';
-  $scope.openTab = function(nom, id) {
-    var lastButt = angular.element($scope.lastIdSelected);
-    $scope.lastIdSelected = '#' + id;
-    var butt = angular.element($scope.lastIdSelected);
-    lastButt.attr("selected", false);
-    butt.attr("selected", true);
-    $scope.page = nom;
-  };
 
 }]);
 

@@ -1,67 +1,29 @@
-<h3>Salle</h3>
+<section ng-controller="roomTabCtrl">
 
-<table style="width:100%">
-  <tr>
-    <th>Nom</th>
-    <th>Matières</th>
-    <th>Groupes</th>
-    <th>Disponibilitées</th>
-    <th>Comentaire</th>
-  </tr>
-  <tr>
-    <td>
-      <input type="text" name="name" value="Jill Smith">
-    </td>
-    <td>
-      <select chosen multiple>
-        <option value="maths">Math</option>
-        <option selected value="anglais">Anglais</option>
-        <option value="latin">Latin</option>
-        <option value="espagnol">Espagnol</option>
-        <option value="francais">francais</option>
-        <option selected value="allemand">allemand</option>
-        <option value="histoire">histoire</option>
-        <option value="musique">musique</option>
-        <option value="art">art</option>
-        <option value="thechno">thechno</option>
-        <option value="grec">grec</option>
-        <option value="SVT">SVT</option>
-        <option value="phisique">phisique</option>
-        <option value="EPS">EPS</option>
-      </select>
-    </td>
-    <td>3A, 3D, 5C</td>
-    <td>...</td>
-    <td>
-      <input type="text" name="name" value="">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <input type="text" name="name" value="Eve Jackson">
-    </td>
-    <td>
-      <select chosen multiple>
-        <option value="maths">Math</option>
-        <option value="anglais">Anglais</option>
-        <option value="latin">Latin</option>
-        <option value="espagnol">Espagnol</option>
-        <option value="francais">francais</option>
-        <option value="allemand">allemand</option>
-        <option value="histoire">histoire</option>
-        <option value="musique">musique</option>
-        <option value="art">art</option>
-        <option value="thechno">thechno</option>
-        <option value="grec">grec</option>
-        <option value="SVT">SVT</option>
-        <option value="phisique">phisique</option>
-        <option value="EPS">EPS</option>
-      </select>
-    </td>
-    <td>6A, 4D, 5B</td>
-    <td>...</td>
-    <td>
-      <input type="text" name="name" value="">
-    </td>
-  </tr>
-</table>
+
+  <h3>Salle</h3>
+
+  <table style="width:100%">
+    <tr>
+      <th>Nom</th>
+      <th>Type de salle</th>
+    </tr>
+    <tr ng-repeat="r in rooms">
+      <td>
+        <input type="text" name="roomName" ng-model="r.roomName"/>
+      </td>
+      <td class="coursName">
+        <select chosen
+                multiple
+                display-selected-options="false"
+                class="coursName"
+                no-results-text="'Pas de type de salle trouvé pour:'"
+                placeholder-text-multiple="'Pas de type de salle selectionné pour le moment'"
+                ng-options="rt.roomType for rt in roomTypes"
+                ng-model="r.roomType">
+          <option value=""></option>
+        </select>
+      </td>
+    </tr>
+  </table>
+</section>
