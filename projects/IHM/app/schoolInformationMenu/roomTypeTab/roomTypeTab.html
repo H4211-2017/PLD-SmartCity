@@ -1,34 +1,37 @@
 <h3>Type de salle</h3>
 <div ng-controller="secondController">
-    {{myVar}}
+  <!--TODO:LANG-->
+  Ajoutez/ supprimmez des type de salle
 
-<table id="subjectTable">
+  <table id="subjectTable">
     <tr>
-        <td>
-                <md-inputcontainer>
-                    <input type="text" id="roomTypeInput" ng-keypress="pressKeyInput($event.keyCode)" cols="25" rows = "1" style="resize: none"></input>
-                </md-inputcontainer>
+      <td>
+        <md-inputcontainer>
+          <input type="text" id="roomTypeInput" ng-model="inputValue" ng-keypress="pressKeyInput($event.keyCode)" cols="25" rows="1"
+                 style="resize: none"></input>
+        </md-inputcontainer>
 
-        </td>
-        <td>
-            <!--<md-button class="md-raised md-primary" ng-cliaddRoomTypeject()">+</md-button>-->
-            <md-button class="md-fab md-mini md-primary" aria-label="Use Android" ng-click="addRoomType()">
-                <md-icon>done</md-icon>
-            </md-button>
-        </td>
+      </td>
+      <td>
+        <!--<md-button class="md-raised md-primary" ng-cliaddRoomTypeject()">+</md-button>-->
+        <md-button class="md-fab md-mini md-primary" aria-label="Use Android" ng-click="addRoomType()">
+          <md-icon>done</md-icon>
+        </md-button>
+      </td>
     </tr>
-    <tr ng-repeat="roomType in roomTypes ">
-            <td>
-                {{roomType}}
-            </td>
-            <td>
-                <md-button  class="md-fab md-mini md-warn" aria-label="supprimmer ce type de salle" ng-click="removeRoomType($index)">
-                    <md-icon >highlight_off</md-icon>
-                </md-button>
-            </td>
+    <tr ng-repeat="roomType in roomTypes track by $index">
+      <td>
+        {{roomType}}
+      </td>
+      <td>
+        <md-button class="md-fab md-mini md-warn" aria-label="supprimmer ce type de salle"
+                   ng-click="removeRoomType($index)">
+          <md-icon>highlight_off</md-icon>
+        </md-button>
+      </td>
     </tr>
-</table>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </table>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </div>
 
