@@ -14,8 +14,8 @@
       </td>
       <td>
         <!--<md-button class="md-raised md-primary" ng-cliaddRoomTypeject()">+</md-button>-->
-        <md-button class="md-fab md-mini md-primary" aria-label="Use Android" ng-click="addRoomType()">
-          <md-icon>done</md-icon>
+        <md-button class="md-icon-button" aria-label="Use Android" ng-click="addRoomType()">
+          <md-icon>add</md-icon>
         </md-button>
       </td>
     </tr>
@@ -24,9 +24,9 @@
         {{roomType}}
       </td>
       <td>
-        <md-button class="md-fab md-mini md-warn" aria-label="supprimmer ce type de salle"
+        <md-button class="md-icon-button" aria-label="supprimmer ce type de salle"
                    ng-click="removeRoomType($index)">
-          <md-icon>highlight_off</md-icon>
+          <md-icon>delete</md-icon>
         </md-button>
       </td>
     </tr>

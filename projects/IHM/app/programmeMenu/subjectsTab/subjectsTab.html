@@ -1,1 +1,33 @@
 <h3>Matieres</h3>
+<div ng-controller="subjectsTabCtrl">
+    <table id="subjectTable">
+        <tr>
+            <td>
+                <md-inputcontainer>
+                    <input type="text" id="roomTypeInput" ng-model="inputValue" ng-keypress="pressKeyInput($event.keyCode)" cols="25" rows="1"
+                           style="resize: none"></input>
+                </md-inputcontainer>
+
+            </td>
+            <td>
+                <!--<md-button class="md-raised md-primary" ng-cliaddRoomTypeject()">+</md-button>-->
+                <md-button class="md-icon-button" aria-label="Use Android" ng-click="addSubject()">
+                    <md-icon>add</md-icon>
+                </md-button>
+            </td>
+        </tr>
+        <tr ng-repeat="subject in subjects track by $index">
+            <td>
+                {{subject}}
+            </td>
+            <td>
+                <md-button class="md-icon-button" aria-label="supprimmer ce type de salle"
+                           ng-click="removeSubject($index)">
+                    <md-icon>delete</md-icon>
+                </md-button>
+            </td>
+        </tr>
+    </table>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</div>
