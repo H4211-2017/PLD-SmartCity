@@ -12,8 +12,8 @@ angular.module('myApp.roomTypeTab', ['ngRoute'])
   .controller('roomTypeTabCtrl', [function () {
     console.log("room type table");
   }])
+  
   .controller('secondController', function ($scope, $q, $timeout) {
-    $scope.rowNumber = 0;
     $scope.roomTypes = [];
 
     $scope.addRoomType = function () {
@@ -31,10 +31,10 @@ angular.module('myApp.roomTypeTab', ['ngRoute'])
         if (isDuplicate === false) {
           var roomType = $scope.inputValue;
           $scope.roomTypes.unshift(roomType);
-          $scope.rowNumber++;
           roomTypeInput.value = null;
         }
         else {
+          $scope.inputValue = "";
           alert("Ce type de salle existe déjà");
         }
 
@@ -43,16 +43,14 @@ angular.module('myApp.roomTypeTab', ['ngRoute'])
 
     $scope.removeRoomType = function (row) {
       var rowTodelete = row;
-      console.log(rowTodelete);
 
-      //We splice behaves weirdly on end of array, so we use pop instead.
+      //Splice behaves weirdly on end of array, so we use pop instead.
       if (rowTodelete === $scope.roomTypes.length) {
         $scope.roomTypes.pop();
       }
       else {
         $scope.roomTypes.splice(rowTodelete, 1);
       }
-      $scope.rowNumber--;
     };
     $scope.pressKeyInput = function (key) {
       // If the user has pressed enter
