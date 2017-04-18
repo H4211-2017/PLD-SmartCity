@@ -20,9 +20,11 @@ angular.module('myApp.roomTypeTab', ['ngRoute'])
       var isDuplicate = false;
       $scope.inputValue = $scope.inputValue.trim();
 
+      //checking that the field isn't empty
       if ($scope.inputValue !== null && $scope.inputValue !== "") {
+        //looking if the type of room already exists, isn't case sensitive
         for (var i = 0; i < $scope.roomTypes.length; i++) {
-          if ($scope.roomTypes[i] === $scope.inputValue) {
+          if ($scope.roomTypes[i].toUpperCase() === $scope.inputValue.toUpperCase()) {
             isDuplicate = true;
             break;
           }
@@ -32,7 +34,7 @@ angular.module('myApp.roomTypeTab', ['ngRoute'])
           var roomType = $scope.inputValue;
           $scope.roomTypes.unshift(roomType);
           $scope.rowNumber++;
-          roomTypeInput.value = null;
+          $scope.inputValue = null;
         }
         else {
           alert("Ce type de salle existe déjà");

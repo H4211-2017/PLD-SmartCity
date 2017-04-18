@@ -5,7 +5,7 @@ var app = angular.module('myApp', [
   'ngRoute',
   'myApp.roomTypeTab',
   'myApp.version',
-  'ngMaterial',
+  'myApp.subjectsTab',
   'myApp.roomTab',
   'myApp.version',
   'myApp.homeMenu',
