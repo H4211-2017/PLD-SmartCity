@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.subjectsTab', ['ngRoute'])
+angular.module('myApp.subjectsTab', ['ngRoute', 'myApp.dataFactory'])
 
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/subjectsTab', {

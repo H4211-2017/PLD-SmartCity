@@ -1,22 +1,20 @@
 angular.module('myApp.dataFactory', [])
 
-.factory('dataFactory', function(){
-  var dataFactory = {};
+  .factory('dataFactory', function () {
+    var dataFactory = {};
 
-  var data = {
-    schoolInformation: {},
-    programme: {},
-    teacher: {}
-  };
+    var data = {
+      schoolInformation: {},
+      programme: {},
+      teacher: {}
+    };
 
-  dataFactory.getSubjectsList = function() {
-    console.log("dataFactory::getSubectsList : begin");
-    if (typeof programme['subjects']) {
-      console.log("dataFactory::getSubjectsList : in if");
-      return programme['subjects'];
+    dataFactory.getSubjectsList = function () {
+      if (data.programme['subjects']) { // true if data.programme['subjects'] is defined
+        return data.programme['subjects'];
+      }
+      return [];
     }
-    return [];
-  }
 
-  return dataFactory;
-});
+    return dataFactory;
+  });
