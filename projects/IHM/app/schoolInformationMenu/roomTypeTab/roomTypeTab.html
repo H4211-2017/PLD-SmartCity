@@ -1,5 +1,5 @@
 <h3>Type de salle</h3>
-<div ng-controller="secondController">
+<div ng-controller="roomTypeTabCtrl">
   <!--TODO:LANG-->
   Ajoutez/ supprimmez des type de salle
 
@@ -8,7 +8,7 @@
       <td>
         <md-inputcontainer>
           <input type="text" id="roomTypeInput" ng-model="inputValue" ng-keypress="pressKeyInput($event.keyCode)" cols="25" rows="1"
-                 style="resize: none"></input>
+                 style="resize: none" placeholder="Entrer le type de salle"></input>
         </md-inputcontainer>
 
       </td>

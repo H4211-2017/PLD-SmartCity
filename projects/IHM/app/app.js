@@ -13,21 +13,18 @@ var app = angular.module('myApp', [
   'myApp.programmeMenu',
   'myApp.teacherMenu',
   'localytics.directives',
-    'ngMaterial'
+  'ngMaterial'
 ]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
 
   $routeProvider.otherwise({redirectTo: '/homeMenu'});
 }]);
 
-
-app.controller("IndexCtrl", ["$scope", function($scope) {
-
+app.controller("IndexCtrl", ["$scope", function ($scope) {
+  $scope.controllerName = "IndexCtrl"
   $scope.body = "anchoredParts/body.html";
 
-
 }]);
-
 
 //  Js for Menu
 // function openTab(evt) {
@@ -41,3 +38,18 @@ app.controller("IndexCtrl", ["$scope", function($scope) {
 //   }
 //   evt.currentTarget.className += " active";
 // }
+
+var printObjectCaracteristic = function (object) {
+  var str = JSON.stringify(object, function (key, value) {
+    if (value === null) {
+      return null;
+    }
+    if (key === "$$childTail" || key === "$$childHead" || key === "$$nextSibling" || key === "watchers" || key === "$root" || key === "scope"
+      || key === "$isolateScopeNoTemplate") {
+      return "id : " + value.id;
+    }
+    return value;
+  });
+
+  console.log(str);
+};

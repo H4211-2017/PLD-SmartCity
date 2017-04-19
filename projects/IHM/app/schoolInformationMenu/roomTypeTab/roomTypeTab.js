@@ -8,12 +8,8 @@ angular.module('myApp.roomTypeTab', ['ngRoute'])
       controller: 'roomTypeTabCtrl'
     });
   }])
-
-  .controller('roomTypeTabCtrl', [function () {
-    console.log("room type table");
-  }])
   
-  .controller('secondController', function ($scope, $q, $timeout) {
+  .controller('roomTypeTabCtrl', ['$scope', function ($scope) {
     $scope.roomTypes = [];
 
     $scope.addRoomType = function () {
@@ -64,5 +60,5 @@ angular.module('myApp.roomTypeTab', ['ngRoute'])
       }
     };
 
-  });
+  }]);
 

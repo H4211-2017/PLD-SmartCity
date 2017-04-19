@@ -25,7 +25,6 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 			var anchor = document.createElement('a');
 			if (window.navigator.msSaveOrOpenBlob){//In case of IE10-
 				alert("Veuillez selectionner un navigateur plus récent");
-				
 			}
 			else{//If browser supports download attr
 				anchor.href = "resources/config.json";

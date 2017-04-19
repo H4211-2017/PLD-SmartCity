@@ -1,17 +1,24 @@
-<h3>Matieres</h3>
+<h3>Matières</h3>
 <div ng-controller="subjectsTabCtrl">
 
   <table id="subjectTable">
+    <th>
+      Matière
+    </th>
+    <th>
+      Type de salle
+    </th>
     <tr>
       <td>
         <md-inputcontainer>
           <input type="text" id="roomTypeInput" ng-model="inputValue" ng-keypress="pressKeyInput($event.keyCode)"
                  cols="25" rows="1"
-                 style="resize: none"></input>
+                 style="resize: none" placeholder="Entrer le nom de la matière"></input>
         </md-inputcontainer>
       </td>
       <td>
         <select name="subjects" ng-model="subjectSelected" ng-keypress="pressKeyInput($event.keyCode)">
+          <option value="Empty"></option>
           <option value="Math">Math</option>
           <option value="Francais">Francais</option>
           <option value="Musique">Musique</option>

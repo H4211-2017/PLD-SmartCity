@@ -10,20 +10,17 @@ angular.module('myApp.subjectsTab', ['ngRoute'])
   }])
 
   .controller('subjectsTabCtrl', ['$scope', function ($scope) {
-
-    $scope.openTab = function (nom) {
-      $scope.page = nom;
-      console.log("changement page " + $scope.page);
-    };
-
     $scope.subjects = [];
+    $scope.subjectSelected = "Empty";
+    $scope.controllerName = "subjectsTabCtrl"
 
     $scope.addSubject = function () {
+
       var isDuplicate = false;
       $scope.inputValue = $scope.inputValue.trim();
 
       //checking that the field isn't empty
-      if ($scope.inputValue !== null && $scope.inputValue !== "") {
+      if ($scope.inputValue !== null && $scope.inputValue !== "" && $scope.subjectSelected !== "Empty") {
         //looking if the subjectalready exists, isn't case sensitive
         for (var i = 0; i < $scope.subjects.length; i++) {
           if ($scope.subjects[i].subjectName.toUpperCase() === $scope.inputValue.toUpperCase()) {
@@ -40,6 +37,7 @@ angular.module('myApp.subjectsTab', ['ngRoute'])
               roomType: $scope.subjectSelected
             });
           $scope.inputValue = "";
+          $scope.subjectSelected = "Empty";
         }
         else {
           $scope.inputValue = "";
