@@ -17,11 +17,8 @@
         </md-inputcontainer>
       </td>
       <td>
-        <select name="subjects" ng-model="subjectSelected" ng-keypress="pressKeyInput($event.keyCode)">
+        <select name="roomType" ng-model="roomTypeSelected" ng-options="roomType for roomType in roomTypeList" ng-keypress="pressKeyInput($event.keyCode)">
           <option value="Empty"></option>
-          <option value="Math">Math</option>
-          <option value="Francais">Francais</option>
-          <option value="Musique">Musique</option>
         </select>
       </td>
 

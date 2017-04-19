@@ -11,7 +11,8 @@ angular.module('myApp.subjectsTab', ['ngRoute', 'myApp.dataFactory'])
 
   .controller('subjectsTabCtrl', ['$scope', 'dataFactory', function ($scope, dataFactory) {
     $scope.subjects = dataFactory.getSubjectsList();
-    $scope.subjectSelected = "Empty";
+    $scope.roomTypeList = dataFactory.getRoomTypeList();
+    $scope.roomTypeSelected = "Empty";
     $scope.controllerName = "subjectsTabCtrl"
 
     $scope.addSubject = function () {
@@ -20,7 +21,7 @@ angular.module('myApp.subjectsTab', ['ngRoute', 'myApp.dataFactory'])
       $scope.inputValue = $scope.inputValue.trim();
 
       //checking that the field isn't empty
-      if ($scope.inputValue !== null && $scope.inputValue !== "" && $scope.subjectSelected !== "Empty") {
+      if ($scope.inputValue !== null && $scope.inputValue !== "" && $scope.roomTypeSelected !== "Empty") {
         //looking if the subjectalready exists, isn't case sensitive
         for (var i = 0; i < $scope.subjects.length; i++) {
           if ($scope.subjects[i].subjectName.toUpperCase() === $scope.inputValue.toUpperCase()) {
@@ -34,10 +35,10 @@ angular.module('myApp.subjectsTab', ['ngRoute', 'myApp.dataFactory'])
           $scope.subjects.unshift(
             {
               subjectName: $scope.inputValue,
-              roomType: $scope.subjectSelected
+              roomType: $scope.roomTypeSelected
             });
           $scope.inputValue = "";
-          $scope.subjectSelected = "Empty";
+          $scope.roomTypeSelected = "Empty";
         }
         else {
           $scope.inputValue = "";

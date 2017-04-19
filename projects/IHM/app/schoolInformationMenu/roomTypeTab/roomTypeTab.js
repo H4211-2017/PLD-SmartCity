@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.roomTypeTab', ['ngRoute'])
+angular.module('myApp.roomTypeTab', ['ngRoute', 'myApp.dataFactory'])
 
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/roomTypeTab', {
@@ -9,7 +9,7 @@ angular.module('myApp.roomTypeTab', ['ngRoute'])
     });
   }])
   
-  .controller('roomTypeTabCtrl', ['$scope', function ($scope) {
+  .controller('roomTypeTabCtrl', ['$scope', 'dataFactory', function ($scope, dataFactory) {
     $scope.roomTypes = [];
 
     $scope.addRoomType = function () {
@@ -29,6 +29,7 @@ angular.module('myApp.roomTypeTab', ['ngRoute'])
         if (isDuplicate === false) {
           var roomType = $scope.inputValue;
           $scope.roomTypes.unshift(roomType);
+          dataFactory.addRoomType(roomType);
 
           $scope.inputValue = null;
         }
@@ -41,6 +42,7 @@ angular.module('myApp.roomTypeTab', ['ngRoute'])
     };
 
     $scope.removeRoomType = function (rowToDelete) {
+      dataFactory.removeRoomType($scope.roomTypes[rowToDelete]);
       //Splice behaves weirdly on end of array, so we use pop instead.
       if (rowToDelete === $scope.roomTypes.length) {
         $scope.roomTypes.pop();
@@ -49,9 +51,10 @@ angular.module('myApp.roomTypeTab', ['ngRoute'])
         $scope.roomTypes.splice(rowToDelete, 1);
       }
     };
+
     $scope.pressKeyInput = function (key) {
-      // If the user has pressed enter
-      if (key === 13) {
+      var ENTER = 13;
+      if (key === ENTER) {
         $scope.addRoomType();
         return false;
       }
