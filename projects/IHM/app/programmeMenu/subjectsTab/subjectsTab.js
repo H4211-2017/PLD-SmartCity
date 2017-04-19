@@ -9,8 +9,8 @@ angular.module('myApp.subjectsTab', ['ngRoute'])
     });
   }])
 
-  .controller('subjectsTabCtrl', ['$scope', function ($scope) {
-    $scope.subjects = [];
+  .controller('subjectsTabCtrl', ['$scope', 'dataFactory', function ($scope, dataFactory) {
+    $scope.subjects = dataFactory.getSubjectsList();
     $scope.subjectSelected = "Empty";
     $scope.controllerName = "subjectsTabCtrl"
 
