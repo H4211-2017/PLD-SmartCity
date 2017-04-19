@@ -80,10 +80,14 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 			//remove it
 			setTimeout(function() {
 				document.body.removeChild(newElem);
-			}, 0);
-			
-			
+			}, 0);			
 	  };
+	  
+	  $scope.generate = function() {
+		  console.log("Generate Pressed");//Test for development
+	  };
+	  
+	  
   }]);
   
   
