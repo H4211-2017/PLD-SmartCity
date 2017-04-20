@@ -10,7 +10,7 @@ angular.module('myApp.roomTypeTab', ['ngRoute', 'myApp.dataFactory'])
   }])
   
   .controller('roomTypeTabCtrl', ['$scope', 'dataFactory', function ($scope, dataFactory) {
-    $scope.roomTypes = [];
+    $scope.roomTypesArray = dataFactory.getRoomTypeArray();
 
     $scope.addRoomType = function () {
       var isDuplicate = false;
@@ -19,8 +19,8 @@ angular.module('myApp.roomTypeTab', ['ngRoute', 'myApp.dataFactory'])
       //checking that the field isn't empty
       if ($scope.inputValue !== null && $scope.inputValue !== "") {
         //looking if the type of room already exists, isn't case sensitive
-        for (var i = 0; i < $scope.roomTypes.length; i++) {
-          if ($scope.roomTypes[i].toUpperCase() === $scope.inputValue.toUpperCase()) {
+        for (var i = 0; i < $scope.roomTypesArray.length; i++) {
+          if ($scope.roomTypesArray[i].toUpperCase() === $scope.inputValue.toUpperCase()) {
             isDuplicate = true;
             break;
           }
@@ -28,8 +28,7 @@ angular.module('myApp.roomTypeTab', ['ngRoute', 'myApp.dataFactory'])
 
         if (isDuplicate === false) {
           var roomType = $scope.inputValue;
-          $scope.roomTypes.unshift(roomType);
-          dataFactory.addRoomType(roomType);
+          $scope.roomTypesArray.unshift(roomType);
 
           $scope.inputValue = null;
         }
@@ -42,19 +41,18 @@ angular.module('myApp.roomTypeTab', ['ngRoute', 'myApp.dataFactory'])
     };
 
     $scope.removeRoomType = function (rowToDelete) {
-      dataFactory.removeRoomType($scope.roomTypes[rowToDelete]);
       //Splice behaves weirdly on end of array, so we use pop instead.
-      if (rowToDelete === $scope.roomTypes.length) {
-        $scope.roomTypes.pop();
+      if (rowToDelete === $scope.roomTypesArray.length) {
+        $scope.roomTypesArray.pop();
       }
       else {
-        $scope.roomTypes.splice(rowToDelete, 1);
+        $scope.roomTypesArray.splice(rowToDelete, 1);
       }
     };
 
     $scope.pressKeyInput = function (key) {
-      var ENTER = 13;
-      if (key === ENTER) {
+      var ENTER_KEY = 13;
+      if (key === ENTER_KEY) {
         $scope.addRoomType();
         return false;
       }

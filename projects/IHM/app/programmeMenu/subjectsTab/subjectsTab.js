@@ -10,29 +10,28 @@ angular.module('myApp.subjectsTab', ['ngRoute', 'myApp.dataFactory'])
   }])
 
   .controller('subjectsTabCtrl', ['$scope', 'dataFactory', function ($scope, dataFactory) {
-    $scope.subjects = dataFactory.getSubjectsList();
-    $scope.roomTypeList = dataFactory.getRoomTypeList();
+    $scope.subjectsArray = dataFactory.getSubjectsArray();
+    $scope.roomTypeArray = dataFactory.getRoomTypeArray();
+
     $scope.roomTypeSelected = "Empty";
-    $scope.controllerName = "subjectsTabCtrl"
 
     $scope.addSubject = function () {
 
       var isDuplicate = false;
       $scope.inputValue = $scope.inputValue.trim();
 
-      //checking that the field isn't empty
+      //checking that the fields aren't empty
       if ($scope.inputValue !== null && $scope.inputValue !== "" && $scope.roomTypeSelected !== "Empty") {
-        //looking if the subjectalready exists, isn't case sensitive
-        for (var i = 0; i < $scope.subjects.length; i++) {
-          if ($scope.subjects[i].subjectName.toUpperCase() === $scope.inputValue.toUpperCase()) {
+        //looking if the subject already exists (not case sensitive)
+        for (var i = 0; i < $scope.subjectsArray.length; i++) {
+          if ($scope.subjectsArray[i].subjectName.toUpperCase() === $scope.inputValue.toUpperCase()) {
             isDuplicate = true;
             break;
           }
         }
 
         if (isDuplicate === false) {
-          var roomType = $scope.inputValue;
-          $scope.subjects.unshift(
+          $scope.subjectsArray.unshift(
             {
               subjectName: $scope.inputValue,
               roomType: $scope.roomTypeSelected
@@ -42,6 +41,7 @@ angular.module('myApp.subjectsTab', ['ngRoute', 'myApp.dataFactory'])
         }
         else {
           $scope.inputValue = "";
+          $scope.roomTypeSelected = "Empty";
           alert("Cette matière existe déjà");
         }
 
@@ -50,16 +50,17 @@ angular.module('myApp.subjectsTab', ['ngRoute', 'myApp.dataFactory'])
 
     $scope.removeSubject = function (rowToDelete) {
       //We splice behaves weirdly on end of array, so we use pop instead.
-      if (rowToDelete === $scope.subjects.length) {
-        $scope.subjects.pop();
+      if (rowToDelete === $scope.subjectsArray.length) {
+        $scope.subjectsArray.pop();
       }
       else {
-        $scope.subjects.splice(rowToDelete, 1);
+        $scope.subjectsArray.splice(rowToDelete, 1);
       }
     };
+
     $scope.pressKeyInput = function (key) {
-      // If the user has pressed enter
-      if (key === 13) {
+      var ENTER_KEY = 13;
+      if (key === ENTER_KEY) {
         $scope.addSubject();
         return false;
       }

@@ -21,7 +21,6 @@ var app = angular.module('myApp', [
 }]);
 
 app.controller("IndexCtrl", ["$scope", function ($scope) {
-  $scope.controllerName = "IndexCtrl"
   $scope.body = "anchoredParts/body.html";
 
 }]);

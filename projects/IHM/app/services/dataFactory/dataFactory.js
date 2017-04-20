@@ -4,42 +4,51 @@ angular.module('myApp.dataFactory', [])
     var dataFactory = {};
 
     var data = {
-      schoolInformation: {},
-      programme: {},
-      teacher: {}
+      SchoolInformation: {
+        Schedule: [],
+        RoomType: [],
+        Room: []
+      },
+      Programme: {
+        Year: [],
+        Classes: [],
+        Subjects: [],
+        Programme: []
+      },
+      Teacher: {
+        TeacherList: [],
+        Attribution: []
+      }
     };
 
-    // =========== GETTER ===============
-    dataFactory.getSubjectsList = function () {
-      if (data.programme['Subjects']) { // true if data.programme['Subjects'] is defined
-        return data.programme['Subjects'];
-      }
-      return [];
-    };
-
-    dataFactory.getRoomTypeList = function () {
-      if (data.schoolInformation['RoomType']) {// true if data.programme['RoomType'] is defined
-        return data.schoolInformation['RoomType'];
-      }
-      return [];
-    };
-
-    // ==============SETTER ===============
-    dataFactory.addRoomType = function (roomType) {
-      if (!data.schoolInformation['RoomType']) {
-        data.schoolInformation.RoomType = [];
-      }
-      data.schoolInformation.RoomType.push(roomType);
+    // =============== SCHOOL INFORMATION ===============
+    // GETTER
+    dataFactory.getSchedule = function () {
+      return data.SchoolInformation['Schedule'];
     }
 
-    dataFactory.removeRoomType = function (roomType) {
-      if (data.schoolInformation['RoomType']) {
-        var index = data.schoolInformation['RoomType'].indexOf(roomType);
-        if (index !== -1) {
-          data.schoolInformation['RoomType'].splice(index);
-        }
-      }
+    dataFactory.getRoomTypeArray = function () {
+      return data.SchoolInformation['RoomType'];
+    };
+
+    dataFactory.getRoomArray = function () {
+      return data.SchoolInformation['Room'];
     }
+
+    // SETTER
+
+    // =============== PROGRAMME ===============
+    // GETTER
+    dataFactory.getSubjectsArray = function () {
+      return data.Programme['Subjects'];
+    };
+
+    // SETTER
+
+    // =============== TEACHER ===============
+    // GETTER
+
+    // SETTER
 
     return dataFactory;
   });
