@@ -66,15 +66,22 @@ div.tab button.active {
 /* Style the tab content */
 .tabcontent {
   float: left;
-  padding: 10px;
+  padding: 0px;
   border: 1px solid #ccc;
   width: 85%;
+  overflow-x: auto;
   box-sizing: border-box;
   border-left: none;
   min-height: 400px;
   height : auto;
   display: block;
 }
+
+/*style list without dots*/
+.dotlessList {
+  list-style-type:none;
+}
+
 /** CSS for Menu end **/
 
 
@@ -134,6 +141,19 @@ div.tab button.active {
 
 
 /** CSS for tables **/
+
+.framedTable td, .framedTable th {
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.framedTable {
+
+  margin: 25px;
+
+}
+
 .selectionTable{
   width: 100%;
 }
@@ -157,3 +177,55 @@ div.tab button.active {
   max-height: inherit;
 }
 /** end of CSS for tables **/
+
+/** CSS for overlay**/
+
+.overlay {
+  color: #CCCCCC;
+  height: 100%;
+  width: 0;
+  position: absolute; /* Stay in place */
+  z-index: 2500; /* Sit on top */
+  left: inherit;
+  top: 0px;
+  padding: 0 0 0 0;
+  background-color: rgb(0,0,0); /* Black fallback color */
+  background-color: rgba(0,0,60, 0.9); /* Black w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s;
+}
+
+.formLayout {
+  margin-left: 30%;
+  margin-top: 30px;
+  padding: 10px;
+}
+
+.formLayout *{
+  margin-bottom: 7px;
+}
+
+.formLayout input {
+  width: 245px;
+}
+
+.formLayout select {
+  width: 260px;
+}
+
+.formLayout textarea {
+  width: 256px;
+}
+
+.formLayout label{
+  width: 140px;
+  display: block;
+  float: left;
+}
+
+.formButtonLayout {
+  margin-left: 300px;
+}
+
+/**end of CSS for overlay **/
+

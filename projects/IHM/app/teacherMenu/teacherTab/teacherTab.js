@@ -111,7 +111,7 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute'])
     };
     $scope.line = "";
     $scope.lastTeacher = "tX";// TODO ng-model pour teacher
-    $scope.addTeacherLine = function () {
+    /*$scope.addTeacherLine = function () {
 
       var matieresCases = $(".coursName:first").innerHTML;
       var contenu = '<td>\
@@ -149,5 +149,18 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute'])
       var compiledContent = $compile(contenu)($scope);
       $("#teacherTab > tbody:last").append(compiledContent);
 
+    };*/
+
+    $scope.closeOverlay = function() {
+        $('#addTeacherOverlay').css('width', '0%');
+    };
+
+    $scope.openAddTeacher = function() {
+        $('#addTeacherOverlay').css('width', 'inherit');
+    };
+
+    $scope.addTeacher = function() {
+      $scope.closeOverlay();
     }
+
   }]);
