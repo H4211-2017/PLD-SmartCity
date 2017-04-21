@@ -42,11 +42,17 @@ var jsonObjectEntry = {
         Room: [
             {
                 Name: 'C1',
-                RoomType: 'Normal'
+                RoomTypes: [
+                  'Normal'
+                  ]
             },
             {
                 Name: 'C2',
-                RoomType: 'Musique'
+                RoomTypes: [
+                  'Musique',
+                  'Arts plastique',
+                  'Techno'
+                  ]
             } // Other rooms to add
         ]
     }, // End of School information

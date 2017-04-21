@@ -3208,8 +3208,8 @@
     "$$prevSibling": null
   },
   "$$prevSibling": null,
-  "subjects": [],
-  "subjectSelected": "Math",
+  "subjectsArray": [],
+  "roomTypeSelected": "Math",
   "controllerName": "subjectsTabCtrl",
   "mouseActive": false,
   "inputValue": "fas"

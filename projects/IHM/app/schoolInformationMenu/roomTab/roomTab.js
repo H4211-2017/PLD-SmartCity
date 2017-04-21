@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.roomTab', ['ngRoute'])
+angular.module('myApp.roomTab', ['ngRoute', 'myApp.dataFactory'])
 
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/roomTab', {
@@ -9,22 +9,42 @@ angular.module('myApp.roomTab', ['ngRoute'])
     });
   }])
 
-  .controller('roomTabCtrl', ['$scope', function ($scope) {
-      $scope.rooms = [{
-          roomName: "B213",
-          roomType: "TP physiquess"
-      }];
+  .controller('roomTabCtrl', ['$scope', 'dataFactory', function ($scope, dataFactory) {
+    $scope.roomsArray = dataFactory.getRoomArray();
+    $scope.roomTypesArray = dataFactory.getRoomTypeArray();
 
-      $scope.roomTypes = [
-              {
-                  roomType: "TP physique"
-              },
-              {
-                  roomType: "TP chimie"
-              },
-              {
-                  roomType: "salle normale"
-              }
-          ];
+    $scope.addRoom = function () {
+      $scope.roomNameInputValue = $scope.roomNameInputValue.trim();
+      if ($scope.roomNameInputValue && $scope.roomTypes) {
+        var isDuplicate = false;
 
+        for (var i = 0; i < $scope.roomsArray.length; i++) {
+          if ($scope.roomsArray[i].Name === $scope.roomNameInputValue) {
+            isDuplicate = true;
+            break;
+          }
+        }
+
+        if (!isDuplicate) {
+          $scope.roomsArray.unshift({
+            Name: $scope.roomNameInputValue,
+            RoomTypes: $scope.roomTypes
+          });
+        } else {
+          alert("Une salle avec le même nom existe déjà")
+        }
+      }
+      printObjectCaracteristic($scope.roomsArray);
+    };
+
+    $scope.removeRoom = function (rowToDelete) {
+
+    };
+
+    $scope.keyPress = function (key) {
+      var ENTER_KEY = 13;
+      if (key === ENTER_KEY) {
+        addRoom();
+      }
+    }
   }]);

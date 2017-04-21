@@ -11,7 +11,6 @@ angular.module('myApp.programmeMenu', ['ngRoute'])
 
   .controller('programmeMenuCtrl', ['$scope', function ($scope) {
 
-    $scope.controllerName = "programmeMenuCtrl";
     $scope.openTab = function (nom, id) {
       var lastButt = angular.element($scope.lastIdSelected);
       $scope.lastIdSelected = '#' + id;
