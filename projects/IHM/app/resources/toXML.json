@@ -40,7 +40,7 @@
 			{
 				"name" : "C1",
 				"roomType" : "Normal",
-				"Capacity" : 34
+				"capacity" : 34
 			},
 			{
 				"name" : "C2",
