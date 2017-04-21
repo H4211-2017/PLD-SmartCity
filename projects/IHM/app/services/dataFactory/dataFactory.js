@@ -6,18 +6,18 @@ angular.module('myApp.dataFactory', [])
     var data = {
       SchoolInformation: {
         Schedule: [],
-        RoomType: [],
-        Room: []
+        roomType: [],
+        room: []
       },
-      Programme: {
-        Year: [],
-        Classes: [],
-        Subjects: [],
-        Programme: []
+      programme: {
+        year: [],
+        classes: [],
+        subjects: [],
+        programme: []
       },
-      Teacher: {
-        TeacherList: [],
-        Attribution: []
+      teacher: {
+        teacherList: [],
+        attribution: []
       }
     };
 
@@ -28,11 +28,11 @@ angular.module('myApp.dataFactory', [])
     }
 
     dataFactory.getRoomTypeArray = function () {
-      return data.SchoolInformation['RoomType'];
+      return data.SchoolInformation['roomType'];
     };
 
     dataFactory.getRoomArray = function () {
-      return data.SchoolInformation['Room'];
+      return data.SchoolInformation['room'];
     }
 
     // SETTER
@@ -40,7 +40,7 @@ angular.module('myApp.dataFactory', [])
     // =============== PROGRAMME ===============
     // GETTER
     dataFactory.getSubjectsArray = function () {
-      return data.Programme['Subjects'];
+      return data.programme['subjects'];
     };
 
     // SETTER

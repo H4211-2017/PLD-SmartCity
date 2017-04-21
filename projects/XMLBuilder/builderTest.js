@@ -2,151 +2,151 @@ var builder = require('./builder');
 var fileGenerator = require('./fileGenerator');
 
 var jsonObjectEntry = {
-    SchoolInformation: {
-        Schedule: [
+    schoolInformation: {
+        schedule: [
             {
-                DayName: 'Lundi',
-                Hours: [
+                dayName: 'Lundi',
+                hours: [
                     {
-                        Start: '8h35',
-                        End: '9h30'
+                        start: '8h35',
+                        end: '9h30'
                     },
                     {
-                        Start: '9h30',
-                        End: '10h25'
+                        start: '9h30',
+                        end: '10h25'
                     } // Other hours to add
                 ]
             },
             {
-                DayName: 'Mardi',
-                Hours: [
+                dayName: 'Mardi',
+                hours: [
                     {
-                        Start: '8h35',
-                        End: '9h30'
+                        start: '8h35',
+                        end: '9h30'
                     },
                     {
-                        Start: '9h30',
-                        End: '10h25'
+                        start: '9h30',
+                        end: '10h25'
                     } // Other hours to add
                 ]
             } // Other days to add
-        ], // End Schedule
+        ], // End schedule
 
-        RoomType: [
+        roomType: [
             'Normal',
             'TP Chimie',
             'Musique'
         ],
 
-        Room: [
+        room: [
             {
-                Name: 'C1',
-                RoomType: 'Normal',
+                name: 'C1',
+                roomType: 'Normal',
 				Capacity: 34
             },
             {
-                Name: 'C2',
-                RoomType: 'Musique'
+                name: 'C2',
+                roomType: 'Musique'
             } // Other rooms to add
         ]
     }, // End of School information
 
-    Programme: {
-        Year: [
+    programme: {
+        year: [
             '6e',
             '5e',
             '4e',
             '3e'
         ],
-        Classes: [
+        classes: [
             {
-                Year: '3e',
-                Name: '3A',
-				StudentsNumber: 31
+                year: '3e',
+                name: '3A',
+				studentsNumber: 31
             },
             {
-                Year: '3e',
-                Name: '3B'
+                year: '3e',
+                name: '3B'
             },
 			{
-                Year: '6e',
-                Name: '6A',
-				StudentsNumber: 32
+                year: '6e',
+                name: '6A',
+				studentsNumber: 32
             } // Other classes to add
         ], // End of classes
 
-        Subjects: [
+        subjects: [
             {
-                Name: 'Physique',
-                TypeRoom: 'Normal'
+                name: 'Physique',
+                typeRoom: 'Normal'
             },
             {
-                Name: 'Musique',
-                TypeRoom: 'Musique'
+                name: 'Musique',
+                typeRoom: 'Musique'
             },
 			{
-				Name: 'Math',
-				TypeRoom: 'Normal'
+				name: 'Math',
+				typeRoom: 'Normal'
 			},
 			{
-				Name: 'Latin',
-				TypeRoom: 'Normal'
+				name: 'Latin',
+				typeRoom: 'Normal'
 			}// Other subject to add
         ], // End of Subjects
 
-        Programme: [
+        programme: [
             {
-                Year: '3e',
-                Programme: [
+                year: '3e',
+                programme: [
                     {
-                        Subject: 'Math',
-                        WeekHours: 3
+                        subject: 'Math',
+                        weekHours: 3
                     },
                     {
-                        Subject: 'Physique',
-                        WeekHours: 4
+                        subject: 'Physique',
+                        weekHours: 4
                     } // Other subject to add
                 ]
 			},
 			{
-				Year: '6e',
-                Programme: [
+				year: '6e',
+                programme: [
                     {
-                        Subject: 'Math',
-                        WeekHours: 5
+                        subject: 'Math',
+                        weekHours: 5
                     },
                     {
-                        Subject: 'Physique',
-                        WeekHours: 4
+                        subject: 'Physique',
+                        weekHours: 4
                     },
 					{
-                        Subject: 'Latin',
-                        WeekHours: 3
+                        subject: 'Latin',
+                        weekHours: 3
 					}// Other subject to add
                 ]
             } // Other years to add
-        ] // End of Programme
-    }, // End of Programme
+        ] // End of programme
+    }, // End of programme
 
-    Teacher: {
-        TeacherList: [
+    teacher: {
+        teacherList: [
             {
-                FirstName: 'Arthur',
-                LastName: 'Auklo',
-                Subject: [
+                firstName: 'Arthur',
+                lastName: 'Auklo',
+                subject: [
                     'Latin',
                     'Francais',
                     'Grec'
                 ],
-                Class: [
+                class: [
                     '3A',
                     '6B',
                     '5C'
                 ],
-                Disponibility: [
+                disponibility: [
                     {
-                        DayName: 'Lundi',
-                        HoursSlot: [
+                        dayName: 'Lundi',
+                        hoursSlot: [
                             0,
                             1,
                             2,
@@ -155,8 +155,8 @@ var jsonObjectEntry = {
                         ]
                     },
                     {
-                        DayName: 'Mardi',
-                        HoursSlot: [
+                        dayName: 'Mardi',
+                        hoursSlot: [
                             0,
                             1,
                             2,
@@ -168,24 +168,24 @@ var jsonObjectEntry = {
                         ]
                     } // Other days to add
                 ], // End Schedule
-				Comments: ''
+				comments: ''
             },
 			{
-                FirstName: 'Beatrice',
-                LastName: 'Beaugrand',
-                Subject: [
+                firstName: 'Beatrice',
+                lastName: 'Beaugrand',
+                subject: [
                     'Mathematiques',
                     'Physique'
                 ],
-                Class: [
+                class: [
                     '4C',
                     '6A',
                     '5C'
                 ],
-                Disponibility: [
+                disponibility: [
                     {
-                        DayName: 'Lundi',
-                        HoursSlot: [
+                        dayName: 'Lundi',
+                        hoursSlot: [
                             0,
                             1,
                             2,
@@ -194,8 +194,8 @@ var jsonObjectEntry = {
                         ]
                     },
                     {
-                        DayName: 'Mardi',
-                        HoursSlot: [
+                        dayName: 'Mardi',
+                        hoursSlot: [
                             0,
                             1,
                             2,
@@ -207,26 +207,26 @@ var jsonObjectEntry = {
                         ]
                     } // Other days to add
                 ], // End Schedule
-				Comments: 'Quelques commentaires'
+				comments: 'Quelques commentaires'
             } // Other teacher to add
         ], // End of TeacherList
 
-        Attribution: [
+        attribution: [
             {
-                Class: '6A',
-                SubjectTeachers: [
+                class: '6A',
+                subjectTeachers: [
                     {
-                        Subject: 'Math',
-                        Teacher: {
-                            FirstName: 'Arthur',
-                            LastName: 'Auklo'
+                        subject: 'Math',
+                        teacher: {
+                            firstName: 'Arthur',
+                            lastName: 'Auklo'
                         }
                     },
                     {
-                        Subject: 'Latin',
-                        Teacher: {
-                            FirstName: 'Beatrice',
-                            LastName: 'Beaugrand'
+                        subject: 'Latin',
+                        teacher: {
+                            firstName: 'Beatrice',
+                            lastName: 'Beaugrand'
                         }
                     } // Other subject to add
                 ]

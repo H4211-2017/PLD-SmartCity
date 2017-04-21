@@ -12,9 +12,9 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute'])
   .controller('teacherTabCtrl', ['$scope', '$compile', function ($scope, $compile) {
     //$scope.loadXML = function () {
       $scope.teachers = [{
-        FirstName: 'Arthur',
-        LastName: 'Auklo',
-        Subject: [
+        firstName: 'Arthur',
+        lastName: 'Auklo',
+        subject: [
           'Latin',
           'Francais',
           'Grec'
@@ -24,10 +24,10 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute'])
           '6B',
           '5C'
         ],
-        Disponibility: [
+        disponibility: [
           {
-            DayName: 'Lundi',
-            HoursSlot : [
+            dayName: 'Lundi',
+            hoursSlot : [
               0,
               1,
               2,
@@ -36,8 +36,8 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute'])
             ]
           },
           {
-            DayName: 'Mardi',
-            HoursSlot : [
+            dayName: 'Mardi',
+            hoursSlot : [
               0,
               1,
               2,
@@ -49,12 +49,12 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute'])
             ]
           } // Other days to add
         ], // End Schedule
-        Comments: 'A very good teacher'
+        comments: 'A very good teacher'
       },
         {
-          FirstName: 'Arthur',
-          LastName: 'Auklo',
-          Subject: [
+          firstName: 'Arthur',
+          lastName: 'Auklo',
+          subject: [
             'Latin',
             'Francais',
             'Grec'
@@ -64,10 +64,10 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute'])
             '6B',
             '5C'
           ],
-          Disponibility: [
+          disponibility: [
             {
-              DayName: 'Lundi',
-              HoursSlot : [
+              dayName: 'Lundi',
+              hoursSlot : [
                 0,
                 1,
                 2,
@@ -76,8 +76,8 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute'])
               ]
             },
             {
-              DayName: 'Mardi',
-              HoursSlot : [
+              dayName: 'Mardi',
+              hoursSlot : [
                 0,
                 1,
                 2,
@@ -89,18 +89,18 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute'])
               ]
             } // Other days to add
           ], // End Schedule
-          Comments: 'A very good teacher'
+          comments: 'A very good teacher'
         }
       ];
       
       $scope.cours = [
         {
-          Name: 'Physique',
-          TypeRoom: 'Normal'
+          name: 'Physique',
+          typeRoom: 'Normal'
         },
         {
-          Name: 'Musique',
-          TypeRoom: 'Musique'
+          name: 'Musique',
+          typeRoom: 'Musique'
         } // Other subject to add
       ]; // End of Subjects
       
