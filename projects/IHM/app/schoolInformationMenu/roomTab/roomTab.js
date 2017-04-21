@@ -19,7 +19,7 @@ angular.module('myApp.roomTab', ['ngRoute', 'myApp.dataFactory'])
         var isDuplicate = false;
 
         for (var i = 0; i < $scope.roomsArray.length; i++) {
-          if ($scope.roomsArray[i].Name === $scope.roomNameInputValue) {
+          if ($scope.roomsArray[i].name === $scope.roomNameInputValue) {
             isDuplicate = true;
             break;
           }
