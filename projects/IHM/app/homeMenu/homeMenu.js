@@ -4,7 +4,7 @@
 'use strict';
 
 
-var config;//TODO initialise higher and make it read config.json
+var data;//TODO initialise higher and make it read config.json
 //TODO AJAX CALL TO INITIALISE config
 
 angular.module('myApp.homeMenu', ['ngRoute'])
@@ -16,7 +16,7 @@ angular.module('myApp.homeMenu', ['ngRoute'])
     });
   }])
   
-  .controller('homeMenuCtrl', ["$scope", function($scope) {
+  .controller('homeMenuCtrl', ["$scope", "$http", function($scope, $http) {
 	  
 
 	  $scope.save = function() {
@@ -69,9 +69,19 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 				
 				//defining callback
 				reader.onload = function (finished_event) {
-					config = JSON.parse(finished_event.target.result);
-					console.log(config.stringify());
+					data = JSON.parse(finished_event.target.result);
+					console.log(data);
 					//TODO AJAX CALL TO SAVE INSIDE config.json.
+					//upload to server 1st attempt
+					var url = "/service/uploadConfig";
+					var responsePromise = $http.post(url,data);
+					responsePromise.success(function(data, status, headers, config) {
+							console.log("upload successful !");
+					});
+					responsePromise.error(function(data, status, headers, config) {
+							console.log("upload error : AJAX failed !");
+					});
+			
 				};
 				reader.readAsText(file);
 			});
@@ -80,7 +90,8 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 			//remove it
 			setTimeout(function() {
 				document.body.removeChild(newElem);
-			}, 0);			
+			}, 0);	
+	
 	  };
 	  
 	  $scope.generate = function() {
