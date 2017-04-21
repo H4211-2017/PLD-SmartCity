@@ -18,10 +18,11 @@ angular.module('myApp.subjectsTab', ['ngRoute', 'myApp.dataFactory'])
     $scope.addSubject = function () {
 
       var isDuplicate = false;
-      $scope.inputValue = $scope.inputValue.trim();
 
       //checking that the fields aren't empty
-      if ($scope.inputValue !== null && $scope.inputValue !== "" && $scope.roomTypeSelected !== "Empty") {
+      if ($scope.inputValue && $scope.inputValue.trim() && $scope.roomTypeSelected !== "Empty") {
+        $scope.inputValue = $scope.inputValue.trim();
+
         //looking if the subject already exists (not case sensitive)
         for (var i = 0; i < $scope.subjectsArray.length; i++) {
           if ($scope.subjectsArray[i].subjectName.toUpperCase() === $scope.inputValue.toUpperCase()) {
@@ -49,13 +50,7 @@ angular.module('myApp.subjectsTab', ['ngRoute', 'myApp.dataFactory'])
     };
 
     $scope.removeSubject = function (rowToDelete) {
-      //We splice behaves weirdly on end of array, so we use pop instead.
-      if (rowToDelete === $scope.subjectsArray.length) {
-        $scope.subjectsArray.pop();
-      }
-      else {
-        $scope.subjectsArray.splice(rowToDelete, 1);
-      }
+      $scope.subjectsArray.splice(rowToDelete, 1);
     };
 
     $scope.pressKeyInput = function (key) {

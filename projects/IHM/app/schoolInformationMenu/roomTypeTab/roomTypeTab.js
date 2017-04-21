@@ -8,16 +8,17 @@ angular.module('myApp.roomTypeTab', ['ngRoute', 'myApp.dataFactory'])
       controller: 'roomTypeTabCtrl'
     });
   }])
-  
+
   .controller('roomTypeTabCtrl', ['$scope', 'dataFactory', function ($scope, dataFactory) {
     $scope.roomTypesArray = dataFactory.getRoomTypeArray();
 
     $scope.addRoomType = function () {
       var isDuplicate = false;
-      $scope.inputValue = $scope.inputValue.trim();
 
       //checking that the field isn't empty
-      if ($scope.inputValue !== null && $scope.inputValue !== "") {
+      if ($scope.inputValue && $scope.inputValue.trim()) {
+        $scope.inputValue = $scope.inputValue.trim();
+
         //looking if the type of room already exists, isn't case sensitive
         for (var i = 0; i < $scope.roomTypesArray.length; i++) {
           if ($scope.roomTypesArray[i].toUpperCase() === $scope.inputValue.toUpperCase()) {
@@ -41,13 +42,7 @@ angular.module('myApp.roomTypeTab', ['ngRoute', 'myApp.dataFactory'])
     };
 
     $scope.removeRoomType = function (rowToDelete) {
-      //Splice behaves weirdly on end of array, so we use pop instead.
-      if (rowToDelete === $scope.roomTypesArray.length) {
-        $scope.roomTypesArray.pop();
-      }
-      else {
-        $scope.roomTypesArray.splice(rowToDelete, 1);
-      }
+      $scope.roomTypesArray.splice(rowToDelete, 1);
     };
 
     $scope.pressKeyInput = function (key) {
