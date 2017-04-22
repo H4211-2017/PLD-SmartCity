@@ -13,7 +13,7 @@ var OutputJsonGenerator = {
             ]},
             {name: 'Subjects_List', children: []},
             {name: 'Activity_Tags_List', children: []},
-            {name: 'Teacher_List', children: []},
+            {name: 'Teachers_List', children: []},
             {name: 'Students_List', children: []},
             {name: 'Activities_List', children: []},
             {name: 'Building_List', children: []},
