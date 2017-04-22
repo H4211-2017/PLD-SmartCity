@@ -2,7 +2,7 @@
 
 var fs = require('fs');
 var builder = require('./builder');
-var fileGenerator = require('./fileGenerator');
+var fileGenerator = require('../file/fileGenerator');
 
 var outputFile = 'C:/Users/PL/git/PLD-SmartCity/projects/XMLBuilder/resources/gen.fet';
 

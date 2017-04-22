@@ -8,7 +8,7 @@ var OutputJsonGenerator = {
             {name: 'Days_List', children: [
                 {name: 'Number_of_Days', text: 0}
             ]},
-            {name: 'Hour_List', children: [
+            {name: 'Hours_List', children: [
                 {name: 'Number_of_Hours', text: 0}
             ]},
             {name: 'Subjects_List', children: []},

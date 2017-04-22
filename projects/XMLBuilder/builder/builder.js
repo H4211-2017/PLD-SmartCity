@@ -1,5 +1,5 @@
 var async = require('async');
-var outputGenerator = require('./outputGenerator');
+var outputGenerator = require('../output/outputGenerator');
 
 var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	
@@ -79,10 +79,10 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 		var stringSubjectName = jsonSubject.name;
 	
 		outputJsonGenerator.addSubject(stringSubjectName, '');
+		
+		
 		callback();
 	}
-	
-	//TODO manage programme.programme.programme
 	
 	function afterParseSubject(err) {
 	
