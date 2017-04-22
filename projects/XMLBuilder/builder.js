@@ -3,7 +3,7 @@ var outputGenerator = require('./outputGenerator');
 
 var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	
-	var outputJsonGenerator = outputGenerator.OutputJsonGenerator;
+	var outputJsonGenerator = Object.create(outputGenerator.OutputJsonGenerator);
 	var tableSchedule = jsonObjectEntry.schoolInformation.schedule;
 	
 	async.forEach(tableSchedule, parseDay, afterParseDay);
@@ -58,7 +58,7 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	}
 	
 	function parseClass(jsonClass, callback) {
-			
+	
 		var stringYear = jsonClass.year;
 		var stringClassName = jsonClass.name;
 		var numberOfStudents = (jsonClass.studentsNumber) ? jsonClass.studentsNumber : 0;
@@ -75,9 +75,9 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	}
 	
 	function parseSubject(jsonSubject, callback) {
-			
+	
 		var stringSubjectName = jsonSubject.name;
-			
+	
 		outputJsonGenerator.addSubject(stringSubjectName, '');
 		callback();
 	}
@@ -175,15 +175,43 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 		
 		function afterParseSubjectsTeachers(err) {
 		
+			callback1();
 		}
 		
-		callback1();
 	}
 	
 	function afterParseAttribution(err) {
 		
+		var tableRooms = jsonObjectEntry.schoolInformation.rooms;
+	
+		async.forEach(tableRooms, parseRooms, afterParseRooms);
 	}
+	
+	function parseRooms(jsonRoom, callback1) {
+		
+		var stringName = jsonRoom.name;
+		var intCapacity = (jsonRoom.capacity) ? jsonRoom.capacity : 30000;
+		
+		outputJsonGenerator.addRoom(stringName, '', intCapacity, '');
+		
+		//TODO contraints of rooms types
+		
+		callback1();
+	}
+	
+	function afterParseRooms(err) {
+	
+		if (err) {
+			
+			error = 'ERREUR : builder::jsonObjectEntryToXml : ' + err;
+			outputXML = error;
+			throw error;
+			
+		} else {
 
+		}
+	}
+	
 	return jsonToXml(outputJsonGenerator.outputJsonObject);
 };
 

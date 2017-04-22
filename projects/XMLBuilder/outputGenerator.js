@@ -162,7 +162,20 @@ var OutputJsonGenerator = {
 		}
     },
 	
-	getHourName	: function(numberHourIndice) {
+	addRoom: function(stringName, stringBuilding, intCapacity, stringComments) {
+
+		var room = {name: 'Room', children: [
+			{name: 'Name', text: stringName},
+			{name: 'Buidling', text: stringBuilding},
+			{name: 'Capacity', text: intCapacity},
+			{name: 'Comments', text: stringComments}
+		]};
+
+		var tableRoomsList = this.outputJsonObject[0].children[10].children;
+		tableRoomsList.push(room);
+    },
+	
+	getHourName: function(numberHourIndice) {
 		
 		var tableHourList = this.outputJsonObject[0].children[3].children;
         return getXmlName(tableHourList[numberHourIndice + 1]);

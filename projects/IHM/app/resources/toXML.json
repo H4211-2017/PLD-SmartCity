@@ -11,7 +11,7 @@
 					{
 						"start" : "9h30",
 						"end" : "10h25"
-					}, {"_comment" : " Other hours to add"}
+					}
 				]
 			},
 			{
@@ -24,33 +24,37 @@
 					{
 						"start" : "9h30",
 						"end" : "10h25"
-					}, {"_comment" : " Other hours to add"}
+					}
 				]
-			}, {"_comment" : " Other days to add "}
-		]
-		, "_comment" : " End schedule",
+			}
+		],
 
-		"roomType" : [
+		"roomTypes" : [
 			"Normal",
 			"TP Chimie",
 			"Musique"
 		],
 
-		"room" : [
+		"rooms" : [
 			{
 				"name" : "C1",
-				"roomType" : "Normal",
+				
+				"roomTypes" : [
+					"Normal"
+				],
+				
 				"capacity" : 34
 			},
 			{
 				"name" : "C2",
-				"roomType" : "Musique"
-			},
-			{"_comment" : "Other rooms to add"}
+				"roomTypes" : [
+				"Musique",
+				"Normal"
+				]
+			}
 		]
 	}, 
-	"_comment" : "End of School information",
-
+	
 	"programme" : {
 		"year" : [
 			"6e",
@@ -72,10 +76,8 @@
 				"year" : "6e",
 				"name" : "6A",
 				"studentsNumber" : 32
-			}, 
-			{"_comment" : " Other classes to add"}
-		], 
-		"_comment" : " End of classes",
+			}
+		],
 
 		"subjects" : [
 			{
@@ -93,11 +95,9 @@
 			{
 				"name" : "Latin",
 				"typeRoom" : "Normal"
-			},
-			{"_comment" : " Other subject to add"}
+			}
 		], 
-		"_comment" : " End of Subjects",
-
+		
 		"programme" : [
 			{
 				"year" : "3e",
@@ -109,7 +109,7 @@
 					{
 						"subject" : "Physique",
 						"weekHours" : 4
-					} ,{"_comment" : " Other subject to add"}
+					}
 				]
 			},
 			{
@@ -126,11 +126,11 @@
 					{
 						"subject" : "Latin",
 						"weekHours" : 3
-					},{"_comment" : " Other subject to add"}
-				]
-			}, {"_comment" : " Other years to add"}
-		], "_comment" : " End of programme"
-	}, "_comment" : " End of programme",
+					}
+				]	
+			}
+		]
+	},
 
 	"teacher" : {
 		"teacherList" : [
@@ -170,8 +170,8 @@
 							6,
 							7
 						]
-					}, {"_comment" : " Other days to add"}
-				], "_comment" : " End Schedule",
+					}
+				],
 				"comments" : ""
 			},
 			{
@@ -209,11 +209,11 @@
 							6,
 							7
 						]
-					}, {"_comment" : " Other days to add"}
-				], "_comment" : " End Schedule",
+					}
+				],
 				"comments" : "Quelques commentaires"
-			}, {"_comment" : " Other teacher to add"}
-		], "_comment" : " End of TeacherList",
+			}
+		],
 
 		"attribution" : [
 			{
@@ -232,9 +232,9 @@
 							"firstName" : "Beatrice",
 							"lastName" : "Beaugrand"
 						}
-					}, {"_comment" : " Other subject to add"}
+					}
 				]
-			}, {"_comment" : " Other class to add"}
+			}
 		]
 	}
 }
