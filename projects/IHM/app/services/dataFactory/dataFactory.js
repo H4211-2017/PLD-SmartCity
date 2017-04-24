@@ -32,6 +32,7 @@ angular.module('myApp.dataFactory', [])
           },
         ],
         roomType: [],
+		roomCapacity: 1,
         room: []
       },
       programme: {
@@ -59,6 +60,10 @@ angular.module('myApp.dataFactory', [])
     dataFactory.getRoomArray = function () {
       return data.schoolInformation['room'];
     }
+	
+	dataFactory.getRoomCapacity = function () {
+	  return data.schoolInformation['roomCapacity'];
+	}
 
     // SETTER
 
