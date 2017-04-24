@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="schoolInformationMenu/roomTab/roomTab.css">
+
 <section ng-controller="roomTabCtrl">
 
 
@@ -7,6 +9,7 @@
     <tr>
       <th>Nom</th>
       <th>Type de salle</th>
+	  <th>Capacité</th>
     </tr>
 
     <tr>
@@ -34,11 +37,11 @@
 
     <tr ng-repeat="room in roomsArray">
       <td>
-        {{room.name}}
+        {{room.Name}}
       </td>
       <td>
         <ul>
-          <li class="dotlessList" ng-repeat="roomType in room.roomTypes">
+          <li class="dotlessList" ng-repeat="roomType in room.RoomTypes">
             {{roomType}}
           </li>
         </ul>
@@ -52,5 +55,23 @@
         </md-button>
       </td>
     </tr>
+
+    <!--<tr ng-repeat="r in roomsArray">
+      <td>
+        <input type="text" name="roomName" ng-model="r.roomName"/>
+      </td>
+      <td class="coursName">
+        <select chosen multiple display-selected-options="false" class="coursName" no-results-text="'Pas de type de salle trouvé pour:'"
+                placeholder-text-multiple="'Pas de type de salle selectionné pour le moment'" ng-options="rt.roomType for rt in roomTypesArray"
+                ng-model="r.roomType">
+          <option value=""></option>
+        </select>
+      </td>
+      <td>
+        <md-button class="md-icon-button" aria-label="supprimmer cette salle" ng-click="removeRoom($index)">
+          <md-icon>delete</md-icon>
+        </md-button>
+      </td>
+    </tr> !-->
   </table>
 </section>
