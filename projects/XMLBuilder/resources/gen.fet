@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fet version="5.31.4">
+		<Intsitution_Name>institution par defaut</Intsitution_Name>
+		<Comments>commentaires par defaut</Comments>
+		<Days_List>
+				<Number_of_Days>2</Number_of_Days>
+				<Day>
+						<Name>Lundi</Name>
+
+				</Day>
+				<Day>
+						<Name>Mardi</Name>
+
+				</Day>
+
+		</Days_List>
+		<Hours_List>
+				<Number_of_Hours>2</Number_of_Hours>
+				<Hour>
+						<Name>8h35 - 9h30</Name>
+
+				</Hour>
+				<Hour>
+						<Name>9h30 - 10h25</Name>
+
+				</Hour>
+
+		</Hours_List>
+		<Subjects_List>
+				<Subject>
+						<Name>Physique</Name>
+						<Comments/>
+
+				</Subject>
+				<Subject>
+						<Name>Musique</Name>
+						<Comments/>
+
+				</Subject>
+				<Subject>
+						<Name>Math</Name>
+						<Comments/>
+
+				</Subject>
+				<Subject>
+						<Name>Latin</Name>
+						<Comments/>
+
+				</Subject>
+
+		</Subjects_List>
+		<Activity_Tags_List>
+
+		</Activity_Tags_List>
+		<Teachers_List>
+				<Teacher>
+						<Name>Arthur Auklo</Name>
+						<Target_Number_of_Hours>0</Target_Number_of_Hours>
+						<Qualified_Subjects>
+
+						</Qualified_Subjects>
+						<Comments/>
+
+				</Teacher>
+				<Teacher>
+						<Name>Beatrice Beaugrand</Name>
+						<Target_Number_of_Hours>0</Target_Number_of_Hours>
+						<Qualified_Subjects>
+
+						</Qualified_Subjects>
+						<Comments>Quelques commentaires</Comments>
+
+				</Teacher>
+
+		</Teachers_List>
+		<Students_List>
+				<Year>
+						<Name>6e</Name>
+						<Number_of_Students>0</Number_of_Students>
+						<Comments/>
+						<Group>
+								<Name>6A</Name>
+								<Number_of_Students>32</Number_of_Students>
+								<Comments/>
+
+						</Group>
+
+				</Year>
+				<Year>
+						<Name>5e</Name>
+						<Number_of_Students>0</Number_of_Students>
+						<Comments/>
+
+				</Year>
+				<Year>
+						<Name>4e</Name>
+						<Number_of_Students>0</Number_of_Students>
+						<Comments/>
+
+				</Year>
+				<Year>
+						<Name>3e</Name>
+						<Number_of_Students>0</Number_of_Students>
+						<Comments/>
+						<Group>
+								<Name>3A</Name>
+								<Number_of_Students>31</Number_of_Students>
+								<Comments/>
+
+						</Group>
+						<Group>
+								<Name>3B</Name>
+								<Number_of_Students>0</Number_of_Students>
+								<Comments/>
+
+						</Group>
+
+				</Year>
+
+		</Students_List>
+		<Activities_List>
+				<Activity>
+						<Teacher>Arthur Auklo</Teacher>
+						<Subject>Math</Subject>
+						<Students>6A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>5</Total_Duration>
+						<Id>1</Id>
+						<Activity_Group_Id>1</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Arthur Auklo</Teacher>
+						<Subject>Math</Subject>
+						<Students>6A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>5</Total_Duration>
+						<Id>2</Id>
+						<Activity_Group_Id>1</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Arthur Auklo</Teacher>
+						<Subject>Math</Subject>
+						<Students>6A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>5</Total_Duration>
+						<Id>3</Id>
+						<Activity_Group_Id>1</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Arthur Auklo</Teacher>
+						<Subject>Math</Subject>
+						<Students>6A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>5</Total_Duration>
+						<Id>4</Id>
+						<Activity_Group_Id>1</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Arthur Auklo</Teacher>
+						<Subject>Math</Subject>
+						<Students>6A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>5</Total_Duration>
+						<Id>5</Id>
+						<Activity_Group_Id>1</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Beatrice Beaugrand</Teacher>
+						<Subject>Latin</Subject>
+						<Students>6A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>3</Total_Duration>
+						<Id>7</Id>
+						<Activity_Group_Id>7</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Beatrice Beaugrand</Teacher>
+						<Subject>Latin</Subject>
+						<Students>6A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>3</Total_Duration>
+						<Id>8</Id>
+						<Activity_Group_Id>7</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Beatrice Beaugrand</Teacher>
+						<Subject>Latin</Subject>
+						<Students>6A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>3</Total_Duration>
+						<Id>9</Id>
+						<Activity_Group_Id>7</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+
+		</Activities_List>
+		<Building_List>
+
+		</Building_List>
+		<Rooms_List>
+				<Room>
+						<Name>C1</Name>
+						<Buidling/>
+						<Capacity>34</Capacity>
+						<Comments/>
+
+				</Room>
+				<Room>
+						<Name>C2</Name>
+						<Buidling/>
+						<Capacity>30000</Capacity>
+						<Comments/>
+
+				</Room>
+
+		</Rooms_List>
+		<Time_Constraints_List>
+				<ConstraintBasicCompulsoryTime>
+						<Weight_Percentage>100</Weight_Percentage>
+						<Active>true</Active>
+						<Comments/>
+
+				</ConstraintBasicCompulsoryTime>
+
+		</Time_Constraints_List>
+		<Space_Constraints_List>
+				<ConstraintBasicCompulsorySpace>
+						<Weight_Percentage>100</Weight_Percentage>
+						<Active>true</Active>
+						<Comments/>
+
+				</ConstraintBasicCompulsorySpace>
+
+		</Space_Constraints_List>
+
+</fet>
