@@ -13,6 +13,7 @@ angular.module('myApp.roomTab', ['ngRoute', 'myApp.dataFactory'])
     $scope.roomsArray = dataFactory.getRoomArray();
     $scope.roomTypesArray = dataFactory.getRoomTypeArray();
     $scope.roomTypesSelected = [];
+	$scope.roomCapacity = dataFactory.getRoomCapacity();
 
     $scope.addRoom = function () {
 
@@ -30,10 +31,12 @@ angular.module('myApp.roomTab', ['ngRoute', 'myApp.dataFactory'])
         if (!isDuplicate) {
           $scope.roomsArray.unshift({
             Name: $scope.roomNameInputValue,
-            RoomTypes: $scope.roomTypesSelected
+            RoomTypes: $scope.roomTypesSelected,
+			RoomCapacity : $scope.roomCapacity
           });
           $scope.roomNameInputValue = "";
           $scope.roomTypesSelected = [];
+		  $scope.roomCapacity = 1;
         } else {
           alert("Une salle avec le même nom existe déjà")
         }

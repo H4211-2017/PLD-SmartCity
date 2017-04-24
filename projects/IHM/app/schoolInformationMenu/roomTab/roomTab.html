@@ -24,11 +24,13 @@
         ng-model="roomTypesSelected" ng-keypress="keyPress($event.keyCode)">
         </select>
       </td>
+	  <td>
+		<input type="number" min="1" max="300" ng-model="roomCapacity" ng-keypress="keyPress($event.keyCode)"></input>
+      </td>
       <td>
         <md-button class="md-icon-button" aria-label="Use Android" ng-click="addRoom()">
           <md-icon>add</md-icon>
         </md-button>
-      </td>
       </td>
     </tr>
 
@@ -43,6 +45,9 @@
           </li>
         </ul>
       </td>
+	  <td>
+		<input type="number" min="1" max="300" ng-model="room.RoomCapacity"></input>
+	  </td>
       <td>
         <md-button class="md-icon-button" aria-label="supprimmer ce type de salle" ng-click="removeRoom($index)">
           <md-icon>delete</md-icon>
