@@ -38,12 +38,18 @@
 			"room" : [
 				{
 					"name" : "C1",
-					"roomType" : "Normal",
-					"Capacity" : 34
+					"roomType" : [
+                      "Normal"
+                    ],
+					"capacity" : 34
 				},
 				{
 					"name" : "C2",
-					"roomType" : "Musique"
+					"roomType" : [
+                      "Musique",
+                      "Technologie",
+                      "Arts plastique"
+                    ]
 				} // Other rooms to add
 			]
 		}, // End of School information

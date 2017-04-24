@@ -10,8 +10,6 @@ angular.module('myApp.scheduleTab', ['ngRoute'])
   }])
 
   .controller('scheduleTabCtrl', [function() {
-    console.log("sceduleTab");
-  }])
-  .controller('secondController',function($scope){
 
-  });
+    console.log("sceduleTab");
+  }]);

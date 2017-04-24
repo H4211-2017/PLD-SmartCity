@@ -29,8 +29,8 @@ angular.module('myApp.roomTab', ['ngRoute', 'myApp.dataFactory'])
 
         if (!isDuplicate) {
           $scope.roomsArray.unshift({
-            Name: $scope.roomNameInputValue,
-            RoomTypes: $scope.roomTypesSelected
+            name: $scope.roomNameInputValue,
+            roomTypes: $scope.roomTypesSelected
           });
           $scope.roomNameInputValue = "";
           $scope.roomTypesSelected = [];

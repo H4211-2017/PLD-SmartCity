@@ -4,8 +4,8 @@ angular.module('myApp.dataFactory', [])
     var dataFactory = {};
 
     var data = {
-      SchoolInformation: {
-        Schedule: [],
+      schoolInformation: {
+        schedule: [],
         roomType: [],
         room: []
       },
@@ -24,15 +24,15 @@ angular.module('myApp.dataFactory', [])
     // =============== SCHOOL INFORMATION ===============
     // GETTER
     dataFactory.getSchedule = function () {
-      return data.SchoolInformation['Schedule'];
+      return data.schoolInformation['schedule'];
     }
 
     dataFactory.getRoomTypeArray = function () {
-      return data.SchoolInformation['roomType'];
+      return data.schoolInformation['roomType'];
     };
 
     dataFactory.getRoomArray = function () {
-      return data.SchoolInformation['room'];
+      return data.schoolInformation['room'];
     }
 
     // SETTER
