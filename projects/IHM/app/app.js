@@ -3,15 +3,15 @@
 // Declare app level module which depends on views, and components
 var app = angular.module('myApp', [
   'ngRoute',
-  'myApp.roomTypeTab',
-  'myApp.version',
-  'myApp.subjectsTab',
-  'myApp.roomTab',
-  'myApp.version',
   'myApp.homeMenu',
   'myApp.schoolInformationMenu',
+  'myApp.scheduleTab',
+  'myApp.roomTypeTab',
+  'myApp.roomTab',
   'myApp.programmeMenu',
+  'myApp.subjectsTab',
   'myApp.teacherMenu',
+  'myApp.version',
   'localytics.directives',
   'ngMaterial'
 ]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
@@ -38,7 +38,7 @@ app.controller("IndexCtrl", ["$scope", function ($scope) {
 //   evt.currentTarget.className += " active";
 // }
 
-var printObjectCaracteristic = function (object) {
+var printObjectCaracteristic = function (object, ignoreProperties) {
   var str = JSON.stringify(object, function (key, value) {
     if (value === null) {
       return null;
@@ -46,6 +46,9 @@ var printObjectCaracteristic = function (object) {
     if (key === "$$childTail" || key === "$$childHead" || key === "$$nextSibling" || key === "watchers" || key === "$root" || key === "scope"
       || key === "$isolateScopeNoTemplate") {
       return "id : " + value.id;
+    }
+    if (ignoreProperties && ignoreProperties.includes(key)){
+      return undefined;
     }
     return value;
   });

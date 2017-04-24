@@ -5,7 +5,32 @@ angular.module('myApp.dataFactory', [])
 
     var data = {
       schoolInformation: {
-        schedule: [],
+        schedule: [
+          {
+            dayName: "Lundi",
+            hours: []
+          },
+          {
+            dayName: "Mardi",
+            hours: []
+          },
+          {
+            dayName: "Mercredi",
+            hours: []
+          },
+          {
+            dayName: "Jeudi",
+            hours: []
+          },
+          {
+            dayName: "Vendredi",
+            hours: []
+          },
+          {
+            dayName: "Samedi",
+            hours: []
+          },
+        ],
         roomType: [],
         room: []
       },

@@ -38,11 +38,11 @@ angular.module('myApp.roomTab', ['ngRoute', 'myApp.dataFactory'])
           alert("Une salle avec le même nom existe déjà")
         }
       }
-    };
+    }
 
     $scope.removeRoom = function (rowToDelete) {
       $scope.roomsArray.splice(rowToDelete, 1);
-    };
+    }
 
     $scope.keyPress = function (key) {
       var ENTER_KEY = 13;

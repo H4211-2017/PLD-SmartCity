@@ -1,5 +1,21 @@
 <h3>Jours et horaires</h3>
 
 <div ng-controller="scheduleTabCtrl">
+  <table class="framedTable">
+    <tr ng-repeat="day in scheduleArray">
+      <th scope="row">
+        {{day.dayName}}
+      </th>
+      <td ng-repeat="hourSlot in day.hours">
+        {{hourSlot.start}} - {{hourSlot.end}}
+      </td>
+      <td>
+        <md-button class="md-icon-button" aria-label="Use Android" ng-click="addHourSlot($index)">
+          <md-icon>add</md-icon>
+        </md-button>
+      </td>
+    </tr>
+  </table>
 
+  <button ng-click="copyFirstLineHourSlot()">Copier les horaires du lundi</button>
 </div>
