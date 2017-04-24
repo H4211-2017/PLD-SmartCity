@@ -1,13 +1,24 @@
 <h3>Jours et horaires</h3>
 
 <div ng-controller="scheduleTabCtrl">
+  <p>
+    Rentrez les horaires de cours de l'établissement (ex: 8h05   - 9h00 ; 9h05 - 10h00...)
+  </p>
   <table class="framedTable">
     <tr ng-repeat="day in scheduleArray">
+      <td>
+        <md-button class="md-icon-button" aria-label="supprimer les horaires de ce jour" ng-click="removeAllDayHourSlot($index)">
+          <md-icon>delete</md-icon>
+        </md-button>
+      </td>
       <th scope="row">
         {{day.dayName}}
       </th>
       <td ng-repeat="hourSlot in day.hours">
-        {{hourSlot.start}} - {{hourSlot.end}}
+        <input type="text" ng-model="hourSlot.start" maxlength="5" size="5"></input>
+        <br>
+        <input type="text" ng-model="hourSlot.end" maxlength="5" size="5"></input>
+        <!--{{hourSlot.start}} - {{hourSlot.end}}-->
       </td>
       <td>
         <md-button class="md-icon-button" aria-label="Use Android" ng-click="addHourSlot($index)">

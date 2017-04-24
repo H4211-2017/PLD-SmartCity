@@ -13,12 +13,12 @@ angular.module('myApp.scheduleTab', ['ngRoute', 'myApp.dataFactory'])
 
     $scope.scheduleArray = dataFactory.getSchedule();
 
-    $scope.addHourSlot = function (row) {
-      $scope.scheduleArray[row].hours.push({
+    $scope.addHourSlot = function (dayNumber) {
+      $scope.scheduleArray[dayNumber].hours.push({
         start: "",
         end: ""
       });
-    }
+    };
 
     $scope.copyFirstLineHourSlot = function() {
       for (var i = 1; i < $scope.scheduleArray.length; i++) {
@@ -30,5 +30,23 @@ angular.module('myApp.scheduleTab', ['ngRoute', 'myApp.dataFactory'])
           });
         }
       }
-    }
+    };
+
+    $scope.removeAllDayHourSlot = function(dayNumber) {
+      $scope.scheduleArray[dayNumber].hours = [];
+    };
+
+    // Clean all empty hour slot set by the user
+    $scope.$on('$destroy', function() {
+      for (var i = 0; i < $scope.scheduleArray.length; i++) {
+        for (var j = 0; j < $scope.scheduleArray[i].hours.length; j++) {
+          var hourSlot = $scope.scheduleArray[i].hours;
+          if (!hourSlot[j].start || !hourSlot[j].end) {
+            hourSlot.splice(j, 1);
+            j--;
+          }
+        }
+      }
+    });
+
   }]);
