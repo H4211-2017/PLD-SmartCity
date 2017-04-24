@@ -1,4 +1,4 @@
-var parse = function(jsonDay, callback) {
+var parse = function(jsonDay, jsonFirstDay, outputJsonGenerator, callback) {
 	
 	var dayName = jsonDay.dayName;
 	outputJsonGenerator.addDay(dayName);
@@ -8,7 +8,7 @@ var parse = function(jsonDay, callback) {
 		
 		var stringHour = tableHours[i].start + ' - ' + tableHours[i].end;
 		
-		if(jsonDay === tableSchedule[0]) {
+		if(jsonDay === jsonFirstDay) {
 			
 			outputJsonGenerator.addHour(stringHour);
 			
@@ -19,7 +19,7 @@ var parse = function(jsonDay, callback) {
 			if (stringAlreadySavecHour.localeCompare(stringHour) !== 0) {
 				
 				//TODO manage case of differents hours
-				throw 'ERROR : builder.js::jsonObjectEntryToXml : Horaires differents pour chaque jours non geres'
+				throw 'ERROR : day.js::parse : Horaires differents pour chaque jours non geres'
 			}
 		}
 	}
