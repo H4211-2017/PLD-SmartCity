@@ -1,5 +1,3 @@
-<link rel="stylesheet" type="text/css" href="schoolInformationMenu/roomTab/roomTab.css">
-
 <section ng-controller="roomTabCtrl">
 
 
@@ -9,7 +7,7 @@
     <tr>
       <th>Nom</th>
       <th>Type de salle</th>
-	  <th>Capacité</th>
+      <th>Capacité</th>
     </tr>
 
     <tr>
@@ -20,13 +18,14 @@
         </md-inputcontainer>
       </td>
       <td class="coursName">
-        <select class="coursName" chosen multiple display-selected-options="false" no-results-text="'Pas de type de salle trouvé'"
-        placeholder-text-multiple="'Pas de type de salle selectionné pour le moment'" ng-options="roomType for roomType in roomTypesArray"
-        ng-model="roomTypesSelected" ng-keypress="keyPress($event.keyCode)">
-        </select>
+        <!--<select class="coursName" chosen multiple display-selected-options="false" no-results-text="'Pas de type de salle trouvé'"
+                placeholder-text-multiple="'Pas de type de salle selectionné pour le moment'"
+                ng-options="roomType for roomType in roomTypesArray" ng-model="roomTypesSelected" ng-keypress="keyPress($event.keyCode)">
+        </select>!-->
+        <div ng-dropdown-multiselect="" options="roomTypesArray" selected-model="roomTypesSelected"></div>
       </td>
-	  <td>
-		<input type="number" min="1" max="300" ng-model="roomCapacity" ng-keypress="keyPress($event.keyCode)"></input>
+      <td>
+        <input type="number" min="1" max="300" ng-model="roomCapacity" ng-keypress="keyPress($event.keyCode)"></input>
       </td>
       <td>
         <md-button class="md-icon-button" aria-label="Use Android" ng-click="addRoom()">
@@ -37,18 +36,18 @@
 
     <tr ng-repeat="room in roomsArray">
       <td>
-        {{room.Name}}
+        {{room.name}}
       </td>
       <td>
         <ul>
-          <li class="dotlessList" ng-repeat="roomType in room.RoomTypes">
+          <li class="dotlessList" ng-repeat="roomType in room.roomTypes">
             {{roomType}}
           </li>
         </ul>
       </td>
-	  <td>
-		<input type="number" min="1" max="300" ng-model="room.RoomCapacity"></input>
-	  </td>
+      <td>
+        <input type="number" min="1" max="300" ng-model="room.RoomCapacity"></input>
+      </td>
       <td>
         <md-button class="md-icon-button" aria-label="supprimmer ce type de salle" ng-click="removeRoom($index)">
           <md-icon>delete</md-icon>

@@ -13,6 +13,7 @@ var app = angular.module('myApp', [
   'myApp.teacherMenu',
   'myApp.version',
   'localytics.directives',
+  'angularjs-dropdown-multiselect',
   'ngMaterial'
 ]).config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
