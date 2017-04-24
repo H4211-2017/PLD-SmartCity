@@ -1,31 +1,33 @@
+var async = require('async');
+
 var OutputJsonGenerator = {
 
     outputJsonObject: [
 
         {name: 'fet', attrs: {version: '5.31.4'}, children: [
-            {name: 'Intsitution_Name', text: 'institution par defaut'},
-            {name: 'Comments', text: 'commentaires par defaut'},
-            {name: 'Days_List', children: [
+            {name: 'Intsitution_Name', text: 'institution par defaut'}, // 0
+            {name: 'Comments', text: 'commentaires par defaut'}, // 1
+            {name: 'Days_List', children: [ // 2
                 {name: 'Number_of_Days', text: 0}
             ]},
-            {name: 'Hours_List', children: [
+            {name: 'Hours_List', children: [ // 3
                 {name: 'Number_of_Hours', text: 0}
             ]},
-            {name: 'Subjects_List', children: []},
-            {name: 'Activity_Tags_List', children: []},
-            {name: 'Teachers_List', children: []},
-            {name: 'Students_List', children: []},
-            {name: 'Activities_List', children: []},
-            {name: 'Building_List', children: []},
-            {name: 'Rooms_List', children: []},
-            {name: 'Time_Constraints_List', children: [
+            {name: 'Subjects_List', children: []}, // 4
+            {name: 'Activity_Tags_List', children: []}, // 5
+            {name: 'Teachers_List', children: []}, // 6
+            {name: 'Students_List', children: []}, // 7
+            {name: 'Activities_List', children: []}, // 8
+            {name: 'Building_List', children: []}, // 9
+            {name: 'Rooms_List', children: []}, // 10
+            {name: 'Time_Constraints_List', children: [ // 11
                 {name: 'ConstraintBasicCompulsoryTime', children: [
                     {name: 'Weight_Percentage', text: 100},
                     {name: 'Active', text: 'true'},
                     {name: 'Comments', text: ''}
                 ]}
             ]},
-            {name: 'Space_Constraints_List', children: [
+            {name: 'Space_Constraints_List', children: [ // 12
                 {name: 'ConstraintBasicCompulsorySpace', children: [
                     {name: 'Weight_Percentage', text: 100},
                     {name: 'Active', text: 'true'},
@@ -124,7 +126,7 @@ var OutputJsonGenerator = {
             i++;
 
             if (i >= tableStudentsList.length) {
-                throw 'ERROR : outputGenerator.js::OutputJsonGenerator::addGroup : le niveau ' + stringYear + ' n\'est pas defini'
+                throw 'ERREUR : outputGenerator.js::OutputJsonGenerator::addGroup : le niveau ' + stringYear + ' n\'est pas defini'
             }
 
             testedYear = tableStudentsList[i];
@@ -175,6 +177,46 @@ var OutputJsonGenerator = {
 		tableRoomsList.push(room);
     },
 	
+	// tableNotAvailableDayHour is table of objects type { day: "Day", hour: "00h00 - 00h00" }
+	
+	addTeacherNotAvailableTime: function(stringTeacher, tableNotAvailableDayHour, intWeightPourcentage, callback) {
+		
+		if (intWeightPourcentage < 0 || intWeightPourcentage > 100) 
+		{
+			throw 'ERREUR : outputGenerator.js::addTeacherNotAvailableTime : poids invalide : ' + intWeightPourcentage;
+		}
+		
+		var tableTimeConstraints = this.outputJsonObject[0].children[11].children;
+		
+		var constrain = {name: 'ConstraintTeacherNotAvailableTimes', children: [
+			{name: 'Weight_Percentage', text: intWeightPourcentage},
+			{name: 'Teacher', text: stringTeacher},
+			{name: 'Number_of_Not_Available_Times', text: 0},
+		]};
+		
+		async.forEach(tableNotAvailableDayHour, function(notAvailableDayHour, callback2) {
+			
+			var notAvailableTime = {name: 'Not_Available_Time', children: [
+				{name: 'Day', text: notAvailableDayHour.day},
+				{name: 'Hour', text: notAvailableDayHour.hour},
+			]};
+			
+			constrain.children[2].text++; // increment Number_of_Not_Available_Times
+			constrain.children.push(notAvailableTime);
+			
+			callback2();
+			
+		}, function(err) {
+			
+			if (err) {
+				
+				throw 'ERREUR : outputGenerator.js::addTeacherNotAvailableTime : ' + err;
+			}
+			
+			callback();
+		});
+	}
+	
 	getHourName: function(numberHourIndice) {
 		
 		var tableHourList = this.outputJsonObject[0].children[3].children;
@@ -188,9 +230,10 @@ var getXmlName = function(outputJsonXmlObjectWithName) {
     if (name.name.localeCompare('Name') === 0) {
 
         return name.text;
+		
     } else {
 
-        throw 'ERROR : outputGenerator.js::getXmlName : l\'element xml ne contient pas de nom ou est mal forme'
+        throw 'ERREUR : outputGenerator.js::getXmlName : l\'element xml ne contient pas de nom ou est mal forme'
     }
 }
 
