@@ -5,10 +5,9 @@ const MongoStore = require('connect-mongo')(session);
 const app = express()
 const port = 3000
 
-var compteur = 0;
+
 var parametreEtoile = {typeSalle:["TP","linux","TD","normale"]}
 
-compteur ++;
 
 app.use(session({
     secret: 'secretCat',
@@ -18,13 +17,12 @@ app.use(session({
     })
 }));
 
-app.get('/typesalle', (request, response) => {
-	
-	message = JSON.stringify(parametreEtoile.typeSalle);
-	compteur ++;
- 	//response.write(message);
- 	response.write(compteur.toString());
- 	response.send();
+app.get('/typesalle', (request, response) => 
+{
+	var sess  = request.session
+	sess.typeSalle.push(sess.compteur);
+	sess.compteur ++
+ 	response.send(JSON.stringify(sess.typeSalle))
 
 })
 
@@ -32,18 +30,26 @@ app.post('/typesalle', function(request, response){
 	
 })
 
+app.get('/logout', function(req, res){
+	var sess = req.session
+	sess.destroy()
+	res.send('loged out')
+})
+
 app.get('/', function(request, response){
 
-	var session = request.session;
+	var sess = request.session;
 	var message = '<h4>Serveur test Etoile</h4>\n'
-	message += session.typeSalle
-	if(session.typeSalle){
+	message += sess.typeSalle
+	if(sess.connected){
 		message += 'votre session existe'
 	}
 	else
 	{
+		sess.connected = true;
 		message += "votre session n'existe pas"
-		session.typeSalle = [];
+		sess.typeSalle = [];
+		sess.compteur = 0;
 	}
 	
 	response.send(message);
