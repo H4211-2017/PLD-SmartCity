@@ -9,6 +9,7 @@ var app = angular.module('myApp', [
   'myApp.roomTypeTab',
   'myApp.roomTab',
   'myApp.programmeMenu',
+  'myApp.gradeClassesTab',
   'myApp.subjectsTab',
   'myApp.teacherMenu',
   'myApp.version',
