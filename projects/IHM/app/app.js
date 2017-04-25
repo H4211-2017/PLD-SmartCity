@@ -11,6 +11,7 @@ var app = angular.module('myApp', [
   'myApp.programmeMenu',
   'myApp.gradeClassesTab',
   'myApp.subjectsTab',
+  'myApp.programmeTab',
   'myApp.teacherMenu',
   'myApp.version',
   'localytics.directives',

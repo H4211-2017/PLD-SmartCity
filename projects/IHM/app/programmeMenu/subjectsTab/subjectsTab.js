@@ -16,51 +16,26 @@ angular.module('myApp.subjectsTab', ['ngRoute', 'myApp.dataFactory'])
     $scope.roomTypeSelected = "Empty";
 
     $scope.addSubject = function () {
-
-      var isDuplicate = false;
-
       //checking that the fields aren't empty
       if ($scope.inputValue && $scope.inputValue.trim() && $scope.roomTypeSelected !== "Empty") {
-        $scope.inputValue = $scope.inputValue.trim();
-
-        //looking if the subject already exists (not case sensitive)
-        for (var i = 0; i < $scope.subjectsArray.length; i++) {
-          if ($scope.subjectsArray[i].subjectName.toUpperCase() === $scope.inputValue.toUpperCase()) {
-            isDuplicate = true;
-            break;
-          }
-        }
-
-        if (isDuplicate === false) {
-          $scope.subjectsArray.unshift(
-            {
-              subjectName: $scope.inputValue,
-              roomType: $scope.roomTypeSelected
-            });
-          $scope.inputValue = "";
-          $scope.roomTypeSelected = "Empty";
-        }
-        else {
-          $scope.inputValue = "";
-          $scope.roomTypeSelected = "Empty";
+        if (!dataFactory.addSubject($scope.inputValue.trim(), $scope.roomTypeSelected)) {
           alert("Cette matière existe déjà");
         }
-
+        $scope.inputValue = "";
+        $scope.roomTypeSelected = "Empty";
       }
     };
 
     $scope.removeSubject = function (rowToDelete) {
-      $scope.subjectsArray.splice(rowToDelete, 1);
+      if (!dataFactory.removeSubject(rowToDelete, false)) {
+        console.log("subjectTab::removeSubject : can't remove subject due to dependency");
+      }
     };
 
     $scope.pressKeyInput = function (key) {
       var ENTER_KEY = 13;
       if (key === ENTER_KEY) {
         $scope.addSubject();
-        return false;
-      }
-      else {
-        return true;
       }
     };
   }]);
