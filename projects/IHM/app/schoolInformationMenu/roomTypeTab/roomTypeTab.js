@@ -34,7 +34,7 @@ angular.module('myApp.roomTypeTab', ['ngRoute', 'myApp.dataFactory'])
           $scope.inputValue = null;
         }
         else {
-          $scope.inputValue = "";
+          $scope.inputValue = null;
           alert("Ce type de salle existe déjà");
         }
 

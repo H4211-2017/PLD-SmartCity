@@ -1,12 +1,32 @@
 <h3>Niveaux - Classes</h3>
 <div ng-controller="gradeClassesTabCtrl">
-<ul>
-    <li ng-repeat="grade in grades track by $index">{{grade.name}}</li>
+
     <ul>
-        <li ng-repeat="classe in grade.classes"></li>
+        <li ng-repeat-start="(indexGrade , grade) in grades " >
+            {{grade.name}}
+            <md-button class="md-icon-button" ng-click="deleteGrade(indexGrade)">
+                <md-icon>delete</md-icon>
+            </md-button>
+        </li>
+        <ul ng-repeat-end >
+            <li ng-repeat="(indexClass , classe) in grade.classes" >
+                {{classe.name}}  {{class.capacity}}
+                <md-button class="md-button-icon" ng-click="deleteClass(indexGrade,indexClass)">
+                    <md-icon>delete</md-icon>
+                </md-button>
+            </li>
+            <li>
+                <input type="text" ng-model="inputClass[indexGrade]" ng-keypress="keyPressedClass($event.keyCode, indexGrade)" cols="25">
+                <md-button class="md-icon-button" ng-click="addClass(indexGrade)">
+                    <md-icon>add</md-icon>
+                </md-button>
+            </li>
+        </ul>
+        <li>
+            <input type="text" ng-model="inputGrade" ng-keypress="keyPressedGrade($event.keyCode)" cols="25">
+            <md-button class="md-icon-button" ng-click="addGrade()">
+                <md-icon>add</md-icon>
+            </md-button>
+        </li>
     </ul>
-</ul>
-
-<script src="gradeClassesTab.js"></script>
 </div>
-

@@ -20,6 +20,8 @@ angular.module('myApp.programmeMenu', ['ngRoute','myApp.gradeClassesTab'])
       $scope.page = nom;
     };
 
+
+
     $scope.openTab('programmeMenu/gradeClassesTab/gradeClassesTab.html', 'programmeGradeClasses');
 
   }]);
