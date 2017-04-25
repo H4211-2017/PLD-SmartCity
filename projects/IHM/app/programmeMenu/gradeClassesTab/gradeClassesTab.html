@@ -1,1 +1,9 @@
 <h3>Niveaux - Classes</h3>
+<ul>
+    <li ng-repeat="grade in grades track by $index">{{grade.name}}</li>
+    <ul>
+        <li ng-repeat="classe in grade.classes"></li>
+    </ul>
+</ul>
+
+<script src="gradeClassesTab.js"></script>

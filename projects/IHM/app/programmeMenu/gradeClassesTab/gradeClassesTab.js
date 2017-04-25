@@ -11,6 +11,8 @@ angular.module('myApp.gradeClassesTab', ['ngRoute'])
 
   .controller('gradeClassesTabCtrl', ['$scope', function($scope) {
 
+    $scope.grades = [{name:'3eme', classes:['3eme A', '3eme B']}, {name:'4eme', classes:['4eme B']}]
+
     $scope.openTab = function(nom) {
 
       $scope.page = nom;

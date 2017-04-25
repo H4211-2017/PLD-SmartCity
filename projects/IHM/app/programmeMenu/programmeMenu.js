@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.programmeMenu', ['ngRoute'])
+angular.module('myApp.programmeMenu', ['ngRoute','myApp.gradeClassesTab'])
 
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/programmeMenu', {
