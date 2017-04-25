@@ -15,7 +15,7 @@ angular.module('myApp.gradeClassesTab', ['ngRoute'])
 
     $scope.openTab = function(nom) {
 
-      $scope.page = nom;
-      console.log("changement page "+$scope.page);
-    };
+      console.log("gradeClassesTab");
+
+
   }]);

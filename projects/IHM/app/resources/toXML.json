@@ -50,9 +50,9 @@
                   "Technologie",
                   "Arts plastique"
                 ]
-            } // Other rooms to add
+            }
         ]
-    }, // End of School information
+    },
 
 	"programme" : {
 		"year" : [

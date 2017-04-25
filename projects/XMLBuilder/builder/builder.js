@@ -1,5 +1,14 @@
 var async = require('async');
-var outputGenerator = require('../output/outputGenerator');
+
+var outputGenerator = require('./output/outputGenerator');
+
+var ioDay = require('./io/day');
+var ioYear = require('./io/year');
+var ioClass = require('./io/class');
+var ioSubject = require('./io/subject');
+var ioTeacher = require('./io/teacher');
+var ioAttribution = require('./io/attribution');
+var ioRoom = require('./io/room');
 
 var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	
@@ -10,31 +19,8 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	
 	function parseDay(jsonDay, callback) {
 		
-		var dayName = jsonDay.dayName;
-		outputJsonGenerator.addDay(dayName);
-		var tableHours = jsonDay.hours;
-	
-		for(var i = 0; i < tableHours.length; i++) {
-			
-			var stringHour = tableHours[i].start + ' - ' + tableHours[i].end;
-			
-			if(jsonDay === tableSchedule[0]) {
-				
-				outputJsonGenerator.addHour(stringHour);
-				
-			} else {
-				
-				var stringAlreadySavecHour = outputJsonGenerator.getHourName(i);
-
-				if (stringAlreadySavecHour.localeCompare(stringHour) !== 0) {
-					
-					//TODO manage case of differents hours
-					throw 'ERROR : builder.js::jsonObjectEntryToXml : Horaires differents pour chaque jours non geres'
-				}
-			}
-		}
-		
-		callback();
+		var jsonFirstDay = tableSchedule[0];
+		ioDay.parse(jsonDay, jsonFirstDay, outputJsonGenerator, callback);
 	}
 	
 	function afterParseDay(err) {
@@ -46,8 +32,7 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	
 	function parseYear(stringYear, callback) {
 		
-		outputJsonGenerator.addYear(stringYear, 0, '');
-		callback();
+		ioYear.parse(stringYear, outputJsonGenerator, callback);
 	}
 	
 	function afterParseYear(err) {
@@ -59,12 +44,7 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	
 	function parseClass(jsonClass, callback) {
 	
-		var stringYear = jsonClass.year;
-		var stringClassName = jsonClass.name;
-		var numberOfStudents = (jsonClass.studentsNumber) ? jsonClass.studentsNumber : 0;
-		
-		outputJsonGenerator.addGroup(stringYear, stringClassName, numberOfStudents, '');
-		callback();
+		ioClass.parse(jsonClass, outputJsonGenerator, callback);
 	}
 	
 	function afterParseClass(err) {
@@ -76,12 +56,7 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	
 	function parseSubject(jsonSubject, callback) {
 	
-		var stringSubjectName = jsonSubject.name;
-	
-		outputJsonGenerator.addSubject(stringSubjectName, '');
-		
-		
-		callback();
+		ioSubject.parse(jsonSubject, outputJsonGenerator, callback);
 	}
 	
 	function afterParseSubject(err) {
@@ -92,14 +67,7 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 
 	function parseTeacher(jsonTeacher, callback) {
 
-		var stringName = jsonTeacher.firstName + ' ' + jsonTeacher.lastName;
-		var stringComments = ((jsonTeacher.comments == '') ? '' : jsonTeacher.comments);
-		outputJsonGenerator.addTeacher(stringName, '0', stringComments);
-		
-		//TODO Constraints of classes
-		//TODO Constraints of Disponibility
-		
-		callback();
+		ioTeacher.parse(jsonTeacher, outputJsonGenerator, callback);
 	}
 	
 	function afterParseTeacher(err) {
@@ -111,73 +79,8 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	
 	function parseAttribution(jsonAttribution, callback1) {
 		
-		//TODO verify if parameters exist
-		var stringClass = jsonAttribution.class;
-		var tableSubjectTeachers = jsonAttribution.subjectTeachers;
-		
-		async.forEach(tableSubjectTeachers, parseSubjectsTeachers, afterParseSubjectsTeachers);
-		
-		function parseSubjectsTeachers(jsonSubjectTeachers, callback2) {
-		
-			var stringSubject = jsonSubjectTeachers.subject;
-			var stringTeacher = jsonSubjectTeachers.teacher.firstName + ' ' + jsonSubjectTeachers.teacher.lastName;
-			var jsonProgram = jsonObjectEntry.programme;
-			
-			var i = 0;
-			var jsonClass = jsonProgram.classes[i];
-			
-			while (jsonClass.name.localeCompare(stringClass) !== 0) {
-				
-				i++;
-				
-				if (i >= jsonProgram.classes.length) {					
-					throw 'ERROR : builder::parseSubjectsTeachers : la classe ' + stringClass + ' n\'existe pas';
-				}
-				
-				jsonClass = jsonProgram.classes[i];
-			}
-			
-			var stringYear = jsonClass.year;
-			
-			i = 0;
-			var jsonUnderProgram = jsonProgram.programme[i];
-			
-			while (jsonUnderProgram.year.localeCompare(stringYear) !== 0) {
-				
-				i++;
-				
-				if (i >= jsonProgram.programme.length) {					
-					throw 'ERROR : builder::parseSubjectsTeachers : l\'annee ' + stringYear + ' n\'a pas de programme';
-				}
-				
-				jsonUnderProgram = jsonProgram.programme[i];
-			}
-			
-			i = 0;
-			var jsonUnderUnderProgram = jsonUnderProgram.programme[i];
-			
-			while (jsonUnderUnderProgram.subject.localeCompare(stringSubject) !== 0) {
-				
-				i++;
-				
-				if (i >= jsonUnderProgram.programme.length) {					
-					throw 'ERROR : builder::parseSubjectsTeachers : le sujet ' + stringSubject + 'n\'est pas etudiee pour l\'annee ' + stringYear;
-				}
-				
-				jsonUnderUnderProgram = jsonUnderProgram.programme[i];
-			}
-			
-			var numberWeekHours = jsonUnderUnderProgram.weekHours;
-			
-			outputJsonGenerator.addActivity(stringTeacher, stringSubject, stringClass, 1, numberWeekHours, '')
-			callback2();
-		}
-		
-		function afterParseSubjectsTeachers(err) {
-		
-			callback1();
-		}
-		
+		var jsonProgram = jsonObjectEntry.programme;
+		ioAttribution.parse(jsonAttribution, jsonProgram, outputJsonGenerator, callback1);
 	}
 	
 	function afterParseAttribution(err) {
@@ -189,14 +92,7 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	
 	function parseRooms(jsonRoom, callback1) {
 		
-		var stringName = jsonRoom.name;
-		var intCapacity = (jsonRoom.capacity) ? jsonRoom.capacity : 30000;
-		
-		outputJsonGenerator.addRoom(stringName, '', intCapacity, '');
-		
-		//TODO contraints of rooms types
-		
-		callback1();
+		ioRoom.parse(jsonRoom, outputJsonGenerator, callback1);
 	}
 	
 	function afterParseRooms(err) {
