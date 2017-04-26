@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.gradeClassesTab', ['ngRoute'])
+angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory'])
 
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/gradeClassesTab', {
@@ -9,14 +9,24 @@ angular.module('myApp.gradeClassesTab', ['ngRoute'])
     });
   }])
 
-  .controller('gradeClassesTabCtrl', ['$scope', function($scope) {
+  .controller('gradeClassesTabCtrl', ['$scope','dataFactory', function($scope, dataFactory) {
+
+
+    $scope.grades = []
+    // dataFactory.addYear("3eme");
+    // dataFactory.addYear("4eme");
+    // dataFactory.addClass("A","3eme",32);
+
+
 
     const ENTER_KEY = 13;
-    $scope.inputClass = [];
+    $scope.inputClass = [""];
     $scope.inputGrade = null;
 
-    $scope.grades = [{name:'3eme', classes:[{name:'3emeA', capacity:'32'},{name:'3emeA', capacity:'32'} ]},
-      {name:'4eme', classes:[{name:'4emeA', capacity:'32'}]}];
+
+
+    // $scope.grades = [{name:'3eme', classes:[{name:'3emeA', capacity:'32'},{name:'3emeA', capacity:'32'} ]},
+    //   {name:'4eme', classes:[{name:'4emeA', capacity:'32'}]}];
 
     $scope.openTab = function(nom) {
       console.log("gradeClassesTab");
@@ -24,20 +34,25 @@ angular.module('myApp.gradeClassesTab', ['ngRoute'])
 
     $scope.deleteGrade = function(grade){
       alert("vous allez supprimmez un element important")
-      $scope.grades.splice(grade,1);
+      dataFactory.removeYear(grade);
+      $scope.updateDisplay();
     };
 
     $scope.deleteClass = function(grade, classToDelete){
-      $scope.grades[grade].classes.splice(classToDelete,1);
+      var indexClass = dataFactory.getClassesArray().indexOf($scope.grades[grade].classes[classToDelete]);
+      dataFactory.removeClass(indexClass);
+      $scope.updateDisplay();
+      //$scope.grades[grade].classes.splice(classToDelete,1);
     };
 
     $scope.addGrade = function(){
       var input = $scope.inputGrade.trim();
       checkIfInputValidAndUnique(input, $scope.grades, function(isValid){
         if(isValid) {
-          var newGrade = {name:input, classes:[]};
-          $scope.grades.push(newGrade);
-          input = null;
+          dataFactory.addYear(input);
+          $scope.updateDisplay();
+          $scope.inputGrade = "";
+          $scope.inputClass[$scope.grades.length + 1]="";
         }
       });
     };
@@ -45,10 +60,14 @@ angular.module('myApp.gradeClassesTab', ['ngRoute'])
 
     $scope.addClass = function(index){
       var input = $scope.inputClass[index].trim();
+
       checkIfInputValidAndUnique(input, $scope.grades[index].classes, function(isValid){
         if(isValid){
-          var newClass = {name:input, capacity:32};
-          $scope.grades[index].classes.push(newClass);
+          //$scope.grades[index].classes.push(newClass);
+          console.log(input, $scope.grades[index].name,32)
+          dataFactory.addClass(input, $scope.grades[index].name,32);
+          $scope.updateDisplay();
+          $scope.inputClass[index] = "";
         }
       });
     };
@@ -65,7 +84,7 @@ angular.module('myApp.gradeClassesTab', ['ngRoute'])
         $scope.addGrade();
       }
     };
-
+/*
     $scope.setClassesGrades = function(){
       var gradesFactory = [];
       var classesFactory = [];
@@ -77,23 +96,36 @@ angular.module('myApp.gradeClassesTab', ['ngRoute'])
         });
       });
     };
+    */
 
+    //this function takes the data from the data factory and transforms them, to translate the hierarchical presentation
+    //so that a class is a child of the year it belongs to.
     $scope.getClassesGrades = function(years, classes){
-      var gradesFromFactory;
+      var gradesFromFactory = [];
       angular.forEach(years, function(year){
         var newGrade = {name:year, classes:[]};
         angular.forEach(classes, function(classLoop){
           if(classLoop.year === year)
           {
-            var newClass = {name:ClassLoop.name, capacity:classLoop.studentsNumber};
+            var newClass = {name:classLoop.name, capacity:classLoop.studentsNumber};
             newGrade.classes.push(newClass);
           }
         });
         gradesFromFactory.push(newGrade);
       });
-
-      $scope.grades = gradesFromFactory;
+      return gradesFromFactory;
     };
+
+    //this function gets the datas from dataFactory to update the $scope.grades variable according to what datafactory has
+    $scope.updateDisplay = function(){
+      var factoryGrades = dataFactory.getYearArray();
+      var factoryClasses = dataFactory.getClassesArray();
+      $scope.grades = $scope.getClassesGrades(factoryGrades, factoryClasses);
+    };
+
+
+    $scope.updateDisplay();
+
   }]);
 
 

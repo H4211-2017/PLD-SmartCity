@@ -154,7 +154,7 @@ angular.module('myApp.dataFactory', [])
       if (!yearArray.some(function (e) {
           return e.toUpperCase() === yearString.toUpperCase();
         })) {
-        yearArray.unshift(yearString);
+        yearArray.push(yearString);
         ensureCoherencyProgrammeYear(yearString, true, false);
         return true;
       }
@@ -176,7 +176,7 @@ angular.module('myApp.dataFactory', [])
     dataFactory.addClass = function (classString, yearString, studentNumber) {
       var classArray = data.programme.classes;
       if (!stringInArray(classString, classArray, 'name')) {
-        classArray.unshift({
+        classArray.push({
           year: yearString,
           name: classString,
           studentNuber: studentNumber
@@ -220,6 +220,7 @@ angular.module('myApp.dataFactory', [])
       } else {
 
       }
+      return true;
     }
 
     function ensureCoherencyProgrammeSubject(subjectString, isAddOperation, deleteCascade) {
