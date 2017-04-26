@@ -10,12 +10,19 @@ angular.module('myApp.programmeTab', ['ngRoute', 'myApp.dataFactory'])
   }])
 
   .controller('programmeTabCtrl', ['$scope', 'dataFactory', function($scope, dataFactory) {
-    $scope.subjectArray = dataFactory.getSubjectsArray();
-    $scope.programmeArray = dataFactory.getProgrammeArray();
-
-    $scope.$on('$destroy', function() {
-      console.log('programmeTab::destroy : begin');
-      printObjectCaracteristic($scope.programmeArray, ['$$hashKey']);
+    $scope.subjectArray = dataFactory.getSubjectsArray().sort(function(a, b) {
+      return a.name.localeCompare(b.name);
     });
+    $scope.programmeArray = dataFactory.getProgrammeArray();
+    sortSubject($scope.programmeArray);
+    printObjectCaracteristic($scope.programmeArray, ['$$hashKey']);
+
+    function sortSubject(programmeArray) {
+        for (var i = 0, length = programmeArray.length; i < length; i++) {
+          programmeArray[i].programme.sort(function (a, b) {
+            return a.subject.localeCompare(b.subject);
+          });
+        }
+    }
 
   }]);
