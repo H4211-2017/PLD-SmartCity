@@ -37,7 +37,7 @@ angular.module('myApp.dataFactory', [])
         room: []
       },
       programme: {
-        year: ['6e', '5e', '4e', '3e'],
+        year: [],
         classes: [],
         subjects: [],
         programme: []
@@ -105,16 +105,20 @@ angular.module('myApp.dataFactory', [])
     dataFactory.removeRoom = function (indexRoomToRemove) {
       data.schoolInformation.room.splice(indexRoomToRemove, 1);
       return true;
-    }
+    };
 
     // =============== PROGRAMME ===============
     // GETTER
-    dataFactory.getSubjectsArray = function () {
-      return data.programme.subjects;
-    };
-
     dataFactory.getYearArray = function () {
       return data.programme.year;
+    };
+
+    dataFactory.getClassesArray = function () {
+      return data.programme.classes;
+    };
+
+    dataFactory.getSubjectsArray = function () {
+      return data.programme.subjects;
     };
 
     dataFactory.getProgrammeArray = function () {
@@ -129,7 +133,7 @@ angular.module('myApp.dataFactory', [])
           name: subjectToAddString,
           roomType: roomTypeString
         });
-        ensureCoherencyProgrammeSubject(subjectToAddString, true);
+        ensureCoherencyProgrammeSubject(subjectToAddString, true, false);
         return true;
       }
       return false;
@@ -146,19 +150,78 @@ angular.module('myApp.dataFactory', [])
     };
 
     dataFactory.addYear = function (yearString) {
-      ensureCoherencyProgrammeYear(yearString);
+      var yearArray = data.programme.year;
+      if (!yearArray.some(function (e) {
+          return e.toUpperCase() === yearString.toUpperCase();
+        })) {
+        yearArray.unshift(yearString);
+        ensureCoherencyProgrammeYear(yearString, true, false);
+        return true;
+      }
+      return false;
     };
+
+    dataFactory.removeYear = function (indexYearToRemove, deleteCascade) {
+      var yearArray = data.programme.year;
+      var yearToRemoveString = yearArray[indexYearToRemove];
+      var yearDoesNotHaveDependency = ensureCoherencyProgrammeYear(yearToRemoveString, false, deleteCascade);
+
+      if (deleteCascade || yearDoesNotHaveDependency) {
+        yearArray.splice(indexYearToRemove, 1);
+        return true;
+      }
+      return false;
+    };
+
+    dataFactory.addClass = function (classString, yearString, studentNumber) {
+      var classArray = data.programme.classes;
+      if (!stringInArray(classString, classArray, 'name')) {
+        classArray.unshift({
+          year: yearString,
+          name: classString,
+          studentNuber: studentNumber
+        });
+        return true;
+      }
+      return false;
+    };
+
+    dataFactory.removeClass = function (indexClassToRemove, deleteCasade) {
+      var classArray = data.programme.classes;
+      var classToRemoveString = classArray[indexClassToRemove];
+      var classDoesNotHaveDependency = true;
+
+      if (deleteCasade || classDoesNotHaveDependency) {
+        classArray.splice(indexClassToRemove, 1);
+        return true;
+      }
+      return false;
+    }
 
     // =============== TEACHER ===============
     // GETTER
 
     // SETTER
     //======================================== PRIVATE ================================
-    function ensureCoherencyProgrammeYear(yearAddedString, isAddOperation) {
+    function ensureCoherencyProgrammeYear(yearString, isAddOperation, deleteCascade) {
+      var programmeArray = data.programme.programme;
+      var subjectArray = data.programme.subjects;
 
+      if (isAddOperation) {
+        var programmeSubjectArray = subjectArray.map(function (e) {
+          return e.name;
+        });
+
+        programmeArray.push({
+          year: yearString,
+          programme: programmeSubjectArray
+        });
+
+      } else {
+
+      }
     }
 
-    // TODO fix delete part (indexOf)
     function ensureCoherencyProgrammeSubject(subjectString, isAddOperation, deleteCascade) {
       var programmeArray = data.programme.programme;
       if (isAddOperation) {
@@ -170,8 +233,11 @@ angular.module('myApp.dataFactory', [])
         }
       } else {
         for (i = 0; i < programmeArray.length; i++) {
-          var subjectIndex = programmeArray[i].programme.indexOf(subjectString);
-          if (subjectIndex !== -1) {
+          var subjectIndex = programmeArray[i].programme.map(function (e) {
+            return e.subject;
+          }).indexOf(subjectString);
+
+          if (subjectIndex !== -1 && programmeArray[i].programme[subjectIndex].weekHours !== 0) {
             if (deleteCascade) {
               programmeArray[i].programme.splice(subjectIndex, 1);
             } else {
@@ -180,7 +246,6 @@ angular.module('myApp.dataFactory', [])
           }
         }
       }
-
       return true;
     }
 
@@ -223,7 +288,6 @@ angular.module('myApp.dataFactory', [])
       }
       return false;
     }
-
 
     return dataFactory;
   });
