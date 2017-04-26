@@ -1,1 +1,23 @@
 <h3>Programme académique</h3>
+
+<div ng-controller="programmeTabCtrl">
+  <p>
+    Rentrez, dans chaque case, le nombre d'heure hebdomadaire correspondant
+  </p>
+
+  <table class="framedTable">
+    <tr>
+      <th></th>
+      <th scope="col" ng-repeat="subject in subjectArray">
+        {{subject.subjectName}}
+      </th>
+    </tr>
+
+    <tr ng-repeat="programme in programmeArray">
+      <th>{{programme.year}}</th>
+      <td ng-repeat="subject in programme.programme">
+        <input type="number" min="0" max="99" ng-model="subject.weekHours"></input>
+      </td>
+    </tr>
+  </table>
+</div>
