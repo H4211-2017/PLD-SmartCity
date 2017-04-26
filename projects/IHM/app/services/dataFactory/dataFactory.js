@@ -1,4 +1,4 @@
-// TODO : add/remove for schedule, year, classes
+// TODO : add/remove for schedule
 
 angular.module('myApp.dataFactory', [])
 
@@ -179,7 +179,7 @@ angular.module('myApp.dataFactory', [])
         classArray.unshift({
           year: yearString,
           name: classString,
-          studentNuber: studentNumber
+          studentNumber: studentNumber
         });
         return true;
       }
@@ -196,7 +196,11 @@ angular.module('myApp.dataFactory', [])
         return true;
       }
       return false;
-    }
+    };
+
+    dataFactory.removeProgramme = function () {
+
+    };
 
     // =============== TEACHER ===============
     // GETTER
@@ -218,8 +222,23 @@ angular.module('myApp.dataFactory', [])
         });
 
       } else {
-
+        for (var i = 0; i < programmeArray.length; i++) {
+          if (programmeArray[i].year == yearString) {
+            if (deleteCascade) {
+              data.removeProgramme(i, true);
+              i--; // as deleteCascade is set to true, the programme at index i has been removed, so i must be decreased
+            } else {
+              return false;
+            }
+          }
+        }
       }
+      return true;
+    }
+
+    // TODO
+    function ensureCoherencyClassYear (yearString, deleteCascade) {
+
     }
 
     function ensureCoherencyProgrammeSubject(subjectString, isAddOperation, deleteCascade) {
