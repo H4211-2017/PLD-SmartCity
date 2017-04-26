@@ -66,6 +66,34 @@ angular.module('myApp.gradeClassesTab', ['ngRoute'])
       }
     };
 
+    $scope.setClassesGrades = function(){
+      var gradesFactory = [];
+      var classesFactory = [];
+      angular.forEach($scope.grades, function (grade) {
+        gradesFactory.push(grade.name);
+        angular.forEach(grade.classes, function(classLoop){
+          var newClass ={yeear:grade.name, name:classLoop.name,studentsNumber:classLoop.capacity};
+          classesFactory.push(newClass);
+        });
+      });
+    };
+
+    $scope.getClassesGrades = function(years, classes){
+      var gradesFromFactory;
+      angular.forEach(years, function(year){
+        var newGrade = {name:year, classes:[]};
+        angular.forEach(classes, function(classLoop){
+          if(classLoop.year === year)
+          {
+            var newClass = {name:ClassLoop.name, capacity:classLoop.studentsNumber};
+            newGrade.classes.push(newClass);
+          }
+        });
+        gradesFromFactory.push(newGrade);
+      });
+
+      $scope.grades = gradesFromFactory;
+    };
   }]);
 
 
@@ -86,3 +114,4 @@ function checkIfInputValidAndUnique(input, array, callback){
     callback(false);
   }
 }
+
