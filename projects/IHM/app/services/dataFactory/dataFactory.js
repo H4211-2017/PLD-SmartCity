@@ -165,6 +165,7 @@ angular.module('myApp.dataFactory', [])
       var yearArray = data.programme.year;
       var yearToRemoveString = yearArray[indexYearToRemove];
       var yearDoesNotHaveDependency = ensureCoherencyProgrammeYear(yearToRemoveString, false, deleteCascade);
+      yearDoesNotHaveDependency &= ensureCoherencyClassYear(yearToRemoveString, deleteCascade);
 
       if (deleteCascade || yearDoesNotHaveDependency) {
         yearArray.splice(indexYearToRemove, 1);
@@ -243,9 +244,19 @@ angular.module('myApp.dataFactory', [])
       return true;
     }
 
-    // TODO
     function ensureCoherencyClassYear(yearString, deleteCascade) {
-      return false;
+      var classArray = data.programme.classes;
+      for (var i = 0; i < classArray.length; i++) {
+        if (classArray[i].year === yearString) {
+          if (deleteCascade) {
+            dataFactory.removeClass(i, true);
+            i--; // as deleteCascade is set to true, the class at index i has been removed, so i must be decreased
+          } else {
+            return false;
+          }
+        }
+      }
+      return true;
     }
 
     function ensureCoherencyProgrammeSubject(subjectString, isAddOperation, deleteCascade) {
@@ -280,7 +291,7 @@ angular.module('myApp.dataFactory', [])
       for (var i = 0; i < roomArray.length; i++) {
         if (roomArray[i].roomTypes == roomTypeString) {
           if (deleteCascade) {
-            data.removeRoom(i, true);
+            dataFactory.removeRoom(i, true);
             i--; // as deleteCascade is set to true, the room at index i has been removed, so i must be decreased
           } else {
             return false;
@@ -295,7 +306,7 @@ angular.module('myApp.dataFactory', [])
       for (var i = 0; i < subjectArray.length; i++) {
         if (subjectArray[i].roomType === roomTypeString) {
           if (deleteCascade) {
-            data.removeSubject(i, true);
+            dataFactory.removeSubject(i, true);
             i--; // as deleteCascade is set to true, the subject at index i has been removed, so i must be decreased
           } else {
             return false;

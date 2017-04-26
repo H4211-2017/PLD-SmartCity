@@ -28,9 +28,6 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory'])
     // $scope.grades = [{name:'3eme', classes:[{name:'3emeA', capacity:'32'},{name:'3emeA', capacity:'32'} ]},
     //   {name:'4eme', classes:[{name:'4emeA', capacity:'32'}]}];
 
-    $scope.openTab = function(nom) {
-      console.log("gradeClassesTab");
-    };
 
     $scope.deleteGrade = function(grade){
       if (!dataFactory.removeYear(grade, false)) {
@@ -71,7 +68,6 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory'])
       checkIfInputValidAndUnique(input, $scope.grades[index].classes, function(isValid){
         if(isValid){
           //$scope.grades[index].classes.push(newClass);
-          console.log(input, $scope.grades[index].name,32)
           dataFactory.addClass(input, $scope.grades[index].name,32);
           $scope.updateDisplay();
           $scope.inputClass[index] = "";
