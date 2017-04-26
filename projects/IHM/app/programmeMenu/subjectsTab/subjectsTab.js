@@ -28,7 +28,9 @@ angular.module('myApp.subjectsTab', ['ngRoute', 'myApp.dataFactory'])
 
     $scope.removeSubject = function (rowToDelete) {
       if (!dataFactory.removeSubject(rowToDelete, false)) {
-        console.log("subjectTab::removeSubject : can't remove subject due to dependency");
+        if (confirm("Cette action supprimera d'autres éléments\nVoulez-vous continuer?")) {
+          dataFactory.removeSubject(rowToDelete, true);
+        }
       }
     };
 

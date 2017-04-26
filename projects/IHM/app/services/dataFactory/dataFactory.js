@@ -140,7 +140,7 @@ angular.module('myApp.dataFactory', [])
     };
 
     dataFactory.removeSubject = function (indexSubjectToRemove, deleteCascade) {
-      var subjectToRemoveString = data.programme.subjects[indexSubjectToRemove];
+      var subjectToRemoveString = data.programme.subjects[indexSubjectToRemove].name;
       var subjectDoesNotHaveDependency = ensureCoherencyProgrammeSubject(subjectToRemoveString, false, deleteCascade);
       if (deleteCascade || subjectDoesNotHaveDependency) {
         data.programme.subjects.splice(indexSubjectToRemove, 1);
@@ -154,7 +154,7 @@ angular.module('myApp.dataFactory', [])
       if (!yearArray.some(function (e) {
           return e.toUpperCase() === yearString.toUpperCase();
         })) {
-        yearArray.unshift(yearString);
+        yearArray.push(yearString);
         ensureCoherencyProgrammeYear(yearString, true, false);
         return true;
       }
@@ -176,7 +176,7 @@ angular.module('myApp.dataFactory', [])
     dataFactory.addClass = function (classString, yearString, studentNumber) {
       var classArray = data.programme.classes;
       if (!stringInArray(classString, classArray, 'name')) {
-        classArray.unshift({
+        classArray.push({
           year: yearString,
           name: classString,
           studentNumber: studentNumber
@@ -213,7 +213,10 @@ angular.module('myApp.dataFactory', [])
 
       if (isAddOperation) {
         var programmeSubjectArray = subjectArray.map(function (e) {
-          return e.name;
+          return {
+            subject: e.name,
+            weekHours: 0
+          }
         });
 
         programmeArray.push({
@@ -224,21 +227,25 @@ angular.module('myApp.dataFactory', [])
       } else {
         for (var i = 0; i < programmeArray.length; i++) {
           if (programmeArray[i].year == yearString) {
-            if (deleteCascade) {
-              data.removeProgramme(i, true);
-              i--; // as deleteCascade is set to true, the programme at index i has been removed, so i must be decreased
-            } else {
-              return false;
+            if (!deleteCascade) {
+              // If for all subjects, weekHours is not set (0), the year will be removed
+              for (var j = 0; j < programmeArray[i].programme.length; j++) {
+                if (programmeArray[i].programme[j].weekHours != 0) {
+                  return false;
+                }
+              }
+              break; // Year is the identifier of programme, only one occurrence will be found
             }
           }
         }
+        programmeArray.splice(i, 1);
       }
       return true;
     }
 
     // TODO
-    function ensureCoherencyClassYear (yearString, deleteCascade) {
-
+    function ensureCoherencyClassYear(yearString, deleteCascade) {
+      return false;
     }
 
     function ensureCoherencyProgrammeSubject(subjectString, isAddOperation, deleteCascade) {
@@ -256,8 +263,8 @@ angular.module('myApp.dataFactory', [])
             return e.subject;
           }).indexOf(subjectString);
 
-          if (subjectIndex !== -1 && programmeArray[i].programme[subjectIndex].weekHours !== 0) {
-            if (deleteCascade) {
+          if (subjectIndex !== -1) {
+            if (deleteCascade || programmeArray[i].programme[subjectIndex].weekHours === 0) {
               programmeArray[i].programme.splice(subjectIndex, 1);
             } else {
               return false;

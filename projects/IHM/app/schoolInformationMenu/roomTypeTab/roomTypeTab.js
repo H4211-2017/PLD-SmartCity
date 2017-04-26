@@ -23,7 +23,9 @@ angular.module('myApp.roomTypeTab', ['ngRoute', 'myApp.dataFactory'])
 
     $scope.removeRoomType = function (rowToDelete) {
       if (!dataFactory.removeRoomType(rowToDelete, false)) {
-        console.log("can't remove room type due to dependency");
+        if (confirm("Cette action supprimera d'autres éléments\nVoulez-vous continuer?")) {
+          dataFactory.removeRoomType(rowToDelete, true);
+        }
       }
     };
 
