@@ -21,8 +21,8 @@ angular.module('myApp.roomTab', ['ngRoute', 'myApp.dataFactory'])
           alert("Une salle avec le même nom existe déjà");
         }
         $scope.roomNameInputValue = "";
-        $scope.roomTypesSelected = [];
-        $scope.roomCapacity = 1;
+        /*$scope.roomTypesSelected = [];
+        $scope.roomCapacity = 1;*/
       }
     };
 

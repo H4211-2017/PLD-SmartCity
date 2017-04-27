@@ -1,8 +1,17 @@
 <h3>Niveaux - Classes</h3>
+
+<p>
+    rajoutez des niveaux ou classes (ex: 3<sup>e</sup>A)
+</p>
+
 <div ng-controller="gradeClassesTabCtrl">
 {{JSON.stringify(grades)}}
 
-    <table>
+    <table class="framedTable">
+        <tr>
+            <th>Niveaux</th>
+            <th>Classes</th>
+        </tr>
         <tr ng-repeat-start="(indexGrade , grade) in grades">
             <td>{{grade.name}}</td>
             <td>
@@ -30,7 +39,7 @@
         <tr ng-repeat-end>
             <td></td>
             <td>
-                <input type="text" ng-model="inputClass[indexGrade]" ng-keypress="keyPressedClass($event.keyCode, indexGrade)" cols="10">
+                <input type="text" ng-model="inputClass[indexGrade]" ng-keypress="keyPressedClass($event.keyCode, indexGrade)">
             </td>
             <td>
                 <md-button class="md-icon-button" ng-click="addClass(indexGrade)">
@@ -40,7 +49,7 @@
         </tr>
         <tr >
             <td>
-                <input type="text" ng-model="inputGrade" ng-keypress="keyPressedGrade($event.keyCode)" cols="10">
+                <input type="text" ng-model="inputGrade" ng-keypress="keyPressedGrade($event.keyCode)">
             </td>
             <td></td>
             <td>

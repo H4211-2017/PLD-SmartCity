@@ -3,26 +3,48 @@
             <md-tabs md-dynamic-height="15dpi" md-border-bottom="">
                 <md-tab class="menulinks" label="Accueil">
                     <md-content>
-                    <div ng-include="homeMenu"></div>
+                    <div ng-include="homeMenu">
+                    </div>
+                    <div class="reduceOrExpand" expanded="false">
+                        <md-button md-no-ink class="md-icon-button" ng-click="reduceOrExpand()">
+                            <md-icon class="reduceOrExpandBut" expanded="false">{{icone}}</md-icon>
+                        </md-button>
+                    </div>
                     </md-content>
                 </md-tab>
                 <md-tab class="menulinks" label="Etablissement">
                     <md-content>
                         <div ng-include="schoolMenu"></div>
+                        <div class="reduceOrExpand" expanded="false">
+                            <md-button md-no-ink class="md-icon-button" ng-click="reduceOrExpand()">
+                                <md-icon class="reduceOrExpandBut" expanded="false">{{icone}}</md-icon>
+                            </md-button>
+                        </div>
                     </md-content>
                 </md-tab>
                 <md-tab class="menulinks" label="Programme">
                     <md-content>
                         <div ng-include="programmeMenu"></div>
+                        <div class="reduceOrExpand" expanded="false">
+                            <md-button md-no-ink class="md-icon-button" ng-click="reduceOrExpand()">
+                                <md-icon class="reduceOrExpandBut" expanded="false">{{icone}}</md-icon>
+                            </md-button>
+                        </div>
                     </md-content>
                 </md-tab>
                 <md-tab class="menulinks" label="Prof - Cours">
                     <md-content>
                         <div ng-include="teacherMenu"></div>
+                        <div class="reduceOrExpand" expanded="false">
+                            <md-button md-no-ink class="md-icon-button" ng-click="reduceOrExpand()">
+                                <md-icon class="reduceOrExpandBut" expanded="false">{{icone}}</md-icon>
+                            </md-button>
+                        </div>
                     </md-content>
                 </md-tab>
             </md-tabs>
         </md-content>
+
     </div>
 <!--
 Copyright 2016 Google Inc. All Rights Reserved.

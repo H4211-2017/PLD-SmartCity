@@ -1,6 +1,6 @@
 
 <div ng-controller="schoolInformationMenuCtrl">
-<div class="tab" >
+<div class="tab"  expanded="false">
 
   <div style="display:none" ng-model="page"></div>
 
@@ -10,5 +10,5 @@
 
 </div>
 
-<div class="tabcontent" ng-include="page"></div>
+<div class="tabcontent" ng-include="page" expanded="false"></div>
 </div>

@@ -1,6 +1,6 @@
 <div ng-controller="programmeMenuCtrl">
   <div style="display:none" ng-model="page"></div>
-  <div class="tab">
+  <div class="tab" expanded="false">
     <button id="programmeGradeClasses" class="tablinks"
             ng-click="openTab('programmeMenu/gradeClassesTab/gradeClassesTab.html', 'programmeGradeClasses')">
       Niveaux - Classes
@@ -14,7 +14,7 @@
     </button>
   </div>
 
-  <div class="tabcontent" ng-include="page"></div>
+  <div class="tabcontent" ng-include="page" expanded="false"></div>
 </div>
 
 <script src="programmeMenu/gradeClassesTab/gradeClassesTab.js"></script>

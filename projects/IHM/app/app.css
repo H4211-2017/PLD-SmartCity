@@ -30,9 +30,17 @@ div.tab {
   float: left;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
+  position: absolute;
   width: 15%;
-  min-height: 400px;
+  left: 0;
+  min-height: 600px;
   box-sizing: border-box;
+  transition-duration: 0.3s;
+}
+
+div.tab[expanded="true"] {
+  left: -15%;
+  border: none;
 }
 
 /* Style the buttons inside the tab */
@@ -46,7 +54,6 @@ div.tab button {
   outline: none;
   text-align: left;
   cursor: pointer;
-  transition: 0.3s;
 }
 
 /* Change background color of buttons on hover */
@@ -65,16 +72,23 @@ div.tab button.active {
 
 /* Style the tab content */
 .tabcontent {
-  float: left;
-  padding: 0px;
+  padding: 10px;
   border: 1px solid #ccc;
+  float: left;
   width: 85%;
+  margin-left: 15%;
   overflow-x: auto;
   box-sizing: border-box;
   border-left: none;
-  min-height: 400px;
+  min-height: 600px;
   height : auto;
   display: block;
+  transition-duration: 0.3s;
+}
+
+.tabcontent[expanded="true"] {
+  width: 100%;
+  margin-left: 0;
 }
 
 /*style list without dots*/
@@ -147,6 +161,7 @@ div.tab button.active {
   border-width: 1px;
   border-style: solid;
   text-align: center;
+  min-width: 75px;
 }
 
 .framedTable {
@@ -185,13 +200,18 @@ div.tab button.active {
   width: 0;
   position: absolute; /* Stay in place */
   z-index: 2500; /* Sit on top */
-  left: inherit;
+  left: 0;
+  margin-left: inherit;
   top: 0px;
   padding: 0 0 0 0;
   background-color: rgb(0,0,0); /* Black fallback color */
   background-color: rgba(0,0,60, 0.9); /* Black w/opacity */
   overflow-x: hidden; /* Disable horizontal scroll */
   transition: 0.5s;
+}
+
+.overlay input {
+  color: black;
 }
 
 .formLayout {
@@ -227,3 +247,31 @@ div.tab button.active {
 }
 
 /**end of CSS for overlay **/
+
+/**Reduce or expand menu button**/
+
+.reduceOrExpand, .reduceOrExpand * {
+  background-color: #f1f1f1;
+  color: black;
+  border : 1px solid #ccc;
+  border-left: none;
+  border-radius: 0px 10px 10px 0px;
+  position: fixed;
+  left: 15%;
+  top: 0px;
+  max-width: 25px;
+  max-height: 25px;
+  transition-duration: 0.3s;
+}
+
+.reduceOrExpandBut {
+  border: none;
+}
+
+.reduceOrExpand[expanded="true"], .reduceOrExpand[expanded="true"] * {
+  left: 0;
+}
+
+/**end of reduce or expand menu button**/
+
+
