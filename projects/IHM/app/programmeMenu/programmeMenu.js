@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.programmeMenu', ['ngRoute'])
+angular.module('myApp.programmeMenu', ['ngRoute','myApp.gradeClassesTab'])
 
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/programmeMenu', {
@@ -19,6 +19,8 @@ angular.module('myApp.programmeMenu', ['ngRoute'])
       butt.attr("selected", true);
       $scope.page = nom;
     };
+
+
 
     $scope.openTab('programmeMenu/gradeClassesTab/gradeClassesTab.html', 'programmeGradeClasses');
 

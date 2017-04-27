@@ -12,39 +12,28 @@ angular.module('myApp.roomTab', ['ngRoute', 'myApp.dataFactory'])
   .controller('roomTabCtrl', ['$scope', 'dataFactory', function ($scope, dataFactory) {
     $scope.roomsArray = dataFactory.getRoomArray();
     $scope.roomTypesArray = dataFactory.getRoomTypeArray();
+    $scope.roomTypesSelected = [];
+    $scope.roomCapacity = 1;
 
     $scope.addRoom = function () {
-      $scope.roomNameInputValue = $scope.roomNameInputValue.trim();
-      if ($scope.roomNameInputValue && $scope.roomTypes) {
-        var isDuplicate = false;
-
-        for (var i = 0; i < $scope.roomsArray.length; i++) {
-          if ($scope.roomsArray[i].Name === $scope.roomNameInputValue) {
-            isDuplicate = true;
-            break;
-          }
+      if ($scope.roomNameInputValue && $scope.roomNameInputValue.trim() && $scope.roomTypesSelected.length > 0) {
+        if (!dataFactory.addRoom($scope.roomNameInputValue.trim(), $scope.roomTypesSelected, $scope.roomCapacity)) {
+          alert("Une salle avec le même nom existe déjà");
         }
-
-        if (!isDuplicate) {
-          $scope.roomsArray.unshift({
-            Name: $scope.roomNameInputValue,
-            RoomTypes: $scope.roomTypes
-          });
-        } else {
-          alert("Une salle avec le même nom existe déjà")
-        }
+        $scope.roomNameInputValue = "";
+        $scope.roomTypesSelected = [];
+        $scope.roomCapacity = 1;
       }
-      printObjectCaracteristic($scope.roomsArray);
     };
 
     $scope.removeRoom = function (rowToDelete) {
-
+      dataFactory.removeRoom(rowToDelete);
     };
 
     $scope.keyPress = function (key) {
       var ENTER_KEY = 13;
       if (key === ENTER_KEY) {
-        addRoom();
+        $scope.addRoom();
       }
-    }
+    };
   }]);

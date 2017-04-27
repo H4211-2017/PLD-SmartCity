@@ -1,0 +1,16 @@
+{
+  "name": "etoile_server",
+  "version": "1.0.0",
+  "description": "the server side of ETOILE handeling the call to the XML builder and getters and setters to the variables of the application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "florent teppe",
+  "license": "ISC",
+  "dependencies": {
+    "connect-mongo": "^1.3.2",
+    "express": "^4.15.2",
+    "express-session": "^1.15.2"
+  }
+}

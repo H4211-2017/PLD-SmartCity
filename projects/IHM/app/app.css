@@ -146,12 +146,11 @@ div.tab button.active {
   border-color: black;
   border-width: 1px;
   border-style: solid;
+  text-align: center;
 }
 
 .framedTable {
-
   margin: 25px;
-
 }
 
 .selectionTable{
@@ -228,4 +227,3 @@ div.tab button.active {
 }
 
 /**end of CSS for overlay **/
-

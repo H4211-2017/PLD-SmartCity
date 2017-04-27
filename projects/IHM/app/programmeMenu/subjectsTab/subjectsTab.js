@@ -16,45 +16,21 @@ angular.module('myApp.subjectsTab', ['ngRoute', 'myApp.dataFactory'])
     $scope.roomTypeSelected = "Empty";
 
     $scope.addSubject = function () {
-
-      var isDuplicate = false;
-      $scope.inputValue = $scope.inputValue.trim();
-
       //checking that the fields aren't empty
-      if ($scope.inputValue !== null && $scope.inputValue !== "" && $scope.roomTypeSelected !== "Empty") {
-        //looking if the subject already exists (not case sensitive)
-        for (var i = 0; i < $scope.subjectsArray.length; i++) {
-          if ($scope.subjectsArray[i].subjectName.toUpperCase() === $scope.inputValue.toUpperCase()) {
-            isDuplicate = true;
-            break;
-          }
-        }
-
-        if (isDuplicate === false) {
-          $scope.subjectsArray.unshift(
-            {
-              subjectName: $scope.inputValue,
-              roomType: $scope.roomTypeSelected
-            });
-          $scope.inputValue = "";
-          $scope.roomTypeSelected = "Empty";
-        }
-        else {
-          $scope.inputValue = "";
-          $scope.roomTypeSelected = "Empty";
+      if ($scope.inputValue && $scope.inputValue.trim() && $scope.roomTypeSelected !== "Empty") {
+        if (!dataFactory.addSubject($scope.inputValue.trim(), $scope.roomTypeSelected)) {
           alert("Cette matière existe déjà");
         }
-
+        $scope.inputValue = "";
+        $scope.roomTypeSelected = "Empty";
       }
     };
 
     $scope.removeSubject = function (rowToDelete) {
-      //We splice behaves weirdly on end of array, so we use pop instead.
-      if (rowToDelete === $scope.subjectsArray.length) {
-        $scope.subjectsArray.pop();
-      }
-      else {
-        $scope.subjectsArray.splice(rowToDelete, 1);
+      if (!dataFactory.removeSubject(rowToDelete, false)) {
+        if (confirm("Cette action supprimera d'autres éléments\nVoulez-vous continuer?")) {
+          dataFactory.removeSubject(rowToDelete, true);
+        }
       }
     };
 
@@ -62,10 +38,6 @@ angular.module('myApp.subjectsTab', ['ngRoute', 'myApp.dataFactory'])
       var ENTER_KEY = 13;
       if (key === ENTER_KEY) {
         $scope.addSubject();
-        return false;
-      }
-      else {
-        return true;
       }
     };
   }]);

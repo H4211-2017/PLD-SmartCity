@@ -5,3 +5,7 @@
 *.o
 *.out
 .idea/workspace
+
+#other files
+npm-debug.log
+.idea/workspace.xml

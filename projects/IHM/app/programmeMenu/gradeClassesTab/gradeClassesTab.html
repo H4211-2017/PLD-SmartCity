@@ -1,1 +1,53 @@
 <h3>Niveaux - Classes</h3>
+<div ng-controller="gradeClassesTabCtrl">
+{{JSON.stringify(grades)}}
+
+    <table>
+        <tr ng-repeat-start="(indexGrade , grade) in grades">
+            <td>{{grade.name}}</td>
+            <td>
+            </td>
+            <td>
+                <md-button class="md-icon-button" ng-click="deleteGrade(indexGrade)">
+                    <md-icon>delete</md-icon>
+                </md-button>
+            </td>
+
+        </tr>
+
+        <tr ng-repeat="(indexClass , classe) in grade.classes" >
+            <td>
+            </td>
+            <td>
+                {{classe.name}}
+            </td>
+            <td>
+                <md-button class="md-icon-button" ng-click="deleteClass(indexGrade,indexClass)">
+                    <md-icon>delete</md-icon>
+                </md-button>
+            </td>
+        </tr>
+        <tr ng-repeat-end>
+            <td></td>
+            <td>
+                <input type="text" ng-model="inputClass[indexGrade]" ng-keypress="keyPressedClass($event.keyCode, indexGrade)" cols="10">
+            </td>
+            <td>
+                <md-button class="md-icon-button" ng-click="addClass(indexGrade)">
+                    <md-icon>add</md-icon>
+                </md-button>
+            </td>
+        </tr>
+        <tr >
+            <td>
+                <input type="text" ng-model="inputGrade" ng-keypress="keyPressedGrade($event.keyCode)" cols="10">
+            </td>
+            <td></td>
+            <td>
+                <md-button class="md-icon-button" ng-click="addGrade()">
+                    <md-icon>add</md-icon>
+                </md-button>
+            </td>
+        </tr>
+    </table>
+</div>
