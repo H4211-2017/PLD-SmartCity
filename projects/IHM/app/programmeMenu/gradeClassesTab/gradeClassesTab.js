@@ -15,19 +15,20 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory'])
 
     $scope.grades = []
     $scope.inputClass = [""];
+    $scope.inputStudentNumber = [0];
     $scope.inputGrade = "";
 
-    $scope.deleteGrade = function(grade){
-      if (!dataFactory.removeYear(grade, false)) {
+    $scope.deleteGrade = function(indexGrade){
+      if (!dataFactory.removeYear(indexGrade, false)) {
         if (confirm("Cette action supprimera d'autres éléments\nVoulez-vous continuer?")) {
-          dataFactory.removeYear(grade, true);
+          dataFactory.removeYear(indexGrade, true);
         }
       }
       $scope.updateDisplay();
     };
 
-    $scope.deleteClass = function(grade, classToDelete){
-      var indexClass = dataFactory.getClassesArray().indexOf($scope.grades[grade].classes[classToDelete]);
+    $scope.deleteClass = function(indexGrade, indexClassInGrade){
+      var indexClass = dataFactory.getClassesArray().indexOf($scope.grades[indexGrade].classes[indexClassInGrade]);
       if (!dataFactory.removeClass(indexClass, false)) {
         if (confirm("Cette action supprimera d'autres éléments\nVoulez-vous continuer?")) {
           dataFactory.removeClass(indexClass, true);
@@ -52,14 +53,15 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory'])
 
     $scope.addClass = function(index){
       var inputClass = $scope.inputClass[index].trim();
-      if (inputClass) {
-        if (dataFactory.addClass(inputClass, $scope.grades[index].name, 32)) {
+      var inputStudentNumber = $scope.inputStudentNumber[index];
+      if (inputClass && (inputStudentNumber === 0 || inputStudentNumber)) {
+        if (dataFactory.addClass(inputClass, $scope.grades[index].name, inputStudentNumber)) {
           $scope.updateDisplay();
-          $scope.inputClass[index] = "";
         } else {
           alert("Une classe avec ce nom existe déjà");
-          $scope.inputClass[index] = "";
         }
+        $scope.inputClass[index] = "";
+        $scope.inputStudentNumber[index] = 0;
       }
     };
 
@@ -80,12 +82,14 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory'])
     //so that a class is a child of the year it belongs to.
     $scope.getClassesGrades = function(years, classes){
       var gradesFromFactory = [];
+
       angular.forEach(years, function(year){
         var newGrade = {name:year, classes:[]};
+
         angular.forEach(classes, function(classLoop){
           if(classLoop.year === year)
           {
-            var newClass = {name:classLoop.name, capacity:classLoop.studentsNumber};
+            var newClass = {name:classLoop.name, studentNumber:classLoop.studentNumber};
             newGrade.classes.push(newClass);
           }
         });
@@ -99,6 +103,8 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory'])
       var factoryGrades = dataFactory.getYearArray();
       var factoryClasses = dataFactory.getClassesArray();
       $scope.grades = $scope.getClassesGrades(factoryGrades, factoryClasses);
+      console.log("gradeClassesTab::updateDisplay : grades : ");
+      printObjectCaracteristic($scope.grades, ['$$hashKey']);
     };
 
 
