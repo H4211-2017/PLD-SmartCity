@@ -11,23 +11,11 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory'])
 
   .controller('gradeClassesTabCtrl', ['$scope','dataFactory', function($scope, dataFactory) {
 
+    const ENTER_KEY = 13;
 
     $scope.grades = []
-    // dataFactory.addYear("3eme");
-    // dataFactory.addYear("4eme");
-    // dataFactory.addClass("A","3eme",32);
-
-
-
-    const ENTER_KEY = 13;
     $scope.inputClass = [""];
-    $scope.inputGrade = null;
-
-
-
-    // $scope.grades = [{name:'3eme', classes:[{name:'3emeA', capacity:'32'},{name:'3emeA', capacity:'32'} ]},
-    //   {name:'4eme', classes:[{name:'4emeA', capacity:'32'}]}];
-
+    $scope.inputGrade = "";
 
     $scope.deleteGrade = function(grade){
       if (!dataFactory.removeYear(grade, false)) {
@@ -46,33 +34,33 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory'])
         }
       }
       $scope.updateDisplay();
-      //$scope.grades[grade].classes.splice(classToDelete,1);
     };
 
     $scope.addGrade = function(){
-      var input = $scope.inputGrade.trim();
-      checkIfInputValidAndUnique(input, $scope.grades, function(isValid){
-        if(isValid) {
-          dataFactory.addYear(input);
+      var inputYear = $scope.inputGrade.trim();
+      if (inputYear) {
+        if (dataFactory.addYear(inputYear)) {
           $scope.updateDisplay();
           $scope.inputGrade = "";
           $scope.inputClass[$scope.grades.length + 1]="";
+        } else {
+          alert("Une année avec ce nom existe déjà");
+          $scope.inputGrade = "";
         }
-      });
+      }
     };
 
-
     $scope.addClass = function(index){
-      var input = $scope.inputClass[index].trim();
-
-      checkIfInputValidAndUnique(input, $scope.grades[index].classes, function(isValid){
-        if(isValid){
-          //$scope.grades[index].classes.push(newClass);
-          dataFactory.addClass(input, $scope.grades[index].name,32);
+      var inputClass = $scope.inputClass[index].trim();
+      if (inputClass) {
+        if (dataFactory.addClass(inputClass, $scope.grades[index].name, 32)) {
           $scope.updateDisplay();
           $scope.inputClass[index] = "";
+        } else {
+          alert("Une classe avec ce nom existe déjà");
+          $scope.inputClass[index] = "";
         }
-      });
+      }
     };
 
     $scope.keyPressedClass = function(key, index){
@@ -87,19 +75,6 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory'])
         $scope.addGrade();
       }
     };
-/*
-    $scope.setClassesGrades = function(){
-      var gradesFactory = [];
-      var classesFactory = [];
-      angular.forEach($scope.grades, function (grade) {
-        gradesFactory.push(grade.name);
-        angular.forEach(grade.classes, function(classLoop){
-          var newClass ={yeear:grade.name, name:classLoop.name,studentsNumber:classLoop.capacity};
-          classesFactory.push(newClass);
-        });
-      });
-    };
-    */
 
     //this function takes the data from the data factory and transforms them, to translate the hierarchical presentation
     //so that a class is a child of the year it belongs to.
@@ -130,23 +105,3 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory'])
     $scope.updateDisplay();
 
   }]);
-
-
-function checkIfInputValidAndUnique(input, array, callback){
-  if(input){
-    var isUnique  = true;
-    angular.forEach(array, function(element){
-
-      if(element.name === input){
-        isUnique = false;
-        alert('Existe déjà');
-      }
-    });
-    callback(isUnique);
-  }
-  else
-  {
-    callback(false);
-  }
-}
-
