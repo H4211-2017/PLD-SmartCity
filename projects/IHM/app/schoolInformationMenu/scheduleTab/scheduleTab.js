@@ -18,6 +18,7 @@ angular.module('myApp.scheduleTab', ['ngRoute', 'myApp.dataFactory'])
         start: "",
         end: ""
       });
+
     };
 
     $scope.copyFirstLineHourSlot = function() {
@@ -34,6 +35,24 @@ angular.module('myApp.scheduleTab', ['ngRoute', 'myApp.dataFactory'])
 
     $scope.removeAllDayHourSlot = function(dayNumber) {
       $scope.scheduleArray[dayNumber].hours = [];
+    };
+
+    $scope.pressKeyInput = function(dayNumber, event, slotNumber) {
+
+        var ENTER_KEY = 13;
+
+        if (event.keyCode === ENTER_KEY)
+        {
+            if ($scope.scheduleArray[dayNumber].hours.length === slotNumber + 1)
+            {
+                $scope.addHourSlot(dayNumber);
+            }
+        }
+    };
+
+    $scope.releaseKeyInput = function(dayNumber, slotNumber) {
+
+        $("#f"+ dayNumber + "" + (slotNumber+1)).focus();
     };
 
     // Clean all empty hour slot set by the user

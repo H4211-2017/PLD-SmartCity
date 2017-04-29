@@ -15,9 +15,9 @@
         {{day.dayName}}
       </th>
       <td ng-repeat="hourSlot in day.hours">
-        <input type="text" ng-model="hourSlot.start" maxlength="5" size="5"></input>
+        <input id={{"f"+$parent.$index+""+$index}} type="text" ng-model="hourSlot.start" maxlength="5" size="5" ng-keypress="pressKeyInput($parent.$index, $event, $index)" ng-keyup="releaseKeyInput($parent.$index, $index)"></input>
         <br>
-        <input type="text" ng-model="hourSlot.end" maxlength="5" size="5"></input>
+        <input id={{"s"+$parent.$index+""+$index}} type="text" ng-model="hourSlot.end" maxlength="5" size="5" ng-keypress="pressKeyInput($parent.$index, $event, $index)" ng-keyup="releaseKeyInput($parent.$index, $index)"></input>
         <!--{{hourSlot.start}} - {{hourSlot.end}}-->
       </td>
       <td>
