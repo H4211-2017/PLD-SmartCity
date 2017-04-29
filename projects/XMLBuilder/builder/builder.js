@@ -14,7 +14,11 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	
 	var outputJsonGenerator = Object.create(outputGenerator.OutputJsonGenerator);
 	var tableSchedule = jsonObjectEntry.schoolInformation.schedule;
-	
+	var tableRooms = jsonObjectEntry.schoolInformation.room;
+	var tableYear = jsonObjectEntry.programme.year;
+	var tableClasses = jsonObjectEntry.programme.classes;
+	var tableSubjects = jsonObjectEntry.programme.subjects;
+
 	async.forEach(tableSchedule, parseDay, afterParseDay);
 	
 	function parseDay(jsonDay, callback) {
@@ -25,8 +29,6 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	
 	function afterParseDay(err) {
 		
-		var tableYear = jsonObjectEntry.programme.year;
-	
 		async.forEach(tableYear, parseYear, afterParseYear);
 	}
 	
@@ -37,8 +39,6 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	
 	function afterParseYear(err) {
 	
-		var tableClasses = jsonObjectEntry.programme.classes;
-	
 		async.forEach(tableClasses, parseClass, afterParseClass);
 	}
 	
@@ -48,15 +48,13 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	}
 	
 	function afterParseClass(err) {
-
-		var tableSubjects = jsonObjectEntry.programme.subjects;
 		
 		async.forEach(tableSubjects, parseSubject, afterParseSubject);
 	}
 	
 	function parseSubject(jsonSubject, callback) {
 	
-		ioSubject.parse(jsonSubject, outputJsonGenerator, callback);
+		ioSubject.parse(jsonSubject, tableRooms, outputJsonGenerator, callback);
 	}
 	
 	function afterParseSubject(err) {
@@ -66,8 +64,8 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	}
 
 	function parseTeacher(jsonTeacher, callback) {
-
-		ioTeacher.parse(jsonTeacher, outputJsonGenerator, callback);
+	
+		ioTeacher.parse(jsonTeacher, tableSchedule, outputJsonGenerator, callback);
 	}
 	
 	function afterParseTeacher(err) {
@@ -84,8 +82,6 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	}
 	
 	function afterParseAttribution(err) {
-		
-		var tableRooms = jsonObjectEntry.schoolInformation.rooms;
 	
 		async.forEach(tableRooms, parseRooms, afterParseRooms);
 	}

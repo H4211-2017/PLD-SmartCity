@@ -50,7 +50,6 @@ var OutputJsonGenerator = {
 
     addHour: function(stringHour) {
 
-
         var hour = {name: 'Hour', children: [
             {name: 'Name', text: stringHour}
         ]};
@@ -179,7 +178,9 @@ var OutputJsonGenerator = {
 	
 	// tableNotAvailableDayHour is table of objects type { day: "Day", hour: "00h00 - 00h00" }
 	
-	addTeacherNotAvailableTime: function(stringTeacher, tableNotAvailableDayHour, intWeightPourcentage, callback) {
+	addTeacherNotAvailableTime: function(stringTeacher, tableNotAvailableDayHour, intWeightPourcentage, boolActive, stringComments, callback) {
+		
+		// TODO verify if elements exists in hierarchy
 		
 		if (intWeightPourcentage < 0 || intWeightPourcentage > 100) 
 		{
@@ -188,21 +189,20 @@ var OutputJsonGenerator = {
 		
 		var tableTimeConstraints = this.outputJsonObject[0].children[11].children;
 		
-		var constrain = {name: 'ConstraintTeacherNotAvailableTimes', children: [
+		var constraint = {name: 'ConstraintTeacherNotAvailableTimes', children: [
 			{name: 'Weight_Percentage', text: intWeightPourcentage},
 			{name: 'Teacher', text: stringTeacher},
-			{name: 'Number_of_Not_Available_Times', text: 0},
+			{name: 'Number_of_Not_Available_Times', text: tableNotAvailableDayHour.length},
 		]};
 		
 		async.forEach(tableNotAvailableDayHour, function(notAvailableDayHour, callback2) {
 			
 			var notAvailableTime = {name: 'Not_Available_Time', children: [
 				{name: 'Day', text: notAvailableDayHour.day},
-				{name: 'Hour', text: notAvailableDayHour.hour},
+				{name: 'Hour', text: notAvailableDayHour.hour}
 			]};
 			
-			constrain.children[2].text++; // increment Number_of_Not_Available_Times
-			constrain.children.push(notAvailableTime);
+			constraint.children.push(notAvailableTime);
 			
 			callback2();
 			
@@ -213,9 +213,43 @@ var OutputJsonGenerator = {
 				throw 'ERREUR : outputGenerator.js::addTeacherNotAvailableTime : ' + err;
 			}
 			
+			constraint.children.push({name: 'Active', text: boolActive},
+									 {name: 'Comments', text: stringComments});
+			tableTimeConstraints.push(constraint);
+					
 			callback();
 		});
-	}
+	},
+	
+	// tablePreferredRoom is a list of string : each is the name of the room
+	
+	addSubjectPreferredRoom: function(stringSubject, tablePreferredRoom, intWeightPourcentage, boolActive, stringComments, callback) {
+
+		// TODO verify if elements exists in hierarchy
+				
+		var constraint = {name: 'ConstraintSubjectPreferredRooms', children: [
+			{name: 'Weight_Percentage', text: intWeightPourcentage},
+			{name: 'Subject', text: stringSubject},
+			{name: 'Number_of_Preferred_Rooms', text: tablePreferredRoom.length}
+		]};
+		
+		var tableSpaceConstraints = this.outputJsonObject[0].children[12].children;
+		
+		async.forEach(tablePreferredRoom, function(stringPreferredRoom, callback1) {
+			
+			constraint.children.push({name: 'Preferred_Room', text: stringPreferredRoom});
+			
+			callback1();
+		
+		}, function(err) {
+		
+			constraint.children.push({name: 'Active', text: boolActive},
+									 {name: 'Comments', text: stringComments});			 
+			tableSpaceConstraints.push(constraint);
+			
+			callback();
+		});
+	},
 	
 	getHourName: function(numberHourIndice) {
 		

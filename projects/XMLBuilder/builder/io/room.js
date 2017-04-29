@@ -5,8 +5,6 @@ var parse = function(jsonRoom, outputJsonGenerator, callback1) {
 	
 	outputJsonGenerator.addRoom(stringName, '', intCapacity, '');
 	
-	//TODO contraints of rooms types
-	
 	callback1();
 }
 

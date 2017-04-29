@@ -4,9 +4,14 @@ var fs = require('fs');
 var builder = require('./builder');
 var fileGenerator = require('../file/fileGenerator');
 
-var outputFile = 'C:/Users/PL/git/PLD-SmartCity/projects/XMLBuilder/resources/gen.fet';
+var repositoryPath = '/home/pl/git/pld-smartcity/PLD-SmartCity';
+// 'C:/Users/PL/git/PLD-SmartCity';
 
-fs.readFile('C:/Users/PL/git/PLD-SmartCity/projects/IHM/app/resources/toXML.json', function(err, data) {
+var inputFile = repositoryPath + '/projects/IHM/app/resources/toXML.json';
+
+var outputFile = repositoryPath + '/projects/XMLBuilder/resources/gen.fet';
+
+fs.readFile(inputFile, function(err, data) {
 	
 	if (err) {
 			
@@ -14,7 +19,8 @@ fs.readFile('C:/Users/PL/git/PLD-SmartCity/projects/IHM/app/resources/toXML.json
 	}
 	
 	var jsonObjectEntry = JSON.parse(data);
-	var  outputXml = builder.jsonObjectEntryToXml(jsonObjectEntry);
+
+	var outputXml = builder.jsonObjectEntryToXml(jsonObjectEntry);
 	
 	console.log(outputXml);
 
