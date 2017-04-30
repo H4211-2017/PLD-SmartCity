@@ -1,0 +1,14 @@
+{
+  "name": "fet-calling",
+  "version": "1.0.0",
+  "description": "fet calling for output data creations",
+  "main": "run.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "pierre-louis lefebrve",
+  "license": "ISC",
+  "dependencies": {
+    "shelljs": "^0.7.7"
+  }
+}

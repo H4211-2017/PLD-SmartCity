@@ -1,0 +1,13 @@
+﻿This is the initial evaluation order of activities computed by FET. If the generation gets stuck after a certain number of activities, please check the activity corresponding to this number+1. You might find errors in your input.
+
+The initial order of activities (id-s):
+
+No: 1, Id: 7, Teachers: Beatrice Beaugrand, Subject: Latin, Activity tags: , Students: 6A
+No: 2, Id: 8, Teachers: Beatrice Beaugrand, Subject: Latin, Activity tags: , Students: 6A
+No: 3, Id: 9, Teachers: Beatrice Beaugrand, Subject: Latin, Activity tags: , Students: 6A
+No: 4, Id: 1, Teachers: Arthur Auklo, Subject: Math, Activity tags: , Students: 6A
+No: 5, Id: 2, Teachers: Arthur Auklo, Subject: Math, Activity tags: , Students: 6A
+No: 6, Id: 3, Teachers: Arthur Auklo, Subject: Math, Activity tags: , Students: 6A
+No: 7, Id: 4, Teachers: Arthur Auklo, Subject: Math, Activity tags: , Students: 6A
+No: 8, Id: 5, Teachers: Arthur Auklo, Subject: Math, Activity tags: , Students: 6A
+End - the order of activities (id-s)

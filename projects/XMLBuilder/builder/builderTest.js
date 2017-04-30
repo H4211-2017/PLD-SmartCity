@@ -4,12 +4,13 @@ var fs = require('fs');
 var builder = require('./builder');
 var fileGenerator = require('../file/fileGenerator');
 
+// very dirty method to adapt to the pc which I work
 var repositoryPath = '/home/pl/git/pld-smartcity/PLD-SmartCity';
 // 'C:/Users/PL/git/PLD-SmartCity';
 
 var inputFile = repositoryPath + '/projects/IHM/app/resources/toXML.json';
 
-var outputFile = repositoryPath + '/projects/XMLBuilder/resources/gen.fet';
+var outputFile = repositoryPath + '/projects/resources/gen.fet';
 
 fs.readFile(inputFile, function(err, data) {
 	

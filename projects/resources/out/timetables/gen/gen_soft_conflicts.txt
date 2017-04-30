@@ -1,0 +1,10 @@
+﻿Soft conflicts of gen.fet
+Generated with FET 5.31.4 on 4/30/17 1:24 PM
+
+Number of broken soft constraints: 0
+Total soft conflicts: 0
+
+Soft conflicts list (in decreasing order):
+
+
+End of file.
