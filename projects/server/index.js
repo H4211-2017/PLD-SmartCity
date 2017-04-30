@@ -2,6 +2,7 @@ const http = require('http')
 const express = require('express')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session);
+const fs = require('fs');
 const app = express()
 const port = 3000
 
@@ -27,7 +28,7 @@ app.get('/typesalle', (request, response) =>
 })
 
 app.post('/typesalle', function(request, response){
-	
+	console.log(req.body);
 })
 
 app.get('/logout', function(req, res){
