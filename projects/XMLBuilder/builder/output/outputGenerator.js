@@ -5,7 +5,7 @@ var OutputJsonGenerator = {
     outputJsonObject: [
 
         {name: 'fet', attrs: {version: '5.31.4'}, children: [
-            {name: 'Intsitution_Name', text: 'institution par defaut'}, // 0
+            {name: 'Institution_Name', text: 'institution par defaut'}, // 0
             {name: 'Comments', text: 'commentaires par defaut'}, // 1
             {name: 'Days_List', children: [ // 2
                 {name: 'Number_of_Days', text: 0}
