@@ -1,10 +1,10 @@
-﻿This is the list of max placed activities, chronologically. If FET could reach maximum n-th activity, look at the n+1-st activity in the initial order of the activities
+﻿C'est la liste des activités placées au maximum, chronologiquement. Si FET peut atteindre au maximum la n-ième activité, regardez le n+1-ième activité dans l'ordre initial des activités
 
-At time 0 h 0 m 0 s, FET reached 1 activities placed
-At time 0 h 0 m 0 s, FET reached 2 activities placed
-At time 0 h 0 m 0 s, FET reached 3 activities placed
-At time 0 h 0 m 0 s, FET reached 4 activities placed
-At time 0 h 0 m 0 s, FET reached 5 activities placed
-At time 0 h 0 m 0 s, FET reached 6 activities placed
-At time 0 h 0 m 0 s, FET reached 7 activities placed
-At time 0 h 0 m 0 s, FET reached 8 activities placed
+À 0 h 0 m 0 s ,FET a atteint 1 activités placées
+À 0 h 0 m 0 s ,FET a atteint 2 activités placées
+À 0 h 0 m 0 s ,FET a atteint 3 activités placées
+À 0 h 0 m 0 s ,FET a atteint 4 activités placées
+À 0 h 0 m 0 s ,FET a atteint 5 activités placées
+À 0 h 0 m 0 s ,FET a atteint 6 activités placées
+À 0 h 0 m 0 s ,FET a atteint 7 activités placées
+À 0 h 0 m 0 s ,FET a atteint 8 activités placées

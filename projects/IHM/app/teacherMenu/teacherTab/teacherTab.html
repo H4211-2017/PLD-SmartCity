@@ -108,17 +108,18 @@
     <div id="addTeacherOverlay" class="overlay">
 
       <div class="formLayout">
-        <label>Prénom :</label>
+      
+        <label for="firstname" >Prénom :</label>
         <input id="firstname" type="text" name="firstname" ng-model="tpsFirstName"/>
         <br/>
 
-        <label id="lastname" >Nom :</label>
-        <input type="text" name="lastName" ng-model="tpsLastName"/>
+        <label for="lastname" >Nom :</label>
+        <input id="lastName" type="text" name="lastName" ng-model="tpsLastName"/>
         <br/>
 
-        <label>Matières :</label>
+        <label for="matieres">Matières :</label>
         <select id="matieres"
-                name="matieres"
+        		name="matieres"
                 chosen
                 multiple
                 class="coursName"
@@ -130,8 +131,8 @@
         </select>
         <br/>
 
-        <label id="com" >Commentaire :</label>
-        <textarea style="resize:none" name="com" rows="5" ng-model="tpsCom"/>
+        <label for="com" >Commentaire :</label>
+        <textarea id="com" style="resize:none" name="com" rows="5" ng-model="tpsCom"/>
 
         <div class="formButtonLayout">
           <md-button class="md-icon-button" ng-click="closeOverlay()">

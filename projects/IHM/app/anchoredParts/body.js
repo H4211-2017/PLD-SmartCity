@@ -5,7 +5,11 @@
 
 angular.module('myApp')
 
-    .controller('BodyCtrl', ['$scope', function($scope) {
+    .controller('BodyCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+    
+    	$rootScope.__etablissement = '';
+    	$rootScope.mdp = '';
+    	
         $scope.homeMenu = 'homeMenu/homeMenu.html';
         $scope.programmeMenu = 'programmeMenu/programmeMenu.html';
         $scope.schoolMenu = 'schoolInformationMenu/schoolInformationMenu.html';
@@ -35,9 +39,37 @@ angular.module('myApp')
             else
             {
                 $scope.icone = 'chevron_left';
-
             }
 
         };
+        
+        $scope.etablissement = "";
+        $scope.mdp = "";
+        $scope.login = function() {
+        	
+        	if($scope.etablissement != "")
+	    	{
+				$rootScope.__etablissement = $scope.etablissement;
+				$rootScope.__mdp = $scope.mdp;
+				$("#connect").css("display", "none");
+				$("#disconnect").css("display", "block");
+				$("#homeSave").removeAttr("disabled");
+				$("#homeLoad").removeAttr("disabled");
+        	}
+        	else
+        	{
+        		alert("Nom d'établissement et/ou mot de passe incorrect");
+        	}
+        };
+        
+        $scope.disconnect = function() {
+        	$rootScope.__etablissement = '';
+        	$rootScope.__mdp = '';
+        	$("#connect").css("display", "block");
+        	$("#disconnect").css("display", "none");
+        	$("#homeSave").attr("disabled", "true");
+        	$("#homeLoad").attr("disabled", "true");
+        	$("#etablissement").val('');
+        }
 
     }])

@@ -50,9 +50,14 @@ angular.module('myApp.scheduleTab', ['ngRoute', 'myApp.dataFactory'])
         }
     };
 
-    $scope.releaseKeyInput = function(dayNumber, slotNumber) {
+    $scope.releaseKeyInput = function(dayNumber, event, slotNumber) {
 
-        $("#f"+ dayNumber + "" + (slotNumber+1)).focus();
+        var ENTER_KEY = 13;
+
+        if (event.keyCode === ENTER_KEY)
+        {
+        	$("#f"+ dayNumber + "" + (slotNumber+1)).focus();
+        }
     };
 
     // Clean all empty hour slot set by the user

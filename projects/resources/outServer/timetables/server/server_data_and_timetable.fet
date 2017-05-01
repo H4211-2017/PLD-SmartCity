@@ -297,8 +297,8 @@
 <ConstraintActivityPreferredStartingTime>
 	<Weight_Percentage>100</Weight_Percentage>
 	<Activity_Id>1</Activity_Id>
-	<Preferred_Day>Mardi</Preferred_Day>
-	<Preferred_Hour>15h35 - 16h30</Preferred_Hour>
+	<Preferred_Day>Lundi</Preferred_Day>
+	<Preferred_Hour>16h30 - 17h25</Preferred_Hour>
 	<Permanently_Locked>false</Permanently_Locked>
 	<Active>true</Active>
 	<Comments></Comments>
@@ -307,7 +307,7 @@
 	<Weight_Percentage>100</Weight_Percentage>
 	<Activity_Id>2</Activity_Id>
 	<Preferred_Day>Mardi</Preferred_Day>
-	<Preferred_Hour>9h30 - 10h25</Preferred_Hour>
+	<Preferred_Hour>15h35 - 16h30</Preferred_Hour>
 	<Permanently_Locked>false</Permanently_Locked>
 	<Active>true</Active>
 	<Comments></Comments>
@@ -325,7 +325,7 @@
 	<Weight_Percentage>100</Weight_Percentage>
 	<Activity_Id>4</Activity_Id>
 	<Preferred_Day>Mardi</Preferred_Day>
-	<Preferred_Hour>8h35 - 9h30</Preferred_Hour>
+	<Preferred_Hour>11h40 - 12h35</Preferred_Hour>
 	<Permanently_Locked>false</Permanently_Locked>
 	<Active>true</Active>
 	<Comments></Comments>
@@ -334,7 +334,7 @@
 	<Weight_Percentage>100</Weight_Percentage>
 	<Activity_Id>5</Activity_Id>
 	<Preferred_Day>Mardi</Preferred_Day>
-	<Preferred_Hour>14h40 - 15h35</Preferred_Hour>
+	<Preferred_Hour>8h35 - 9h30</Preferred_Hour>
 	<Permanently_Locked>false</Permanently_Locked>
 	<Active>true</Active>
 	<Comments></Comments>
@@ -351,8 +351,8 @@
 <ConstraintActivityPreferredStartingTime>
 	<Weight_Percentage>100</Weight_Percentage>
 	<Activity_Id>8</Activity_Id>
-	<Preferred_Day>Lundi</Preferred_Day>
-	<Preferred_Hour>9h30 - 10h25</Preferred_Hour>
+	<Preferred_Day>Mardi</Preferred_Day>
+	<Preferred_Hour>10h45 - 11h40</Preferred_Hour>
 	<Permanently_Locked>false</Permanently_Locked>
 	<Active>true</Active>
 	<Comments></Comments>
@@ -360,8 +360,8 @@
 <ConstraintActivityPreferredStartingTime>
 	<Weight_Percentage>100</Weight_Percentage>
 	<Activity_Id>9</Activity_Id>
-	<Preferred_Day>Mardi</Preferred_Day>
-	<Preferred_Hour>10h45 - 11h40</Preferred_Hour>
+	<Preferred_Day>Lundi</Preferred_Day>
+	<Preferred_Hour>9h30 - 10h25</Preferred_Hour>
 	<Permanently_Locked>false</Permanently_Locked>
 	<Active>true</Active>
 	<Comments></Comments>
@@ -412,7 +412,7 @@
 <ConstraintActivityPreferredRoom>
 	<Weight_Percentage>100</Weight_Percentage>
 	<Activity_Id>1</Activity_Id>
-	<Room>C1</Room>
+	<Room>C2</Room>
 	<Permanently_Locked>false</Permanently_Locked>
 	<Active>true</Active>
 	<Comments></Comments>
@@ -428,7 +428,7 @@
 <ConstraintActivityPreferredRoom>
 	<Weight_Percentage>100</Weight_Percentage>
 	<Activity_Id>3</Activity_Id>
-	<Room>C2</Room>
+	<Room>C1</Room>
 	<Permanently_Locked>false</Permanently_Locked>
 	<Active>true</Active>
 	<Comments></Comments>
@@ -436,7 +436,7 @@
 <ConstraintActivityPreferredRoom>
 	<Weight_Percentage>100</Weight_Percentage>
 	<Activity_Id>4</Activity_Id>
-	<Room>C1</Room>
+	<Room>C2</Room>
 	<Permanently_Locked>false</Permanently_Locked>
 	<Active>true</Active>
 	<Comments></Comments>
@@ -460,7 +460,7 @@
 <ConstraintActivityPreferredRoom>
 	<Weight_Percentage>100</Weight_Percentage>
 	<Activity_Id>8</Activity_Id>
-	<Room>C2</Room>
+	<Room>C1</Room>
 	<Permanently_Locked>false</Permanently_Locked>
 	<Active>true</Active>
 	<Comments></Comments>
@@ -468,7 +468,7 @@
 <ConstraintActivityPreferredRoom>
 	<Weight_Percentage>100</Weight_Percentage>
 	<Activity_Id>9</Activity_Id>
-	<Room>C2</Room>
+	<Room>C1</Room>
 	<Permanently_Locked>false</Permanently_Locked>
 	<Active>true</Active>
 	<Comments></Comments>

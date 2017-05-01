@@ -3,10 +3,6 @@
  */
 'use strict';
 
-
-var data;//TODO initialise higher and make it read config.json
-//TODO AJAX CALL TO INITIALISE config
-
 angular.module('myApp.homeMenu', ['ngRoute'])
   
   .config(['$routeProvider', function($routeProvider) {
@@ -16,9 +12,11 @@ angular.module('myApp.homeMenu', ['ngRoute'])
     });
   }])
   
-  .controller('homeMenuCtrl', ["$scope", "$http", function($scope, $http) {
+  .controller('homeMenuCtrl', ["$scope", "$http", "$rootScope", function($scope, $http, $rootScope) {
 	  
-
+		$rootScope.__data;//TODO initialise higher and make it read config.json
+						//TODO AJAX CALL TO INITIALISE config
+		
 	  $scope.save = function() {
 			console.log("Save Pressed")//test for development
 			//simulates an anchor and a click on it
@@ -51,7 +49,46 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 	  };
 	  
 	  $scope.load = function() {
-			console.log("Load Pressed")//Test for development
+	  
+	  	var overlayToFill = $("#selectorConfig");
+	  	overlayToFill.innerHTML = "";
+	  	
+	  	var xhrGetConfig = getXMLHttpRequest();
+	  	var configs = [];
+    
+	    xhrGetConfig.onreadystatechange = function() {
+
+			if (xhrGetConfig.readyState == 4 && (xhrGetConfig.status == 200 || xhrGetConfig.status == 0)) {
+			
+				configs = JSON.parse(xhrGetConfig.responseText);
+				console.log(configs);		
+			}
+		};
+		    
+		xhrGetConfig.open('GET', '/resources/' + $scope.__etablissement + '/getConfig', true);
+		xhrGetConfig.send();
+				
+	  	//$("#overlayLoad").css("display", "block");
+	  	
+	  	//TODO rajouter affichage et selection de fichier
+	  	var fileName = "toXML.json";
+	  
+		var xhr = getXMLHttpRequest();
+    
+	    xhr.onreadystatechange = function() {
+
+			if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+			
+				$rootScope.__data = JSON.parse(xhr.responseText);
+				console.log($rootScope.__data);
+				alert('Configuration Chargée'); // C'est bon \o/		
+			}
+		};
+		    
+		xhr.open('GET', '/resources/' + $scope.__etablissement + "/" + fileName, true);
+		xhr.send();
+				
+			/**
 			//simulate an input of type file
 			var newElem = document.createElement('input');
 			newElem.hidden = true;
@@ -90,15 +127,46 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 			//remove it
 			setTimeout(function() {
 				document.body.removeChild(newElem);
-			}, 0);	
+			}, 0);	*/
 	
 	  };
 	  
 	  $scope.generate = function() {
-		  console.log("Generate Pressed");//Test for development
+		  console.log("Generate Pressed");
+		  
+		  var xhr = getXMLHttpRequest();
+		  
+  	    	xhr.onreadystatechange = function() {
+
+				if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+				
+					alert(xhr.responseText); // C'est bon \o/       	
+				}
+			};
+			
+			xhr.open('GET', '/input?input=' + JSON.stringify($rootScope.__data), true);
+			xhr.send();  
 	  };
 	  
-	  
+ 	function getXMLHttpRequest() {
+		var xhr = null;
+		if (window.XMLHttpRequest || window.ActiveXObject) {
+			if (window.ActiveXObject) {
+				try {
+				    xhr = new ActiveXObject("Msxml2.XMLHTTP");
+				} catch(e) {
+				    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+			} else {
+				xhr = new XMLHttpRequest(); 
+			}
+		} else {
+			alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
+			return null;
+		}
+		return xhr;
+	}
+		
   }]);
   
   

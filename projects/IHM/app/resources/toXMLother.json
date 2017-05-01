@@ -1,8 +1,5 @@
 {
 "schoolInformation" : {
-		"institutionName" : "Lycee Don Bosco",
-		"comments" : "Lycee technique et technologique",
-
 		"schedule" : [
 			{
 				"dayName" : "Lundi",
@@ -270,6 +267,37 @@
 						"teacher" : {
 							"firstName" : "Beatrice",
 							"lastName" : "Beaugrand"
+						}
+					}
+				]
+			},
+			{
+				"class" : "3A",
+				"subjectTeachers" : [
+					{
+						"subject" : "Math",
+						"teacher" : {
+							"firstName" : "Arthur",
+							"lastName" : "Auklo"
+						}
+					},
+					{
+						"subject" : "Physique",
+						"teacher" : {
+							"firstName" : "Arthur",
+							"lastName" : "Auklo"
+						}
+					}
+				]
+			},
+			{
+				"class" : "3B",
+				"subjectTeachers" : [
+					{
+						"subject" : "Math",
+						"teacher" : {
+							"firstName" : "Arthur",
+							"lastName" : "Auklo"
 						}
 					}
 				]

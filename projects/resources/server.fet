@@ -241,20 +241,20 @@
 				</Activity>
 
 		</Activities_List>
-		<Building_List>
+		<Buildings_List>
 
-		</Building_List>
+		</Buildings_List>
 		<Rooms_List>
 				<Room>
 						<Name>C1</Name>
-						<Buidling/>
+						<Building/>
 						<Capacity>34</Capacity>
 						<Comments/>
 
 				</Room>
 				<Room>
 						<Name>C2</Name>
-						<Buidling/>
+						<Building/>
 						<Capacity>30000</Capacity>
 						<Comments/>
 

@@ -18,7 +18,7 @@ var OutputJsonGenerator = function() {
             {name: 'Teachers_List', children: []}, // 6
             {name: 'Students_List', children: []}, // 7
             {name: 'Activities_List', children: []}, // 8
-            {name: 'Building_List', children: []}, // 9
+            {name: 'Buildings_List', children: []}, // 9
             {name: 'Rooms_List', children: []}, // 10
             {name: 'Time_Constraints_List', children: [ // 11
                 {name: 'ConstraintBasicCompulsoryTime', children: [
@@ -167,7 +167,7 @@ var OutputJsonGenerator = function() {
 
 		var room = {name: 'Room', children: [
 			{name: 'Name', text: stringName},
-			{name: 'Buidling', text: stringBuilding},
+			{name: 'Building', text: stringBuilding},
 			{name: 'Capacity', text: intCapacity},
 			{name: 'Comments', text: stringComments}
 		]};

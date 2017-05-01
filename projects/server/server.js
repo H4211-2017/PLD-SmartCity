@@ -3,7 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
-var service = require('./service');
+var service = require('./service/service');
 
 const app = express();
 const port = 3000;
@@ -20,14 +20,14 @@ app.use(session({
 
     secret: 'secretCat',
     store: new MongoStore({
-      url: 'mongodb://localhost:27017/test-app',
-      autoRemove: 'native' // Default
+		url: 'mongodb://localhost:27017/test-app',
+		autoRemove: 'native' // Default
     })
 }));
 
 app.get('/typesalle', function(request, response) {
 
-	var sess  = request.session
+	var sess = request.session;
 	sess.typeSalle.push(sess.compteur);
 	sess.compteur++;
  	response.send(JSON.stringify(sess.typeSalle));
@@ -40,9 +40,9 @@ app.post('/typesalle', function(request, response) {
 
 app.get('/logout', function(request, response) {
 
-	var sess = request.session
-	sess.destroy()
-	response.send('loged out')
+	var sess = request.session;
+	sess.destroy();
+	response.send('logged out');
 });
 
 app.get('/', function(request, response){
@@ -65,7 +65,7 @@ app.get('/', function(request, response){
 	
 	console.log(message);
 	
-	response.sendFile(testPath + '/indexTest.html');
+	response.sendFile(ihmPath + '/indexClient.html');
 });
 
 // method to adapt the path to the pc which I work
@@ -76,13 +76,28 @@ var outputFile = repositoryPath + '/projects/resources/server.fet';
 var outputDir = repositoryPath + '/projects/resources/outServer';
 
 app.get('/input?', function(request, response) {
-
+	
 	service.generateTimetable(request.query.input, outputFile, outputDir, callback);
 	
-	function callback() {
-	
-		response.end('Donnees de l\'emploi du temps dans un certain dossier ;p ');
+	function callback(result) {
+		
+		if(result.length != 0) {
+		
+			response.send(result);
+				
+		} else {
+		
+			response.send('Donnees de l\'emploi du temps dans le dossier : ' + outputDir);
+		}	
 	}
+});
+
+app.get('/resources/:institutionName/getConfig', function(request, response) {
+
+	service.readConfigurations(ihmPath + '/resources/' + request.params.institutionName + '/.__configs.json', function(string) {
+	
+		response.send(string);
+	});
 });
 
 app.listen(port, function(err) {
