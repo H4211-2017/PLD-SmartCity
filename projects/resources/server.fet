@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <fet version="5.31.4">
-		<Intsitution_Name>institution par defaut</Intsitution_Name>
+		<Institution_Name>institution par defaut</Institution_Name>
 		<Comments>commentaires par defaut</Comments>
 		<Days_List>
 				<Number_of_Days>2</Number_of_Days>

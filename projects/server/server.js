@@ -3,16 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
-var builder = require('../XMLBuilder/builder/builder');
-var fileGenerator = require('../XMLBuilder/file/fileGenerator');
-var run = require('../fet-calling/run');
-
-// very dirty method to adapt to the pc which I work
-var repositoryPath = '/home/pl/git/pld-smartcity/PLD-SmartCity';
-// 'C:/Users/PL/git/PLD-SmartCity';
-
-var outputFile = repositoryPath + '/projects/resources/server.fet';
-var outputDir = repositoryPath + '/projects/resources/outServer';
+var service = require('./service');
 
 const app = express();
 const port = 3000;
@@ -77,23 +68,29 @@ app.get('/', function(request, response){
 	response.sendFile(testPath + '/indexTest.html');
 });
 
+// method to adapt the path to the pc which I work
+var repositoryPath = __dirname.slice(0, -16);
+// 'C:/Users/PL/git/PLD-SmartCity (projects/server)';
+
+var outputFile = repositoryPath + '/projects/resources/server.fet';
+var outputDir = repositoryPath + '/projects/resources/outServer';
+
 app.get('/input?', function(request, response) {
 
-	var inputJson = JSON.parse(request.query.input);
-	var outputXML = builder.jsonObjectEntryToXml(inputJson);
-	console.log(outputXML);
-	fileGenerator.saveStringAs(outputXML, outputFile);
-	run.callfet(outputFile, outputDir);
+	service.generateTimetable(request.query.input, outputFile, outputDir, callback);
 	
-	response.end('Donnees de l\'emploi du temps dans ' + outputDir);
+	function callback() {
+	
+		response.end('Donnees de l\'emploi du temps dans un certain dossier ;p ');
+	}
 });
 
 app.listen(port, function(err) {
 
 	if (err) {
 	
-		return console.log('something bad happened', err);
+		return console.log('quelque chose de mauvais est arrivé : ', err);
 	}
 
-	console.log(`server is listening on ${port}`);
+	console.log('le serveur écoute sur le port ' + port);
 });
