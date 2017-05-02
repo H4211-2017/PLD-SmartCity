@@ -11,8 +11,6 @@ const port = 3000;
 var ihmPath = __dirname.slice(0, -6) + 'IHM/app'; // ../IHM/app
 var testPath = __dirname + '/htmlTest';
 
-var parametreEtoile = {typeSalle:["TP","linux","TD","normale"]};
-
 app.use(express.static(testPath));
 app.use(express.static(ihmPath));
 
@@ -37,6 +35,7 @@ app.get('/logout', function(request, response) {
 app.get('/', function(request, response){
 
 	var sess = request.session;
+	var message = 'requete GET sur l\'index';
 	console.log(message);
 	
 	response.sendFile(ihmPath + '/indexClient.html');
@@ -55,12 +54,21 @@ app.get('/login?', function(request, response){
 var repositoryPath = __dirname.slice(0, -16);
 // 'C:/Users/PL/git/PLD-SmartCity (projects/server)';
 
-var outputFile = repositoryPath + '/projects/resources/server.fet';
-var outputDir = repositoryPath + '/projects/resources/outServer';
+app.get('/generate', function(request, response) {
 
-app.get('/input?', function(request, response) {
+	var sess = request.session;
 	
-	service.generateTimetable(request.query.input, outputFile, outputDir, callback);
+	if (sess.data && sess.schoolName) {
+		
+		var outputFile = repositoryPath + '/projects/resources/' + sess.schoolName + '/';
+		var outputDir = repositoryPath + '/projects/resources/outServer';
+	
+		service.generateTimetable(sess.data, outputFile, outputDir, callback);
+	
+	} else {
+		
+		response.send('veuillez vous connecter avant de générer l\'emploi du temps');
+	}
 	
 	function callback(result) {
 		
@@ -92,6 +100,32 @@ app.get('/configs', function(request, response) {
 		response.send(string);
 	});
 	*/
+});
+
+app.get('/display', function(request, response) {
+
+	var sess = request.session;
+	
+	if (sess.schoolName) {
+	
+		response.sendFile();
+	
+	} else {
+		
+		response.send('veuillez vous connecter avant de générer l\'emploi du temps');
+	}
+	
+	function callback(result) {
+		
+		if(result.length != 0) {
+		
+			response.send(result);
+				
+		} else {
+		
+			response.send('Donnees de l\'emploi du temps dans le dossier : ' + outputDir);
+		}	
+	}
 });
 
 app.listen(port, function(err) {

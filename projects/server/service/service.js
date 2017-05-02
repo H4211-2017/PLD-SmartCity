@@ -4,11 +4,11 @@ var fileReader = require('./file/fileReader');
 var run = require('./fet-calling/run');
 var oxhr = require('./xhr/oXHR');
 
-var generateTimetable = function(stringInput, outputFetFile, outputDir, callback) {
+var generateTimetable = function(jsonInput, outputFetFile, outputDir, callback) {
 
 	try {
 	
-		var jsonInput = JSON.parse(stringInput);
+		// var jsonInput = JSON.parse(stringInput);
 		var outputXML = builder.jsonObjectEntryToXml(jsonInput);
 		console.log(outputXML.slice(0, 188) + '\n...');
 		fileGenerator.saveStringAs(outputXML, outputFetFile);
@@ -44,7 +44,7 @@ var getAngularIHM = function(callback) {
 
 			if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
 			
-				callback(xhr);	
+				callback(xh);	
 			}
 		};
 		
