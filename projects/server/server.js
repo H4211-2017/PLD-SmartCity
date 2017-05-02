@@ -37,17 +37,17 @@ app.get('/logout', function(request, response) {
 app.get('/', function(request, response){
 
 	var sess = request.session;
-	console.log(message);
 	
 	response.sendFile(ihmPath + '/indexClient.html');
 });
 
 app.get('/login?', function(request, response){
 	var sess = request.session;
-	var schoolName = request.query.schoolName;
-	if(!sess.schoolName){
-		sess.schoolName = schoolName;
+	var institutionName = request.query.schoolname;
+	if(!sess.institutionName){
+		sess.institutionName = institutionName;
 		sess.configs = [];
+		console.log(sess.institutionName);
 	}
 });
 
