@@ -9,3 +9,6 @@
 #other files
 npm-debug.log
 .idea/workspace.xml
+
+#Pointless server files
+projects/node-modules/*

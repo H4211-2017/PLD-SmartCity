@@ -55,6 +55,7 @@ angular.module('myApp')
 				$("#disconnect").css("display", "block");
 				$("#homeSave").removeAttr("disabled");
 				$("#homeLoad").removeAttr("disabled");
+				$("#homeGen").removeAttr("disabled");
         	}
         	else
         	{
@@ -69,7 +70,8 @@ angular.module('myApp')
         	$("#disconnect").css("display", "none");
         	$("#homeSave").attr("disabled", "true");
         	$("#homeLoad").attr("disabled", "true");
+        	$("#homeGen").attr("disabled", "true");
         	$("#etablissement").val('');
-        }
+        };
 
     }])
