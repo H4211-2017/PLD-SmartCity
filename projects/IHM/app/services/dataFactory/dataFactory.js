@@ -49,7 +49,18 @@ angular.module('myApp.dataFactory', [])
     };
 
     // ======================================= PUBLIC ==================================
-    // =============== SCHOOL INFORMATION ===============
+	// ================ DATA =========================
+	//GETTER
+    dataFactory.getData = function () {
+		return data;
+	}
+	
+	// SETTER
+	dataFactory.setData = function (newData) {	
+		data = newData;
+	}
+	
+	// =============== SCHOOL INFORMATION ===============
     // GETTER
     dataFactory.getSchedule = function () {
       return data.schoolInformation.schedule;
