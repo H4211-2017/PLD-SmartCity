@@ -43,10 +43,11 @@ app.get('/', function(request, response){
 
 app.get('/login?', function(request, response){
 	var sess = request.session;
-	var schoolName = request.query.schoolName;
-	if(!sess.schoolName){
-		sess.schoolName = schoolName;
+	var institutionName = request.query.schoolname;
+	if(!sess.institutionName){
+		sess.institutionName = institutionName;
 		sess.configs = [];
+		console.log(sess.institutionName);
 	}
 });
 

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.programmeMenu', ['ngRoute','myApp.gradeClassesTab'])
+angular.module('myApp.programmeMenu', ['ngRoute','myApp.gradeClassesTab', 'myApp.dataFactory'])
 
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/programmeMenu', {
@@ -9,7 +9,7 @@ angular.module('myApp.programmeMenu', ['ngRoute','myApp.gradeClassesTab'])
     });
   }])
 
-  .controller('programmeMenuCtrl', ['$scope', function ($scope) {
+  .controller('programmeMenuCtrl', ['$scope', 'dataFactory', function ($scope, dataFactory) {
 
     $scope.openTab = function (nom, id) {
       var lastButt = angular.element($scope.lastIdSelected);
@@ -19,9 +19,11 @@ angular.module('myApp.programmeMenu', ['ngRoute','myApp.gradeClassesTab'])
       butt.attr("selected", true);
       $scope.page = nom;
     };
-
-
-
+    
     $scope.openTab('programmeMenu/gradeClassesTab/gradeClassesTab.html', 'programmeGradeClasses');
 
+    $scope.roomType = dataFactory.getRoomTypeArray();
+    $scope.years = dataFactory.getYearArray();
+    $scope.subjects = dataFactory.getSubjectsArray();
+    
   }]);

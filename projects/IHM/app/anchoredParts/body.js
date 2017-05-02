@@ -48,7 +48,7 @@ angular.module('myApp')
         $scope.login = function() {
             if($scope.etablissement !== "")
           {
-            $http.get('/login?schoolname=$scope.etablissement').then(function(){
+            $http.get('/login?schoolname='+$scope.etablissement).then(function(){
               $rootScope.__etablissement = $scope.etablissement;
               $rootScope.__mdp = $scope.mdp;
               $("#connect").css("display", "none");
