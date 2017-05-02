@@ -2,6 +2,7 @@ const http = require('http');
 const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const bodyParser = require('body-parser');
 
 var service = require('./service/service');
 
@@ -15,6 +16,7 @@ var parametreEtoile = {typeSalle:["TP","linux","TD","normale"]};
 
 app.use(express.static(testPath));
 app.use(express.static(ihmPath));
+app.use(bodyParser.json());
 
 app.use(session({
 
@@ -57,6 +59,20 @@ var repositoryPath = __dirname.slice(0, -16);
 
 var outputFile = repositoryPath + '/projects/resources/server.fet';
 var outputDir = repositoryPath + '/projects/resources/outServer';
+
+app.get('/data', function(request, response) {
+	var sess = request.session;
+	//checking that person is logged in
+	sess.data = request.body;
+});
+
+app.post('/data', function(request, response){
+	var sess = request.session;
+	console.log('posted');
+	console.log(request.body);
+	if(sess.institutionName){
+	}
+});
 
 app.get('/input?', function(request, response) {
 	

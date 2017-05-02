@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory'])
+angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory','myApp.serverCalls'])
 
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/gradeClassesTab', {
@@ -9,7 +9,7 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory'])
     });
   }])
 
-  .controller('gradeClassesTabCtrl', ['$scope','dataFactory', function($scope, dataFactory) {
+  .controller('gradeClassesTabCtrl', ['$scope','dataFactory','serverCalls', function($scope, dataFactory, serverCalls) {
 
     const ENTER_KEY = 13;
 
@@ -103,6 +103,7 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory'])
       var factoryGrades = dataFactory.getYearArray();
       var factoryClasses = dataFactory.getClassesArray();
       $scope.grades = $scope.getClassesGrades(factoryGrades, factoryClasses);
+      serverCalls.postData();
     };
 
 
