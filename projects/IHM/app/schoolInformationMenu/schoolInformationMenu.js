@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.schoolInformationMenu', ['ngRoute'])
+angular.module('myApp.schoolInformationMenu', ['ngRoute', 'myApp.dataFactory'])
   
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/schoolInformationMenu', {
@@ -9,7 +9,7 @@ angular.module('myApp.schoolInformationMenu', ['ngRoute'])
     });
   }])
   
-  .controller('schoolInformationMenuCtrl', ['$scope', function($scope) {
+  .controller('schoolInformationMenuCtrl', ['$scope', 'dataFactory', function($scope, dataFactory) {
 
       $scope.openTab = function(nom, id) {
           var lastButt = angular.element($scope.lastIdSelected);
@@ -21,5 +21,7 @@ angular.module('myApp.schoolInformationMenu', ['ngRoute'])
       };
 
       $scope.openTab('schoolInformationMenu/scheduleTab/scheduleTab.html', 'schHoraires');
+      
+      $scope.roomType = dataFactory.getRoomTypeArray();
 
   }]);
