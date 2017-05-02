@@ -1,16 +1,18 @@
-<h3>Niveaux - Classes</h3>
+<h3>Élèves</h3>
 
-<p>
-  rajoutez des niveaux ou classes (ex: 3<sup>e</sup>A) </p>
+<p>Sur cette page, vous pouvez définir des groupes d'élèves.
+  <br/>Dans un premier temps, définissez des niveaux qui correspondent à des types de classe et des programmes scolaires. Par exemple : 3ème générale, 1ère S-SVT...
+  <br/>Ensuite, définissez les différentes classes de ces niveaux, avec leur effectif. Cet effectif permettra d'organiser les cours dans des salles dimensionnées correctement.
+  </p>
 
 <div ng-controller="gradeClassesTabCtrl">
   {{JSON.stringify(grades)}}
 
   <table class="framedTable">
     <tr>
-      <th>Niveaux</th>
-      <th>Classes</th>
-      <th>Capacité</th>
+      <th>Niveau</th>
+      <th>Classe</th>
+      <th>Effectif</th>
     </tr>
 
     <tr ng-repeat-start="(indexGrade , grade) in grades">

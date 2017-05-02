@@ -346,6 +346,9 @@ div.tab button:disabled {
 
 }
 
+#roomTypeTab {
+    border-style: none;
+}
 /**end of CSS for load overlay **/
 
 

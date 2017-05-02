@@ -3,9 +3,10 @@
 <section ng-controller="roomTabCtrl">
 
 
-  <h3>Salle</h3>
+  <h3>Salles</h3>
   <p>
-    Rentrez des salles (ex: C121, type: TP-Physique, capacité : 25)
+    Ajoutez/modifiez des salles à votre établissement. Chaque salle a un nom, un type tel que défini dans le menu de gauche, et une capacité correspondant aux nombre d'étudiants maximum pouvant suivre un cours dans cette salle. La capacité est facultative (vous pouvez la mettre à zéro pour ignorer le champ).
+    <br/><br/>Exemple : C121, type: TP-Physique, capacité : 25
   </p>
   <table class="framedTable">
     <tr>
@@ -18,17 +19,17 @@
       <td>
         <md-inputcontainer>
           <input class="textInput" type="text" id="roomNameInput" ng-model="roomNameInputValue" ng-keypress="keyPress($event.keyCode)"
-                 cols="25" rows="1" placeholder="Entrer le nom de la salle"></input>
+                 cols="25" rows="1" placeholder="Nom de la salle"></input>
         </md-inputcontainer>
       </td>
       <td class="coursName">
-        <select class="coursName" chosen multiple display-selected-options="false" no-results-text="'Pas de type de salle trouvé'"
-                placeholder-text-multiple="'Pas de type de salle selectionné pour le moment'"
+        <select class="coursName" chosen multiple display-selected-options="false" no-results-text="'Aucun type de salle trouvé'"
+                placeholder-text-multiple="'Type de salle'"
                 ng-options="roomType for roomType in roomTypesArray" ng-model="roomTypesSelected" ng-keypress="keyPress($event.keyCode)">
         </select>
       </td>
       <td>
-        <input type="number" min="1" max="300" ng-model="roomCapacity" ng-keypress="keyPress($event.keyCode)"></input>
+        <input type="number" min="0" max="300" ng-model="roomCapacity" ng-keypress="keyPress($event.keyCode)"></input>
       </td>
       <td>
         <md-button class="md-icon-button" aria-label="Use Android" ng-click="addRoom()">
