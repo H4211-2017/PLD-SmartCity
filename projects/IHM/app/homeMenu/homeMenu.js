@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('myApp.homeMenu', ['ngRoute'])
+angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
   
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/homeMenu', {
@@ -12,10 +12,7 @@ angular.module('myApp.homeMenu', ['ngRoute'])
     });
   }])
   
-  .controller('homeMenuCtrl', ["$scope", "$http", "$rootScope", function($scope, $http, $rootScope) {
-	  
-		$rootScope.__data;//TODO initialise higher and make it read config.json
-						//TODO AJAX CALL TO INITIALISE config
+  .controller('homeMenuCtrl', ["$scope", "$http", "$rootScope", "dataFactory", function($scope, $http, $rootScope, dataFactory) {
 		
 	  $scope.save = function() {
 			console.log("Save Pressed")//test for development
@@ -79,8 +76,8 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 
 			if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
 			
-				$rootScope.__data = JSON.parse(xhr.responseText);
-				console.log($rootScope.__data);
+				dataFactory.setData(JSON.parse(xhr.responseText));
+				console.log(dataFactory.getData());
 				alert('Configuration Chargée'); // C'est bon \o/		
 			}
 		};
@@ -144,7 +141,7 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 				}
 			};
 			
-			xhr.open('GET', '/input?input=' + JSON.stringify($rootScope.__data), true);
+			xhr.open('GET', '/input?input=' + JSON.stringify(dataFactory.getData()), true);
 			xhr.send();  
 	  };
 	  
