@@ -17,7 +17,7 @@ angular.module('myApp.schoolInformationMenu', ['ngRoute', 'myApp.dataFactory'])
           var butt = angular.element($scope.lastIdSelected);
           lastButt.attr("selected", false);
           butt.attr("selected", true);
-          $scope.page = nom;
+		  $scope.page = nom;
       };
 
       $scope.openTab('schoolInformationMenu/scheduleTab/scheduleTab.html', 'schHoraires');
