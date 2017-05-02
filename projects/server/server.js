@@ -18,25 +18,14 @@ app.use(express.static(ihmPath));
 
 app.use(session({
 
-    secret: 'secretCat',
+    secret: 'qusfgI7808yuigkjgh45454222guigigLULUYFTYDUF',
     store: new MongoStore({
 		url: 'mongodb://localhost:27017/test-app',
 		autoRemove: 'native' // Default
     })
 }));
 
-app.get('/typesalle', function(request, response) {
 
-	var sess = request.session;
-	sess.typeSalle.push(sess.compteur);
-	sess.compteur++;
- 	response.send(JSON.stringify(sess.typeSalle));
-});
-
-app.post('/typesalle', function(request, response) {
-
-	console.log(req.body);
-});
 
 app.get('/logout', function(request, response) {
 
@@ -48,24 +37,18 @@ app.get('/logout', function(request, response) {
 app.get('/', function(request, response){
 
 	var sess = request.session;
-	var message = '<h4>Serveur test Etoile</h4>\n';
-	message += sess.typeSalle;
-	
-	if(sess.connected) {
-	
-		message += 'votre session existe';
-		
-	} else {
-	
-		sess.connected = true;
-		message += "votre session n'existe pas";
-		sess.typeSalle = [];
-		sess.compteur = 0;
-	}
-	
 	console.log(message);
 	
 	response.sendFile(ihmPath + '/indexClient.html');
+});
+
+app.get('/login?', function(request, response){
+	var sess = request.session;
+	var schoolName = request.query.schoolName;
+	if(!sess.schoolName){
+		sess.schoolName = schoolName;
+		sess.configs = [];
+	}
 });
 
 // method to adapt the path to the pc which I work
@@ -92,12 +75,23 @@ app.get('/input?', function(request, response) {
 	}
 });
 
-app.get('/resources/:institutionName/getConfig', function(request, response) {
 
+app.post('/configs', function(request, response){
+	var sess = request.session;
+	sess.configs = request.body;
+});
+
+
+app.get('/configs', function(request, response) {
+
+	var sess = request.session;
+	response.send(session.configs);
+	/*
 	service.readConfigurations(ihmPath + '/resources/' + request.params.institutionName + '/.__configs.json', function(string) {
 	
 		response.send(string);
 	});
+	*/
 });
 
 app.listen(port, function(err) {
