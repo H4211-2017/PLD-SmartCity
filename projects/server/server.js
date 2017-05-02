@@ -8,10 +8,11 @@ var service = require('./service/service');
 const app = express();
 const port = 3000;
 
+// method to adapt the path to the pc which I work
+var repositoryPath = __dirname.slice(0, -16);
+// 'C:/Users/PL/git/PLD-SmartCity (projects/server)';
 var ihmPath = __dirname.slice(0, -6) + 'IHM/app'; // ../IHM/app
 var testPath = __dirname + '/htmlTest';
-
-var parametreEtoile = {typeSalle:["TP","linux","TD","normale"]};
 
 app.use(express.static(testPath));
 app.use(express.static(ihmPath));
@@ -37,6 +38,7 @@ app.get('/logout', function(request, response) {
 app.get('/', function(request, response){
 
 	var sess = request.session;
+	var message = 'requete GET sur l\'index';
 	console.log(message);
 	
 	response.sendFile(ihmPath + '/indexClient.html');
@@ -44,23 +46,29 @@ app.get('/', function(request, response){
 
 app.get('/login?', function(request, response){
 	var sess = request.session;
-	var schoolName = request.query.schoolName;
-	if(!sess.schoolName){
-		sess.schoolName = schoolName;
+	var institutionName = request.query.schoolname;
+	if(!sess.institutionName){
+		sess.institutionName = institutionName;
 		sess.configs = [];
+		console.log(sess.institutionName);
 	}
 });
 
-// method to adapt the path to the pc which I work
-var repositoryPath = __dirname.slice(0, -16);
-// 'C:/Users/PL/git/PLD-SmartCity (projects/server)';
+app.get('/generate', function(request, response) {
 
-var outputFile = repositoryPath + '/projects/resources/server.fet';
-var outputDir = repositoryPath + '/projects/resources/outServer';
-
-app.get('/input?', function(request, response) {
+	var sess = request.session;
 	
-	service.generateTimetable(request.query.input, outputFile, outputDir, callback);
+	if (sess.data && sess.institutionName) {
+		
+		var outputFile = repositoryPath + '/projects/resources/xmlFet/' + sess.institutionName + '.fet';
+		var outputDir = repositoryPath + '/projects/resources/output';
+	
+		service.generateTimetable(sess.data, outputFile, outputDir, callback);
+	
+	} else {
+		
+		response.send('veuillez vous connecter avant de générer l\'emploi du temps');
+	}
 	
 	function callback(result) {
 		
@@ -70,17 +78,15 @@ app.get('/input?', function(request, response) {
 				
 		} else {
 		
-			response.send('Donnees de l\'emploi du temps dans le dossier : ' + outputDir);
+			response.send('Données de l\'emploi du temps generées');
 		}	
 	}
 });
-
 
 app.post('/configs', function(request, response){
 	var sess = request.session;
 	sess.configs = request.body;
 });
-
 
 app.get('/configs', function(request, response) {
 
@@ -92,6 +98,21 @@ app.get('/configs', function(request, response) {
 		response.send(string);
 	});
 	*/
+});
+
+app.get('/display', function(request, response) {
+
+	var sess = request.session;
+	
+	if (sess.institutionName) {
+	
+		var timeTableIndexPath = repositoryPath + '/projects/resources/output/timetables/' + sess.institutionName + '/' + institutionName + '_index.html';
+		response.sendFile(timeTableIndexPath);
+	
+	} else {
+		
+		response.send('Veuillez vous connecter avant de demander l\'emploi du temps');
+	}
 });
 
 app.listen(port, function(err) {

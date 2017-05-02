@@ -48,13 +48,14 @@ angular.module('myApp')
         $scope.login = function() {
             if($scope.etablissement !== "")
           {
-            $http.get('/login?schoolname=$scope.etablissement').then(function(){
+            $http.get('/login?schoolname='+$scope.etablissement).then(function(){
               $rootScope.__etablissement = $scope.etablissement;
               $rootScope.__mdp = $scope.mdp;
               $("#connect").css("display", "none");
               $("#disconnect").css("display", "block");
               $("#homeSave").removeAttr("disabled");
               $("#homeLoad").removeAttr("disabled");
+			  $("#homeGen").removeAttr("disabled");
             });
             }
           else
@@ -70,6 +71,7 @@ angular.module('myApp')
         	$("#disconnect").css("display", "none");
         	$("#homeSave").attr("disabled", "true");
         	$("#homeLoad").attr("disabled", "true");
+        	$("#homeGen").attr("disabled", "true");
         	$("#etablissement").val('');
         };
 

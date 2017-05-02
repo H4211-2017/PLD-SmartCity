@@ -56,7 +56,8 @@ angular.module('myApp.dataFactory', [])
   // SETTER
   dataFactory.addHourSlot = function (hourSlotStartString, hourSlotEndString) {
     var hoursSlotArray = data.schoolInformation.schedule.hoursSlot;
-    if (dataFactory.findIndexByKeyValue(hoursSlotArray, ['start', 'end'], [hourSlotStartString, hourSlotEndString]) === -1) {
+    if (dataFactory.findIndexByKeyValue(hoursSlotArray, ['start', 'end'], [hourSlotStartString, hourSlotEndString]) ===
+        -1 && hourSlotStartString !== hourSlotEndString) {
       hoursSlotArray.push({
         start: hourSlotStartString,
         end: hourSlotEndString
@@ -251,7 +252,7 @@ angular.module('myApp.dataFactory', [])
   // SETTER
 
   // =============== UTILITY FUNCTION ==============
-  dataFactory.findIndexByKeyValue = function(array, keysArray, valuesArray) {
+  dataFactory.findIndexByKeyValue = function (array, keysArray, valuesArray) {
     for (var i = 0, lengthArray = array.length; i < lengthArray; i++) {
       var found = true;
       for (var j = 0, lengthKeys = keysArray.length; j < lengthKeys; j++) {

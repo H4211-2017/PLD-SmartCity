@@ -3,6 +3,7 @@ var async = require('async');
 var outputGenerator = require('./output/outputGenerator');
 
 var ioDay = require('./io/day');
+var ioHour = require('./io/hour');
 var ioYear = require('./io/year');
 var ioClass = require('./io/class');
 var ioSubject = require('./io/subject');
@@ -13,24 +14,46 @@ var ioRoom = require('./io/room');
 var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	
 	var outputJsonGenerator = new outputGenerator.OutputJsonGenerator();
-	var tableSchedule = jsonObjectEntry.schoolInformation.schedule;
+	var tableDays = jsonObjectEntry.schoolInformation.schedule.days;
+	var tableHours = jsonObjectEntry.schoolInformation.schedule.hoursSlot;
+	var tableDisableHours = jsonObjectEntry.schoolInformation.schedule.disableHours;
 	var tableRooms = jsonObjectEntry.schoolInformation.room;
-	var tableYear = jsonObjectEntry.programme.year;
+	var tableYears = jsonObjectEntry.programme.year;
 	var tableClasses = jsonObjectEntry.programme.classes;
 	var tableSubjects = jsonObjectEntry.programme.subjects;
 
-	async.forEach(tableSchedule, parseDay, afterParseDay);
+	async.forEach(tableDays, parseDay, afterParseDay);
 	
 	function parseDay(jsonDay, callback) {
 		
-		var jsonFirstDay = tableSchedule[0];
-		ioDay.parse(jsonDay, jsonFirstDay, outputJsonGenerator, callback);
+		ioDay.parse(jsonDay, outputJsonGenerator, callback);
 	}
 	
 	function afterParseDay(err) {
 		
-		async.forEach(tableYear, parseYear, afterParseYear);
+		async.forEach(tableHours, parseHours, afterParseHours);
 	}
+	
+	function parseHours(jsonHour, callback) {
+		
+		ioDay.parse(jsonHour, outputJsonGenerator, callback);
+	}
+	
+	function afterParseHours(err) {
+		
+		async.forEach(tableYears, parseYear, afterParseYear);
+	}
+	
+	function parseHours(jsonHour, callback) {
+		
+		ioDay.parse(jsonHour, outputJsonGenerator, callback);
+	}
+	
+	function afterParseHours(err) {
+		
+		async.forEach(tableYears, parseYear, afterParseYear);
+	}
+	
 	
 	function parseYear(stringYear, callback) {
 		

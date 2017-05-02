@@ -12,7 +12,7 @@
                     </div>
                     </md-content>
                 </md-tab>
-                <md-tab class="menulinks" label="Etablissement">
+                <md-tab class="menulinks" label="Établissement">
                     <md-content>
                         <div ng-include="schoolMenu"></div>
                         <div class="reduceOrExpand" expanded="false">
@@ -22,7 +22,7 @@
                         </div>
                     </md-content>
                 </md-tab>
-                <md-tab class="menulinks" label="Programme">
+                <md-tab class="menulinks" label="Élèves et enseignements">
                     <md-content>
                         <div ng-include="programmeMenu"></div>
                         <div class="reduceOrExpand" expanded="false">
@@ -32,7 +32,7 @@
                         </div>
                     </md-content>
                 </md-tab>
-                <md-tab class="menulinks" label="Prof - Cours">
+                <md-tab class="menulinks" label="Professeurs">
                     <md-content>
                         <div ng-include="teacherMenu"></div>
                         <div class="reduceOrExpand" expanded="false">
@@ -48,12 +48,12 @@
 		<div id="connect" class="loginForm">
 		
 			<div>
-				<label for="etablissement">Etablissement :</label>
+				<label for="etablissement" style="text-align: right">Etablissement :</label>
 				<input id="etablissement" name="etablissement" type="text" ng-model="etablissement"/>
 			</div>
 		
 			<div>
-				<label for="mdp">Mot de passe :</label>
+				<label for="mdp" style="text-align: right">Mot de passe :</label>
 				<input id="mdp" name="mdp" type="password" ng-model="mdp"/>
 			</div>
 			
@@ -63,9 +63,15 @@
 		
 		<button id="disconnect" class="loginForm" style="display: none" ng-click="disconnect()">Déconnexion</button>
 		
+		
 		<div id="overlayLoad">
-			<div id="selectorConfig">
-			</div>
+			<fieldset>
+			
+				<legend>Choisissez une configuration existante</legend>
+				<div id="selectorConfig">
+				</div>
+			
+			</fieldset>
 		</div>
 		
     </div>

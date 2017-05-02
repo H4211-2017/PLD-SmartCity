@@ -2,19 +2,17 @@
   <div style="display:none" ng-model="page"></div>
   <div class="tab" expanded="false">
     <button id="programmeGradeClasses" class="tablinks"
-            ng-click="openTab('programmeMenu/gradeClassesTab/gradeClassesTab.html', 'programmeGradeClasses')">
-      Niveaux - Classes
+            ng-click="openTab('programmeMenu/gradeClassesTab/gradeClassesTab.html', 'programmeGradeClasses')">Élèves
     </button>
-    <button id="programmeSubjects" class="tablinks" ng-click="openTab('programmeMenu/subjectsTab/subjectsTab.html', 'programmeSubjects')">
+    <button ng-disabled="roomType.length == 0" id="programmeSubjects" class="tablinks" ng-click="openTab('programmeMenu/subjectsTab/subjectsTab.html', 'programmeSubjects')">
       Matières
     </button>
-    <button id="programmeProgramme" class="tablinks"
-            ng-click="openTab('programmeMenu/programmeTab/programmeTab.html', 'programmeProgramme')">Répartition horaire
-      par niveau
+    <button ng-disabled="years.length == 0 || subject.length == 0" id="programmeProgramme" class="tablinks"
+            ng-click="openTab('programmeMenu/programmeTab/programmeTab.html', 'programmeProgramme')">Programmes scolaires
     </button>
   </div>
 
-  <div class="tabcontent" ng-include="page" expanded="false"></div>
+  <div ng-include="page"></div>
 </div>
 
 <script src="programmeMenu/gradeClassesTab/gradeClassesTab.js"></script>
