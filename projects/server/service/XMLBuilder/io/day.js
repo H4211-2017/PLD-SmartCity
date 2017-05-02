@@ -1,29 +1,7 @@
-var parse = function(jsonDay, jsonFirstDay, outputJsonGenerator, callback) {
+var parse = function(jsonDay, outputJsonGenerator, callback) {
 	
 	var dayName = jsonDay.dayName;
 	outputJsonGenerator.addDay(dayName);
-	var tableHours = jsonDay.hours;
-
-	for(var i = 0; i < tableHours.length; i++) {
-		
-		var stringHour = tableHours[i].start + ' - ' + tableHours[i].end;
-		
-		if(jsonDay === jsonFirstDay) {
-			
-			outputJsonGenerator.addHour(stringHour);
-			
-		} else {
-			
-			var stringAlreadySavecHour = outputJsonGenerator.getHourName(i);
-
-			if (stringAlreadySavecHour.localeCompare(stringHour) !== 0) {
-				
-				//TODO manage case of differents hours
-				throw 'ERROR : day.js::parse : Horaires differents pour chaque jours non geres'
-			}
-		}
-	}
-	
 	callback();
 }
 

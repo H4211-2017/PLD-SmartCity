@@ -8,6 +8,9 @@ var service = require('./service/service');
 const app = express();
 const port = 3000;
 
+// method to adapt the path to the pc which I work
+var repositoryPath = __dirname.slice(0, -16);
+// 'C:/Users/PL/git/PLD-SmartCity (projects/server)';
 var ihmPath = __dirname.slice(0, -6) + 'IHM/app'; // ../IHM/app
 var testPath = __dirname + '/htmlTest';
 
@@ -51,18 +54,14 @@ app.get('/login?', function(request, response){
 	}
 });
 
-// method to adapt the path to the pc which I work
-var repositoryPath = __dirname.slice(0, -16);
-// 'C:/Users/PL/git/PLD-SmartCity (projects/server)';
-
 app.get('/generate', function(request, response) {
 
 	var sess = request.session;
 	
-	if (sess.data && sess.schoolName) {
+	if (sess.data && sess.institutionName) {
 		
-		var outputFile = repositoryPath + '/projects/resources/' + sess.schoolName + '/';
-		var outputDir = repositoryPath + '/projects/resources/outServer';
+		var outputFile = repositoryPath + '/projects/resources/xmlFet/' + sess.institutionName + '.fet';
+		var outputDir = repositoryPath + '/projects/resources/output';
 	
 		service.generateTimetable(sess.data, outputFile, outputDir, callback);
 	
@@ -79,17 +78,15 @@ app.get('/generate', function(request, response) {
 				
 		} else {
 		
-			response.send('Donnees de l\'emploi du temps dans le dossier : ' + outputDir);
+			response.send('Données de l\'emploi du temps generées');
 		}	
 	}
 });
-
 
 app.post('/configs', function(request, response){
 	var sess = request.session;
 	sess.configs = request.body;
 });
-
 
 app.get('/configs', function(request, response) {
 
@@ -107,25 +104,14 @@ app.get('/display', function(request, response) {
 
 	var sess = request.session;
 	
-	if (sess.schoolName) {
+	if (sess.institutionName) {
 	
-		response.sendFile();
+		var timeTableIndexPath = repositoryPath + '/projects/resources/output/timetables/' + sess.institutionName + '/' + institutionName + '_index.html';
+		response.sendFile(timeTableIndexPath);
 	
 	} else {
 		
-		response.send('veuillez vous connecter avant de générer l\'emploi du temps');
-	}
-	
-	function callback(result) {
-		
-		if(result.length != 0) {
-		
-			response.send(result);
-				
-		} else {
-		
-			response.send('Donnees de l\'emploi du temps dans le dossier : ' + outputDir);
-		}	
+		response.send('Veuillez vous connecter avant de demander l\'emploi du temps');
 	}
 });
 

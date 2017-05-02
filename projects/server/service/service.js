@@ -12,7 +12,7 @@ var generateTimetable = function(jsonInput, outputFetFile, outputDir, callback) 
 		var outputXML = builder.jsonObjectEntryToXml(jsonInput);
 		console.log(outputXML.slice(0, 188) + '\n...');
 		fileGenerator.saveStringAs(outputXML, outputFetFile);
-		run.callfet(outputFetFile, outputDir, callback);
+		// run.callfet(outputFetFile, outputDir, callback);
 	
 	} catch (err) {
 		
