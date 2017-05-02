@@ -2,6 +2,7 @@ var builder = require('./XMLBuilder/builder');
 var fileGenerator = require('./file/fileGenerator');
 var fileReader = require('./file/fileReader');
 var run = require('./fet-calling/run');
+var oxhr = require('./xhr/oXHR');
 
 var generateTimetable = function(stringInput, outputFetFile, outputDir, callback) {
 
@@ -30,6 +31,30 @@ var readConfigurations = function(stringFile, callback) {
 		
 		console.error(err);
 		callback(err);
+	}
+}
+
+var getAngularIHM = function(callback) {
+	
+	try {
+		
+		var xhr = oxhr.getXMLHttpRequest();
+		
+		xhr.onreadystatechange = function() {
+
+			if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+			
+				callback(xhr);	
+			}
+		};
+		
+		xhr.open('GET', 'http://localhost:8000/indexClient.html', true);
+		xhr.send();
+		
+	} catch (err) {
+	
+		console.error(err);
+		callback();
 	}
 }
 
