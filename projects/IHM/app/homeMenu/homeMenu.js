@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('myApp.homeMenu', ['ngRoute'])
+angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
   
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/homeMenu', {
@@ -12,10 +12,7 @@ angular.module('myApp.homeMenu', ['ngRoute'])
     });
   }])
   
-  .controller('homeMenuCtrl', ["$scope", "$http", "$rootScope", function($scope, $http, $rootScope) {
-	  
-		$rootScope.__data;//TODO initialise higher and make it read config.json
-						//TODO AJAX CALL TO INITIALISE config
+  .controller('homeMenuCtrl', ["$scope", "$http", "$rootScope", "dataFactory", function($scope, $http, $rootScope, dataFactory) {
 		
 	  $scope.save = function() {
 			console.log("Save Pressed")//test for development
@@ -47,6 +44,11 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 		*/
 		
 	  };
+
+	  function createConfigBalise(name) {
+	  	var text = "<div id='id"+ name +"' class='configButton' ng-click='highlight(\"" + name + "\")'>"+ name +" </div>";
+	  	return text;
+	  }
 	  
 	  $scope.load = function() {
 	  
@@ -67,10 +69,21 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 		    
 		xhrGetConfig.open('GET', '/resources/' + $scope.__etablissement + '/getConfig', true);
 		xhrGetConfig.send();
-				
-	  	//$("#overlayLoad").css("display", "block");
 	  	
 	  	//TODO rajouter affichage et selection de fichier
+
+	    var selector = $("#selectorConfig");
+	    var newHtml = '';
+
+	    for(var i=0; i<configs.length; i++) {
+	    	newHtml += createConfigBalise(configs[i]);
+		}
+
+		newHtml += "<button class='configValidateButton' ng-click='chooseConfig()'>Valider</button>";
+
+	    selector.html(newHtml);
+	    $("#overlayLoad").css("display", "block");
+
 	  	var fileName = "toXML.json";
 	  
 		var xhr = getXMLHttpRequest();
@@ -79,8 +92,8 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 
 			if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
 			
-				$rootScope.__data = JSON.parse(xhr.responseText);
-				console.log($rootScope.__data);
+				dataFactory.setData(JSON.parse(xhr.responseText));
+				console.log(dataFactory.getData());
 				alert('Configuration Chargée'); // C'est bon \o/		
 			}
 		};
@@ -144,7 +157,7 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 				}
 			};
 			
-			xhr.open('GET', '/input?input=' + JSON.stringify($rootScope.__data), true);
+			xhr.open('GET', '/input?input=' + JSON.stringify(dataFactory.getData()), true);
 			xhr.send();  
 	  };
 	  
