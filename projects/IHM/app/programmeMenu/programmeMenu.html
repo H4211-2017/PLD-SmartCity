@@ -4,10 +4,10 @@
     <button id="programmeGradeClasses" class="tablinks"
             ng-click="openTab('programmeMenu/gradeClassesTab/gradeClassesTab.html', 'programmeGradeClasses')">Élèves
     </button>
-    <button id="programmeSubjects" class="tablinks" ng-click="openTab('programmeMenu/subjectsTab/subjectsTab.html', 'programmeSubjects')">
+    <button ng-disabled="roomType.length == 0" id="programmeSubjects" class="tablinks" ng-click="openTab('programmeMenu/subjectsTab/subjectsTab.html', 'programmeSubjects')">
       Matières
     </button>
-    <button id="programmeProgramme" class="tablinks"
+    <button ng-disabled="years.length == 0 || subject.length == 0" id="programmeProgramme" class="tablinks"
             ng-click="openTab('programmeMenu/programmeTab/programmeTab.html', 'programmeProgramme')">Programmes scolaires
     </button>
   </div>
