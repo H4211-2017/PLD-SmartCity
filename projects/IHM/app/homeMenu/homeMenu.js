@@ -44,6 +44,11 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 		*/
 		
 	  };
+
+	  function createConfigBalise(name) {
+	  	var text = "<div id='id"+ name +"' class='configButton' ng-click='highlight(\"" + name + "\")'>"+ name +" </div>";
+	  	return text;
+	  }
 	  
 	  $scope.load = function() {
 	  
@@ -64,10 +69,21 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 		    
 		xhrGetConfig.open('GET', '/resources/' + $scope.__etablissement + '/getConfig', true);
 		xhrGetConfig.send();
-				
-	  	//$("#overlayLoad").css("display", "block");
 	  	
 	  	//TODO rajouter affichage et selection de fichier
+
+	    var selector = $("#selectorConfig");
+	    var newHtml = '';
+
+	    for(var i=0; i<configs.length; i++) {
+	    	newHtml += createConfigBalise(configs[i]);
+		}
+
+		newHtml += "<button class='configValidateButton' ng-click='chooseConfig()'>Valider</button>";
+
+	    selector.html(newHtml);
+	    $("#overlayLoad").css("display", "block");
+
 	  	var fileName = "toXML.json";
 	  
 		var xhr = getXMLHttpRequest();
