@@ -1,23 +1,27 @@
-<h3>Programme académique</h3>
+<div class="tabcontent" expanded="false">
 
-<div ng-controller="programmeTabCtrl">
-  <p>
-    Rentrez, dans chaque case, le nombre d'heure hebdomadaire correspondant
-  </p>
+	<h3>Programme académique</h3>
 
-  <table class="framedTable">
-    <tr>
-      <th></th>
-      <th scope="col" ng-repeat="subject in subjectArray">
-        {{subject.name}}
-      </th>
-    </tr>
+	<div ng-controller="programmeTabCtrl">
+	  <p>
+		Rentrez, dans chaque case, le nombre d'heure hebdomadaire correspondant
+	  </p>
 
-    <tr ng-repeat="programme in programmeArray">
-      <th>{{programme.year}}</th>
-      <td ng-repeat="subject in programme.programme">
-        <input type="number" min="0" max="99" ng-model="subject.weekHours"></input>
-      </td>
-    </tr>
-  </table>
+	  <table class="framedTable">
+		<tr>
+		  <th></th>
+		  <th scope="col" ng-repeat="subject in subjectArray">
+			{{subject.name}}
+		  </th>
+		</tr>
+
+		<tr ng-repeat="programme in programmeArray">
+		  <th>{{programme.year}}</th>
+		  <td ng-repeat="subject in programme.programme">
+			<input type="number" min="0" max="99" ng-model="subject.weekHours"></input>
+		  </td>
+		</tr>
+	  </table>
+	</div>
+	
 </div>

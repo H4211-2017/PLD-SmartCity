@@ -1,52 +1,56 @@
-<h3>Matières</h3>
+<div class="tabcontent" expanded="false">
 
-<p>
-  Rajoutez des matières (ex: Tp de Physique, type de salle : TP-Physique)
-</p>
+	<h3>Matières</h3>
 
-<div ng-controller="subjectsTabCtrl">
+	<p>
+	  Rajoutez des matières (ex: Tp de Physique, type de salle : TP-Physique)
+	</p>
 
-  <table id="subjectTable" class="framedTable">
-    <th>
-      Matière
-    </th>
-    <th>
-      Type de salle
-    </th>
-    <tr>
-      <td>
-        <md-inputcontainer>
-          <input type="text" id="roomTypeInput" ng-model="inputValue" ng-keypress="pressKeyInput($event.keyCode)" cols="25" rows="1"
-                 style="resize: none" placeholder="Entrer le nom de la matière"></input>
-        </md-inputcontainer>
-      </td>
-      <td>
-        <select name="roomType" ng-model="roomTypeSelected" ng-options="roomType for roomType in roomTypeArray"
-                ng-keypress="pressKeyInput($event.keyCode)">
-          <option value="Empty"></option>
-        </select>
-      </td>
+	<div ng-controller="subjectsTabCtrl">
 
-      <td>
-        <md-button class="md-icon-button" aria-label="Use Android" ng-click="addSubject()">
-          <md-icon>add</md-icon>
-        </md-button>
-      </td>
-    </tr>
-    <tr ng-repeat="subject in subjectsArray track by subject.name">
-      <td>
-        {{subject.name}}
-      </td>
-      <td>
-        {{subject.roomType}}
-      </td>
-      <td>
-        <md-button class="md-icon-button" aria-label="supprimmer ce type de salle" ng-click="removeSubject($index)">
-          <md-icon>delete</md-icon>
-        </md-button>
-      </td>
-    </tr>
-  </table>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	  <table id="subjectTable" class="framedTable">
+		<th>
+		  Matière
+		</th>
+		<th>
+		  Type de salle
+		</th>
+		<tr>
+		  <td>
+			<md-inputcontainer>
+			  <input type="text" id="roomTypeInput" ng-model="inputValue" ng-keypress="pressKeyInput($event.keyCode)" cols="25" rows="1"
+					 style="resize: none" placeholder="Entrer le nom de la matière"></input>
+			</md-inputcontainer>
+		  </td>
+		  <td>
+			<select name="roomType" ng-model="roomTypeSelected" ng-options="roomType for roomType in roomTypeArray"
+					ng-keypress="pressKeyInput($event.keyCode)">
+			  <option value="Empty"></option>
+			</select>
+		  </td>
 
+		  <td>
+			<md-button class="md-icon-button" aria-label="Use Android" ng-click="addSubject()">
+			  <md-icon>add</md-icon>
+			</md-button>
+		  </td>
+		</tr>
+		<tr ng-repeat="subject in subjectsArray track by subject.name">
+		  <td>
+			{{subject.name}}
+		  </td>
+		  <td>
+			{{subject.roomType}}
+		  </td>
+		  <td>
+			<md-button class="md-icon-button" aria-label="supprimmer ce type de salle" ng-click="removeSubject($index)">
+			  <md-icon>delete</md-icon>
+			</md-button>
+		  </td>
+		</tr>
+	  </table>
+	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	</div>
+	
 </div>
