@@ -55,6 +55,7 @@ angular.module('myApp')
               $("#disconnect").css("display", "block");
               $("#homeSave").removeAttr("disabled");
               $("#homeLoad").removeAttr("disabled");
+			  $("#homeGen").removeAttr("disabled");
             });
             }
           else
