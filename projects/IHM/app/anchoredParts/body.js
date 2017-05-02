@@ -5,7 +5,7 @@
 
 angular.module('myApp')
 
-    .controller('BodyCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+    .controller('BodyCtrl', ['$scope', '$rootScope','$http', function($scope, $rootScope, $http) {
     
     	$rootScope.__etablissement = '';
     	$rootScope.mdp = '';
@@ -46,20 +46,21 @@ angular.module('myApp')
         $scope.etablissement = "";
         $scope.mdp = "";
         $scope.login = function() {
-        	
-        	if($scope.etablissement != "")
-	    	{
-				$rootScope.__etablissement = $scope.etablissement;
-				$rootScope.__mdp = $scope.mdp;
-				$("#connect").css("display", "none");
-				$("#disconnect").css("display", "block");
-				$("#homeSave").removeAttr("disabled");
-				$("#homeLoad").removeAttr("disabled");
-        	}
-        	else
-        	{
-        		alert("Nom d'établissement et/ou mot de passe incorrect");
-        	}
+            if($scope.etablissement !== "")
+          {
+            $http.get('/login?schoolname=$scope.etablissement').then(function(){
+              $rootScope.__etablissement = $scope.etablissement;
+              $rootScope.__mdp = $scope.mdp;
+              $("#connect").css("display", "none");
+              $("#disconnect").css("display", "block");
+              $("#homeSave").removeAttr("disabled");
+              $("#homeLoad").removeAttr("disabled");
+            });
+            }
+          else
+          {
+            alert("Nom d'établissement et/ou mot de passe incorrect");
+          }
         };
         
         $scope.disconnect = function() {
@@ -70,6 +71,7 @@ angular.module('myApp')
         	$("#homeSave").attr("disabled", "true");
         	$("#homeLoad").attr("disabled", "true");
         	$("#etablissement").val('');
-        }
+        };
+
 
     }])
