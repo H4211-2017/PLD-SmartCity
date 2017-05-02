@@ -21,7 +21,7 @@ angular.module('myApp.scheduleTab', ['ngRoute', 'myApp.dataFactory'])
 
     };
 
-    $scope.copyFirstLineHourSlot = function() {
+    $scope.copyFirstLineHourSlot = function () {
       for (var i = 1; i < $scope.scheduleArray.length; i++) {
         $scope.scheduleArray[i].hours = [];
         for (var j = 0; j < $scope.scheduleArray[0].hours.length; j++) {
@@ -33,35 +33,32 @@ angular.module('myApp.scheduleTab', ['ngRoute', 'myApp.dataFactory'])
       }
     };
 
-    $scope.removeAllDayHourSlot = function(dayNumber) {
+    $scope.removeAllDayHourSlot = function (dayNumber) {
       $scope.scheduleArray[dayNumber].hours = [];
     };
 
-    $scope.pressKeyInput = function(dayNumber, event, slotNumber) {
+    $scope.pressKeyInput = function (dayNumber, event, slotNumber) {
 
-        var ENTER_KEY = 13;
+      var ENTER_KEY = 13;
 
-        if (event.keyCode === ENTER_KEY)
-        {
-            if ($scope.scheduleArray[dayNumber].hours.length === slotNumber + 1)
-            {
-                $scope.addHourSlot(dayNumber);
-            }
+      if (event.keyCode === ENTER_KEY) {
+        if ($scope.scheduleArray[dayNumber].hours.length === slotNumber + 1) {
+          $scope.addHourSlot(dayNumber);
         }
+      }
     };
 
-    $scope.releaseKeyInput = function(dayNumber, event, slotNumber) {
+    $scope.releaseKeyInput = function (dayNumber, event, slotNumber) {
 
-        var ENTER_KEY = 13;
+      var ENTER_KEY = 13;
 
-        if (event.keyCode === ENTER_KEY)
-        {
-        	$("#f"+ dayNumber + "" + (slotNumber+1)).focus();
-        }
+      if (event.keyCode === ENTER_KEY) {
+        $("#f" + dayNumber + "" + (slotNumber + 1)).focus();
+      }
     };
 
     // Clean all empty hour slot set by the user
-    $scope.$on('$destroy', function() {
+    $scope.$on('$destroy', function () {
       for (var i = 0; i < $scope.scheduleArray.length; i++) {
         for (var j = 0; j < $scope.scheduleArray[i].hours.length; j++) {
           var hourSlot = $scope.scheduleArray[i].hours;
