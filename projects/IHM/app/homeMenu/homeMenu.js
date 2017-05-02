@@ -72,8 +72,6 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 		    
 		xhrGetConfig.open('GET', '/resources/' + $scope.__etablissement + '/getConfig', true);
 		xhrGetConfig.send();
-				
-	  	//$("#overlayLoad").css("display", "block");
 	  	
 	  	//TODO rajouter affichage et selection de fichier
 
@@ -85,6 +83,9 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 		}
 
 		newHtml += "<button class='configValidateButton' ng-click='chooseConfig()'>Valider</button>";
+
+	    selector.html(newHtml);
+	    $("#overlayLoad").css("display", "block");
 
 	  	var fileName = "toXML.json";
 	  
