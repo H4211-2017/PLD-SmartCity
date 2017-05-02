@@ -103,8 +103,6 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory'])
       var factoryGrades = dataFactory.getYearArray();
       var factoryClasses = dataFactory.getClassesArray();
       $scope.grades = $scope.getClassesGrades(factoryGrades, factoryClasses);
-      console.log("gradeClassesTab::updateDisplay : grades : ");
-      printObjectCaracteristic($scope.grades, ['$$hashKey']);
     };
 
 
