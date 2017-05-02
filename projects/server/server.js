@@ -2,6 +2,8 @@ const http = require('http');
 const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const mongoose = require('mongoose');
+
 
 var service = require('./service/service');
 
@@ -12,6 +14,25 @@ var ihmPath = __dirname.slice(0, -6) + 'IHM/app'; // ../IHM/app
 var testPath = __dirname + '/htmlTest';
 
 var parametreEtoile = {typeSalle:["TP","linux","TD","normale"]};
+
+mongoose.connect('mongodb://localhost:27017/test-app');
+
+//Check for etablissements collection existence
+mongoose.connection.db.listCollections({name: 'etablissements'})
+    .next(function(err, collinfo) {
+        if (collinfo) {
+            // The collection exists
+        }
+        else{
+        	//The collection doesn't exist we create its
+			var etablissementSchema = mongoose.Schema({name:String, configs:Array});
+			var etablissementModel = mongoose.model('etablissements', etablissementSchemas);
+		}
+    });
+
+
+
+
 
 app.use(express.static(testPath));
 app.use(express.static(ihmPath));
