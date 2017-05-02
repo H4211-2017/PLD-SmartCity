@@ -248,8 +248,29 @@ angular.module('myApp.dataFactory', [])
 
   // =============== TEACHER ===============
   // GETTER
+  dataFactory.getTeacherArray = function () {
+    return data.teacher.teacherList;
+  };
 
   // SETTER
+  dataFactory.addTeacher = function(firstNameString, lastNameString, subjectsArray, disponibilities) {
+    var teacherArray = data.teacher.teacherList;
+    if (dataFactory.findIndexByKeyValue(teacherArray, ['firstName', 'lastName'], [firstNameString, lastNameString]) === -1) {
+      teacherArray.unshift({
+        firstName: firstNameString,
+        lastName: lastNameString,
+        subject: subjectsArray,
+        disponibility: disponibilities
+      });
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  dataFactory.removeTeacher = function(teacherToRemoveIndex) {
+
+  }
 
   // =============== UTILITY FUNCTION ==============
   dataFactory.findIndexByKeyValue = function (array, keysArray, valuesArray) {

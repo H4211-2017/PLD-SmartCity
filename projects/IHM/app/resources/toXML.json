@@ -145,11 +145,6 @@
           "Francais",
           "Grec"
         ],
-        "class": [
-          "3A",
-          "6B",
-          "5C"
-        ],
         "disponibility": [
           {
             "dayName": "Lundi",
@@ -174,7 +169,6 @@
             ]
           }
         ],
-        "comments": ""
       },
       {
         "firstName": "Beatrice",
@@ -204,7 +198,6 @@
             ]
           }
         ],
-        "comments": "Quelques commentaires"
       }
     ],
     "attribution": [
