@@ -1,369 +1,379 @@
 {
-"attribution":[
-{
-"subjects":[
-{
-"teacher":{
-"lastName":"Dupont",
-"firstName":"Marc"
-},
-"subjectName":"Mathématiques"
-},
-{
-"teacher":{
-"lastName":"Jean",
-"firstName":"Henri"
-},
-"subjectName":"musique"
-},
-{
-"teacher":{
-"lastName":"Jean",
-"firstName":"Henri"
-},
-"subjectName":"TP"
+  "teacher": {
+    "attribution": [
+      {
+        "subjects": [
+          {
+            "teacher": {
+              "lastName": "Fillon",
+              "firstName": "François"
+            },
+            "subjectName": "Mathématiques"
+          },
+          {
+            "teacher": {
+              "lastName": "Fillon",
+              "firstName": "François"
+            },
+            "subjectName": "Musique"
+          },
+          {
+            "teacher": {
+              "lastName": "Même",
+              "firstName": "Moi"
+            },
+            "subjectName": "TP de physique"
+          }
+        ],
+        "class": "3e - A"
+      },
+      {
+        "subjects": [
+          {
+            "teacher": {
+              "lastName": "Dupont",
+              "firstName": "Marc"
+            },
+            "subjectName": "Mathématiques"
+          },
+          {
+            "teacher": {
+              "lastName": "Fillon",
+              "firstName": "François"
+            },
+            "subjectName": "Musique"
+          },
+          {
+            "teacher": {
+              "lastName": "Même",
+              "firstName": "Moi"
+            },
+            "subjectName": "TP de physique"
+          }
+        ],
+        "class": "3e - B"
+      },
+      {
+        "subjects": [
+          {
+            "teacher": {
+              "lastName": "Dupont",
+              "firstName": "Marc"
+            },
+            "subjectName": "Mathématiques"
+          },
+          {
+            "teacher": {
+              "lastName": "Fillon",
+              "firstName": "François"
+            },
+            "subjectName": "Musique"
+          },
+          {
+            "teacher": {
+              "lastName": "Même",
+              "firstName": "Moi"
+            },
+            "subjectName": "TP de physique"
+          }
+        ],
+        "class": "4e - A"
+      },
+      {
+        "subjects": [
+          {
+            "teacher": {
+              "lastName": "Dupont",
+              "firstName": "Marc"
+            },
+            "subjectName": "Mathématiques"
+          },
+          {
+            "teacher": {
+              "lastName": "Fillon",
+              "firstName": "François"
+            },
+            "subjectName": "Musique"
+          },
+          {
+            "teacher": {
+              "lastName": "Même",
+              "firstName": "Moi"
+            },
+            "subjectName": "TP de physique"
+          }
+        ],
+        "class": "5e - A"
+      }
+    ],
+    "teacherList": [
+      {
+        "unavailability": [
+          {
+            "hoursSlot": [
+              2,
+              3
+            ],
+            "day": "Vendredi"
+          }
+        ],
+        "subject": [
+          "Mathématiques",
+          "Musique"
+        ],
+        "lastName": "Fillon",
+        "firstName": "François"
+      },
+      {
+        "unavailability": [
+          {
+            "hoursSlot": [
+              2,
+              3
+            ],
+            "day": "Vendredi"
+          }
+        ],
+        "subject": [
+          "TP de physique"
+        ],
+        "lastName": "Même",
+        "firstName": "Moi"
+      },
+      {
+        "unavailability": [
+          {
+            "hoursSlot": [
+              2,
+              3
+            ],
+            "day": "Vendredi"
+          }
+        ],
+        "subject": [
+          "Mathématiques"
+        ],
+        "lastName": "Dupont",
+        "firstName": "Marc"
+      }
+    ]
+  },
+  "programme": {
+    "programme": [
+      {
+        "programme": [
+          {
+            "weekHours": 8,
+            "subject": "Mathématiques"
+          },
+          {
+            "weekHours": 5,
+            "subject": "Musique"
+          },
+          {
+            "weekHours": 2,
+            "subject": "TP de physique"
+          }
+        ],
+        "year": "3e"
+      },
+      {
+        "programme": [
+          {
+            "weekHours": 8,
+            "subject": "Mathématiques"
+          },
+          {
+            "weekHours": 5,
+            "subject": "Musique"
+          },
+          {
+            "weekHours": 2,
+            "subject": "TP de physique"
+          }
+        ],
+        "year": "4e"
+      },
+      {
+        "programme": [
+          {
+            "weekHours": 8,
+            "subject": "Mathématiques"
+          },
+          {
+            "weekHours": 5,
+            "subject": "Musique"
+          },
+          {
+            "weekHours": 2,
+            "subject": "TP de physique"
+          }
+        ],
+        "year": "5e"
+      },
+      {
+        "programme": [
+          {
+            "weekHours": 8,
+            "subject": "Mathématiques"
+          },
+          {
+            "weekHours": 5,
+            "subject": "Musique"
+          },
+          {
+            "weekHours": 0,
+            "subject": "TP de physique"
+          }
+        ],
+        "year": "6e"
+      }
+    ],
+    "subjects": [
+      {
+        "roomType": "Normale",
+        "name": "Mathématiques"
+      },
+      {
+        "roomType": "Normale",
+        "name": "Musique"
+      },
+      {
+        "roomType": "TP",
+        "name": "TP de physique"
+      }
+    ],
+    "classes": [
+      {
+        "studentNumber": 0,
+        "name": "3e - A",
+        "year": "3e"
+      },
+      {
+        "studentNumber": 0,
+        "name": "3e - B",
+        "year": "3e"
+      },
+      {
+        "studentNumber": 0,
+        "name": "4e - A",
+        "year": "4e"
+      },
+      {
+        "studentNumber": 0,
+        "name": "5e - A",
+        "year": "5e"
+      }
+    ],
+    "year": [
+      "3e",
+      "4e",
+      "5e",
+      "6e"
+    ]
+  },
+  "schoolInformation": {
+    "room": [
+      {
+        "capacity": 32,
+        "roomTypes": [
+          "TP"
+        ],
+        "name": "B106"
+      },
+      {
+        "capacity": 32,
+        "roomTypes": [
+          "musique",
+          "Normale"
+        ],
+        "name": "A102"
+      },
+      {
+        "capacity": 32,
+        "roomTypes": [
+          "Normale"
+        ],
+        "name": "A101"
+      }
+    ],
+    "roomTypes": [
+      "musique",
+      "TP",
+      "Normale"
+    ],
+    "schedule": {
+      "disableHours": [
+        {
+          "hourSlot": {
+            "end": "15h",
+            "start": "14h"
+          },
+          "day": "Mercredi"
+        },
+        {
+          "hourSlot": {
+            "end": "16h",
+            "start": "15h"
+          },
+          "day": "Mercredi"
+        },
+        {
+          "hourSlot": {
+            "end": "9h",
+            "start": "8h"
+          },
+          "day": "Samedi"
+        },
+        {
+          "hourSlot": {
+            "end": "10h",
+            "start": "9h"
+          },
+          "day": "Samedi"
+        },
+        {
+          "hourSlot": {
+            "end": "15h",
+            "start": "14h"
+          },
+          "day": "Samedi"
+        },
+        {
+          "hourSlot": {
+            "end": "16h",
+            "start": "15h"
+          },
+          "day": "Samedi"
+        }
+      ],
+      "hoursSlot": [
+        {
+          "end": "9h",
+          "start": "8h"
+        },
+        {
+          "end": "10h",
+          "start": "9h"
+        },
+        {
+          "end": "15h",
+          "start": "14h"
+        },
+        {
+          "end": "16h",
+          "start": "15h"
+        }
+      ],
+      "days": [
+        "Lundi",
+        "Mardi",
+        "Mercredi",
+        "Jeudi",
+        "Vendredi",
+        "Samedi"
+      ]
+    }
+  }
 }
-],
-"class":"3e - A"
-},
-{
-"subjects":[
-{
-"teacher":{
-"lastName":"Même",
-"firstName":"Moi"
-},
-"subjectName":"Mathématiques"
-},
-{
-"teacher":{
-"lastName":"Jean",
-"firstName":"Henri"
-},
-"subjectName":"musique"
-},
-{
-"teacher":{
-"lastName":"Jean",
-"firstName":"Henri"
-},
-"subjectName":"TP"
-}
-],
-"class":"3e - B"
-},
-{
-"subjects":[
-{
-"teacher":{
-"lastName":"Même",
-"firstName":"Moi"
-},
-"subjectName":"Mathématiques"
-},
-{
-"teacher":{
-"lastName":"Jean",
-"firstName":"Henri"
-},
-"subjectName":"musique"
-},
-{
-"teacher":{
-"lastName":"Jean",
-"firstName":"Henri"
-},
-"subjectName":"TP"
-}
-],
-"class":"4e - A"
-},
-{
-"subjects":[
-{
-"teacher":{
-"lastName":"Même",
-"firstName":"Moi"
-},
-"subjectName":"Mathématiques"
-},
-{
-"teacher":{
-"lastName":"Jean",
-"firstName":"Henri"
-},
-"subjectName":"musique"
-},
-{
-"teacher":{
-"lastName":"Jean",
-"firstName":"Henri"
-},
-"subjectName":"TP"
-}
-],
-"class":"5e - A"
-},
-{
-"subjects":[
-{
-"teacher":{
-"lastName":"Dupont",
-"firstName":"Marc"
-},
-"subjectName":"Mathématiques"
-},
-{
-"teacher":{
-"lastName":"Jean",
-"firstName":"Henri"
-},
-"subjectName":"musique"
-},
-{
-"teacher":{
-"lastName":"Jean",
-"firstName":"Henri"
-},
-"subjectName":"TP"
-}
-],
-"class":"6e - A"
-}
-],
-"teacherList":[
-{
-"unavailability":[
 
-],
-"subject":[
-"Mathématiques"
-],
-"lastName":"Même",
-"firstName":"Moi"
-},
-{
-"unavailability":[
-
-],
-"subject":[
-"musique",
-"TP"
-],
-"lastName":"Jean",
-"firstName":"Henri"
-},
-{
-"unavailability":[
-{
-"hoursSlot":[
-3
-],
-"day":"Lundi"
-},
-{
-"hoursSlot":[
-0,
-1,
-2,
-3
-],
-"day":"Samedi"
-}
-],
-"subject":[
-"Mathématiques"
-],
-"lastName":"Dupont",
-"firstName":"Marc"
-}
-]
-},
-"programme":{
-"programme":[
-{
-"programme":[
-{
-"weekHours":7,
-"subject":"Mathématiques"
-},
-{
-"weekHours":0,
-"subject":"musique"
-},
-{
-"weekHours":0,
-"subject":"TP"
-}
-],
-"year":"3e"
-},
-{
-"programme":[
-{
-"weekHours":0,
-"subject":"Mathématiques"
-},
-{
-"weekHours":0,
-"subject":"musique"
-},
-{
-"weekHours":0,
-"subject":"TP"
-}
-],
-"year":"4e"
-},
-{
-"programme":[
-{
-"weekHours":0,
-"subject":"Mathématiques"
-},
-{
-"weekHours":0,
-"subject":"musique"
-},
-{
-"weekHours":6,
-"subject":"TP"
-}
-],
-"year":"5e"
-},
-{
-"programme":[
-{
-"weekHours":0,
-"subject":"Mathématiques"
-},
-{
-"weekHours":0,
-"subject":"musique"
-},
-{
-"weekHours":0,
-"subject":"TP"
-}
-],
-"year":"6e"
-}
-],
-"subjects":[
-{
-"roomType":"normale",
-"name":"Mathématiques"
-},
-{
-"roomType":"musique",
-"name":"musique"
-},
-{
-"roomType":"TP physique",
-"name":"TP"
-}
-],
-"classes":[
-{
-"studentNumber":0,
-"name":"3e - A",
-"year":"3e"
-},
-{
-"studentNumber":0,
-"name":"3e - B",
-"year":"3e"
-},
-{
-"studentNumber":0,
-"name":"4e - A",
-"year":"4e"
-},
-{
-"studentNumber":0,
-"name":"5e - A",
-"year":"5e"
-},
-{
-"studentNumber":0,
-"name":"6e - A",
-"year":"6e"
-}
-],
-"year":[
-"3e",
-"4e",
-"5e",
-"6e"
-]
-},
-"schoolInformation":{
-"room":[
-{
-"capacity":32,
-"roomTypes":[
-"normale"
-],
-"name":"A321"
-},
-{
-"capacity":32,
-"roomTypes":[
-"normale"
-],
-"name":"C121"
-}
-],
-"roomTypes":[
-"musique",
-"TP SVT",
-"TP physique",
-"normale"
-],
-"schedule":{
-"disableHours":[
-{
-"hourSlot":{
-"end":"15h00",
-"start":"14h00"
-},
-"day":"Mercredi"
-},
-{
-"hourSlot":{
-"end":"16h00",
-"start":"15h00"
-},
-"day":"Mercredi"
-}
-],
-"hoursSlot":[
-{
-"end":"9h00",
-"start":"8h00"
-},
-{
-"end":"10h00",
-"start":"9h00"
-},
-{
-"end":"15h00",
-"start":"14h00"
-},
-{
-"end":"16h00",
-"start":"15h00"
-}
-],
-"days":[
-"Lundi",
-"Mardi",
-"Mercredi",
-"Jeudi",
-"Vendredi",
-"Samedi"
-]
-}
-}
-}
