@@ -84,7 +84,6 @@ div.tab button:disabled {
   margin-left: 15%;
   overflow-x: auto;
   box-sizing: border-box;
-  border-left: none;
   min-height: 600px;
   height : auto;
   display: block;
