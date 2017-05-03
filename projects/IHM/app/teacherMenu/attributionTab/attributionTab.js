@@ -52,7 +52,7 @@ angular.module('myApp.attributionTab', ['ngRoute', 'myApp.dataFactory'])
 
   $scope.getAccessToTeacherArrayBySubject = function (subjectName) {
     var index = dataFactory.findIndexByKeyValue($scope.subjectArray, ["name"], [subjectName]);
-    return $scope.teachersBySubject[index]
+    return $scope.teachersBySubject[index];
   };
 }
 ]);

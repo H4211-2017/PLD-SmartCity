@@ -5,10 +5,8 @@
     <h3>Professeurs</h3>
 
     <p>
-      Définissez pour chaque enseignant la ou les matières enseignées, les groupes à qui il peut enseigner, ses disponibilités et
-      éventuellement un commentaire.
-      <br/><br/>Exemple : John Smith, Matières : Mathématiques - Physique - Chimie, Groupes : {3A, 4E}, Disponibilités : tout sauf mercredi,
-      Commentaire : "Doyen du collège") </p>
+      Définissez pour chaque enseignant la ou les matières enseignées et ses disponibilités.
+      <br/><br/>Exemple : John Smith, Matières : Mathématiques - Physique - Chimie, Disponibilités : tout sauf mercredi. </p>
 
     <table id="teacherTab" class="framedTable">
       <tr>
@@ -48,10 +46,10 @@
 
       <tr ng-repeat="teacher in teachersArray">
         <td>
-          <input class="readOnlyToggable" type="text" readonly ng-model="teacher.firstName" />
+          <input class="readOnlyToggable" type="text" readonly ng-model="teacher.firstName"/>
         </td>
         <td>
-          <input class="readOnlyToggable" type="text" readonly ng-model="teacher.lastName" />
+          <input class="readOnlyToggable" type="text" readonly ng-model="teacher.lastName"/>
         </td>
         <td class="coursName">
           <ul>
@@ -82,8 +80,8 @@
           </tr>
           <tr ng-repeat="(indexDay, day) in schedule.days">
             <td>{{day}}</td>
-            <td ng-repeat="(indexHour,hour) in schedule.hoursSlot" ng-class="returnClassOnAvailability(availabilityTeacherFocused[indexDay][indexHour])">
-            </td>
+            <td ng-repeat="(indexHour,hour) in schedule.hoursSlot"
+                ng-class="returnClassOnAvailability(availabilityTeacherFocused[indexDay][indexHour])"></td>
           </tr>
         </table>
         <md-button ng-click="closeOverlay()">Fermer</md-button>
@@ -98,7 +96,8 @@
           </tr>
           <tr ng-repeat="(indexDay, day) in schedule.days">
             <td>{{day}}</td>
-            <td ng-repeat="(indexHour,hour) in schedule.hoursSlot"><input type="checkbox" ng-model="unavailabilityInput[indexDay][indexHour]"></input></td>
+            <td ng-repeat="(indexHour,hour) in schedule.hoursSlot"><input type="checkbox"
+                                                                          ng-model="unavailabilityInput[indexDay][indexHour]"></input></td>
           </tr>
         </table>
         <md-button ng-click="setCurrentUnavailability()">valider</md-button>
@@ -111,6 +110,11 @@
 </section>
 
 <style>
-  .available {background-color:green !important;}
-  .unavailable {background-color:red !important;}
+  .available {
+    background-color: green !important;
+  }
+
+  .unavailable {
+    background-color: red !important;
+  }
 </style>
