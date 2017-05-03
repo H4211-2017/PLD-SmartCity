@@ -187,6 +187,7 @@ angular.module('myApp.dataFactory', [])
         roomType: roomTypeString
       });
       ensureCoherencyProgrammeSubject(subjectToAddString, true, false);
+      ensureCoherencyAttributionSubject(subjectToAddString, true, false);
       return true;
     }
     return false;
@@ -194,7 +195,10 @@ angular.module('myApp.dataFactory', [])
 
   dataFactory.removeSubject = function (indexSubjectToRemove, deleteCascade) {
     var subjectToRemoveString = data.programme.subjects[indexSubjectToRemove].name;
+
     var subjectDoesNotHaveDependency = ensureCoherencyProgrammeSubject(subjectToRemoveString, false, deleteCascade);
+    subjectDoesNotHaveDependency &= ensureCoherencyAttributionSubject(subjectToRemoveString, false, deleteCascade);
+
     if (deleteCascade || subjectDoesNotHaveDependency) {
       data.programme.subjects.splice(indexSubjectToRemove, 1);
       return true;
@@ -229,6 +233,9 @@ angular.module('myApp.dataFactory', [])
 
   dataFactory.addClass = function (classString, yearString, studentNumber) {
     var classArray = data.programme.classes;
+
+    ensureCoherencyAttributionClasses(classString, true, false);
+
     if (!stringInArray(classString, classArray, 'name')) {
       classArray.push({
         year: yearString,
@@ -240,12 +247,13 @@ angular.module('myApp.dataFactory', [])
     return false;
   };
 
-  dataFactory.removeClass = function (indexClassToRemove, deleteCasade) {
+  dataFactory.removeClass = function (indexClassToRemove, deleteCascade) {
     var classArray = data.programme.classes;
-    var classToRemoveString = classArray[indexClassToRemove];
-    var classDoesNotHaveDependency = true;
 
-    if (deleteCasade || classDoesNotHaveDependency) {
+    var classToRemove = classArray[indexClassToRemove];
+    var classDoesNotHaveDependency = ensureCoherencyAttributionClasses(classToRemove.name, false, deleteCascade);
+
+    if (deleteCascade || classDoesNotHaveDependency) {
       classArray.splice(indexClassToRemove, 1);
       return true;
     }
@@ -266,7 +274,7 @@ angular.module('myApp.dataFactory', [])
 	return data.teacher.attribution;  
   };
   // SETTER
-  dataFactory.addTeacher = function (firstNameString, lastNameString, subjectsArray, disponibilities) {
+  dataFactory.addTeacher = function (firstNameString, lastNameString, subjectsArray, unavailabilities) {
     var teacherArray = data.teacher.teacherList;
     if (dataFactory.findIndexByKeyValue(teacherArray, ['firstName', 'lastName'], [firstNameString, lastNameString]) ===
         -1) {
@@ -274,7 +282,7 @@ angular.module('myApp.dataFactory', [])
         firstName: firstNameString,
         lastName: lastNameString,
         subject: subjectsArray,
-        disponibility: disponibilities
+        unavailability: unavailabilities
       });
       return true;
     } else {
@@ -319,6 +327,9 @@ angular.module('myApp.dataFactory', [])
     return -1;
   };
 
+  /**
+   * THis function is used to share across different scopes, it creates a 2-d boolean array of time slots.
+   */
   dataFactory.createScheduleArrayBool = function(){
     var schedule = dataFactory.getScheduleObject();
     angular.forEach(schedule.days, function(day){
@@ -326,20 +337,77 @@ angular.module('myApp.dataFactory', [])
     });
   };
 
+  /**
+   * fills the 2-d bool array of time slots with the boolean in parameter.
+   */
+  dataFactory.resetScheduleArrayBool = function(boolean, callback){
+    angular.forEach(scheduleArrayBool, function(array){
+      array.fill(boolean);
+    });
+    callback();
+  };
+
   //======================================== PRIVATE ================================
   function ensureCoherencyAttributionSubject(subjectString, isAddOperation, deleteCascade) {
+    var attributionArray = data.teacher.attribution;
+
+    if (isAddOperation) {
+      for (var i = 0, attributionLength = attributionArray.length; i < attributionLength; i++) {
+        attributionArray[i].subjects.push({
+          subjectName: subjectString,
+          teacher: {}
+        });
+      }
+    } else {
+      for (i = 0, attributionLength = attributionArray.length; i < attributionLength; i++) {
+        var indexSubject = dataFactory.findIndexByKeyValue(attributionArray[i].subjects, ['subjectName'],
+            [subjectString]);
+        if (indexSubject != -1) {
+          if (deleteCascade) {
+            attributionArray[i].subjects.splice(indexSubject, 1);
+          } else {
+            return false;
+          }
+        }
+      }
+    }
+    return true;
+  }
+
+  function ensureCoherencyAttributionClasses(classString, isAddOperation, deleteCascade) {
     var attributionArray = data.teacher.attribution;
     var subjectArray = data.programme.subjects;
 
     if (isAddOperation) {
+      var attributionSubjectArray = subjectArray.map(function (e) {
+        return {
+          subjectName: e.name,
+          teacher: {}
+        }
+      });
 
+      attributionArray.push({
+        class: classString,
+        subjects: attributionSubjectArray
+      });
     } else {
-
+      var indexClassToRemove = dataFactory.findIndexByKeyValue(attributionArray, ['class'], [classString]);
+      if (indexClassToRemove != -1) {
+        var noTeacherAssigned = true;
+        for (var i = 0, length = attributionArray[indexClassToRemove].subjects.length; i < length; i++) {
+          if (attributionArray[indexClassToRemove].subjects[i].firstName) { // teacher.firstName == undefined => teacher is empty
+            noTeacherAssigned = false;
+          }
+        }
+        if (deleteCascade || noTeacherAssigned) {
+          attributionArray.splice(indexClassToRemove, 1);
+          return true;
+        } else {
+          return false;
+        }
+      }
     }
-  }
-
-  function ensureCoherencyAttributionClasses(classString, isAddOperation, deleteCascade) {
-
+    return true;
   }
 
   // TODO
@@ -440,7 +508,7 @@ angular.module('myApp.dataFactory', [])
   function ensureCoherencyRoomRoomTypeOnDelete(roomTypeString, deleteCascade) {
     var roomArray = data.schoolInformation.room;
     for (var i = 0; i < roomArray.length; i++) {
-      if (roomArray[i].roomTypes == roomTypeString) {
+      if (roomArray[i].roomTypes.indexOf(roomTypeString) !== -1) {
         if (deleteCascade) {
           dataFactory.removeRoom(i, true);
           i--; // as deleteCascade is set to true, the room at index i has been removed, so i must be decreased

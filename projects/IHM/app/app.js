@@ -13,6 +13,8 @@ var app = angular.module('myApp', [
   'myApp.subjectsTab',
   'myApp.programmeTab',
   'myApp.teacherMenu',
+  'myApp.teacherTab',
+  'myApp.attributionTab',
   'myApp.version',
   'localytics.directives',
   'ngMaterial'

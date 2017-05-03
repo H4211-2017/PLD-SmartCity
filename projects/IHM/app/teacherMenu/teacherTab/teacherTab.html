@@ -37,7 +37,7 @@
           </select>
         </td>
         <td>
-          <md-button ng-click="openOverlay()">INDISPO</md-button>
+          <button ng-click="displayAvailabilityWrite()">DISP</button>
         </td>
         <td>
           <md-button class="md-icon-button" ng-click="addTeacher()">
@@ -81,15 +81,14 @@
           </tr>
           <tr ng-repeat="(indexDay, day) in schedule.days">
             <td>{{day}}</td>
-            <td ng-repeat="(indexHour,hour) in schedule.hoursSlot">
-              <div>nothing</div>
+            <td ng-repeat="(indexHour,hour) in schedule.hoursSlot" ng-class="returnClassOnAvailability(availabilityTeacherFocused[indexDay][indexHour])">
             </td>
           </tr>
         </table>
         <md-button ng-click="closeOverlay()">Fermer</md-button>
 
       </div>
-      <div ng-if="{{!overlayIsReadOnly}}">
+      <div ng-if="!overlayIsReadOnly">
         <h3>Entrez vos indiponibilités</h3>
         <table>
           <tr>
@@ -109,3 +108,8 @@
 
   </div>
 </section>
+
+<style>
+  .available {'background-color':'green';}
+  .unavailable {'background-color':'red';}
+</style>
