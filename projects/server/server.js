@@ -26,8 +26,6 @@ app.use(session({
     })
 }));
 
-
-
 app.get('/logout', function(request, response) {
 
 	var sess = request.session;
