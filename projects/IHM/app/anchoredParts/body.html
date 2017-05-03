@@ -64,15 +64,28 @@
 		<button id="disconnect" class="loginForm" style="display: none" ng-click="disconnect()">Déconnexion</button>
 		
 		
-		<div id="overlayLoad">
+		<div id="overlayLoad" class="bodyOverlay">
 			<fieldset>
 			
 				<legend>Choisissez une configuration existante</legend>
-				<div id="selectorConfig">
+				<div id="selectorConfig" class="insideOverlay">
 				</div>
 			
 			</fieldset>
 		</div>
+
+    <div id="overlaySave" class="bodyOverlay" ng-controller="homeMenuCtrl">
+        <fieldset>
+
+            <legend>Choisissez un nom pour la nouvelle configuration</legend>
+            <div id="inputConfig" class="insideOverlay">
+                <input id="configName" name="configName" placeholder="nom de configuration" ng-model="configName"/>
+                <button class="configValidateButton" ng-click="saveAs()">Enregistrer</button>
+                <button style="margin-left: 40%;" class="configValidateButton" onclick="$('#overlaySave').css('display', 'none')">Annuler</button>
+            </div>
+
+        </fieldset>
+    </div>
 		
     </div>
 <!--

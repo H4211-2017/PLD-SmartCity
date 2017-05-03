@@ -212,6 +212,10 @@
             }
           },
           {
+            "subjectName": "Francais",
+            "teacher": {}
+          },
+          {
             "subjectName": "Latin",
             "teacher": {
               "firstName": "Beatrice",

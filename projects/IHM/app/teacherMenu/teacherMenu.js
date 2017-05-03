@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.teacherMenu', ['ngRoute','myApp.teacherMenu.teacherTab', 'myApp.dataFactory'])
+angular.module('myApp.teacherMenu', ['ngRoute','myApp.teacherTab', 'myApp.attributionTab', 'myApp.dataFactory'])
   
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/teacherMenu', {
