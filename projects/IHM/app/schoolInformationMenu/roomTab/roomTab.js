@@ -24,6 +24,7 @@ angular.module('myApp.roomTab', ['ngRoute', 'myApp.dataFactory'])
         /*$scope.roomTypesSelected = [];
         $scope.roomCapacity = 1;*/
       }
+      console.log("roomTab::addRoom : roomsArray");
       printObjectCaracteristic($scope.roomsArray, ['$$hashKey']);
     };
 
