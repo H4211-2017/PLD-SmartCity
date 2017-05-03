@@ -82,6 +82,8 @@ app.get('/relog', function(request, response) {
 			lastConfig: sess.lastConfig
 	};
 	
+	console.log(res);
+	
 	response.status(200).json(res);
 });
 

@@ -5,36 +5,49 @@
 
 angular.module('myApp')
 
-    .controller('BodyCtrl', ['$scope', '$rootScope','$http', '$timeout', 'dataFactory', function($scope, $rootScope, $http, $timeout, dataFactory) {
+    .controller('BodyCtrl', ['$scope', '$rootScope','$http', '$timeout', 'dataFactory', '$watch', function($scope, $rootScope, $http, $timeout, dataFactory, $watch) {
     
 		$rootScope.__etablissement = '';
     	$rootScope.__mdp = '';
-	
-		$http.get('/relog').success(function(data, status) {
-	 
-			if (status == 200 || status == 0) {
-				
-				if (data.schoolname) {
-					
-					$rootScope.__etablissement = data.schoolname;
-					$rootScope.__mdp = data.mdp;
-					console.log('compte client récupéré');
-					
-					if (data.lastConfig) {
+		$scope.etablissement = "";
+        $scope.mdp = "";
+		
+		/**$scope.finishLoading = "notFinish";
+		
+		$watch($scope.finishLoading, function(newValue, oldValue, scope) {
+			
+			if(newValue === "finish")
+			{
+				$http.get('/relog').success(function(data, status) {
+			 
+					if (status == 200 || status == 0) {
 						
-						$http.get('/data?config=' + data.lastConfig).success(function(data1, status1) {
+						if (data.schoolname && data.mdp) {
 							
-							if (status1 == 200 || status1 == 0) {
+							$rootScope.__etablissement = data.schoolname;
+							$rootScope.__mdp = data.mdp;
+							console.log('compte client récupéré');
+							$scope.etablissement = $rootScope.__etablissement;
+							$scope.mdp = $rootScope.__mdp;
+							loginIHM();
+							
+							if (data.lastConfig) {
 								
-								dataFactory.setData(data1);
-								console.log('dernière configuration enregistrée récupérée');
+								$http.get('/data?config=' + data.lastConfig).success(function(data1, status1) {
+									
+									if (status1 == 200 || status1 == 0) {
+										
+										dataFactory.setData(data1);
+										console.log('dernière configuration enregistrée récupérée');
+									}
+								});
 							}
-						});
+						}
 					}
-				}
+				});		
 			}
-		});
-    	
+		});**/
+		
         $scope.homeMenu = 'homeMenu/homeMenu.html';
         $scope.programmeMenu = 'programmeMenu/programmeMenu.html';
         $scope.schoolMenu = 'schoolInformationMenu/schoolInformationMenu.html';
@@ -67,18 +80,15 @@ angular.module('myApp')
             }
 
         };
-        
-        $scope.etablissement = "";
-        $scope.mdp = "";
+		
         $scope.login = function() {
-            if($scope.etablissement !== "")
+			
+		  console.log($scope.etablissement);
+		  
+          if($scope.etablissement != "")
           {
-            $http.get('/login?schoolname='+$scope.etablissement).then(function(){
-              $rootScope.__etablissement = $scope.etablissement;
-              $rootScope.__mdp = $scope.mdp;
-              $("#homeSave").removeAttr("disabled");
-              $("#homeLoad").removeAttr("disabled");
-			  $("#homeGen").removeAttr("disabled");
+            $http.get('/login?schoolname=' + $scope.etablissement + '&mdp=' + $scope.mdp).then(function(){
+              loginIHM();
             });
             }
           else
@@ -90,15 +100,8 @@ angular.module('myApp')
         $scope.disconnect = function() {
 			
         	$http.get('/logout').then(function(){
-				$rootScope.__etablissement = '';
-				$scope.etablissement = '';
-				$scope.mdp = '';
-				$rootScope.__mdp = '';
-				$("#homeSave").attr("disabled", "true");
-				$("#homeLoad").attr("disabled", "true");
-				$("#homeGen").attr("disabled", "true");
-				$("#etablissement").val('');
-            });
+				logoutIHM();
+			});
         };
 
         // Update scope of open menu
@@ -125,6 +128,30 @@ angular.module('myApp')
             }, 0);
           }
         };
+		
+		function logoutIHM() {
+			$rootScope.__etablissement = '';
+			$scope.etablissement = '';
+			$scope.mdp = '';
+			$rootScope.__mdp = '';
+			$("#connect").css('display', 'block');
+			$("#disconnect").css('display', 'none');
+			$("#homeSave").attr("disabled", "true");
+			$("#homeLoad").attr("disabled", "true");
+			$("#homeGen").attr("disabled", "true");
+			$("#etablissement").val('');
+		}
+		
+		function loginIHM() {
+			
+              $rootScope.__etablissement = $scope.etablissement;
+              $rootScope.__mdp = $scope.mdp;
+			  $("#connect").css('display', 'none');
+			  $("#disconnect").css('display', 'block');
+              $("#homeSave").removeAttr("disabled");
+              $("#homeLoad").removeAttr("disabled");
+			  $("#homeGen").removeAttr("disabled");
+		}
 
 
     }]);
