@@ -48,21 +48,28 @@ angular.module('myApp.teacherTab', ['ngRoute', 'myApp.dataFactory'])
    * From the inpt in the check boxes, we create the variables that are used by datafactory.
    * We then close the overlay.
    */
-  $scope.setCurrentUnavailability = function () {
-    for (var i = 0; i < $scope.schedule.days.length; i++) {
+  $scope.setCurrentUnavailability = function(){
+    $scope.currentUnavailabilities = [];
+    console.log("teacherTab l-53");
+    printObjectCaracteristic($scope.unavailabilityInput);
+    for(var i = 0;i < $scope.schedule.days.length; i++)
+    {
       var isEmpty = true;
-      var newunavailability = {
-        day: $scope.schedule.days[i],
-        hoursSlot: []
+      var newUnavailability = {};
+      newUnavailability = {
+        day:$scope.schedule.days[i],
+        hoursSlot : []
       };
-      for (var j = 0; j < $scope.schedule.hoursSlot.length; j++) {
-        if ($scope.unavailabilityInput[i][j] === true) {
-          newunavailability.hoursSlot.push(j);
+      for(var j = 0;j < $scope.schedule.hoursSlot.length; j++){
+        if($scope.unavailabilityInput[i][j] === true)
+        {
+          newUnavailability.hoursSlot.push(j);
           isEmpty = false;
         }
       }
-      if (!isEmpty) {
-        $scope.currentUnavailabilities.push(newunavailability);
+      if(!isEmpty)
+      {
+        $scope.currentUnavailabilities.push(newUnavailability);
       }
     }
     $scope.closeOverlay();
@@ -113,6 +120,8 @@ angular.module('myApp.teacherTab', ['ngRoute', 'myApp.dataFactory'])
   };
 
   $scope.openOverlay = function () {
+    console.log("teacher tab l-124");
+    printObjectCaracteristic($scope.unavailabilityInput)
     $('#addTeacherOverlay').css('width', 'inherit');
   };
 

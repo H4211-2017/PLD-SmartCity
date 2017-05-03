@@ -8,9 +8,9 @@ angular.module('myApp.serverCalls',['myApp.dataFactory'])
     var serverCalls = {};
 
     //Carefull async call, returns the promise.
-    serverCalls.postData = function(){
+    serverCalls.postData = function(configName){
       var data = dataFactory.getData();
-      return $http.post('/data',data);
+      return $http.post('/data?config=' + configName ,data);
     };
 
     //Async call, returns the promise.

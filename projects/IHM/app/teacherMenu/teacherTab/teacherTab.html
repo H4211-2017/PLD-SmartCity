@@ -74,6 +74,7 @@
     <div id="addTeacherOverlay" class="overlay">
       <div ng-if="overlayIsReadOnly">
         <h3>Disponibilités de {{teacherFocused.firstName}}</h3>
+        {{teacherFocused}}
         <table>
           <tr>
             <th>days</th>
@@ -110,6 +111,6 @@
 </section>
 
 <style>
-  .available {'background-color':'green';}
-  .unavailable {'background-color':'red';}
+  .available {background-color:green !important;}
+  .unavailable {background-color:red !important;}
 </style>
