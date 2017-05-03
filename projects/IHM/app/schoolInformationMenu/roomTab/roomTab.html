@@ -50,13 +50,12 @@
 		  <td>
 			<ul>
 			  <li class="dotlessList" ng-repeat="roomType in room.roomTypes">
-				{{roomType}}
-                  <input class="readOnlyToggable" type="text" readonly ng-model="roomTy" />
+                  {{roomType}}
 			  </li>
 			</ul>
 		  </td>
 		  <td>
-			<input class="readOnlyToggable" type="text" readonly ng-model="room.capacity" />
+			<input class="readOnlyToggable number" type="text" readonly ng-model="room.capacity" />
 		  </td>
 		  <td>
 			<md-button class="md-icon-button" aria-label="supprimmer ce type de salle" ng-click="removeRoom($index)">

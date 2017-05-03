@@ -41,26 +41,24 @@ angular.module('myApp.subjectsTab', ['ngRoute', 'myApp.dataFactory'])
       }
     };
 
-    $scope.readOnly = true;
-    $scope.toggleModification = function() {
+  $scope.readOnly = true;
+  $scope.toggleModification = function() {
 
-        var toggables = $('#subjectTable .readOnlyToggable');
-        if($scope.readOnly) {
+      var readOnlyToggable = $('.readOnlyToggable');
+      var toggables = $('#subjectTable').find(readOnlyToggable);
 
-            for(var i=0; i<toggables.length; i++)
-            {
-                toggables[i].removeAttr('readonly');
-                $scope.readOnly = false;
-            }
+      if($scope.readOnly === true) {
 
-        }
-        else {
-            for(var i=0; i<toggables.length; i++)
-            {
-                toggables[i].attr('readonly', true);
-                $scope.readOnly = true;
-            }
-        }
-    };
+          toggables.removeAttr('readonly');
+
+          $scope.readOnly = false;
+      }
+      else {
+
+          toggables.attr('readonly', true);
+
+          $scope.readOnly = true;
+      }
+  };
 
   }]);

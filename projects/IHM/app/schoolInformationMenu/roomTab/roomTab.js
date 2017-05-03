@@ -38,26 +38,28 @@ angular.module('myApp.roomTab', ['ngRoute', 'myApp.dataFactory'])
       }
     };
 
-    $scope.readOnly = true;
-    $scope.toggleModification = function() {
+      $scope.readOnly = true;
+      $scope.toggleModification = function() {
 
-        var toggables = $('#roomTab .readOnlyToggable');
-        if($scope.readOnly) {
+          var readOnlyToggable = $('.readOnlyToggable');
+          var toNumber = $('.number');
+          var toggables = $('#roomTab').find(readOnlyToggable);
+          var numbers = $('#roomTab').find(toNumber);
 
-            for(var i=0; i<toggables.length; i++)
-            {
-                toggables[i].removeAttr('readonly');
-                $scope.readOnly = false;
-            }
+          if($scope.readOnly === true) {
 
-        }
-        else {
-            for(var i=0; i<toggables.length; i++)
-            {
-                toggables[i].attr('readonly', true);
-            }
-            $scope.readOnly = true;
-        }
-    };
+              toggables.removeAttr('readonly');
+              numbers.attr('type', 'number');
+
+              $scope.readOnly = false;
+          }
+          else {
+
+              toggables.attr('readonly', true);
+              numbers.attr('type', 'text');
+
+              $scope.readOnly = true;
+          }
+      };
 
   }]);

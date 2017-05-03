@@ -48,21 +48,19 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute', 'myApp.dataFactory'])
     $scope.readOnly = true;
     $scope.toggleModification = function() {
 
-        var toggables = $('#teacherTab .readOnlyToggable');
-        if($scope.readOnly) {
+        var readOnlyToggable = $('.readOnlyToggable');
+        var toggables = $('#teacherTab').find(readOnlyToggable);
 
-            for(var i=0; i<toggables.length; i++)
-            {
-                toggables[i].removeAttr('readonly');
-                $scope.readOnly = false;
-            }
+        if($scope.readOnly === true) {
 
+            toggables.removeAttr('readonly');
+
+            $scope.readOnly = false;
         }
         else {
-            for(var i=0; i<toggables.length; i++)
-            {
-                toggables[i].attr('readonly', true);
-            }
+
+            toggables.attr('readonly', true);
+
             $scope.readOnly = true;
         }
     };
