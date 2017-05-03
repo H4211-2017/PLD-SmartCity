@@ -13,16 +13,20 @@ angular.module('myApp.attributionTab', ['ngRoute', 'myApp.dataFactory'])
 .controller('attributionTabCtrl', ['$scope', 'dataFactory', function ($scope, dataFactory) {
 
 
-  // TODO sort subjects
-
   $scope.teacherArray = dataFactory.getTeacherArray();
   $scope.subjectArray = dataFactory.getSubjectsArray().sort(function (a, b) {
       return a.name.localeCompare(b.name);
     });
   $scope.classeArray = dataFactory.getClassesArray();
   
-  $scope.attributionArray = dataFactory.getAttributionArray();
-
+  $scope.attributionArray = dataFactory.getAttributionArray()
+  for(var i=0, length = $scope.attributionArray.length; i < length; i++){
+	$scope.attributionArray[i].subjects.sort(function (a, b) {
+      return a.subjectName.localeCompare(b.subjectName);
+    });
+  }
+  
+  
 
   // $scope.currentFirstName = "";
   // $scope.currentLastName = "";
