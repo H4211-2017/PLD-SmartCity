@@ -495,7 +495,7 @@ angular.module('myApp.dataFactory', [])
   function ensureCoherencyRoomRoomTypeOnDelete(roomTypeString, deleteCascade) {
     var roomArray = data.schoolInformation.room;
     for (var i = 0; i < roomArray.length; i++) {
-      if (roomArray[i].roomTypes == roomTypeString) {
+      if (roomArray[i].roomTypes.indexOf(roomTypeString) !== -1) {
         if (deleteCascade) {
           dataFactory.removeRoom(i, true);
           i--; // as deleteCascade is set to true, the room at index i has been removed, so i must be decreased
