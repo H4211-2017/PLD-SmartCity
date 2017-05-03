@@ -5,7 +5,7 @@
 
 angular.module('myApp')
 
-    .controller('BodyCtrl', ['$scope', '$rootScope','$http', '$timeout', 'dataFactory', '$watch', function($scope, $rootScope, $http, $timeout, dataFactory, $watch) {
+    .controller('BodyCtrl', ['$scope', '$rootScope','$http', '$timeout', 'dataFactory', function($scope, $rootScope, $http, $timeout, dataFactory) {
     
 		$rootScope.__etablissement = '';
     	$rootScope.__mdp = '';
