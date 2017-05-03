@@ -76,8 +76,6 @@ angular.module('myApp')
             $http.get('/login?schoolname='+$scope.etablissement).then(function(){
               $rootScope.__etablissement = $scope.etablissement;
               $rootScope.__mdp = $scope.mdp;
-              $("#connect").css("display", "none");
-              $("#disconnect").css("display", "block");
               $("#homeSave").removeAttr("disabled");
               $("#homeLoad").removeAttr("disabled");
 			  $("#homeGen").removeAttr("disabled");
@@ -96,8 +94,6 @@ angular.module('myApp')
 				$scope.etablissement = '';
 				$scope.mdp = '';
 				$rootScope.__mdp = '';
-				$("#connect").css("display", "block");
-				$("#disconnect").css("display", "none");
 				$("#homeSave").attr("disabled", "true");
 				$("#homeLoad").attr("disabled", "true");
 				$("#homeGen").attr("disabled", "true");

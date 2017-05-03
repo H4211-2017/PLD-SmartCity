@@ -10,7 +10,7 @@ angular.module('myApp.teacherTab', ['ngRoute', 'myApp.dataFactory'])
 }
 ])
 
-.controller('teacherTabCtrl', ['$scope', 'dataFactory', function ($scope, dataFactory) {
+.controller('teacherTabCtrl', ['$scope', 'dataFactory', '$timeout', function ($scope, dataFactory, $timeout) {
 
   $scope.teachersArray = dataFactory.getTeacherArray();
   $scope.subjectsArray = dataFactory.getSubjectsArray();
@@ -114,15 +114,19 @@ angular.module('myApp.teacherTab', ['ngRoute', 'myApp.dataFactory'])
   };
 
   $scope.closeOverlay = function () {
-    dataFactory.resetScheduleArrayBool(false, function () {
-    });
-    $('#addTeacherOverlay').css('width', '0%');
+      $('#addTeacherOverlay').css('width', '0%');
+      $('#addTeacherOverlay').css('overflow', 'hidden');
+      $timeout(function() {
+          dataFactory.resetScheduleArrayBool(false, function(){
+          });
+      }, 500);
   };
 
   $scope.openOverlay = function () {
     console.log("teacher tab l-124");
-    printObjectCaracteristic($scope.unavailabilityInput)
+    printObjectCaracteristic($scope.unavailabilityInput);
     $('#addTeacherOverlay').css('width', 'inherit');
+    $('#addTeacherOverlay').css('overflow', 'auto');
   };
 
   $scope.readOnly = true;

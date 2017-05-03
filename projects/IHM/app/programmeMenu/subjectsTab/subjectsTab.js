@@ -22,7 +22,7 @@ angular.module('myApp.subjectsTab', ['ngRoute', 'myApp.dataFactory'])
           alert("Cette matière existe déjà");
         }
         $scope.inputValue = "";
-        $scope.roomTypeSelected = "Empty";
+        $scope.roomTypeSelected = "";
       }
     };
 
