@@ -270,7 +270,8 @@ angular.module('myApp.dataFactory', [])
 
   dataFactory.removeTeacher = function(teacherToRemoveIndex) {
 
-  }
+  };
+
 
   // =============== UTILITY FUNCTION ==============
   dataFactory.findIndexByKeyValue = function (array, keysArray, valuesArray) {
