@@ -45,7 +45,7 @@
             </md-tabs>
         </md-content>
 		
-		<div id="connect" class="loginForm">
+		<div id="connect" class="loginForm" ng-if="etablissement == '' ">
 		
 			<div>
 				<label for="etablissement" style="text-align: right">Etablissement :</label>
@@ -61,7 +61,7 @@
 			
 		</div>
 		
-		<button id="disconnect" class="loginForm" style="display: none" ng-click="disconnect()">Déconnexion</button>
+		<button id="disconnect" class="loginForm" ng-if="etablissement != '' " ng-click="disconnect()">Déconnexion</button>
 		
 		
 		<div id="overlayLoad" class="bodyOverlay">
