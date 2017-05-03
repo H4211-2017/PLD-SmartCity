@@ -98,66 +98,19 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 				alert(status + ' : ' + data);
 			}
 		});
-		
-			/**
-			//simulate an input of type file
-			var newElem = document.createElement('input');
-			newElem.hidden = true;
-			newElem.id = 'fileSelecter';
-			newElem.setAttribute("type", "file")
-			//add it
-			document.body.appendChild(newElem);
-			//set interaction
-			var loadButton = $('#fileSelecter');
-			//console.log(loadButton);//Debug Log
-			loadButton.change(function (evt) {
-				console.log("fichier detecté");
-				var file = evt.target.files[0];
-				var reader = new FileReader();
-				
-				//defining callback
-				reader.onload = function (finished_event) {
-					data = JSON.parse(finished_event.target.result);
-					console.log(data);
-					//TODO AJAX CALL TO SAVE INSIDE config.json.
-					//upload to server 1st attempt
-					var url = "/service/uploadConfig";
-					var responsePromise = $http.post(url,data);
-					responsePromise.success(function(data, status, headers, config) {
-							console.log("upload successful !");
-					});
-					responsePromise.error(function(data, status, headers, config) {
-							console.log("upload error : AJAX failed !");
-					});
-			
-				};
-				reader.readAsText(file);
-			});
-			//simulate a click
-			newElem.click();
-			//remove it
-			setTimeout(function() {
-				document.body.removeChild(newElem);
-			}, 0);	*/
-	
 	  };
 	  
-	  $scope.generate = function() {
-		  console.log("Generate Pressed");
-		  
-		  var xhr = getXMLHttpRequest();
-		  
-  	    	xhr.onreadystatechange = function() {
+		$scope.generate = function() {
+			console.log("Generate Pressed");
 
-				if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+			$http.post('/generate', dataFactory.getData()).success(function(data, status) {
 				
-					alert(xhr.responseText); // C'est bon \o/       	
+				if (status == 200 ||  status == 0) {
+			  
+					alert('emploi du temps généré');
 				}
-			};
-			
-			xhr.open('GET', '/generate', true);
-			xhr.send();  
-	  };
+			});
+		};
 	
 		$scope.lastHighLighted = "";
 		$scope.highlight = function(name) {
