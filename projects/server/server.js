@@ -31,6 +31,7 @@ app.use(session({
 app.get('/logout', function(request, response) {
 
 	var sess = request.session;
+	console.log(sess.institutionName + ' logged out');
 	sess.destroy();
 	response.send('logged out');
 });
@@ -48,6 +49,7 @@ app.get('/login?', function(request, response){
 	
 	var sess = request.session;
 	var institutionName = request.query.schoolname;
+	console.log('login :');
 	if(!sess.institutionName){
 		sess.institutionName = institutionName;
 		sess.configs = [];
@@ -70,6 +72,8 @@ app.post('/data', function(request, response){
 	console.log('posted');
 	console.log(request.body);
 	if(sess.institutionName){
+		sess.data = request.body;
+		console.log(sess.data);
 	}
 });
 
@@ -110,7 +114,11 @@ app.post('/configs', function(request, response){
 app.get('/configs', function(request, response) {
 
 	var sess = request.session;
-	response.send(session.configs);
+	var jsonTest = [ "config1.json",
+					 "toXML.json",
+					 "babaORum.json" ]
+	
+	response.send(JSON.stringify(jsonTest)); //session.configs));
 	/*
 	service.readConfigurations(ihmPath + '/resources/' + request.params.institutionName + '/.__configs.json', function(string) {
 	

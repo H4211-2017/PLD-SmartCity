@@ -143,7 +143,7 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 				}
 			};
 			
-			xhr.open('GET', '/generate' + JSON.stringify(dataFactory.getData()), true);
+			xhr.open('GET', '/generate', true);
 			xhr.send();  
 	  };
 	  
@@ -182,8 +182,9 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 			
 			if($scope.lastHighLighted === '') {
 				alert('Veuillez choisir une configuration');
-			}
-			else {
+				
+			}else {
+				
 				var fileName = $scope.lastHighLighted+".json";
 		  
 				var xhr = getXMLHttpRequest();
@@ -197,17 +198,16 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 						alert('Configuration Chargée'); // C'est bon \o/	
 						$('#overlayLoad').css('display', 'none');
 						$("#id"+$scope.lastHighLighted).removeAttr('selected');
-						$scope.lastHighLighted = '';	
+						$scope.lastHighLighted = '';
+						
+						$http.post('/data', dataFactory.getData());
 					}
 				};
 					
-				xhr.open('GET', '/resources/' + $scope.__etablissement + "/" + fileName, true);
-				xhr.send();
-				
-			}
-			
-		};
-		
+				xhr.open('GET', '/resources/lycee_don_bosco' + "/" + fileName, true);
+				xhr.send();				
+			}	
+		};		
   }]);
   
   

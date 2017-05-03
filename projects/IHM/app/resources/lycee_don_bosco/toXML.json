@@ -1,0 +1,225 @@
+{
+  "schoolInformation": {
+    "institutionName": "Lycee Don Bosco",
+    "comments": "Lycee technique et technologique",
+    "schedule": {
+      "days": [
+        "Lundi",
+        "Mardi"
+      ],
+      "hoursSlot": [
+        {
+          "start": "8h35",
+          "end": "9h30"
+        },
+        {
+          "start": "9h30",
+          "end": "10h25"
+        },
+        {
+          "start": "10h45",
+          "end": "11h40"
+        },
+        {
+          "start": "11h40",
+          "end": "12h35"
+        },
+        {
+          "start": "13h45",
+          "end": "14h40"
+        },
+		{
+          "start": "14h40",
+          "end": "15h35"
+        },
+		{
+          "start": "15h35",
+          "end": "16h30"
+        },
+		{
+          "start": "16h30",
+          "end": "17h25"
+        }
+      ],
+      "disableHours": [
+        {
+			"day": "Lundi",
+			"hourSlot": {
+				"start": "8h35",
+				"end": "9h30"
+			}
+        },
+		{
+			"day": "Mardi",
+			"hourSlot": {
+				"start": "13h45",
+				"end": "14h40"
+			}
+		}
+      ]
+    },
+    "roomTypes": [
+      "Normal",
+      "TP Chimie",
+      "Musique"
+    ],
+    "room": [
+      {
+        "name": "C1",
+        "roomTypes": [
+          "Normal"
+        ],
+        "capacity": 34
+      },
+      {
+        "name": "C2",
+        "roomTypes": [
+          "Musique",
+          "Normal"
+        ]
+      }
+    ]
+  },
+  "programme": {
+    "year": [
+      "6e",
+      "5e",
+      "4e",
+      "3e"
+    ],
+    "classes": [
+      {
+        "year": "3e",
+        "name": "3A",
+        "studentsNumber": 31
+      },
+      {
+        "year": "3e",
+        "name": "3B"
+      },
+      {
+        "year": "6e",
+        "name": "6A",
+        "studentsNumber": 32
+      }
+    ],
+    "subjects": [
+      {
+        "name": "Physique",
+        "roomType": "Normal"
+      },
+      {
+        "name": "Musique",
+        "roomType": "Musique"
+      },
+      {
+        "name": "Math",
+        "roomType": "Normal"
+      },
+      {
+        "name": "Latin",
+        "roomType": "Normal"
+      }
+    ],
+    "programme": [
+      {
+        "year": "3e",
+        "programme": [
+          {
+            "subject": "Math",
+            "weekHours": 3
+          },
+          {
+            "subject": "Physique",
+            "weekHours": 4
+          }
+        ]
+      },
+      {
+        "year": "6e",
+        "programme": [
+          {
+            "subject": "Math",
+            "weekHours": 5
+          },
+          {
+            "subject": "Physique",
+            "weekHours": 4
+          },
+          {
+            "subject": "Latin",
+            "weekHours": 3
+          }
+        ]
+      }
+    ]
+  },
+  "teacher": {
+    "teacherList": [
+      {
+        "firstName": "Arthur",
+        "lastName": "Auklo",
+        "subject": [
+          "Latin",
+          "Francais",
+          "Grec"
+        ],
+        "unavaibility": [
+			{
+				"day": "Lundi",
+				"hoursSlot": [
+					0,
+					2,
+					7
+				]
+			},
+			{
+				"day": "Mardi",
+				"hoursSlot": [
+					1,
+					3
+				]
+			}
+        ]
+      },
+      {
+        "firstName": "Beatrice",
+        "lastName": "Beaugrand",
+        "subject": [
+          "Mathematiques",
+          "Physique"
+        ],
+        "unavaibility": [
+			{
+				"day": "Mardi",
+				"hoursSlot": [
+					5,
+					7
+				]
+			}
+        ]
+      }
+    ],
+    "attribution": [
+      {
+        "class": "6A",
+        "subjects": [
+          {
+            "subjectName": "Math",
+            "teacher": {
+              "firstName": "Arthur",
+              "lastName": "Auklo"
+            }
+          },
+          {
+            "subjectName": "Latin",
+            "teacher": {
+              "firstName": "Beatrice",
+              "lastName": "Beaugrand"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
