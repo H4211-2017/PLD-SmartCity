@@ -3,7 +3,7 @@
 	<h3>Matières</h3>
 
 <p>
-  Définissez les matières enseignées dans votre établissement. Chacune d'entre elles est associé à au moins un type de salle dans lequel le cours peut avoir lieu.
+  Définissez les matières enseignées dans votre établissement. Chacune d'entre elles est associé à un type de salle dans lequel le cours peut avoir lieu.
   <br/><br/>Exemple : TP de Physique, type de salle : TP-Physique
 </p>
 
@@ -16,7 +16,7 @@
 		<th>
 		  Type de salle
 		</th>
-		  <th>
+		  <th class="noDisplay">
 			  <md-button class="md-icon-button" ng-click="toggleModification()">
 				  <i class="material-icons">create</i>
 			  </md-button>
@@ -31,7 +31,6 @@
 		  <td>
 			<select name="roomType" ng-model="roomTypeSelected" ng-options="roomType for roomType in roomTypeArray"
 					ng-keypress="pressKeyInput($event.keyCode)">
-			  <option value="Empty"></option>
 			</select>
 		  </td>
 

@@ -34,6 +34,22 @@ var readConfigurations = function(stringFile, callback) {
 	}
 }
 
+var readJsonConfig = function(stringFile, callback) {
+	
+	try {
+	
+		fileReader.readStringFrom(stringFile, function(jsonString) {
+			
+			callback(JSON.parse(jsonString));
+		});
+	
+	} catch (err) {
+		
+		console.error(err);
+		callback({});
+	}
+}
+
 var getAngularIHM = function(callback) {
 	
 	try {
@@ -60,3 +76,4 @@ var getAngularIHM = function(callback) {
 
 exports.generateTimetable = generateTimetable;
 exports.readConfigurations = readConfigurations;
+exports.readJsonConfig = readJsonConfig;
