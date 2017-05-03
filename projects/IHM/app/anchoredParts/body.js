@@ -5,7 +5,7 @@
 
 angular.module('myApp')
 
-    .controller('BodyCtrl', ['$scope', '$rootScope','$http', function($scope, $rootScope, $http) {
+    .controller('BodyCtrl', ['$scope', '$rootScope','$http', '$timeout', function($scope, $rootScope, $http, $timeout) {
     
     	$rootScope.__etablissement = '';
     	$rootScope.mdp = '';
@@ -75,5 +75,30 @@ angular.module('myApp')
         	$("#etablissement").val('');
         };
 
+        // Update scope of open menu
+        $scope.openMenu = function(nameTabString) {
+          if(nameTabString === 'HomeMenu') {
+            $scope.homeMenu = '';
+            $timeout(function() {
+              $scope.homeMenu = 'homeMenu/homeMenu.html';
+            }, 0);
+          } else if(nameTabString === 'SchoolInformationMenu') {
+            $scope.schoolMenu = '';
+            $timeout(function() {
+              $scope.schoolMenu = 'schoolInformationMenu/schoolInformationMenu.html';
+            }, 0);
+          } else if(nameTabString === 'ProgrammeMenu') {
+            $scope.programmeMenu = '';
+            $timeout(function() {
+              $scope.programmeMenu = 'programmeMenu/programmeMenu.html';
+            }, 0);
+          } else {
+            $scope.teacherMenu = '';
+            $timeout(function() {
+              $scope.teacherMenu = 'teacherMenu/teacherMenu.html';
+            }, 0);
+          }
+        };
 
-    }])
+
+    }]);

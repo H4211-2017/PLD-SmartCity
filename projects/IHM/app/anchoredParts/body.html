@@ -1,7 +1,7 @@
 <div ng-cloak="" class="topnav" ng-controller="BodyCtrl">
         <md-content>
             <md-tabs md-dynamic-height="15dpi" md-border-bottom="">
-                <md-tab class="menulinks" label="Accueil">
+                <md-tab class="menulinks" label="Accueil" md-on-select="openMenu('homeMenu')">
                     <md-content>
                     <div ng-include="homeMenu">
                     </div>
@@ -12,7 +12,7 @@
                     </div>
                     </md-content>
                 </md-tab>
-                <md-tab class="menulinks" label="Établissement">
+                <md-tab class="menulinks" label="Établissement" md-on-select="openMenu('SchoolInformationMenu')">
                     <md-content>
                         <div ng-include="schoolMenu"></div>
                         <div class="reduceOrExpand" expanded="false">
@@ -22,7 +22,7 @@
                         </div>
                     </md-content>
                 </md-tab>
-                <md-tab class="menulinks" label="Élèves et enseignements">
+                <md-tab class="menulinks" label="Élèves et enseignements" md-on-select="openMenu('ProgrammeMenu')">
                     <md-content>
                         <div ng-include="programmeMenu"></div>
                         <div class="reduceOrExpand" expanded="false">
@@ -32,7 +32,7 @@
                         </div>
                     </md-content>
                 </md-tab>
-                <md-tab class="menulinks" label="Professeurs">
+                <md-tab class="menulinks" label="Professeurs" md-on-select="openMenu('TeacherMenu')">
                     <md-content>
                         <div ng-include="teacherMenu"></div>
                         <div class="reduceOrExpand" expanded="false">
