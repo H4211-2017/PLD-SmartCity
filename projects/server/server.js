@@ -49,31 +49,59 @@ app.get('/login?', function(request, response){
 	
 	var sess = request.session;
 	var institutionName = request.query.schoolname;
+	
 	console.log('login :');
+	
 	if(!sess.institutionName){
 		sess.institutionName = institutionName;
 		sess.configs = [];
+		sess.data = {};
 		console.log(sess.institutionName);
 	}
 	
 	response.send('logged');
 });
 
-app.get('/data', function(request, response) {
+app.get('/data?', function(request, response) {
 	
 	var sess = request.session;
-	//checking that person is logged in
-	sess.data = request.body;
+	var config = request.query.config;
+	
+	if(sess.institutionName) {
+		
+		if (sess.data[config]) {
+		
+			response.json(data[config]);
+	
+		} else {
+	
+			response.send(404, 'configuration inconnue...');
+		}
+		
+	} else {
+		
+		response.send(401, 'indentification requise');
+	}
 });
 
-app.post('/data', function(request, response){
+app.post('/data?', function(request, response){
 	
 	var sess = request.session;
+	var config = request.query.config;
+	
 	console.log('posted');
 	console.log(request.body);
+	
 	if(sess.institutionName){
-		sess.data = request.body;
+		
+		sess.data[config] = request.body;
+		sess.configs.push(config);
 		console.log(sess.data);
+		response.end(200);
+		
+	} else {
+		
+		response.send(401, 'indentification requise');
 	}
 });
 
@@ -101,24 +129,40 @@ app.get('/generate', function(request, response) {
 				
 		} else {
 		
-			response.send('Données de l\'emploi du temps generées');
+			response.send(200, 'Données de l\'emploi du temps generées');
 		}	
 	}
 });
 
+
+// TODO useless ?
 app.post('/configs', function(request, response){
+	
 	var sess = request.session;
-	sess.configs = request.body;
+	
+	if(sess.institutionName) {
+		
+		sess.configs = request.body;
+		response.end(200);
+	
+	} else {
+		
+		response.send(401, 'indentification requise');
+	}
 });
 
 app.get('/configs', function(request, response) {
 
 	var sess = request.session;
-	var jsonTest = [ "config1.json",
-					 "toXML.json",
-					 "babaORum.json" ]
 	
-	response.send(JSON.stringify(jsonTest)); //session.configs));
+	if(sess.institutionName) {
+	
+		response.json(session.configs);
+	
+	} else {
+		
+		response.send(401, 'indentification requise');
+	}
 	/*
 	service.readConfigurations(ihmPath + '/resources/' + request.params.institutionName + '/.__configs.json', function(string) {
 	
