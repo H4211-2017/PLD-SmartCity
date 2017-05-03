@@ -412,5 +412,9 @@ input[readonly] {
 }
 /**end of CSS for load overlay **/
 
+.noDisplay {
+  display: none;
+}
+
 
 
