@@ -58,7 +58,7 @@ angular.module('myApp.teacherTab', ['ngRoute', 'myApp.dataFactory'])
       $scope.currentLastName = "";
       $scope.currentSubectsSelected = [];
     }
-  };
+    };
 
   $scope.removeTeacher = function(indexTeacherToRemove) {
     if (!dataFactory.removeTeacher(indexTeacherToRemove, false)) {
@@ -80,7 +80,6 @@ angular.module('myApp.teacherTab', ['ngRoute', 'myApp.dataFactory'])
   };
 
   $scope.openOverlay = function () {
-    console.log(printObjectCaracteristic($scope.unavailabilityInput));
     $('#addTeacherOverlay').css('width', 'inherit');
   };
 
