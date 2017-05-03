@@ -2,6 +2,7 @@ const http = require('http');
 const express = require('express');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const bodyParser = require('body-parser');
 
 var service = require('./service/service');
 
@@ -16,6 +17,7 @@ var testPath = __dirname + '/htmlTest';
 
 app.use(express.static(testPath));
 app.use(express.static(ihmPath));
+app.use(bodyParser.json());
 
 app.use(session({
 
@@ -25,8 +27,6 @@ app.use(session({
 		autoRemove: 'native' // Default
     })
 }));
-
-
 
 app.get('/logout', function(request, response) {
 
@@ -51,6 +51,22 @@ app.get('/login?', function(request, response){
 		sess.institutionName = institutionName;
 		sess.configs = [];
 		console.log(sess.institutionName);
+	}
+});
+
+app.get('/data', function(request, response) {
+	
+	var sess = request.session;
+	//checking that person is logged in
+	sess.data = request.body;
+});
+
+app.post('/data', function(request, response){
+	
+	var sess = request.session;
+	console.log('posted');
+	console.log(request.body);
+	if(sess.institutionName){
 	}
 });
 
