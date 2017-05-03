@@ -335,9 +335,9 @@ input[readonly] {
 
 /**CSS for loadOverlay**/
 
-#overlayLoad {
+.bodyOverlay {
 
-	background-color: rgba(170, 170, 220, 0.7);
+	background-color: rgba(177, 202, 227, 0.7) !important;
 	display: none;
 	position: absolute;
 	left: 0;
@@ -347,7 +347,7 @@ input[readonly] {
 	height: 100%;
 }
 
-#selectorConfig {
+.insideOverlay {
 
 	padding: 0;
 	margin: 5px;
@@ -357,18 +357,19 @@ input[readonly] {
 
 }
 
-#overlayLoad fieldset {
+.bodyOverlay fieldset {
 	margin-left: 35%;
 	margin-right: 35%;
 	margin-top: 100px;
 	padding-left: 10px;
 	border: 1px solid black;
-	background-color: rgba(170, 170, 220, 1);
+	background-color: rgba(177, 202, 227, 0.95);
 }
 
 .configValidateButton {
+
+    float: right;
 	margin: 5px;
-	margin-left: 70%;
 	margin-bottom: 2%;
 }
 
@@ -390,6 +391,14 @@ input[readonly] {
 .configButton[selected="selected"] {
 	
     background-color: #ccc;
+}
+
+#configName {
+  width: 99%;
+  margin: 0;
+  margin-bottom: 5px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 #roomTypeTab {
