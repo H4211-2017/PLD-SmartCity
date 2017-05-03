@@ -45,7 +45,7 @@
             </md-tabs>
         </md-content>
 		
-		<div id="connect" class="loginForm" ng-if="etablissement == '' ">
+		<div id="connect" class="loginForm">
 		
 			<div>
 				<label for="etablissement" style="text-align: right">Etablissement :</label>
@@ -61,7 +61,7 @@
 			
 		</div>
 		
-		<button id="disconnect" class="loginForm" ng-if="etablissement != '' " ng-click="disconnect()">Déconnexion</button>
+		<button id="disconnect" style="display: none;" class="loginForm" ng-click="disconnect()">Déconnexion</button>
 		
 		
 		<div id="overlayLoad" class="bodyOverlay">
@@ -87,11 +87,17 @@
         </fieldset>
     </div>
 
-    <div id="overlayWait" class="bodyOverlay" ng-controller="homeMenuCtrl">
+    <!--<div id="overlayWait" class="bodyOverlay" ng-controller="homeMenuCtrl">
         <md-progress-circular md-mode="indeterminate" md-diameter="150px" style="margin-left: 40%; margin-top: 100px"></md-progress-circular>
-    </div>
+    </div>-->
+		
+		<!--<input style="display: none" id="finishLoading" ng-model="finishLoading"></input>-->
 		
     </div>
+	
+	<!--<script>
+		$("#finishLoading").val("finish");
+	</script>-->
 <!--
 Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.

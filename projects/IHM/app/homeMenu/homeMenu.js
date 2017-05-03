@@ -103,12 +103,20 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 		$scope.generate = function() {
 			console.log("Generate Pressed");
 
+			//$("#overlayWait").css("display", "block");
 			$http.post('/generate', dataFactory.getData()).success(function(data, status) {
 				
 				if (status == 200 ||  status == 0) {
 			  
 					alert('emploi du temps généré');
 				}
+				
+				//$("#overlayWait").css("display", "none");
+			}).error(function(data, status) {
+				
+				alert(status + 'erreur interne du serveur');
+				
+				//$("#overlayWait").css("display", "none");
 			});
 		};
 	
