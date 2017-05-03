@@ -14,7 +14,7 @@
         <th>Nom</th>
         <th>Matières</th>
         <th>Indisponibilités</th>
-        <th>
+        <th class="noDisplay">
           <md-button class="md-icon-button" ng-click="toggleModification()">
             <i class="material-icons">create</i>
           </md-button>
@@ -59,7 +59,7 @@
           </ul>
         </td>
         <td>
-          <md-button ng-click="displayAvailabilityRead(teacher)"></md-button>
+          <button ng-click="displayAvailabilityRead(teacher)">DISP</button>
         </td>
         <td>
           <md-button class="md-icon-button" ng-click="removeTeacher($index)">
@@ -70,10 +70,9 @@
     </table>
 
     <div id="addTeacherOverlay" class="overlay">
-      <div ng-if="overlayIsReadOnly">
-        <h3>Disponibilités de {{teacherFocused.firstName}}</h3>
-        {{teacherFocused}}
-        <table>
+      <fieldset class="formLayout" ng-if="overlayIsReadOnly">
+        <legend>Disponibilités de {{teacherFocused.firstName}}</legend>
+        <table class="framedTable">
           <tr>
             <th>days</th>
             <th ng-repeat="(indexHourTitle,hour) in schedule.hoursSlot">{{hour.start}}-{{hour.end}}</th>
@@ -84,12 +83,12 @@
                 ng-class="returnClassOnAvailability(availabilityTeacherFocused[indexDay][indexHour])"></td>
           </tr>
         </table>
-        <md-button ng-click="closeOverlay()">Fermer</md-button>
+        <button ng-click="closeOverlay()">Fermer</button>
 
-      </div>
-      <div ng-if="!overlayIsReadOnly">
-        <h3>Entrez vos indiponibilités</h3>
-        <table>
+      </fieldset>
+      <fieldset class="formLayout" ng-if="!overlayIsReadOnly">
+        <legend>Entrez vos indisponibilités</legend>
+        <table class="framedTable">
           <tr>
             <th>days</th>
             <th ng-repeat="(indexHourTitle,hour) in schedule.hoursSlot">{{hour.start}}-{{hour.end}}</th>
@@ -100,9 +99,9 @@
                                                                           ng-model="unavailabilityInput[indexDay][indexHour]"></input></td>
           </tr>
         </table>
-        <md-button ng-click="setCurrentUnavailability()">valider</md-button>
-        <md-button ng-click="closeOverlay()">annuler</md-button>
-      </div>
+        <button ng-click="setCurrentUnavailability()">valider</button>
+        <button ng-click="closeOverlay()">annuler</button>
+      </fieldset>
 
     </div>
 
