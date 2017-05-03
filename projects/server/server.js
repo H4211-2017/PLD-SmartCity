@@ -54,19 +54,15 @@ app.get('/login?', function(request, response){
 	}
 });
 
-app.get('/generate', function(request, response) {
-
-
-var outputFile = repositoryPath + '/projects/resources/server.fet';
-var outputDir = repositoryPath + '/projects/resources/outServer';
-
 app.get('/data', function(request, response) {
+	
 	var sess = request.session;
 	//checking that person is logged in
 	sess.data = request.body;
 });
 
 app.post('/data', function(request, response){
+	
 	var sess = request.session;
 	console.log('posted');
 	console.log(request.body);
@@ -74,7 +70,7 @@ app.post('/data', function(request, response){
 	}
 });
 
-app.get('/input?', function(request, response) {
+app.get('/generate', function(request, response) {
 
 	var sess = request.session;
 	
