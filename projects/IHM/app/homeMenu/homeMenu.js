@@ -13,36 +13,15 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
   }])
   
   .controller('homeMenuCtrl', ["$scope", "$http", "$rootScope", "dataFactory", '$compile', function($scope, $http, $rootScope, dataFactory, $compile) {
-		
+
+	  $scope.configName = '';
 	  $scope.save = function() {
-			console.log("Save Pressed")//test for development
-			//simulates an anchor and a click on it
-			var anchor = document.createElement('a');
-			if (window.navigator.msSaveOrOpenBlob){//In case of IE10-
-				alert("Veuillez selectionner un navigateur plus récent");
-			}
-			else{//If browser supports download attr
-				anchor.href = "resources/config.json";
-				anchor.target = "config.json";
-				anchor.download = "config.json";
-				console.log(anchor.toString());
-				document.body.appendChild(anchor);
-				anchor.click();
-				setTimeout(function() {
-					document.body.removeChild(anchor);
-				}, 0);
-			}
-			
-			
-			
-		/*
-		//TODO test this stub to support download with IE10
-		var a = document.createElement("a"),
-			file = new Blob([data], {type: type});
-		if (window.navigator.msSaveOrOpenBlob) // IE10+
-			window.navigator.msSaveOrOpenBlob(file, filename);
-		*/
-		
+          	$scope.configName = '';
+			$('#overlaySave').css('display', 'block');
+	  };
+
+	  $scope.saveAs = function() {
+
 	  };
 
 	  function createConfigBalise(name) {
@@ -76,6 +55,7 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 				}
 
 				newHtml += "<button class='configValidateButton' ng-click='chooseConfig()'>Valider</button>";
+				newHtml += " <button style='margin-left: 40%;' class=\"configValidateButton\" onclick=\"$('#overlayLoad').css('display', 'none')\">Annuler</button>";
 				newHtml += "</section>";
 				var compiledContent = $compile(newHtml)($scope);
 				selector.html(compiledContent);
