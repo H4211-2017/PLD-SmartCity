@@ -299,6 +299,21 @@ angular.module('myApp.dataFactory', [])
   };
 
   //======================================== PRIVATE ================================
+  function ensureCoherencyAttributionSubject(subjectString, isAddOperation, deleteCascade) {
+    var attributionArray = data.teacher.attribution;
+    var subjectArray = data.programme.subjects;
+
+  }
+
+  function ensureCoherencyAttributionClasses(classString, isAddOperation, deleteCascade) {
+
+  }
+
+  // TODO
+  function ensureCoherencyAttributionTeacherOnDelete(teacherToRemove, deleteCascade) {
+    return true;
+  }
+
   function ensureCoherencyTeacherScheduleOnDelete(deleteCascade) {
     var teacherArray = data.teacher.teacherList;
     for (var i = 0, length = teacherArray.length; i < length; i++) {
@@ -416,11 +431,6 @@ angular.module('myApp.dataFactory', [])
         }
       }
     }
-    return true;
-  }
-
-  // TODO
-  function ensureCoherencyAttributionTeacherOnDelete(teacherToRemove, deleteCascade) {
     return true;
   }
 

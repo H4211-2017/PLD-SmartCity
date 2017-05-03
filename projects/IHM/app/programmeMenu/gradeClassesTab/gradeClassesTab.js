@@ -13,7 +13,7 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory','myApp.se
 
     const ENTER_KEY = 13;
 
-    $scope.grades = []
+    $scope.grades = [];
     $scope.inputClass = [""];
     $scope.inputStudentNumber = [0];
     $scope.inputGrade = "";
