@@ -79,7 +79,7 @@ app.get('/login?', function(request, response){
 				{
 					console.log("server.js line 106 doesn't exist yet, creating");
 
-					service.readJsonConfig(ihmPath + '/resources/toXML.json', function(json) {
+					service.readJsonConfig(ihmPath + '/resources/validJSONFile.json', function(json) {
 
 						var newSchool = etoileData({
 
