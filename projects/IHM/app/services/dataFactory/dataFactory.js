@@ -314,6 +314,11 @@ angular.module('myApp.dataFactory', [])
     var attributionArray = data.teacher.attribution;
     var subjectArray = data.programme.subjects;
 
+    if (isAddOperation) {
+
+    } else {
+
+    }
   }
 
   function ensureCoherencyAttributionClasses(classString, isAddOperation, deleteCascade) {
