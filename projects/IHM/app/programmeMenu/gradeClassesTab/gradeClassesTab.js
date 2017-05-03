@@ -51,6 +51,28 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory','myApp.se
       }
     };
 
+    $scope.readOnly = true;
+    $scope.toggleModification = function() {
+
+      var toggables = $('#gradeClassTab .readOnlyToggable');
+      if($scope.readOnly) {
+
+        for(var i=0; i<toggables.length; i++)
+        {
+          toggables[i].removeAttr('readonly');
+            $scope.readOnly = false;
+        }
+
+      }
+      else {
+        for(var i=0; i<toggables.length; i++)
+        {
+            toggables[i].attr('readonly', true);
+            $scope.readOnly = true;
+        }
+      }
+    };
+
     $scope.addClass = function(index){
       var inputClass = $scope.inputClass[index].trim();
       var inputStudentNumber = $scope.inputStudentNumber[index];

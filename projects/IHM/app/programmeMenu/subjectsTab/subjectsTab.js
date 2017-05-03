@@ -40,4 +40,27 @@ angular.module('myApp.subjectsTab', ['ngRoute', 'myApp.dataFactory'])
         $scope.addSubject();
       }
     };
+
+    $scope.readOnly = true;
+    $scope.toggleModification = function() {
+
+        var toggables = $('#subjectTable .readOnlyToggable');
+        if($scope.readOnly) {
+
+            for(var i=0; i<toggables.length; i++)
+            {
+                toggables[i].removeAttr('readonly');
+                $scope.readOnly = false;
+            }
+
+        }
+        else {
+            for(var i=0; i<toggables.length; i++)
+            {
+                toggables[i].attr('readonly', true);
+                $scope.readOnly = true;
+            }
+        }
+    };
+
   }]);

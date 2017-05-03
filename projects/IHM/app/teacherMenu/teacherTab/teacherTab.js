@@ -44,5 +44,27 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute', 'myApp.dataFactory'])
   $scope.openAddTeacher = function () {
     $('#addTeacherOverlay').css('width', 'inherit');
   };
+
+    $scope.readOnly = true;
+    $scope.toggleModification = function() {
+
+        var toggables = $('#teacherTab .readOnlyToggable');
+        if($scope.readOnly) {
+
+            for(var i=0; i<toggables.length; i++)
+            {
+                toggables[i].removeAttr('readonly');
+                $scope.readOnly = false;
+            }
+
+        }
+        else {
+            for(var i=0; i<toggables.length; i++)
+            {
+                toggables[i].attr('readonly', true);
+            }
+            $scope.readOnly = true;
+        }
+    };
 }
 ]);

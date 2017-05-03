@@ -7,7 +7,15 @@
 	  Ajoutez/ supprimez des types de salle
 	  </p>
 
-	  <table id="subjectTable" class="framedTable">
+	  <table id="roomTypeTable" class="framedTable">
+		  <tr>
+			  <th>Type de salle</th>
+			  <th>
+				  <md-button class="md-icon-button" ng-click="toggleModification()">
+					  <i class="material-icons">create</i>
+				  </md-button>
+			  </th>
+		  </tr>
 		<tr>
 		  <td>
 			<md-inputcontainer>
@@ -25,7 +33,7 @@
 		</tr>
 		<tr ng-repeat="roomType in roomTypesArray track by $index">
 		  <td>
-			  <input type="text" readonly ng-model="roomType" />
+			  <input class="readOnlyToggable" type="text" readonly ng-model="roomType" />
 		  </td>
 		  <td>
 			<md-button class="md-icon-button" aria-label="supprimmer ce type de salle"
