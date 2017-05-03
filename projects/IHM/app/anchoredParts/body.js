@@ -5,10 +5,35 @@
 
 angular.module('myApp')
 
-    .controller('BodyCtrl', ['$scope', '$rootScope','$http', '$timeout', function($scope, $rootScope, $http, $timeout) {
+    .controller('BodyCtrl', ['$scope', '$rootScope','$http', '$timeout', 'dataFactory', function($scope, $rootScope, $http, $timeout, dataFactory) {
     
-    	$rootScope.__etablissement = '';
-    	$rootScope.mdp = '';
+		$rootScope.__etablissement = '';
+    	$rootScope.__mdp = '';
+	
+		$http.get('/relog').success(function(data, status) {
+	 
+			if (status == 200 || status == 0) {
+				
+				if (data.schoolname) {
+					
+					$rootScope.__etablissement = data.schoolname;
+					$rootScope.__mdp = data.mdp;
+					console.log('compte client récupéré');
+					
+					if (data.lastConfig) {
+						
+						$http.get('/data?config=' + data.lastConfig).success(function(data1, status1) {
+							
+							if (status1 == 200 || status1 == 0) {
+								
+								dataFactory.setData(data1);
+								console.log('dernière configuration enregistrée récupérée');
+							}
+						});
+					}
+				}
+			}
+		});
     	
         $scope.homeMenu = 'homeMenu/homeMenu.html';
         $scope.programmeMenu = 'programmeMenu/programmeMenu.html';

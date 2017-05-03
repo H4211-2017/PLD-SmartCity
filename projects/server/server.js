@@ -28,14 +28,6 @@ app.use(session({
     })
 }));
 
-app.get('/logout', function(request, response) {
-
-	var sess = request.session;
-	console.log(sess.institutionName + ' logged out');
-	sess.destroy();
-	response.send('logged out');
-});
-
 app.get('/', function(request, response){
 
 	var sess = request.session;
@@ -49,23 +41,48 @@ app.get('/login?', function(request, response){
 	
 	var sess = request.session;
 	var institutionName = request.query.schoolname;
+	var mdp = request.query.mdp
 	
 	console.log('login :');
 	
 	if(!sess.institutionName){
+		
 		sess.institutionName = institutionName;
-		sess.configs = [ "exemple" ];
+		sess.mdp = mdp;
+		sess.configs = [ '__exemple' ];
 		sess.data = {};
+		
 		service.readJsonConfig(ihmPath + '/resources/toXML.json', function(json) {
 			
-			sess.data.exemple = json;
+			sess.data.__exemple = json;
 			console.log(sess.institutionName);
 			response.status(200).send('logged');
 		});
+		
 	} else {
 	
 		response.status(200).send('already logged');
 	}
+});
+
+app.get('/logout', function(request, response) {
+
+	var sess = request.session;
+	console.log(sess.institutionName + ' logged out');
+	sess.destroy();
+	response.send('logged out');
+});
+
+app.get('/relog', function(request, response) {
+	
+	var sess = request.session;
+	
+	res = {	schoolname: sess.institutionName,
+			mdp: sess.mdp,
+			lastConfig: sess.lastConfig
+	};
+	
+	response.status(200).json(res);
 });
 
 app.get('/configs', function(request, response) {
@@ -97,6 +114,7 @@ app.get('/data?', function(request, response) {
 		
 		if (sess.data[config]) {
 		
+			sess.lastConfig = config;
 			response.status(200).json(sess.data[config]);
 	
 		} else {
@@ -142,11 +160,18 @@ app.post('/generate', function(request, response) {
 		var outputFile = repositoryPath + '/projects/resources/xmlFet/' + sess.institutionName + '.fet';
 		var outputDir = repositoryPath + '/projects/resources/output';
 	
-		service.generateTimetable(sess.data, outputFile, outputDir, callback);
+		service.generateTimetable(data, outputFile, outputDir, callback);
+		
+		response.status(201).send('emploi du temps généré, vous pourrez le récupérer');
 	
 	} else {
 		
-		response.status(401).send('veuillez vous connecter avant de générer l\'emploi du temps');
+		var outputFile = repositoryPath + '/projects/resources/xmlFet/withoutSession.fet';
+		var outputDir = repositoryPath + '/projects/resources/output';
+	
+		service.generateTimetable(data, outputFile, outputDir, callback);
+		
+		response.status(201).send('emploi du temps généré, vous ne pourrez le récupérer que maintenant');
 	}
 	
 	function callback(result) {
@@ -173,7 +198,8 @@ app.get('/display', function(request, response) {
 	
 	} else {
 		
-		response.send('Veuillez vous connecter avant de demander l\'emploi du temps');
+		var timeTableIndexPath = repositoryPath + '/projects/resources/output/timetables/withoutSession/withoutSession_index.html';
+		response.status(200).sendFile(timeTableIndexPath);
 	}
 });
 
