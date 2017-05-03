@@ -6,8 +6,6 @@ var parse = function(jsonTeacher, tableHours, outputJsonGenerator, callback) {
 	var stringName = jsonTeacher.firstName + ' ' + jsonTeacher.lastName;
 	var stringComments = ((jsonTeacher.comments == '') ? '' : jsonTeacher.comments);
 	outputJsonGenerator.addTeacher(stringName, '0', stringComments);
-	
-	//TODO Constraints of classes
 
 	var tableNotAvailableDayHour = [];
 	
@@ -16,7 +14,7 @@ var parse = function(jsonTeacher, tableHours, outputJsonGenerator, callback) {
 		async.forEach(unavaibility.hoursSlot, function(index, callback2) {
 			
 			var notAvailableDayHour = {
-				day: unavaibility.dayName, 
+				day: unavaibility.day,
 				hour: (tableHours[index].start + ' - ' + tableHours[index].end) 
 			};
 				

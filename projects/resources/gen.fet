@@ -15,7 +15,7 @@
 
 		</Days_List>
 		<Hours_List>
-				<Number_of_Hours>5</Number_of_Hours>
+				<Number_of_Hours>8</Number_of_Hours>
 				<Hour>
 						<Name>8h35 - 9h30</Name>
 
@@ -34,6 +34,18 @@
 				</Hour>
 				<Hour>
 						<Name>13h45 - 14h40</Name>
+
+				</Hour>
+				<Hour>
+						<Name>14h40 - 15h35</Name>
+
+				</Hour>
+				<Hour>
+						<Name>15h35 - 16h30</Name>
+
+				</Hour>
+				<Hour>
+						<Name>16h30 - 17h25</Name>
 
 				</Hour>
 
@@ -259,15 +271,30 @@
 				<ConstraintTeacherNotAvailableTimes>
 						<Weight_Percentage>100</Weight_Percentage>
 						<Teacher>Arthur Auklo</Teacher>
-						<Number_of_Not_Available_Times>2</Number_of_Not_Available_Times>
+						<Number_of_Not_Available_Times>5</Number_of_Not_Available_Times>
 						<Not_Available_Time>
 								<Day>Lundi</Day>
-								<Hour>11h40 - 12h35</Hour>
+								<Hour>8h35 - 9h30</Hour>
 
 						</Not_Available_Time>
 						<Not_Available_Time>
 								<Day>Lundi</Day>
-								<Hour>13h45 - 14h40</Hour>
+								<Hour>10h45 - 11h40</Hour>
+
+						</Not_Available_Time>
+						<Not_Available_Time>
+								<Day>Lundi</Day>
+								<Hour>16h30 - 17h25</Hour>
+
+						</Not_Available_Time>
+						<Not_Available_Time>
+								<Day>Mardi</Day>
+								<Hour>9h30 - 10h25</Hour>
+
+						</Not_Available_Time>
+						<Not_Available_Time>
+								<Day>Mardi</Day>
+								<Hour>11h40 - 12h35</Hour>
 
 						</Not_Available_Time>
 						<Active>true</Active>
@@ -277,25 +304,15 @@
 				<ConstraintTeacherNotAvailableTimes>
 						<Weight_Percentage>100</Weight_Percentage>
 						<Teacher>Beatrice Beaugrand</Teacher>
-						<Number_of_Not_Available_Times>4</Number_of_Not_Available_Times>
+						<Number_of_Not_Available_Times>2</Number_of_Not_Available_Times>
 						<Not_Available_Time>
-								<Day>Lundi</Day>
-								<Hour>11h40 - 12h35</Hour>
-
-						</Not_Available_Time>
-						<Not_Available_Time>
-								<Day>Lundi</Day>
-								<Hour>13h45 - 14h40</Hour>
+								<Day>Mardi</Day>
+								<Hour>14h40 - 15h35</Hour>
 
 						</Not_Available_Time>
 						<Not_Available_Time>
 								<Day>Mardi</Day>
-								<Hour>11h40 - 12h35</Hour>
-
-						</Not_Available_Time>
-						<Not_Available_Time>
-								<Day>Mardi</Day>
-								<Hour>13h45 - 14h40</Hour>
+								<Hour>16h30 - 17h25</Hour>
 
 						</Not_Available_Time>
 						<Active>true</Active>

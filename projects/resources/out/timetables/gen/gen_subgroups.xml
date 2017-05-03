@@ -3,35 +3,53 @@
   <Subgroup name="6A Sous-groupe automatique">
    <Day name="Lundi">
     <Hour name="8h35 - 9h30">
-      <Teacher name="Arthur Auklo"></Teacher><Subject name="Math"></Subject><Room name="C2"></Room>
-    </Hour>
-    <Hour name="9h30 - 10h25">
-      <Teacher name="Beatrice Beaugrand"></Teacher><Subject name="Latin"></Subject><Room name="C2"></Room>
-    </Hour>
-    <Hour name="10h45 - 11h40">
-      <Teacher name="Arthur Auklo"></Teacher><Subject name="Math"></Subject><Room name="C1"></Room>
-    </Hour>
-    <Hour name="11h40 - 12h35">
      
     </Hour>
+    <Hour name="9h30 - 10h25">
+     
+    </Hour>
+    <Hour name="10h45 - 11h40">
+      <Teacher name="Beatrice Beaugrand"></Teacher><Subject name="Latin"></Subject><Room name="C1"></Room>
+    </Hour>
+    <Hour name="11h40 - 12h35">
+      <Teacher name="Beatrice Beaugrand"></Teacher><Subject name="Latin"></Subject><Room name="C1"></Room>
+    </Hour>
     <Hour name="13h45 - 14h40">
+     
+    </Hour>
+    <Hour name="14h40 - 15h35">
+     
+    </Hour>
+    <Hour name="15h35 - 16h30">
+      <Teacher name="Arthur Auklo"></Teacher><Subject name="Math"></Subject><Room name="C1"></Room>
+    </Hour>
+    <Hour name="16h30 - 17h25">
      
     </Hour>
    </Day>
    <Day name="Mardi">
     <Hour name="8h35 - 9h30">
-      <Teacher name="Beatrice Beaugrand"></Teacher><Subject name="Latin"></Subject><Room name="C2"></Room>
-    </Hour>
-    <Hour name="9h30 - 10h25">
       <Teacher name="Beatrice Beaugrand"></Teacher><Subject name="Latin"></Subject><Room name="C1"></Room>
     </Hour>
-    <Hour name="10h45 - 11h40">
-      <Teacher name="Arthur Auklo"></Teacher><Subject name="Math"></Subject><Room name="C2"></Room>
-    </Hour>
-    <Hour name="11h40 - 12h35">
+    <Hour name="9h30 - 10h25">
       <Teacher name="Arthur Auklo"></Teacher><Subject name="Math"></Subject><Room name="C1"></Room>
     </Hour>
+    <Hour name="10h45 - 11h40">
+      <Teacher name="Arthur Auklo"></Teacher><Subject name="Math"></Subject><Room name="C1"></Room>
+    </Hour>
+    <Hour name="11h40 - 12h35">
+     
+    </Hour>
     <Hour name="13h45 - 14h40">
+     
+    </Hour>
+    <Hour name="14h40 - 15h35">
+      <Teacher name="Arthur Auklo"></Teacher><Subject name="Math"></Subject><Room name="C1"></Room>
+    </Hour>
+    <Hour name="15h35 - 16h30">
+     
+    </Hour>
+    <Hour name="16h30 - 17h25">
       <Teacher name="Arthur Auklo"></Teacher><Subject name="Math"></Subject><Room name="C2"></Room>
     </Hour>
    </Day>
@@ -53,6 +71,15 @@
     <Hour name="13h45 - 14h40">
      
     </Hour>
+    <Hour name="14h40 - 15h35">
+     
+    </Hour>
+    <Hour name="15h35 - 16h30">
+     
+    </Hour>
+    <Hour name="16h30 - 17h25">
+     
+    </Hour>
    </Day>
    <Day name="Mardi">
     <Hour name="8h35 - 9h30">
@@ -68,6 +95,15 @@
      
     </Hour>
     <Hour name="13h45 - 14h40">
+     
+    </Hour>
+    <Hour name="14h40 - 15h35">
+     
+    </Hour>
+    <Hour name="15h35 - 16h30">
+     
+    </Hour>
+    <Hour name="16h30 - 17h25">
      
     </Hour>
    </Day>
@@ -89,6 +125,15 @@
     <Hour name="13h45 - 14h40">
      
     </Hour>
+    <Hour name="14h40 - 15h35">
+     
+    </Hour>
+    <Hour name="15h35 - 16h30">
+     
+    </Hour>
+    <Hour name="16h30 - 17h25">
+     
+    </Hour>
    </Day>
    <Day name="Mardi">
     <Hour name="8h35 - 9h30">
@@ -104,6 +149,15 @@
      
     </Hour>
     <Hour name="13h45 - 14h40">
+     
+    </Hour>
+    <Hour name="14h40 - 15h35">
+     
+    </Hour>
+    <Hour name="15h35 - 16h30">
+     
+    </Hour>
+    <Hour name="16h30 - 17h25">
      
     </Hour>
    </Day>
@@ -125,6 +179,15 @@
     <Hour name="13h45 - 14h40">
      
     </Hour>
+    <Hour name="14h40 - 15h35">
+     
+    </Hour>
+    <Hour name="15h35 - 16h30">
+     
+    </Hour>
+    <Hour name="16h30 - 17h25">
+     
+    </Hour>
    </Day>
    <Day name="Mardi">
     <Hour name="8h35 - 9h30">
@@ -140,6 +203,15 @@
      
     </Hour>
     <Hour name="13h45 - 14h40">
+     
+    </Hour>
+    <Hour name="14h40 - 15h35">
+     
+    </Hour>
+    <Hour name="15h35 - 16h30">
+     
+    </Hour>
+    <Hour name="16h30 - 17h25">
      
     </Hour>
    </Day>
@@ -161,6 +233,15 @@
     <Hour name="13h45 - 14h40">
      
     </Hour>
+    <Hour name="14h40 - 15h35">
+     
+    </Hour>
+    <Hour name="15h35 - 16h30">
+     
+    </Hour>
+    <Hour name="16h30 - 17h25">
+     
+    </Hour>
    </Day>
    <Day name="Mardi">
     <Hour name="8h35 - 9h30">
@@ -176,6 +257,15 @@
      
     </Hour>
     <Hour name="13h45 - 14h40">
+     
+    </Hour>
+    <Hour name="14h40 - 15h35">
+     
+    </Hour>
+    <Hour name="15h35 - 16h30">
+     
+    </Hour>
+    <Hour name="16h30 - 17h25">
      
     </Hour>
    </Day>

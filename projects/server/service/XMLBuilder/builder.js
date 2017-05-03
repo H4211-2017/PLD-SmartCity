@@ -4,6 +4,7 @@ var outputGenerator = require('./output/outputGenerator');
 
 var ioDay = require('./io/day');
 var ioHour = require('./io/hour');
+var ioDisableHours = ('./io/diableHours');
 var ioYear = require('./io/year');
 var ioClass = require('./io/class');
 var ioSubject = require('./io/subject');
@@ -21,6 +22,7 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	var tableYears = jsonObjectEntry.programme.year;
 	var tableClasses = jsonObjectEntry.programme.classes;
 	var tableSubjects = jsonObjectEntry.programme.subjects;
+	var tableTeacher = jsonObjectEntry.teacher.teacherList;
 
 	async.forEach(tableDays, parseDay, afterParseDay);
 	
@@ -37,6 +39,16 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	function parseHours(jsonHour, callback) {
 		
 		ioHour.parse(jsonHour, outputJsonGenerator, callback);
+	}
+	
+	function afterParseHours(err) {
+		
+		async.forEach(tableDisableHours, parseDisableHours, afterParseYear);
+	}
+	
+	function parseDisableHours(jsonDisableHour, callback) {
+		
+		ioHour.parse(jsonDisableHour, outputJsonGenerator, callback);
 	}
 	
 	function afterParseHours(err) {
@@ -71,7 +83,6 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	
 	function afterParseSubject(err) {
 	
-		var tableTeacher = jsonObjectEntry.teacher.teacherList;
 		async.forEach(tableTeacher, parseTeacher, afterParseTeacher);
 	}
 

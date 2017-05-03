@@ -43,12 +43,19 @@
       ],
       "disableHours": [
         {
-          "day": "Lundi",
-          "hourSlot": {
-            "start": "8h35",
-            "end": "9h30"
-          }
-        }
+			"day": "Lundi",
+			"hourSlot": {
+				"start": "8h35",
+				"end": "9h30"
+			}
+        },
+		{
+			"day": "Mardi",
+			"hourSlot": {
+				"start": "13h45",
+				"end": "14h40"
+			}
+		}
       ]
     },
     "roomTypes": [
@@ -160,7 +167,7 @@
         "unavaibility": [
 			{
 				"day": "Lundi",
-				"hourSlot": [
+				"hoursSlot": [
 					0,
 					2,
 					7
@@ -168,7 +175,7 @@
 			},
 			{
 				"day": "Mardi",
-				"hourSlot": [
+				"hoursSlot": [
 					1,
 					3
 				]
