@@ -19,7 +19,8 @@
 		<tr ng-repeat="attribution in attributionArray">
 		  <th>{{attribution.class}}</th>
 		  <td ng-repeat="subject in attribution.subjects">
-			{{subject.subjectName}}
+			<select ng-options="(teacher.firstName + ' ' + teacher.lastName) for teacher in getAccessToTeacherArrayBySubject(subject.subjectName)" 
+				ng-model="currentTeacherSelected"></select>
 		  </td>
 		</tr>
 		
