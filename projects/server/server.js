@@ -13,14 +13,17 @@ const port = 3000;
 
 var service = require('./service/service');
 
+var opts
 
-
-var etoileData = mongoose.model('etoileData',{
+var schema = mongoose.Schema({
 	institutionName:String,
 	data:{},
 	configs:[String]
-
+},
+{
+  minimize:false
 });
+var etoileData = mongoose.model('etoileData',schema);
 
 // method to adapt the path to the pc which I work
 var repositoryPath = __dirname.slice(0, -16);
@@ -56,49 +59,49 @@ app.get('/login?', function(request, response){
 	var institutionNameString = request.query.schoolname;
 
 	console.log('login :');
-	
+
 	if(!sess.institutionName){
-		
+
 		console.log(sess.institutionName);
 		etoileData.findOne({institutionName:institutionNameString},function(err, pers){
-			
+
 			if(!err)
 			{
 				sess.institutionName = institutionNameString;
-				
+
 				if(pers)
 				{
 					console.log("server.js line 102 already exists "+pers);
-					
+
 					response.status(200).send('already logged');
 				}
 				else
 				{
 					console.log("server.js line 106 doesn't exist yet, creating");
-					
+
 					service.readJsonConfig(ihmPath + '/resources/toXML.json', function(json) {
-						
+
 						var newSchool = etoileData({
-							
+
 							institutionName: institutionNameString,
 							data: {},
 							configs: [ '__exemple' ]
 						});
-					
+
 						newSchool.data.__exemple = json;
 						response.status(200).send('logged');
-					
+
 						newSchool.save();
 					});
 				}
 			} else {
-				
+
 				response.status(500).send(err);
 			}
 		});
-		
+
 	} else {
-		
+
 		response.status(200).send('already logged');
 	}
 });
@@ -112,16 +115,16 @@ app.get('/logout', function(request, response) {
 });
 
 app.get('/relog', function(request, response) {
-	
+
 	var sess = request.session;
-	
+
 	res = {	schoolname: sess.institutionName,
 			mdp: sess.mdp,
 			lastConfig: sess.lastConfig
 	};
-	
+
 	console.log(res);
-	
+
 	response.status(200).json(res);
 });
 
@@ -164,7 +167,7 @@ app.get('/data?', function(request, response) {
 	var config = request.query.config;
 
 	if(sess.institutionName) {
-		
+
 		etoileData.findOne({institutionName:sess.institutionName},function(err, pers){
 			if(!err)
 			{
@@ -177,7 +180,7 @@ app.get('/data?', function(request, response) {
 					}
 				}
 			} else {
-				
+
 				response.status(500).send(err);
 			}
 		});
@@ -197,9 +200,9 @@ app.post('/data?', function(request, response){
 	console.log(request.body);
 
 	if(sess.institutionName){
-		
+
 		etoileData.findOne({institutionName:sess.institutionName},function(err, pers){
-			
+
 			if(!err)
 			{
 				if(pers)
@@ -214,7 +217,7 @@ app.post('/data?', function(request, response){
 					// TODO correct push
 					pers.configs.push(config);
 					etoileData.findOneAndUpdate({institutionName:sess.institutionName},pers, function(err){
-					
+
 					if(!err)
 					{
 					  console.log("Saved");
@@ -242,36 +245,36 @@ app.post('/generate', function(request, response) {
 
 	var sess = request.session;
 	var data = request.body;
-	
+
 	if (data && sess.institutionName) {
-		
+
 		var outputFile = repositoryPath + '/projects/resources/xmlFet/' + sess.institutionName + '.fet';
 		var outputDir = repositoryPath + '/projects/resources/output';
-	
+
 		service.generateTimetable(data, outputFile, outputDir, callback);
-		
+
 		response.status(201).send('emploi du temps généré, vous pourrez le récupérer');
-	
+
 	} else {
-		
+
 		var outputFile = repositoryPath + '/projects/resources/xmlFet/withoutSession.fet';
 		var outputDir = repositoryPath + '/projects/resources/output';
-	
+
 		service.generateTimetable(data, outputFile, outputDir, callback);
-		
+
 		response.status(201).send('emploi du temps généré, vous ne pourrez le récupérer que maintenant');
 	}
-	
+
 	function callback(result) {
-		
+
 		if(result.length != 0) {
-		
+
 			response.status(500).send(result);
-		
+
 		} else {
-		
+
 			response.status(201).send('Données de l\'emploi du temps generées');
-		}	
+		}
 	}
 });
 
@@ -285,7 +288,7 @@ app.get('/display', function(request, response) {
 		response.sendFile(timeTableIndexPath);
 
 	} else {
-		
+
 		var timeTableIndexPath = repositoryPath + '/projects/resources/output/timetables/withoutSession/withoutSession_index.html';
 		response.status(200).sendFile(timeTableIndexPath);
 	}
