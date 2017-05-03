@@ -1,19 +1,21 @@
-<h3>Élèves</h3>
+<div class="tabcontent" expanded="false">
 
-<p>Sur cette page, vous pouvez définir des groupes d'élèves.
-  <br/>Dans un premier temps, définissez des niveaux qui correspondent à des types de classe et des programmes scolaires. Par exemple : 3ème générale, 1ère S-SVT...
-  <br/>Ensuite, définissez les différentes classes de ces niveaux, avec leur effectif. Cet effectif permettra d'organiser les cours dans des salles dimensionnées correctement.
-  </p>
+	<h3>Élèves</h3>
 
-<div ng-controller="gradeClassesTabCtrl">
-  {{JSON.stringify(grades)}}
+	<p>Sur cette page, vous pouvez définir des groupes d'élèves.
+	  <br/>Dans un premier temps, définissez des niveaux qui correspondent à des types de classe et des programmes scolaires. Par exemple : 3ème générale, 1ère S-SVT...
+	  <br/>Ensuite, définissez les différentes classes de ces niveaux, avec leur effectif. Cet effectif permettra d'organiser les cours dans des salles dimensionnées correctement.
+	  </p>
 
-  <table class="framedTable">
-    <tr>
-      <th>Niveau</th>
-      <th>Classe</th>
-      <th>Effectif</th>
-    </tr>
+	<div ng-controller="gradeClassesTabCtrl">
+	  {{JSON.stringify(grades)}}
+
+	  <table class="framedTable">
+		<tr>
+		  <th>Niveau</th>
+		  <th>Classe</th>
+		  <th>Effectif</th>
+		</tr>
 
 		<tr ng-repeat-start="(indexGrade , grade) in grades">
 		  <td>{{grade.name}}</td>
