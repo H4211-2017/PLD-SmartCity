@@ -270,6 +270,16 @@ angular.module('myApp.dataFactory', [])
     return data.teacher.teacherList;
   };
 
+  dataFactory.getTeacherArrayBySubject = function(subjectString) {
+    var teacherArray = data.teacher.teacherList;
+    var result = [];
+    for (var i = 0, length = teacherArray.length; i < length; i++) {
+      if (teacherArray[i].subject.indexOf(subjectString) !== -1) {
+        result.push(teacherArray[i]);
+      }
+    }
+  };
+
   dataFactory.getAttributionArray = function() {
 	return data.teacher.attribution;  
   };
@@ -294,7 +304,7 @@ angular.module('myApp.dataFactory', [])
     var teacherArray = data.teacher.teacherList;
     var teacherToRemove = teacherArray[teacherToRemoveIndex];
     var teacherDoesNotHaveDependency = ensureCoherencyAttributionTeacherOnDelete(teacherToRemove, deleteCascade);
-    // TODO ensure coherency with attribution
+
     if (deleteCascade || teacherDoesNotHaveDependency) {
       teacherArray.splice(teacherToRemoveIndex, 1);
       return true;
