@@ -9,4 +9,4 @@
 #other files
 npm-debug.log
 .idea/workspace.xml
-node-modules
+projects/server/node_modules/

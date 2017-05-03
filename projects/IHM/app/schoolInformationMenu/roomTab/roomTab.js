@@ -13,7 +13,7 @@ angular.module('myApp.roomTab', ['ngRoute', 'myApp.dataFactory'])
     $scope.roomsArray = dataFactory.getRoomArray();
     $scope.roomTypesArray = dataFactory.getRoomTypeArray();
     $scope.roomTypesSelected = [];
-    $scope.roomCapacity = 1;
+    $scope.roomCapacity = 0;
 
     $scope.addRoom = function () {
       if ($scope.roomNameInputValue && $scope.roomNameInputValue.trim() && $scope.roomTypesSelected.length > 0) {
@@ -24,6 +24,7 @@ angular.module('myApp.roomTab', ['ngRoute', 'myApp.dataFactory'])
         /*$scope.roomTypesSelected = [];
         $scope.roomCapacity = 1;*/
       }
+      printObjectCaracteristic($scope.roomsArray, ['$$hashKey']);
     };
 
     $scope.removeRoom = function (rowToDelete) {

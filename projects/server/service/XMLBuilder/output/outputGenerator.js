@@ -178,19 +178,19 @@ var OutputJsonGenerator = function() {
 	
 	// tableNotAvailableDayHour is table of objects type { day: "Day", hour: "00h00 - 00h00" }
 	
-	this.addTeacherNotAvailableTime = function(stringTeacher, tableNotAvailableDayHour, intWeightPourcentage, boolActive, stringComments, callback) {
+	this.addTeacherNotAvailableTime = function(stringTeacher, tableNotAvailableDayHour, intWeightPercentage, boolActive, stringComments, callback) {
 		
 		// TODO verify if elements exists in hierarchy
 		
-		if (intWeightPourcentage < 0 || intWeightPourcentage > 100) 
+		if (intWeightPercentage < 0 || intWeightPercentage > 100) 
 		{
-			throw 'ERREUR : outputGenerator.js::addTeacherNotAvailableTime : poids invalide : ' + intWeightPourcentage;
+			throw 'ERREUR : outputGenerator.js::addTeacherNotAvailableTime : poids invalide : ' + intWeightPercentage;
 		}
 		
 		var tableTimeConstraints = this.outputJsonObject[0].children[11].children;
 		
 		var constraint = {name: 'ConstraintTeacherNotAvailableTimes', children: [
-			{name: 'Weight_Percentage', text: intWeightPourcentage},
+			{name: 'Weight_Percentage', text: intWeightPercentage},
 			{name: 'Teacher', text: stringTeacher},
 			{name: 'Number_of_Not_Available_Times', text: tableNotAvailableDayHour.length},
 		]};
@@ -223,12 +223,17 @@ var OutputJsonGenerator = function() {
 	
 	// tablePreferredRoom is a list of string : each is the name of the room
 	
-	this.addSubjectPreferredRoom = function(stringSubject, tablePreferredRoom, intWeightPourcentage, boolActive, stringComments, callback) {
+	this.addSubjectPreferredRoom = function(stringSubject, tablePreferredRoom, intWeightPercentage, boolActive, stringComments, callback) {
 
 		// TODO verify if elements exists in hierarchy
-				
+		
+		if (intWeightPercentage < 0 || intWeightPercentage > 100) {
+			
+			throw 'ERREUR : outputGenerator.js::addSubjectPreferredRoom : poids invalide : ' + intWeightPercentage;
+		}
+		
 		var constraint = {name: 'ConstraintSubjectPreferredRooms', children: [
-			{name: 'Weight_Percentage', text: intWeightPourcentage},
+			{name: 'Weight_Percentage', text: intWeightPercentage},
 			{name: 'Subject', text: stringSubject},
 			{name: 'Number_of_Preferred_Rooms', text: tablePreferredRoom.length}
 		]};
@@ -247,6 +252,50 @@ var OutputJsonGenerator = function() {
 									 {name: 'Comments', text: stringComments});			 
 			tableSpaceConstraints.push(constraint);
 			
+			callback();
+		});
+	};
+	
+	// tableBreakTimes is table of objects type { day: "Day", hour: "00h00 - 00h00" }
+	
+	this.addBreakTimes = function(tableBreakDayHour, intWeightPercentage, boolActive, stringComments, callback) {
+		
+		// TODO verify if elements exists in hierarchy
+		
+		if (intWeightPercentage < 0 || intWeightPercentage > 100) {
+			
+			throw 'ERREUR : outputGenerator.js::addBreakTimes : poids invalide : ' + intWeightPercentage;
+		}
+		
+		var tableTimeConstraints = this.outputJsonObject[0].children[11].children;
+		
+		var constraint = {name: 'ConstraintBreakTimes', children: [
+			{name: 'Weight_Percentage', text: intWeightPercentage},
+			{name: 'Number_of_Break_Times', text: tableBreakDayHour.length},
+		]};
+		
+		async.forEach(tableBreakTimes, function(breakDayHour, callback2) {
+			
+			var breakTime = {name: 'Break_Time', children: [
+				{name: 'Day', text: breakDayHour.day},
+				{name: 'Hour', text: breakDayHour.hour}
+			]};
+			
+			constraint.children.push(breakTime);
+			
+			callback2();
+			
+		}, function(err) {
+			
+			if (err) {
+				
+				throw 'ERREUR : outputGenerator.js::addTeacherNotAvailableTime : ' + err;
+			}
+			
+			constraint.children.push({name: 'Active', text: boolActive},
+									 {name: 'Comments', text: stringComments});
+			tableTimeConstraints.push(constraint);
+					
 			callback();
 		});
 	};

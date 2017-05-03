@@ -1,14 +1,15 @@
 var shell = require('shelljs');
 
 var language = 'fr';
+var os = 'win';
 
 var callfet = function(stringInputFile, stringOutputDir, callback) {
 
-	shell.exec(__dirname + '/fet/fet-cl --inputfile=' + stringInputFile + ' --outputdir=' + stringOutputDir + ' --language=' + language + ' --verbose=true', function(code, stdout, stderr) {
+	shell.exec(__dirname + '/fet-' + os + '/fet-cl --inputfile=' + stringInputFile + ' --outputdir=' + stringOutputDir + ' --language=' + language + ' --verbose=true', function(code, stdout, stderr) {
 	
 		if (code != 0) {
 		
-			shell.exec(__dirname + '/fet/fet-cl --inputfile=' + stringInputFile + ' --outputdir=' + stringOutputDir + ' --language=' + language + ' --verbose=true', function(code, stdout, stderr) {
+			shell.exec(__dirname + '/fet-' + os + '/fet-cl --inputfile=' + stringInputFile + ' --outputdir=' + stringOutputDir + ' --language=' + language + ' --verbose=true', function(code, stdout, stderr) {
 				
 				if (code != 0) {
 		

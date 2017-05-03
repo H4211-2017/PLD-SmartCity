@@ -1,6 +1,2 @@
-[
-	"config1.json",
-	"config2.json",
-	"config3.json",
-	"toXML.json"
-] 
+[ "lycee_don_bosco.json",
+  "lycee_don_bosco2.json" ]

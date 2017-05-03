@@ -1,32 +1,52 @@
-<h3>Jours et horaires</h3>
+<div class="tabcontent" expanded="false">
+	<h3>Jours et horaires</h3>
 
 <div ng-controller="scheduleTabCtrl">
   <p>
     Rentrez les horaires de cours de l'établissement (ex: 8h05 - 9h00 ; 9h05 - 10h00...)
   </p>
   <table class="framedTable">
-    <tr ng-repeat="day in scheduleArray">
+    <tr>
       <td>
-        <md-button class="md-icon-button" aria-label="supprimer les horaires de ce jour" ng-click="removeAllDayHourSlot($index)">
+        <md-button class="md-icon-button" aria-label="supprimer les horaires" ng-click="removeAllHourSlot()">
           <md-icon>delete</md-icon>
         </md-button>
       </td>
-      <th scope="row">
-        {{day.dayName}}
-      </th>
-      <td ng-repeat="hourSlot in day.hours">
-        <input id={{"f"+$parent.$index+""+$index}} type="text" ng-model="hourSlot.start" maxlength="5" size="5" ng-keypress="pressKeyInput($parent.$index, $event, $index)" ng-keyup="releaseKeyInput($parent.$index, $event, $index)"></input>
-        <br>
-        <input id={{"s"+$parent.$index+""+$index}} type="text" ng-model="hourSlot.end" maxlength="5" size="5" ng-keypress="pressKeyInput($parent.$index, $event, $index)" ng-keyup="releaseKeyInput($parent.$index, $event, $index)"></input>
-        <!--{{hourSlot.start}} - {{hourSlot.end}}-->
+      <th scope="row"> Horaires </th>
+      <td ng-repeat="hourSlot in scheduleObject.hoursSlot">
+        {{hourSlot.start}}<br/>{{hourSlot.end}}
       </td>
       <td>
-        <md-button class="md-icon-button" aria-label="Use Android" ng-click="addHourSlot($index)">
+        <input type="text" ng-model="hourSlotStart" maxlength="5" size="5" ng-keypress="pressKeyInput($event.keyCode)">
+        <br/>
+        <input type="text" ng-model="hourSlotEnd" maxlength="5" size="5" ng-keypress="pressKeyInput($event.keyCode)">
+        <br/>
+        <md-button class="md-icon-button" aria-label="Use Android" ng-click="addHourSlot()">
           <md-icon>add</md-icon>
         </md-button>
       </td>
     </tr>
-  </table>
 
-  <button ng-click="copyFirstLineHourSlot()">Copier les horaires du lundi</button>
+    <tr ng-repeat="(dayIndex, day) in scheduleObject.days">
+      <td>
+        <input type="checkbox" ng-model="headerSelected[dayIndex]" ng-change="changeHeaderDisableHour(dayIndex)">
+      </td>
+      <th scope="row">
+        {{day}}
+      </th>
+      <td ng-repeat="(hourSlotIndex, hourSlot) in scheduleObject.hoursSlot">
+        <input type="checkbox" ng-model="hoursSlotSelected[dayIndex][hourSlotIndex]" ng-change="changeDisableHour(dayIndex, hourSlotIndex)">
+      </td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td></td>
+      <td ng-repeat="hourSlot in scheduleObject.hoursSlot">
+        <md-button class="md-icon-button" aria-label="Use Android" ng-click="removeHourSlot($index)">
+          <md-icon>delete</md-icon>
+        </md-button>
+      </td>
+    </tr>
+  </table>
 </div>
