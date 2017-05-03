@@ -68,8 +68,9 @@ angular.module('myApp.scheduleTab', ['ngRoute', 'myApp.dataFactory'])
   };
 
   $scope.changeHeaderDisableHour = function (dayIndex) {
-    for (var i = 0; i < $scope.hoursSlotSelected.length; i++){
+    for (var i = 0; i < $scope.hoursSlotSelected[dayIndex].length; i++){
       $scope.hoursSlotSelected[dayIndex][i] = $scope.headerSelected[dayIndex];
+      $scope.changeDisableHour(dayIndex, i);
     }
   };
 
@@ -79,19 +80,6 @@ angular.module('myApp.scheduleTab', ['ngRoute', 'myApp.dataFactory'])
       $scope.addHourSlot();
     }
   };
-
-  // TODO Clean all empty hour slot set by the user
-  // $scope.$on('$destroy', function () {
-  //   for (var i = 0; i < $scope.scheduleObject.length; i++) {
-  //     for (var j = 0; j < $scope.scheduleObject[i].hours.length; j++) {
-  //       var hourSlot = $scope.scheduleObject[i].hours;
-  //       if (!hourSlot[j].start || !hourSlot[j].end) {
-  //         hourSlot.splice(j, 1);
-  //         j--;
-  //       }
-  //     }
-  //   }
-  // });
 
   function createSelectedOnDataFactoryInformation(hoursSlotSelectedArray, headerSelectedArray) {
     // clear arrays
