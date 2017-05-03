@@ -19,6 +19,8 @@ angular.module('myApp.attributionTab', ['ngRoute', 'myApp.dataFactory'])
     });
   $scope.classeArray = dataFactory.getClassesArray();
   
+  $scope.currentTeacherSelected = "";
+  
   $scope.attributionArray = dataFactory.getAttributionArray()
   for(var i=0, length = $scope.attributionArray.length; i < length; i++){
 	$scope.attributionArray[i].subjects.sort(function (a, b) {
@@ -26,8 +28,16 @@ angular.module('myApp.attributionTab', ['ngRoute', 'myApp.dataFactory'])
     });
   }
   
+  $scope.teachersBySubject = []
+  for(i=0, length = $scope.subjectArray.length; i < length; i++){
+	  $scope.teachersBySubject.push( dataFactory.getTeacherArrayBySubject( $scope.subjectArray[i].name ) );
+  }
   
-
+  $scope.getAccessToTeacherArrayBySubject = function(subjectName){
+	  var index = dataFactory.findIndexByKeyValue($scope.subjectArray, ["name"], [subjectName] );
+	  return $scope.teachersBySubject[index]
+  };
+	
   // $scope.currentFirstName = "";
   // $scope.currentLastName = "";
   // $scope.currentSubjectsSelected = [];
