@@ -11,20 +11,17 @@ var parse = function(jsonTeacher, tableHours, outputJsonGenerator, callback) {
 
 	var tableNotAvailableDayHour = [];
 	
-	async.forEach(jsonTeacher.disponibility, function(jsonDisponibility, callback1) {
+	async.forEach(jsonTeacher.unavaibility, function(unavaibility, callback1) {
 		
-		async.forEachOf(tableHours, function(hour, index, callback2) {
+		async.forEach(unavaibility.hoursSlot, function(index, callback2) {
 			
-			if (!jsonDisponibility.hoursSlot.includes(index)) {
+			var notAvailableDayHour = {
+				day: unavaibility.dayName, 
+				hour: (tableHours[index].start + ' - ' + tableHours[index].end) 
+			};
 				
-				var notAvailableDayHour = {
-					day: jsonDisponibility.dayName, 
-					hour: (hour.start + ' - ' + hour.end) 
-				};
-					
-				tableNotAvailableDayHour.push(notAvailableDayHour);
-			}
-			
+			tableNotAvailableDayHour.push(notAvailableDayHour);
+		
 			callback2();	
 				
 		}, function(err) {
