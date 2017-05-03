@@ -15,6 +15,7 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute', 'myApp.dataFactory'])
   $scope.teachersArray = dataFactory.getTeacherArray();
   $scope.subjectsArray = dataFactory.getSubjectsArray();
   $scope.schedule = dataFactory.getScheduleObject();
+  $scope.overlayIsReadOnly = false;
 
   dataFactory.createScheduleArrayBool();
   $scope.teacherFocus = {};
@@ -24,7 +25,7 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute', 'myApp.dataFactory'])
   $scope.currentUnavailabilities = [];
   $scope.unavailabilityInput = dataFactory.getScheduleArrayBool();
 
-
+  $scope.teacherFocused = {};
 
 
   $scope.setCurrentUnavailability = function(){
@@ -47,6 +48,7 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute', 'myApp.dataFactory'])
         $scope.currentUnavailabilities.push(newunavailability);
       }
     }
+    $scope.closeOverlay();
   }
 
   $scope.addTeacher = function() {
@@ -58,8 +60,6 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute', 'myApp.dataFactory'])
       $scope.currentLastName = "";
       $scope.currentSubectsSelected = [];
     }
-
-    console.log(printObjectCaracteristic(dataFactory.getData()));
   };
 
   $scope.removeTeacher = function(indexTeacherToRemove) {
@@ -82,7 +82,6 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute', 'myApp.dataFactory'])
   };
 
   $scope.openOverlay = function () {
-    console.log(printObjectCaracteristic($scope.unavailabilityInput));
     $('#addTeacherOverlay').css('width', 'inherit');
   };
 
@@ -106,5 +105,16 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute', 'myApp.dataFactory'])
             $scope.readOnly = true;
         }
     };
+
+    $scope.displayAvailabilityWrite = function(){
+      $scope.overlayIsReadOnly = false;
+      $scope.openOverlay();
+    }
+
+    $scope.displayAvailabilityRead = function(teacher){
+      $scope.teacherFocused = teacher
+      $scope.overlayIsReadOnly = true;
+      $scope.openOverlay();
+  };
 }
 ]);
