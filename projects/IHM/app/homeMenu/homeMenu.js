@@ -190,8 +190,6 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 						$('#overlayLoad').css('display', 'none');
 						$("#id"+$scope.lastHighLighted).removeAttr('selected');
 						$scope.lastHighLighted = '';
-						
-						$http.post('/data', dataFactory.getData());
 					
 					} else {
 						
