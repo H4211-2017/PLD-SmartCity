@@ -3,11 +3,7 @@
  */
 'use strict';
 
-
-var data;//TODO initialise higher and make it read config.json
-//TODO AJAX CALL TO INITIALISE config
-
-angular.module('myApp.homeMenu', ['ngRoute'])
+angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
   
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/homeMenu', {
@@ -16,9 +12,8 @@ angular.module('myApp.homeMenu', ['ngRoute'])
     });
   }])
   
-  .controller('homeMenuCtrl', ["$scope", "$http", function($scope, $http) {
-	  
-
+  .controller('homeMenuCtrl', ["$scope", "$http", "$rootScope", "dataFactory", '$compile', function($scope, $http, $rootScope, dataFactory, $compile) {
+		
 	  $scope.save = function() {
 			console.log("Save Pressed")//test for development
 			//simulates an anchor and a click on it
@@ -49,9 +44,50 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 		*/
 		
 	  };
+
+	  function createConfigBalise(name) {
+		var nameSansExt = name.replace(".json", "");
+		var highlight = "\"highlight('"+nameSansExt+"')\"";
+	  	var text = "<button id='id"+ nameSansExt +"' class='configButton' ng-click="+highlight+">"+ nameSansExt +" </button>";
+	  	return text;
+	  }
+	  
 	  
 	  $scope.load = function() {
-			console.log("Load Pressed")//Test for development
+	  
+	  	var overlayToFill = $("#selectorConfig");
+	  	overlayToFill.innerHTML = "";
+	  	
+	  	var xhrGetConfig = getXMLHttpRequest();
+	  	var configs = [];
+		var selector = $("#selectorConfig");
+	    var newHtml = '<section ng-controller="homeMenuCtrl">';
+		
+	    xhrGetConfig.onreadystatechange = function() {
+
+			if (xhrGetConfig.readyState == 4 && (xhrGetConfig.status == 200 || xhrGetConfig.status == 0)) {
+			
+				configs = JSON.parse(xhrGetConfig.responseText);
+				console.log(configs);	
+
+				 for(var i=0; i<configs.length; i++) {
+					console.log(i);
+					newHtml += createConfigBalise(configs[i]);
+				}
+
+				newHtml += "<button class='configValidateButton' ng-click='chooseConfig()'>Valider</button>";
+				newHtml += "</section>";
+				var compiledContent = $compile(newHtml)($scope);
+				selector.html(compiledContent);
+				$("#overlayLoad").css("display", "block");
+				
+			}
+		};
+		    
+		xhrGetConfig.open('GET', '/resources/' + $scope.__etablissement + '/getConfig', true);
+		xhrGetConfig.send();
+				
+			/**
 			//simulate an input of type file
 			var newElem = document.createElement('input');
 			newElem.hidden = true;
@@ -90,15 +126,88 @@ angular.module('myApp.homeMenu', ['ngRoute'])
 			//remove it
 			setTimeout(function() {
 				document.body.removeChild(newElem);
-			}, 0);	
+			}, 0);	*/
 	
 	  };
 	  
 	  $scope.generate = function() {
-		  console.log("Generate Pressed");//Test for development
+		  console.log("Generate Pressed");
+		  
+		  var xhr = getXMLHttpRequest();
+		  
+  	    	xhr.onreadystatechange = function() {
+
+				if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+				
+					alert(xhr.responseText); // C'est bon \o/       	
+				}
+			};
+			
+			xhr.open('GET', '/input?input=' + JSON.stringify(dataFactory.getData()), true);
+			xhr.send();  
 	  };
 	  
-	  
+ 	function getXMLHttpRequest() {
+		var xhr = null;
+		if (window.XMLHttpRequest || window.ActiveXObject) {
+			if (window.ActiveXObject) {
+				try {
+				    xhr = new ActiveXObject("Msxml2.XMLHTTP");
+				} catch(e) {
+				    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+			} else {
+				xhr = new XMLHttpRequest(); 
+			}
+		} else {
+			alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
+			return null;
+		}
+		return xhr;
+	};
+	
+	
+		$scope.lastHighLighted = "";
+		$scope.highlight = function(name) {
+			console.log('Highlight '+name);
+			console.log($("#id"+$scope.lastHighLighted));
+			$("#id"+$scope.lastHighLighted).removeAttr('selected');
+			$scope.lastHighLighted = name;
+			$("#id"+$scope.lastHighLighted).attr('selected', true);
+			
+			
+		};
+		
+		$scope.chooseConfig = function() {
+			
+			if($scope.lastHighLighted === '') {
+				alert('Veuillez choisir une configuration');
+			}
+			else {
+				var fileName = $scope.lastHighLighted+".json";
+		  
+				var xhr = getXMLHttpRequest();
+			
+				xhr.onreadystatechange = function() {
+
+					if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+					
+						dataFactory.setData(JSON.parse(xhr.responseText));
+						console.log(dataFactory.getData());
+						alert('Configuration Chargée'); // C'est bon \o/	
+						$('#overlayLoad').css('display', 'none');
+						$("#id"+$scope.lastHighLighted).removeAttr('selected');
+						$scope.lastHighLighted = '';	
+					}
+				};
+					
+				xhr.open('GET', '/resources/' + $scope.__etablissement + "/" + fileName, true);
+				xhr.send();
+				
+			}
+			
+		};
+		
   }]);
   
   

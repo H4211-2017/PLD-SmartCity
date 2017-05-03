@@ -1,143 +1,70 @@
 <section ng-controller="teacherTabCtrl">
 
-  <!--<div class="tabcontent" onload="genereTableau()">-->
   <div class="tabcontent" expanded="false">
 
-    <h3>Enseignants</h3>
+    <h3>Professeurs</h3>
 
     <p>
-      Rentrez des professeurs (ex: John Smith, Matières : Mathématiques - Physique - Chimie, Commentaire : "Doyen du collège")
-    </p>
+      Définissez pour chaque enseignant la ou les matières enseignées, les groupes à qui il peut enseigner, ses disponibilités et
+      éventuellement un commentaire.
+      <br/><br/>Exemple : John Smith, Matières : Mathématiques - Physique - Chimie, Groupes : {3A, 4E}, Disponibilités : tout sauf mercredi,
+      Commentaire : "Doyen du collège") </p>
 
     <table id="teacherTab" class="framedTable">
       <tr>
         <th>Prenom</th>
         <th>Nom</th>
         <th>Matières</th>
-        <th>Groupes</th>
         <th>Disponibilités</th>
-        <th>Commentaire</th>
       </tr>
-      <tr ng-repeat="t in teachers">
+
+      <tr>
         <td>
-          {{t.FirstName}}
+          <input type="text" ng-model="currentFirstName" ng-keypress="keyPressed($event.keyCode)">
         </td>
         <td>
-          {{t.LastName}}
+          <input type="text" ng-model="currentLastName" ng-keypress="keyPressed($event.keyCode)">
+        </td>
+        <td>
+          <select class="coursName" chosen multiple display-selected-options="false" no-results-text="'Aucune matière trouvé'"
+                  placeholder-text-multiple="'Matière'" ng-options="subject.name for subject in subjectsArray"
+                  ng-model="currentSubjectsSelected" ng-keypress="keyPressed($event.keyCode)">
+          </select>
+        </td>
+        <td></td> <!-- TODO add disponibility button!-->
+        <td>
+          <md-button class="md-icon-button" ng-click="addTeacher()">
+            <i class="material-icons">add</i>
+          </md-button>
+        </td>
+      </tr>
+
+      <tr ng-repeat="teacher in teachersArray">
+        <td>
+          {{teacher.firstName}}
+        </td>
+        <td>
+          {{teacher.lastName}}
         </td>
         <td class="coursName">
           <ul>
-            <li class="dotlessList" ng-repeat="sub in t.Subject">
-              {{sub}}
+            <li class="dotlessList" ng-repeat="subject in teacher.subject">
+              {{subject.name}}
             </li>
           </ul>
         </td>
         <td>
-          {{ t.Class }}
-        </td>
-        <td>
           ...
         </td>
         <td>
-          <textarea readonly class="inputCom" name="com" rows="5">{{ t.Comments }}</textarea>
-        </td>
-        <td>
-          <!-- TODO fonction supprimer après discussion-->
-          <md-button class="md-icon-button" ng-click="addTeacherLine()">
+          <md-button class="md-icon-button" ng-click="removeTeacher($index)">
             <i class="material-icons">delete</i>
-          </md-button>
-        </td>
-      </tr>
-
-
-    <!--<table id="teacherTab" class="framedTable">
-      <tr>
-        <th>Prenom</th>
-        <th>Nom</th>
-        <th>Matières</th>
-        <th>Groupes</th>
-        <th>Disponibilités</th>
-        <th>Commentaire</th>
-      </tr>
-      <tr ng-repeat="t in teachers">
-        <td>
-          <input type="text" name="firstname" ng-model="t.FirstName">
-        </td>
-        <td>
-          <input type="text" name="lastname" ng-model="t.LastName" >
-        </td>
-        <td class="coursName">
-          <select chosen
-                  multiple
-                  class="coursName"
-                  no-results-text="'Pas de Matière trouvé pour:'"
-                  placeholder-text-multiple="'Pas de Matière selectionné pour le moment'"
-                  ng-options="c.Name for c in cours"
-                  ng-model="t.Subject">
-            <option value=""></option>
-          </select>
-        </td>
-        <td>
-          {{ t.Class }}
-        </td>
-        <td>
-          ...
-        </td>
-        <td>
-          <textarea class="inputCom" name="com" rows="5">{{ t.Comments }}</textarea>
-        </td>
-        <td>
-          <!-- TODO fonction supprimer après discussion
-          <md-button class="md-icon-button" ng-click="addTeacherLine()">
-            <i class="material-icons">delete</i>
-          </md-button>
-        </td>
-      </tr>
-    </table>-->
-
-    <!-- TODO ajout ligne par ligne "meh" ==> vers un assistant d'ajout de professeur"-->
-      <tr>
-        <td>
-          <md-button class="md-icon-button" ng-click="openAddTeacher()">
-            <i class="material-icons">add</i>
           </md-button>
         </td>
       </tr>
     </table>
 
     <div id="addTeacherOverlay" class="overlay">
-
-      <div class="formLayout">
-        <label>Prénom :</label>
-        <input id="firstname" type="text" name="firstname" ng-model="tpsFirstName"/>
-        <br/>
-
-        <label id="lastname" >Nom :</label>
-        <input type="text" name="lastName" ng-model="tpsLastName"/>
-        <br/>
-
-        <label>Matières :</label>
-        <select id="matieres"
-                name="matieres"
-                chosen
-                multiple
-                class="coursName"
-                no-results-text="'Pas de Matière trouvé pour:'"
-                placeholder-text-multiple="'Pas de Matière selectionné pour le moment'"
-                ng-options="c.Name for c in cours"
-                ng-model="tpsMatieres">
-          <option value=""></option>
-        </select>
-        <br/>
-
-        <label id="com" >Commentaire :</label>
-        <textarea style="resize:none" name="com" rows="5" ng-model="tpsCom"/>
-
-        <div class="formButtonLayout">
-          <md-button class="md-icon-button" ng-click="closeOverlay()">
-            <i class="material-icons">close</i>
-          </md-button>
-          <md-button class="md-icon-button" ng-click="addTeacher()">
             <i class="material-icons">done</i>
           </md-button>
         </div>

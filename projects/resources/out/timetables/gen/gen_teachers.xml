@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Teachers_Timetable>
+  <Teacher name="Arthur Auklo">
+   <Day name="Lundi">
+    <Hour name="8h35 - 9h30">
+     <Subject name="Math"></Subject><Students name="6A"></Students><Room name="C2"></Room>
+    </Hour>
+    <Hour name="9h30 - 10h25">
+     
+    </Hour>
+    <Hour name="10h45 - 11h40">
+     <Subject name="Math"></Subject><Students name="6A"></Students><Room name="C1"></Room>
+    </Hour>
+    <Hour name="11h40 - 12h35">
+     
+    </Hour>
+    <Hour name="13h45 - 14h40">
+     
+    </Hour>
+   </Day>
+   <Day name="Mardi">
+    <Hour name="8h35 - 9h30">
+     
+    </Hour>
+    <Hour name="9h30 - 10h25">
+     
+    </Hour>
+    <Hour name="10h45 - 11h40">
+     <Subject name="Math"></Subject><Students name="6A"></Students><Room name="C2"></Room>
+    </Hour>
+    <Hour name="11h40 - 12h35">
+     <Subject name="Math"></Subject><Students name="6A"></Students><Room name="C1"></Room>
+    </Hour>
+    <Hour name="13h45 - 14h40">
+     <Subject name="Math"></Subject><Students name="6A"></Students><Room name="C2"></Room>
+    </Hour>
+   </Day>
+  </Teacher>
+  <Teacher name="Beatrice Beaugrand">
+   <Day name="Lundi">
+    <Hour name="8h35 - 9h30">
+     
+    </Hour>
+    <Hour name="9h30 - 10h25">
+     <Subject name="Latin"></Subject><Students name="6A"></Students><Room name="C2"></Room>
+    </Hour>
+    <Hour name="10h45 - 11h40">
+     
+    </Hour>
+    <Hour name="11h40 - 12h35">
+     
+    </Hour>
+    <Hour name="13h45 - 14h40">
+     
+    </Hour>
+   </Day>
+   <Day name="Mardi">
+    <Hour name="8h35 - 9h30">
+     <Subject name="Latin"></Subject><Students name="6A"></Students><Room name="C2"></Room>
+    </Hour>
+    <Hour name="9h30 - 10h25">
+     <Subject name="Latin"></Subject><Students name="6A"></Students><Room name="C1"></Room>
+    </Hour>
+    <Hour name="10h45 - 11h40">
+     
+    </Hour>
+    <Hour name="11h40 - 12h35">
+     
+    </Hour>
+    <Hour name="13h45 - 14h40">
+     
+    </Hour>
+   </Day>
+  </Teacher>
+</Teachers_Timetable>

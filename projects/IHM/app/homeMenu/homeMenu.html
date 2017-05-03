@@ -1,18 +1,32 @@
 <div ng-controller="homeMenuCtrl">
 	<div style="display:none" ng-model="page"></div>
 	<div class="tab" expanded="false">
-		<button id="homeSave" class="tablinks" ng-click="save()">Sauver la configuration <br/> actuelle</button>
-		<button id="homeLoad" class="tablinks" ng-click="load()">Charger une configuration <br/>  </button>
-		<button id="homeGen" class="tablinks" ng-click="generate()"> Generer l'emploi du temps </button>
+		<button disabled id="homeSave" class="tablinks" ng-click="save()">Exporter la configuration</button>
+		<button disabled id="homeLoad" class="tablinks" ng-click="load()">Importer une configuration</button>
+		<button disabled id="homeGen" class="tablinks" ng-click="generate()">Générer l'emploi du temps</button>
 	</div>
 
 	<div class="tabcontent" expanded="false">
 		<h1>Accueil</h1>
-		<p>Bienvenue sur ETOILE</p>
-		<h2>Qu'est ce qu'ETOILE ?</h2>
+		<div style="margin:auto; text-align:center">
+
+			<img src="../logoEtoile.png" height="200">
+		</div>
+		<h2>ETOILE : Qu'est-ce que c'est ?</h2>
 		<p>
 			ETOILE est l'Emploi du Temps Organisé et Intelligent conçu pour Lyon et ses écoles. Il s'agit d'une
 			interface rendant la génération d'emploi du temps intuitive et agréable.
+		</p>
+		<h2>Comment utiliser ETOILE ?</h2>
+		<p>
+			Importez un fichier de configuration via le menu de gauche, ou utilisez les onglets pour entrer la configuration de votre établissement. Les trois onglets vous permettent de configurer :
+			<ul>
+		<li>Accueil : permet de générer un emploi du temps et d'importer/exporter des fichiers de configuration</li>
+		<li>Établissement : permet de définir les horaires des cours et les salles disponibles</li>
+		<li>Élèves et enseignements : permet de définir les classes, les cours qu'elles suivent et la répartition horaire des cours</li>
+		<li>Professeurs : permet d'associer un professeur à des cours</li>
+		</ul>
+
 		</p>
 	</div>
 </div>

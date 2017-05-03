@@ -1,0 +1,13 @@
+﻿C'est l'ordre d'évaluation initial des activités calculé par FET. Si la génération se bloque après un certain nombre d'activités, merci de vérifier l'activité correspondant au numéro n + 1. Vous pourriez découvrir des erreurs dans votre saisie.
+
+L'ordre initial des activités (IDs) :
+
+No : 1, ID : 7, Enseignants : Beatrice Beaugrand, Matière : Latin, Codes activité : , Apprenants : 6A
+No : 2, ID : 8, Enseignants : Beatrice Beaugrand, Matière : Latin, Codes activité : , Apprenants : 6A
+No : 3, ID : 9, Enseignants : Beatrice Beaugrand, Matière : Latin, Codes activité : , Apprenants : 6A
+No : 4, ID : 1, Enseignants : Arthur Auklo, Matière : Math, Codes activité : , Apprenants : 6A
+No : 5, ID : 2, Enseignants : Arthur Auklo, Matière : Math, Codes activité : , Apprenants : 6A
+No : 6, ID : 3, Enseignants : Arthur Auklo, Matière : Math, Codes activité : , Apprenants : 6A
+No : 7, ID : 4, Enseignants : Arthur Auklo, Matière : Math, Codes activité : , Apprenants : 6A
+No : 8, ID : 5, Enseignants : Arthur Auklo, Matière : Math, Codes activité : , Apprenants : 6A
+Fin - l'ordre des activités (IDs)

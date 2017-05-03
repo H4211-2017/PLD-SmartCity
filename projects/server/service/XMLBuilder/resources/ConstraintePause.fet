@@ -1,0 +1,508 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<fet version="5.31.4">
+
+<Institution_Name>institution par defaut</Institution_Name>
+
+<Comments>commentaires par defaut</Comments>
+
+<Days_List>
+<Number_of_Days>2</Number_of_Days>
+<Day>
+	<Name>Lundi</Name>
+</Day>
+<Day>
+	<Name>Mardi</Name>
+</Day>
+</Days_List>
+
+<Hours_List>
+<Number_of_Hours>8</Number_of_Hours>
+<Hour>
+	<Name>8h35 - 9h30</Name>
+</Hour>
+<Hour>
+	<Name>9h30 - 10h25</Name>
+</Hour>
+<Hour>
+	<Name>10h45 - 11h40</Name>
+</Hour>
+<Hour>
+	<Name>11h40 - 12h35</Name>
+</Hour>
+<Hour>
+	<Name>13h45 - 14h40</Name>
+</Hour>
+<Hour>
+	<Name>14h40 - 15h35</Name>
+</Hour>
+<Hour>
+	<Name>15h35 - 16h30</Name>
+</Hour>
+<Hour>
+	<Name>16h30 - 17h25</Name>
+</Hour>
+</Hours_List>
+
+<Subjects_List>
+<Subject>
+	<Name>Physique</Name>
+	<Comments></Comments>
+</Subject>
+<Subject>
+	<Name>Musique</Name>
+	<Comments></Comments>
+</Subject>
+<Subject>
+	<Name>Math</Name>
+	<Comments></Comments>
+</Subject>
+<Subject>
+	<Name>Latin</Name>
+	<Comments></Comments>
+</Subject>
+</Subjects_List>
+
+<Activity_Tags_List>
+</Activity_Tags_List>
+
+<Teachers_List>
+<Teacher>
+	<Name>Arthur Auklo</Name>
+	<Target_Number_of_Hours>0</Target_Number_of_Hours>
+	<Qualified_Subjects>
+	</Qualified_Subjects>
+	<Comments></Comments>
+</Teacher>
+<Teacher>
+	<Name>Beatrice Beaugrand</Name>
+	<Target_Number_of_Hours>0</Target_Number_of_Hours>
+	<Qualified_Subjects>
+	</Qualified_Subjects>
+	<Comments>Quelques commentaires</Comments>
+</Teacher>
+</Teachers_List>
+
+<Students_List>
+<Year>
+	<Name>6e</Name>
+	<Number_of_Students>0</Number_of_Students>
+	<Comments></Comments>
+	<Group>
+		<Name>6A</Name>
+		<Number_of_Students>32</Number_of_Students>
+		<Comments></Comments>
+	</Group>
+</Year>
+<Year>
+	<Name>5e</Name>
+	<Number_of_Students>0</Number_of_Students>
+	<Comments></Comments>
+</Year>
+<Year>
+	<Name>4e</Name>
+	<Number_of_Students>0</Number_of_Students>
+	<Comments></Comments>
+</Year>
+<Year>
+	<Name>3e</Name>
+	<Number_of_Students>0</Number_of_Students>
+	<Comments></Comments>
+	<Group>
+		<Name>3A</Name>
+		<Number_of_Students>31</Number_of_Students>
+		<Comments></Comments>
+	</Group>
+	<Group>
+		<Name>3B</Name>
+		<Number_of_Students>0</Number_of_Students>
+		<Comments></Comments>
+	</Group>
+</Year>
+</Students_List>
+
+<Activities_List>
+<Activity>
+	<Teacher>Arthur Auklo</Teacher>
+	<Subject>Math</Subject>
+	<Students>6A</Students>
+	<Duration>1</Duration>
+	<Total_Duration>5</Total_Duration>
+	<Id>1</Id>
+	<Activity_Group_Id>1</Activity_Group_Id>
+	<Active>true</Active>
+	<Comments></Comments>
+</Activity>
+<Activity>
+	<Teacher>Arthur Auklo</Teacher>
+	<Subject>Math</Subject>
+	<Students>6A</Students>
+	<Duration>1</Duration>
+	<Total_Duration>5</Total_Duration>
+	<Id>2</Id>
+	<Activity_Group_Id>1</Activity_Group_Id>
+	<Active>true</Active>
+	<Comments></Comments>
+</Activity>
+<Activity>
+	<Teacher>Arthur Auklo</Teacher>
+	<Subject>Math</Subject>
+	<Students>6A</Students>
+	<Duration>1</Duration>
+	<Total_Duration>5</Total_Duration>
+	<Id>3</Id>
+	<Activity_Group_Id>1</Activity_Group_Id>
+	<Active>true</Active>
+	<Comments></Comments>
+</Activity>
+<Activity>
+	<Teacher>Arthur Auklo</Teacher>
+	<Subject>Math</Subject>
+	<Students>6A</Students>
+	<Duration>1</Duration>
+	<Total_Duration>5</Total_Duration>
+	<Id>4</Id>
+	<Activity_Group_Id>1</Activity_Group_Id>
+	<Active>true</Active>
+	<Comments></Comments>
+</Activity>
+<Activity>
+	<Teacher>Arthur Auklo</Teacher>
+	<Subject>Math</Subject>
+	<Students>6A</Students>
+	<Duration>1</Duration>
+	<Total_Duration>5</Total_Duration>
+	<Id>5</Id>
+	<Activity_Group_Id>1</Activity_Group_Id>
+	<Active>true</Active>
+	<Comments></Comments>
+</Activity>
+<Activity>
+	<Teacher>Beatrice Beaugrand</Teacher>
+	<Subject>Latin</Subject>
+	<Students>6A</Students>
+	<Duration>1</Duration>
+	<Total_Duration>3</Total_Duration>
+	<Id>7</Id>
+	<Activity_Group_Id>7</Activity_Group_Id>
+	<Active>true</Active>
+	<Comments></Comments>
+</Activity>
+<Activity>
+	<Teacher>Beatrice Beaugrand</Teacher>
+	<Subject>Latin</Subject>
+	<Students>6A</Students>
+	<Duration>1</Duration>
+	<Total_Duration>3</Total_Duration>
+	<Id>8</Id>
+	<Activity_Group_Id>7</Activity_Group_Id>
+	<Active>true</Active>
+	<Comments></Comments>
+</Activity>
+<Activity>
+	<Teacher>Beatrice Beaugrand</Teacher>
+	<Subject>Latin</Subject>
+	<Students>6A</Students>
+	<Duration>1</Duration>
+	<Total_Duration>3</Total_Duration>
+	<Id>9</Id>
+	<Activity_Group_Id>7</Activity_Group_Id>
+	<Active>true</Active>
+	<Comments></Comments>
+</Activity>
+</Activities_List>
+
+<Buildings_List>
+</Buildings_List>
+
+<Rooms_List>
+<Room>
+	<Name>C1</Name>
+	<Building></Building>
+	<Capacity>34</Capacity>
+	<Comments></Comments>
+</Room>
+<Room>
+	<Name>C2</Name>
+	<Building></Building>
+	<Capacity>30000</Capacity>
+	<Comments></Comments>
+</Room>
+</Rooms_List>
+
+<Time_Constraints_List>
+<ConstraintBasicCompulsoryTime>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintBasicCompulsoryTime>
+<ConstraintTeacherNotAvailableTimes>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Teacher>Arthur Auklo</Teacher>
+	<Number_of_Not_Available_Times>4</Number_of_Not_Available_Times>
+	<Not_Available_Time>
+		<Day>Lundi</Day>
+		<Hour>11h40 - 12h35</Hour>
+	</Not_Available_Time>
+	<Not_Available_Time>
+		<Day>Lundi</Day>
+		<Hour>13h45 - 14h40</Hour>
+	</Not_Available_Time>
+	<Not_Available_Time>
+		<Day>Lundi</Day>
+		<Hour>14h40 - 15h35</Hour>
+	</Not_Available_Time>
+	<Not_Available_Time>
+		<Day>Lundi</Day>
+		<Hour>15h35 - 16h30</Hour>
+	</Not_Available_Time>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintTeacherNotAvailableTimes>
+<ConstraintTeacherNotAvailableTimes>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Teacher>Beatrice Beaugrand</Teacher>
+	<Number_of_Not_Available_Times>7</Number_of_Not_Available_Times>
+	<Not_Available_Time>
+		<Day>Lundi</Day>
+		<Hour>11h40 - 12h35</Hour>
+	</Not_Available_Time>
+	<Not_Available_Time>
+		<Day>Lundi</Day>
+		<Hour>13h45 - 14h40</Hour>
+	</Not_Available_Time>
+	<Not_Available_Time>
+		<Day>Lundi</Day>
+		<Hour>14h40 - 15h35</Hour>
+	</Not_Available_Time>
+	<Not_Available_Time>
+		<Day>Lundi</Day>
+		<Hour>15h35 - 16h30</Hour>
+	</Not_Available_Time>
+	<Not_Available_Time>
+		<Day>Mardi</Day>
+		<Hour>11h40 - 12h35</Hour>
+	</Not_Available_Time>
+	<Not_Available_Time>
+		<Day>Mardi</Day>
+		<Hour>13h45 - 14h40</Hour>
+	</Not_Available_Time>
+	<Not_Available_Time>
+		<Day>Mardi</Day>
+		<Hour>15h35 - 16h30</Hour>
+	</Not_Available_Time>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintTeacherNotAvailableTimes>
+<ConstraintActivityPreferredStartingTime>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Activity_Id>1</Activity_Id>
+	<Preferred_Day>Lundi</Preferred_Day>
+	<Preferred_Hour>16h30 - 17h25</Preferred_Hour>
+	<Permanently_Locked>false</Permanently_Locked>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintActivityPreferredStartingTime>
+<ConstraintActivityPreferredStartingTime>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Activity_Id>2</Activity_Id>
+	<Preferred_Day>Mardi</Preferred_Day>
+	<Preferred_Hour>15h35 - 16h30</Preferred_Hour>
+	<Permanently_Locked>false</Permanently_Locked>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintActivityPreferredStartingTime>
+<ConstraintActivityPreferredStartingTime>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Activity_Id>3</Activity_Id>
+	<Preferred_Day>Mardi</Preferred_Day>
+	<Preferred_Hour>13h45 - 14h40</Preferred_Hour>
+	<Permanently_Locked>false</Permanently_Locked>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintActivityPreferredStartingTime>
+<ConstraintActivityPreferredStartingTime>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Activity_Id>4</Activity_Id>
+	<Preferred_Day>Mardi</Preferred_Day>
+	<Preferred_Hour>11h40 - 12h35</Preferred_Hour>
+	<Permanently_Locked>false</Permanently_Locked>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintActivityPreferredStartingTime>
+<ConstraintActivityPreferredStartingTime>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Activity_Id>5</Activity_Id>
+	<Preferred_Day>Mardi</Preferred_Day>
+	<Preferred_Hour>8h35 - 9h30</Preferred_Hour>
+	<Permanently_Locked>false</Permanently_Locked>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintActivityPreferredStartingTime>
+<ConstraintActivityPreferredStartingTime>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Activity_Id>7</Activity_Id>
+	<Preferred_Day>Mardi</Preferred_Day>
+	<Preferred_Hour>16h30 - 17h25</Preferred_Hour>
+	<Permanently_Locked>false</Permanently_Locked>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintActivityPreferredStartingTime>
+<ConstraintActivityPreferredStartingTime>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Activity_Id>8</Activity_Id>
+	<Preferred_Day>Mardi</Preferred_Day>
+	<Preferred_Hour>10h45 - 11h40</Preferred_Hour>
+	<Permanently_Locked>false</Permanently_Locked>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintActivityPreferredStartingTime>
+<ConstraintActivityPreferredStartingTime>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Activity_Id>9</Activity_Id>
+	<Preferred_Day>Lundi</Preferred_Day>
+	<Preferred_Hour>9h30 - 10h25</Preferred_Hour>
+	<Permanently_Locked>false</Permanently_Locked>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintActivityPreferredStartingTime>
+<ConstraintBreakTimes>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Number_of_Break_Times>6</Number_of_Break_Times>
+	<Break_Time>
+		<Day>Lundi</Day>
+		<Hour>9h30 - 10h25</Hour>
+	</Break_Time>
+	<Break_Time>
+		<Day>Lundi</Day>
+		<Hour>10h45 - 11h40</Hour>
+	</Break_Time>
+	<Break_Time>
+		<Day>Lundi</Day>
+		<Hour>15h35 - 16h30</Hour>
+	</Break_Time>
+	<Break_Time>
+		<Day>Mardi</Day>
+		<Hour>10h45 - 11h40</Hour>
+	</Break_Time>
+	<Break_Time>
+		<Day>Mardi</Day>
+		<Hour>11h40 - 12h35</Hour>
+	</Break_Time>
+	<Break_Time>
+		<Day>Mardi</Day>
+		<Hour>14h40 - 15h35</Hour>
+	</Break_Time>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintBreakTimes>
+</Time_Constraints_List>
+
+<Space_Constraints_List>
+<ConstraintBasicCompulsorySpace>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintBasicCompulsorySpace>
+<ConstraintSubjectPreferredRooms>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Subject>Physique</Subject>
+	<Number_of_Preferred_Rooms>2</Number_of_Preferred_Rooms>
+	<Preferred_Room>C1</Preferred_Room>
+	<Preferred_Room>C2</Preferred_Room>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintSubjectPreferredRooms>
+<ConstraintSubjectPreferredRooms>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Subject>Musique</Subject>
+	<Number_of_Preferred_Rooms>1</Number_of_Preferred_Rooms>
+	<Preferred_Room>C2</Preferred_Room>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintSubjectPreferredRooms>
+<ConstraintSubjectPreferredRooms>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Subject>Math</Subject>
+	<Number_of_Preferred_Rooms>2</Number_of_Preferred_Rooms>
+	<Preferred_Room>C1</Preferred_Room>
+	<Preferred_Room>C2</Preferred_Room>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintSubjectPreferredRooms>
+<ConstraintSubjectPreferredRooms>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Subject>Latin</Subject>
+	<Number_of_Preferred_Rooms>2</Number_of_Preferred_Rooms>
+	<Preferred_Room>C1</Preferred_Room>
+	<Preferred_Room>C2</Preferred_Room>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintSubjectPreferredRooms>
+<ConstraintActivityPreferredRoom>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Activity_Id>1</Activity_Id>
+	<Room>C2</Room>
+	<Permanently_Locked>false</Permanently_Locked>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintActivityPreferredRoom>
+<ConstraintActivityPreferredRoom>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Activity_Id>2</Activity_Id>
+	<Room>C1</Room>
+	<Permanently_Locked>false</Permanently_Locked>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintActivityPreferredRoom>
+<ConstraintActivityPreferredRoom>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Activity_Id>3</Activity_Id>
+	<Room>C1</Room>
+	<Permanently_Locked>false</Permanently_Locked>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintActivityPreferredRoom>
+<ConstraintActivityPreferredRoom>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Activity_Id>4</Activity_Id>
+	<Room>C2</Room>
+	<Permanently_Locked>false</Permanently_Locked>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintActivityPreferredRoom>
+<ConstraintActivityPreferredRoom>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Activity_Id>5</Activity_Id>
+	<Room>C2</Room>
+	<Permanently_Locked>false</Permanently_Locked>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintActivityPreferredRoom>
+<ConstraintActivityPreferredRoom>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Activity_Id>7</Activity_Id>
+	<Room>C2</Room>
+	<Permanently_Locked>false</Permanently_Locked>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintActivityPreferredRoom>
+<ConstraintActivityPreferredRoom>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Activity_Id>8</Activity_Id>
+	<Room>C1</Room>
+	<Permanently_Locked>false</Permanently_Locked>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintActivityPreferredRoom>
+<ConstraintActivityPreferredRoom>
+	<Weight_Percentage>100</Weight_Percentage>
+	<Activity_Id>9</Activity_Id>
+	<Room>C1</Room>
+	<Permanently_Locked>false</Permanently_Locked>
+	<Active>true</Active>
+	<Comments></Comments>
+</ConstraintActivityPreferredRoom>
+</Space_Constraints_List>
+
+</fet>

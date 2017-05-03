@@ -1,0 +1,307 @@
+{
+"schoolInformation" : {
+		"schedule" : [
+			{
+				"dayName" : "Lundi",
+				"hours" : [
+					{
+						"start" : "8h35",
+						"end" : "9h30"
+					},
+					{
+						"start" : "9h30",
+						"end" : "10h25"
+					},
+					{
+						"start" : "10h45",
+						"end" : "11h40"
+					},					
+					{
+						"start" : "11h40",
+						"end" : "12h35"
+					},					
+					{
+						"start" : "13h45",
+						"end" : "14h40"
+					},					
+					{
+						"start" : "14h40",
+						"end" : "15h35"
+					},					
+					{
+						"start" : "15h35",
+						"end" : "16h30"
+					},					
+					{
+						"start" : "16h30",
+						"end" : "17h25"
+					}
+				]
+			},
+			{
+				"dayName" : "Mardi",
+				"hours" : [
+					{
+						"start" : "8h35",
+						"end" : "9h30"
+					},
+					{
+						"start" : "9h30",
+						"end" : "10h25"
+					},
+					{
+						"start" : "10h45",
+						"end" : "11h40"
+					},					
+					{
+						"start" : "11h40",
+						"end" : "12h35"
+					},					
+					{
+						"start" : "13h45",
+						"end" : "14h40"
+					},					
+					{
+						"start" : "14h40",
+						"end" : "15h35"
+					},					
+					{
+						"start" : "15h35",
+						"end" : "16h30"
+					},					
+					{
+						"start" : "16h30",
+						"end" : "17h25"
+					}
+				]
+			}
+		],
+
+		"roomTypes" : [
+			"Normal",
+			"TP Chimie",
+			"Musique"
+		],
+
+        "room" : [
+            {
+                "name" : "C1",
+                "roomTypes" : [
+                  "Normal"
+                ],
+                "capacity" : 34
+            },
+            {
+                "name" : "C2",
+                "roomTypes" : [
+                  "Musique",
+                  "Normal"
+                ]
+            }
+        ]
+    },
+
+	"programme" : {
+		"year" : [
+			"6e",
+			"5e",
+			"4e",
+			"3e"
+		],
+		"classes" : [
+			{
+				"year" : "3e",
+				"name" : "3A",
+				"studentsNumber" : 31
+			},
+			{
+				"year" : "3e",
+				"name" : "3B"
+			},
+			{
+				"year" : "6e",
+				"name" : "6A",
+				"studentsNumber" : 32
+			}
+		],
+
+		"subjects" : [
+			{
+				"name" : "Physique",
+				"roomType" : "Normal"
+			},
+			{
+				"name" : "Musique",
+				"roomType" : "Musique"
+			},
+			{
+				"name" : "Math",
+				"roomType" : "Normal"
+			},
+			{
+				"name" : "Latin",
+				"roomType" : "Normal"
+			}
+		], 
+		
+		"programme" : [
+			{
+				"year" : "3e",
+				"programme" : [
+					{
+						"subject" : "Math",
+						"weekHours" : 3
+					},
+					{
+						"subject" : "Physique",
+						"weekHours" : 4
+					}
+				]
+			},
+			{
+				"year" : "6e",
+				"programme" : [
+					{
+						"subject" : "Math",
+						"weekHours" : 5
+					},
+					{
+						"subject" : "Physique",
+						"weekHours" : 4
+					},
+					{
+						"subject" : "Latin",
+						"weekHours" : 3
+					}
+				]	
+			}
+		]
+	},
+
+	"teacher" : {
+		"teacherList" : [
+			{
+				"firstName" : "Arthur",
+				"lastName" : "Auklo",
+				"subject" : [
+					"Latin",
+					"Francais",
+					"Grec"
+				],
+				"class" : [
+					"3A",
+					"6B",
+					"5C"
+				],
+				"disponibility" : [
+					{
+						"dayName" : "Lundi",
+						"hoursSlot" : [
+							0,
+							1,
+							2,
+							7
+						]
+					},
+					{
+						"dayName" : "Mardi",
+						"hoursSlot" : [
+							0,
+							1,
+							2,
+							3,
+							4,
+							5,
+							6,
+							7
+						]
+					}
+				],
+				"comments" : ""
+			},
+			{
+				"firstName" : "Beatrice",
+				"lastName" : "Beaugrand",
+				"subject" : [
+					"Mathematiques",
+					"Physique"
+				],
+				"disponibility" : [
+					{
+						"dayName" : "Lundi",
+						"hoursSlot" : [
+							0,
+							1,
+							2,
+							7
+						]
+					},
+					{
+						"dayName" : "Mardi",
+						"hoursSlot" : [
+							0,
+							1,
+							2,
+							5,
+							7
+						]
+					}
+				],
+				"comments" : "Quelques commentaires"
+			}
+		],
+
+		"attribution" : [
+			{
+				"class" : "6A",
+				"subjectTeachers" : [
+					{
+						"subject" : "Math",
+						"teacher" : {
+							"firstName" : "Arthur",
+							"lastName" : "Auklo"
+						}
+					},
+					{
+						"subject" : "Latin",
+						"teacher" : {
+							"firstName" : "Beatrice",
+							"lastName" : "Beaugrand"
+						}
+					}
+				]
+			},
+			{
+				"class" : "3A",
+				"subjectTeachers" : [
+					{
+						"subject" : "Math",
+						"teacher" : {
+							"firstName" : "Arthur",
+							"lastName" : "Auklo"
+						}
+					},
+					{
+						"subject" : "Physique",
+						"teacher" : {
+							"firstName" : "Arthur",
+							"lastName" : "Auklo"
+						}
+					}
+				]
+			},
+			{
+				"class" : "3B",
+				"subjectTeachers" : [
+					{
+						"subject" : "Math",
+						"teacher" : {
+							"firstName" : "Arthur",
+							"lastName" : "Auklo"
+						}
+					}
+				]
+			}
+		]
+	}
+}

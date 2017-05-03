@@ -6,9 +6,9 @@
 
   <button id="schHoraires" class="tablinks" ng-click="openTab('schoolInformationMenu/scheduleTab/scheduleTab.html', 'schHoraires')">Jours et horaires</button>
   <button id="schTypeSalles" class="tablinks" ng-click="openTab('schoolInformationMenu/roomTypeTab/roomTypeTab.html', 'schTypeSalles')">Type de salles</button>
-  <button id="schSalles" class="tablinks" ng-click="openTab('schoolInformationMenu/roomTab/roomTab.html', 'schSalles')">Salles</button>
+  <button ng-disabled="roomType.length == 0" id="schSalles" class="tablinks" ng-click="openTab('schoolInformationMenu/roomTab/roomTab.html', 'schSalles')">Salles</button>
 
 </div>
 
-<div class="tabcontent" ng-include="page" expanded="false"></div>
+<div ng-include="page"></div>
 </div>

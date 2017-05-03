@@ -1,0 +1,8 @@
+This file contains the result (log) of last operation
+
+FET command line request for version started on 5/1/17 4:40 PM
+
+FET version 5.31.4
+Free timetabling software, licensed under the GNU Affero General Public License version 3 or later
+Copyright (C) 2002-2017 Liviu Lalescu, Volker Dirr
+Homepage: http://lalescu.ro/liviu/fet/

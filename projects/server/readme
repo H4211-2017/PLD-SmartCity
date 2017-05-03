@@ -1,6 +1,7 @@
-Pour l'instant ce serveur fait très peu, mais on peut faire des get sur 3 URL /, /typesalle et /logout
+Voici le serveur Node.js de l'application, à démarrer en lançant le script server.js
 
 si vous avez un serveur mongoDB qui tourne à côté vous pouvez faire fonctionner ce serveur qui gère les sessions.
 connectez vous à localhost:3000/ pour initialiser une session
 Faites des gets sur localhost:3000/typesalle vous retournera un tableau avecdes nombre qui s'incrementent à chaque get
-faites un get sur localhost:3000/logout pour supprimer votre session. Avec le temps votre session devrait être supprimé automatiquement. 
+faites un get sur localhost:3000/logout pour supprimer votre session. Avec le temps votre session devrait être supprimé automatiquement.
+Fat un get sur localhost:3000/input?input=StringJSON, en remplaçant StringJSON par une chaîne de caractères contenant le JSON des données de l'IHM (style de toXML.js) et le serveur génère les fichiers d'emploi du temps avec fet dans resources/outServer (à modifier et recupérer)

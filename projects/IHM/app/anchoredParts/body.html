@@ -12,7 +12,7 @@
                     </div>
                     </md-content>
                 </md-tab>
-                <md-tab class="menulinks" label="Etablissement">
+                <md-tab class="menulinks" label="Établissement">
                     <md-content>
                         <div ng-include="schoolMenu"></div>
                         <div class="reduceOrExpand" expanded="false">
@@ -22,7 +22,7 @@
                         </div>
                     </md-content>
                 </md-tab>
-                <md-tab class="menulinks" label="Programme">
+                <md-tab class="menulinks" label="Élèves et enseignements">
                     <md-content>
                         <div ng-include="programmeMenu"></div>
                         <div class="reduceOrExpand" expanded="false">
@@ -32,7 +32,7 @@
                         </div>
                     </md-content>
                 </md-tab>
-                <md-tab class="menulinks" label="Prof - Cours">
+                <md-tab class="menulinks" label="Professeurs">
                     <md-content>
                         <div ng-include="teacherMenu"></div>
                         <div class="reduceOrExpand" expanded="false">
@@ -44,7 +44,36 @@
                 </md-tab>
             </md-tabs>
         </md-content>
-
+		
+		<div id="connect" class="loginForm">
+		
+			<div>
+				<label for="etablissement" style="text-align: right">Etablissement :</label>
+				<input id="etablissement" name="etablissement" type="text" ng-model="etablissement" placeholder="Etablissement"/>
+			</div>
+		
+			<div>
+				<label for="mdp" style="text-align: right">Mot de passe :</label>
+				<input id="mdp" name="mdp" type="password" ng-model="mdp" placeholder="Mot de passe"/>
+			</div>
+			
+			<button ng-click="login()">Login</button>
+			
+		</div>
+		
+		<button id="disconnect" class="loginForm" style="display: none" ng-click="disconnect()">Déconnexion</button>
+		
+		
+		<div id="overlayLoad">
+			<fieldset>
+			
+				<legend>Choisissez une configuration existante</legend>
+				<div id="selectorConfig">
+				</div>
+			
+			</fieldset>
+		</div>
+		
     </div>
 <!--
 Copyright 2016 Google Inc. All Rights Reserved.

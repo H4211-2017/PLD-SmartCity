@@ -1,0 +1,10 @@
+﻿Conflits légers de server.fet
+Généré avec FET 5.31.4 le 01/05/2017 19:47
+
+Nombre de contraintes légères rompues : 0
+Total des conflits légers : 0
+
+Liste des conflits légers (par ordre décroissant) :
+
+
+Fin de fichier.

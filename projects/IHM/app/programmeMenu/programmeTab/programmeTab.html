@@ -1,23 +1,28 @@
-<h3>Programme académique</h3>
+<div class="tabcontent" expanded="false">
+
+	<h3>Programme académique</h3>
 
 <div ng-controller="programmeTabCtrl">
   <p>
-    Rentrez, dans chaque case, le nombre d'heure hebdomadaire correspondant
+    Sur cette page, définissez quels enseignements sont associés à quels niveaux et en quelles quantités.
+    <br/><br/>Exemple : 3ème, Français 3h, Maths 3h, EPS 2h...
   </p>
 
-  <table class="framedTable">
-    <tr>
-      <th></th>
-      <th scope="col" ng-repeat="subject in subjectArray">
-        {{subject.name}}
-      </th>
-    </tr>
+	  <table class="framedTable">
+		<tr>
+		  <th></th>
+		  <th scope="col" ng-repeat="subject in subjectArray">
+			{{subject.name}}
+		  </th>
+		</tr>
 
-    <tr ng-repeat="programme in programmeArray">
-      <th>{{programme.year}}</th>
-      <td ng-repeat="subject in programme.programme">
-        <input type="number" min="0" max="99" ng-model="subject.weekHours"></input>
-      </td>
-    </tr>
-  </table>
+		<tr ng-repeat="programme in programmeArray">
+		  <th>{{programme.year}}</th>
+		  <td ng-repeat="subject in programme.programme">
+			<input type="number" min="0" max="99" ng-model="subject.weekHours"></input>
+		  </td>
+		</tr>
+	  </table>
+	</div>
+
 </div>

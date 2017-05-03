@@ -1,0 +1,5 @@
+﻿Génération terminée à : 01/05/2017 19:47
+
+Le noyau aléatoire à la fin de la génération est : X = 207404397, Y = 91427327
+
+Ce fichier a été généré automatiquement avec FET 5.31.4.

@@ -1,39 +1,42 @@
-<h3>Type de salle</h3>
-<div ng-controller="roomTypeTabCtrl">
-  <!--TODO:LANG-->
-  <p>
-  Ajoutez/ supprimez des types de salle
-  </p>
+<div class="tabcontent" expanded="false">
 
-  <table id="subjectTable" class="framedTable">
-    <tr>
-      <td>
-        <md-inputcontainer>
-          <input type="text" id="roomTypeInput" ng-model="inputValue" ng-keypress="pressKeyInput($event.keyCode)" cols="25" rows="1"
-                 style="resize: none" placeholder="Entrer le type de salle"></input>
-        </md-inputcontainer>
+	<h3>Type de salle</h3>
+	<div ng-controller="roomTypeTabCtrl">
+	  <!--TODO:LANG-->
+	  <p>
+		  Ajoutez/supprimez des types de salles, qui correspondent à un ensemble de salles dans lesquelles les mêmes cours peuvent avoir lieu. La capacité de la salle n'est pas à prendre en compte.
+		  <br/><br/> Exemple : amphithéâtres, salle de travaux dirigés, salle avec vidéoprojecteur, salle de TP Chimie...
+	  </p>
 
-      </td>
-      <td>
-        <!--<md-button class="md-raised md-primary" ng-cliaddRoomTypeject()">+</md-button>-->
-        <md-button class="md-icon-button" ng-click="addRoomType()">
-          <md-icon>add</md-icon>
-        </md-button>
-      </td>
-    </tr>
-    <tr ng-repeat="roomType in roomTypesArray track by $index">
-      <td>
-        {{roomType}}
-      </td>
-      <td>
-        <md-button class="md-icon-button" aria-label="supprimmer ce type de salle"
-                   ng-click="removeRoomType($index)">
-          <md-icon>delete</md-icon>
-        </md-button>
-      </td>
-    </tr>
-  </table>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	  <table id="subjectTable" class="framedTable">
+		<tr>
+		  <td>
+			<md-inputcontainer>
+			  <input type="text" id="roomTypeInput" ng-model="inputValue" ng-keypress="pressKeyInput($event.keyCode)" cols="25" rows="1"
+					 style="resize: none" placeholder="Entrer le type de salle"></input>
+			</md-inputcontainer>
 
+		  </td>
+		  <td>
+			<!--<md-button class="md-raised md-primary" ng-cliaddRoomTypeject()">+</md-button>-->
+			<md-button class="md-icon-button" ng-click="addRoomType()">
+			  <md-icon>add</md-icon>
+			</md-button>
+		  </td>
+		</tr>
+		<tr ng-repeat="roomType in roomTypesArray track by $index">
+		  <td>
+			{{roomType}}
+		  </td>
+		  <td>
+			<md-button class="md-icon-button" aria-label="supprimmer ce type de salle"
+					   ng-click="removeRoomType($index)">
+			  <md-icon>delete</md-icon>
+			</md-button>
+		  </td>
+		</tr>
+	  </table>
+	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	</div>
 </div>
-
