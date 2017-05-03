@@ -195,7 +195,7 @@
     ],
     "attribution": [
       {
-        "class": "6A",
+        "class": "6A" ,
         "subjects": [
           {
             "subjectName": "Math",
@@ -203,6 +203,10 @@
               "firstName": "Arthur",
               "lastName": "Auklo"
             }
+          },
+          {
+            "subjectName": "Francais",
+            "teacher": {}
           },
           {
             "subjectName": "Latin",

@@ -177,6 +177,7 @@ angular.module('myApp.dataFactory', [])
         roomType: roomTypeString
       });
       ensureCoherencyProgrammeSubject(subjectToAddString, true, false);
+      ensureCoherencyAttributionSubject(subjectToAddString, true, false);
       return true;
     }
     return false;
@@ -184,7 +185,10 @@ angular.module('myApp.dataFactory', [])
 
   dataFactory.removeSubject = function (indexSubjectToRemove, deleteCascade) {
     var subjectToRemoveString = data.programme.subjects[indexSubjectToRemove].name;
+
     var subjectDoesNotHaveDependency = ensureCoherencyProgrammeSubject(subjectToRemoveString, false, deleteCascade);
+    subjectDoesNotHaveDependency &= ensureCoherencyAttributionSubject(subjectToRemoveString, false, deleteCascade);
+
     if (deleteCascade || subjectDoesNotHaveDependency) {
       data.programme.subjects.splice(indexSubjectToRemove, 1);
       return true;
@@ -219,6 +223,9 @@ angular.module('myApp.dataFactory', [])
 
   dataFactory.addClass = function (classString, yearString, studentNumber) {
     var classArray = data.programme.classes;
+
+    ensureCoherencyAttributionClasses(classString, true, false);
+
     if (!stringInArray(classString, classArray, 'name')) {
       classArray.push({
         year: yearString,
@@ -230,12 +237,13 @@ angular.module('myApp.dataFactory', [])
     return false;
   };
 
-  dataFactory.removeClass = function (indexClassToRemove, deleteCasade) {
+  dataFactory.removeClass = function (indexClassToRemove, deleteCascade) {
     var classArray = data.programme.classes;
     var classToRemoveString = classArray[indexClassToRemove];
-    var classDoesNotHaveDependency = true;
 
-    if (deleteCasade || classDoesNotHaveDependency) {
+    var classDoesNotHaveDependency = ensureCoherencyAttributionClasses(classToRemoveString, false, deleteCascade);
+
+    if (deleteCascade || classDoesNotHaveDependency) {
       classArray.splice(indexClassToRemove, 1);
       return true;
     }
@@ -301,17 +309,58 @@ angular.module('myApp.dataFactory', [])
   //======================================== PRIVATE ================================
   function ensureCoherencyAttributionSubject(subjectString, isAddOperation, deleteCascade) {
     var attributionArray = data.teacher.attribution;
-    var subjectArray = data.programme.subjects;
 
     if (isAddOperation) {
-
+      for (var i = 0, attributionLength = attributionArray.length; i < attributionLength; i++) {
+        attributionArray[i].subjects.push({
+          subjectName: subjectString,
+          teacher: {}
+        });
+      }
     } else {
-
+      for (i = 0, attributionLength = attributionArray.length; i < attributionLength; i++) {
+        var indexSubject = dataFactory.findIndexByKeyValue(attributionArray[i].subjects, ['subjectName'],
+            [subjectString]);
+        if (indexSubject != -1) {
+          if (deleteCascade) {
+            attributionArray[i].splice(indexSubject, 1);
+          } else {
+            return false;
+          }
+        }
+      }
     }
+    return true;
   }
 
   function ensureCoherencyAttributionClasses(classString, isAddOperation, deleteCascade) {
+    var attributionArray = data.teacher.attribution;
+    var subjectArray = data.programme.subjects;
 
+    if (isAddOperation) {
+      var attributionSubjectArray = subjectArray.map(function (e) {
+        return {
+          subjectName: e.name,
+          teacher: {}
+        }
+      });
+
+      attributionArray.push({
+        class: classString,
+        subjects: attributionSubjectArray
+      });
+    } else {
+      var indexClassToRemove = dataFactory.findIndexByKeyValue(attributionArray, ['class'], [classString]);
+      if (indexClassToRemove != -1) {
+        if (deleteCascade) {
+          attributionArray.splice(indexClassToRemove, 1);
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
   // TODO
