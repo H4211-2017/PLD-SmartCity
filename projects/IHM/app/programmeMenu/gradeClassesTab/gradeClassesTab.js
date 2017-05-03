@@ -130,7 +130,6 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory','myApp.se
       var factoryGrades = dataFactory.getYearArray();
       var factoryClasses = dataFactory.getClassesArray();
       $scope.grades = $scope.getClassesGrades(factoryGrades, factoryClasses);
-      serverCalls.postData('autoSave');
     };
 
 
