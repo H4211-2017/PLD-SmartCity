@@ -24,9 +24,9 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 
 	async.forEach(tableDays, parseDay, afterParseDay);
 	
-	function parseDay(jsonDay, callback) {
+	function parseDay(stringDay, callback) {
 		
-		ioDay.parse(jsonDay, outputJsonGenerator, callback);
+		ioDay.parse(stringDay, outputJsonGenerator, callback);
 	}
 	
 	function afterParseDay(err) {
@@ -36,24 +36,13 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	
 	function parseHours(jsonHour, callback) {
 		
-		ioDay.parse(jsonHour, outputJsonGenerator, callback);
+		ioHour.parse(jsonHour, outputJsonGenerator, callback);
 	}
 	
 	function afterParseHours(err) {
 		
 		async.forEach(tableYears, parseYear, afterParseYear);
-	}
-	
-	function parseHours(jsonHour, callback) {
-		
-		ioDay.parse(jsonHour, outputJsonGenerator, callback);
-	}
-	
-	function afterParseHours(err) {
-		
-		async.forEach(tableYears, parseYear, afterParseYear);
-	}
-	
+	}	
 	
 	function parseYear(stringYear, callback) {
 		
@@ -88,7 +77,7 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 
 	function parseTeacher(jsonTeacher, callback) {
 	
-		ioTeacher.parse(jsonTeacher, tableSchedule, outputJsonGenerator, callback);
+		ioTeacher.parse(jsonTeacher, tableHours, outputJsonGenerator, callback);
 	}
 	
 	function afterParseTeacher(err) {
