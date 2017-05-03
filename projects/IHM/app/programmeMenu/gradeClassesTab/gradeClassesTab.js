@@ -13,7 +13,7 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory','myApp.se
 
     const ENTER_KEY = 13;
 
-    $scope.grades = []
+    $scope.grades = [];
     $scope.inputClass = [""];
     $scope.inputStudentNumber = [0];
     $scope.inputGrade = "";
@@ -51,11 +51,36 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory','myApp.se
       }
     };
 
+    $scope.readOnly = true;
+    $scope.toggleModification = function() {
+
+        var readOnlyToggable = $('.readOnlyToggable');
+        var toNumber = $('.number');
+        var toggables = $('#gradeClassTab').find(readOnlyToggable);
+        var numbers = $('#gradeClassTab').find(toNumber);
+
+        if($scope.readOnly === true) {
+
+            toggables.removeAttr('readonly');
+            numbers.attr('type', 'number');
+
+            $scope.readOnly = false;
+        }
+        else {
+
+            toggables.attr('readonly', true);
+            numbers.attr('type', 'text');
+
+            $scope.readOnly = true;
+        }
+    };
+
     $scope.addClass = function(index){
       var inputClass = $scope.inputClass[index].trim();
       var inputStudentNumber = $scope.inputStudentNumber[index];
       if (inputClass && (inputStudentNumber === 0 || inputStudentNumber)) {
-        if (dataFactory.addClass(inputClass, $scope.grades[index].name, inputStudentNumber)) {
+		var className = $scope.grades[index].name + " - " + inputClass;
+        if (dataFactory.addClass(className, $scope.grades[index].name, inputStudentNumber)) {
           $scope.updateDisplay();
         } else {
           alert("Une classe avec ce nom existe déjà");

@@ -5,8 +5,8 @@ var builder = require('./builder');
 var fileGenerator = require('../file/fileGenerator');
 
 // very dirty method to adapt to the pc which I work
-var repositoryPath = '/home/pl/git/pld-smartcity/PLD-SmartCity';
-// 'C:/Users/PL/git/PLD-SmartCity';
+var repositoryPath = __dirname.slice(0, -35);
+// 'C:/Users/PL/git/PLD-SmartCity (/projects/server/service/XMLBuilder)';
 
 var inputFile = repositoryPath + '/projects/IHM/app/resources/toXML.json';
 
@@ -21,6 +21,6 @@ fs.readFile(inputFile, function(err, data) {
 	
 	var jsonObjectEntry = JSON.parse(data);
 	var outputXml = builder.jsonObjectEntryToXml(jsonObjectEntry);
-	console.log(outputXml);
+	console.log(outputXml.slice(0, 700));
 	fileGenerator.saveStringAs(outputXml, outputFile);
 });

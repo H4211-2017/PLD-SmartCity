@@ -10,3 +10,4 @@
 npm-debug.log
 .idea/workspace.xml
 projects/server/node_modules/
+projects/IHM/app/bower_components/

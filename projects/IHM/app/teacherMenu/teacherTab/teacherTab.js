@@ -62,6 +62,14 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute', 'myApp.dataFactory'])
     console.log(printObjectCaracteristic(dataFactory.getData()));
   };
 
+  $scope.removeTeacher = function(indexTeacherToRemove) {
+    if (!dataFactory.removeTeacher(indexTeacherToRemove, false)) {
+      if (confirm("Cette action supprimera d'autres éléments\nVoulez-vous continuer?")) {
+        dataFactory.removeTeacher(indexTeacherToRemove, true);
+      }
+    }
+  };
+
   $scope.keyPressed = function(key){
     var ENTER_KEY = 13;
     if(key === ENTER_KEY){
@@ -78,5 +86,25 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute', 'myApp.dataFactory'])
     $('#addTeacherOverlay').css('width', 'inherit');
   };
 
+
+    $scope.readOnly = true;
+    $scope.toggleModification = function() {
+
+        var readOnlyToggable = $('.readOnlyToggable');
+        var toggables = $('#teacherTab').find(readOnlyToggable);
+
+        if($scope.readOnly === true) {
+
+            toggables.removeAttr('readonly');
+
+            $scope.readOnly = false;
+        }
+        else {
+
+            toggables.attr('readonly', true);
+
+            $scope.readOnly = true;
+        }
+    };
 }
 ]);

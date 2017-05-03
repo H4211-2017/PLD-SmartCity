@@ -10,15 +10,21 @@
 	<div ng-controller="gradeClassesTabCtrl">
 	  {{JSON.stringify(grades)}}
 
-	  <table class="framedTable">
+	  <table id="gradeClassTab" class="framedTable">
 		<tr>
 		  <th>Niveau</th>
 		  <th>Classe</th>
 		  <th>Effectif</th>
+			<th>
+				<md-button class="md-icon-button" ng-click="toggleModification()">
+					<i class="material-icons">create</i>
+				</md-button>
+			</th>
 		</tr>
 
 		<tr ng-repeat-start="(indexGrade , grade) in grades">
-		  <td>{{grade.name}}</td>
+		  <td>
+			  <input class="readOnlyToggable" type="text" readonly ng-model="grade.name" /></td>
 		  <td></td>
 		  <td></td>
 		  <td>
@@ -31,10 +37,11 @@
 		<tr ng-repeat="(indexClass , class) in grade.classes">
 		  <td></td>
 		  <td>
-			{{class.name}}
+			  <input class="readOnlyToggable" type="text" readonly ng-model="class.name" />
 		  </td>
 		  <td>
-			{{class.studentNumber}}
+
+			  <input class="readOnlyToggable number" type="text" readonly ng-model="class.studentNumber" />
 		  </td>
 		  <td>
 			<md-button class="md-icon-button" ng-click="deleteClass(indexGrade,indexClass)">
@@ -46,6 +53,7 @@
 		<tr ng-repeat-end>
 		  <td></td>
 		  <td>
+			{{grade.name}} - 
 			<input type="text" ng-model="inputClass[indexGrade]" ng-keypress="keyPressedClass($event.keyCode, indexGrade)">
 		  </td>
 		  <td>
@@ -63,6 +71,7 @@
 			<input type="text" ng-model="inputGrade" ng-keypress="keyPressedGrade($event.keyCode)">
 		  </td>
 		  <td></td>
+      <td></td>
 		  <td>
 			<md-button class="md-icon-button" ng-click="addGrade()">
 			  <md-icon>add</md-icon>

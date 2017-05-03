@@ -8,11 +8,16 @@
     Ajoutez/modifiez des salles à votre établissement. Chaque salle a un nom, un type tel que défini dans le menu de gauche, et une capacité correspondant aux nombre d'étudiants maximum pouvant suivre un cours dans cette salle. La capacité est facultative (vous pouvez la mettre à zéro pour ignorer le champ).
     <br/><br/>Exemple : C121, type: TP-Physique, capacité : 25
   </p>
-  <table class="framedTable">
+  <table id="roomTab" class="framedTable">
     <tr>
       <th>Nom</th>
       <th>Type de salle</th>
       <th>Capacité</th>
+        <th>
+            <md-button class="md-icon-button" ng-click="toggleModification()">
+                <i class="material-icons">create</i>
+            </md-button>
+        </th>
     </tr>
 
     <tr>
@@ -40,17 +45,17 @@
 
 		<tr ng-repeat="room in roomsArray">
 		  <td>
-			{{room.name}}
+              <input class="readOnlyToggable" type="text" readonly ng-model="room.name" />
 		  </td>
 		  <td>
 			<ul>
 			  <li class="dotlessList" ng-repeat="roomType in room.roomTypes">
-				{{roomType}}
+                  {{roomType}}
 			  </li>
 			</ul>
 		  </td>
 		  <td>
-			<input type="number" min="0" max="300" ng-model="room.capacity"></input>
+			<input class="readOnlyToggable number" type="text" readonly ng-model="room.capacity" />
 		  </td>
 		  <td>
 			<md-button class="md-icon-button" aria-label="supprimmer ce type de salle" ng-click="removeRoom($index)">
