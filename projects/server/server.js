@@ -54,12 +54,38 @@ app.get('/login?', function(request, response){
 	
 	if(!sess.institutionName){
 		sess.institutionName = institutionName;
-		sess.configs = [];
+		sess.configs = [ "exemple" ];
 		sess.data = {};
-		console.log(sess.institutionName);
-	}
+		service.readJsonConfig(ihmPath + '/resources/toXML.json', function(json) {
+			
+			sess.data.exemple = json;
+			console.log(sess.institutionName);
+			response.status(200).send('logged');
+		});
+	} else {
 	
-	response.send('logged');
+		response.status(200).send('already logged');
+	}
+});
+
+app.get('/configs', function(request, response) {
+
+	var sess = request.session;
+	
+	if(sess.institutionName) {
+	
+		response.status(200).json(sess.configs);
+	
+	} else {
+		
+		response.status(401).send('indentification requise');
+	}
+	/*
+	service.readConfigurations(ihmPath + '/resources/' + request.params.institutionName + '/.__configs.json', function(string) {
+	
+		response.send(string);
+	});
+	*/
 });
 
 app.get('/data?', function(request, response) {
@@ -106,9 +132,10 @@ app.post('/data?', function(request, response){
 	}
 });
 
-app.get('/generate', function(request, response) {
+app.post('/generate', function(request, response) {
 
 	var sess = request.session;
+	var data = request.body;
 	
 	if (sess.data && sess.institutionName) {
 		
@@ -119,57 +146,20 @@ app.get('/generate', function(request, response) {
 	
 	} else {
 		
-		response.send('veuillez vous connecter avant de générer l\'emploi du temps');
+		response.status(401).send('veuillez vous connecter avant de générer l\'emploi du temps');
 	}
 	
 	function callback(result) {
 		
 		if(result.length != 0) {
 		
-			response.send(result);
+			response.status(500).send(result);
 		
 		} else {
 		
-			response.status(200).send('Données de l\'emploi du temps generées');
+			response.status(201).send('Données de l\'emploi du temps generées');
 		}	
 	}
-});
-
-
-// TODO useless ?
-app.post('/configs', function(request, response){
-	
-	var sess = request.session;
-	
-	if(sess.institutionName) {
-		
-		sess.configs = request.body;
-		response.end(200);
-	
-	} else {
-		
-		response.send(401, 'indentification requise');
-	}
-});
-
-app.get('/configs', function(request, response) {
-
-	var sess = request.session;
-	
-	if(sess.institutionName) {
-	
-		response.status(200).json(sess.configs);
-	
-	} else {
-		
-		response.status(401).send('indentification requise');
-	}
-	/*
-	service.readConfigurations(ihmPath + '/resources/' + request.params.institutionName + '/.__configs.json', function(string) {
-	
-		response.send(string);
-	});
-	*/
 });
 
 app.get('/display', function(request, response) {
