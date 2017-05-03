@@ -65,33 +65,6 @@
     </table>
 
     <div id="addTeacherOverlay" class="overlay">
-
-      <div class="formLayout">
-
-        <label for="firstname">Prénom :</label>
-        <input id="firstname" type="text" name="firstname" ng-model="tpsFirstName"/>
-        <br/>
-
-        <label for="lastname">Nom :</label>
-        <input id="lastName" type="text" name="lastName" ng-model="tpsLastName"/>
-        <br/>
-
-        <label for="matieres">Matières :</label>
-        <select id="matieres" name="matieres" chosen multiple class="coursName" no-results-text="'Pas de Matière trouvé pour:'"
-                placeholder-text-multiple="'Pas de Matière selectionné pour le moment'" ng-options="c.Name for c in cours"
-                ng-model="tpsMatieres">
-          <option value=""></option>
-        </select>
-        <br/>
-
-        <label for="com">Commentaire :</label>
-        <textarea id="com" style="resize:none" name="com" rows="5" ng-model="tpsCom"/>
-
-        <div class="formButtonLayout">
-          <md-button class="md-icon-button" ng-click="closeOverlay()">
-            <i class="material-icons">close</i>
-          </md-button>
-          <md-button class="md-icon-button" ng-click="addTeacher()">
             <i class="material-icons">done</i>
           </md-button>
         </div>
