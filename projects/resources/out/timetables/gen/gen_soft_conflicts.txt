@@ -1,10 +1,10 @@
-﻿Soft conflicts of gen.fet
-Generated with FET 5.31.4 on 4/30/17 1:24 PM
+﻿Conflits légers de gen.fet
+Généré avec FET 5.31.4 le 03/05/2017 08:56
 
-Number of broken soft constraints: 0
-Total soft conflicts: 0
+Nombre de contraintes légères rompues : 0
+Total des conflits légers : 0
 
-Soft conflicts list (in decreasing order):
+Liste des conflits légers (par ordre décroissant) :
 
 
-End of file.
+Fin de fichier.

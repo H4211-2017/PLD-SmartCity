@@ -5,6 +5,8 @@ var os = 'win';
 
 var callfet = function(stringInputFile, stringOutputDir, callback) {
 
+	var slash = (os = 'win') ? '\\' : '/';
+
 	shell.exec(__dirname + '/fet-' + os + '/fet-cl --inputfile=' + stringInputFile + ' --outputdir=' + stringOutputDir + ' --language=' + language + ' --verbose=true', function(code, stdout, stderr) {
 	
 		if (code != 0) {

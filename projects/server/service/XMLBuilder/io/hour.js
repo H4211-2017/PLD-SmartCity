@@ -1,7 +1,7 @@
 var parse = function(jsonHour, outputJsonGenerator, callback) {
 	
 	var hourName = jsonHour.start + ' - ' + jsonHour.end;
-	outputJsonGenerator.addDay(hourName);
+	outputJsonGenerator.addHour(hourName);
 	callback();
 }
 
