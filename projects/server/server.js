@@ -45,6 +45,7 @@ app.get('/', function(request, response){
 });
 
 app.get('/login?', function(request, response){
+	
 	var sess = request.session;
 	var institutionName = request.query.schoolname;
 	if(!sess.institutionName){

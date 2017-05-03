@@ -1,7 +1,6 @@
-var parse = function(jsonDay, outputJsonGenerator, callback) {
+var parse = function(stringDay, outputJsonGenerator, callback) {
 	
-	var dayName = jsonDay.dayName;
-	outputJsonGenerator.addDay(dayName);
+	outputJsonGenerator.addDay(stringDay);
 	callback();
 }
 

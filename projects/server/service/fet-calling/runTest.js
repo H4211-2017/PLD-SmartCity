@@ -1,11 +1,17 @@
 var run = require('./run');
 
-// very dirty method to adapt to the pc which I work
-var repositoryPath = '/home/pl/git/pld-smartcity/PLD-SmartCity';
-// 'C:/Users/PL/git/PLD-SmartCity';
+// adapt to the pc which the server work
+var repositoryPath = __dirname.slice(0, -36);
+// 'C:/Users/PL/git/PLD-SmartCity (/projects/server/service/fet-calling)';
 
 var inputFile = repositoryPath + '/projects/resources/gen.fet';
 
 var outputDir = repositoryPath + '/projects/resources/out';
 
-run.callfet(inputFile, outputDir);
+run.callfet(inputFile, outputDir, function(err) {
+	
+	if(err.localeCompare('')) {
+		
+		console.error(err);
+	}
+});

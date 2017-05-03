@@ -1,9 +1,6 @@
 'use strict';
 
-angular.module('myApp.teacherMenu', [
-  'ngRoute',
-  'myApp.teacherMenu.teacherTab'
-])
+angular.module('myApp.teacherMenu', ['ngRoute','myApp.teacherMenu.teacherTab', 'myApp.dataFactory'])
   
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/teacherMenu', {
@@ -12,7 +9,7 @@ angular.module('myApp.teacherMenu', [
     });
   }])
   
-  .controller('teacherMenuCtrl', ['$scope', function($scope) {
+  .controller('teacherMenuCtrl', ['$scope', 'dataFactory', function($scope, dataFactory) {
 
       $scope.openTab = function(nom, id) {
           var lastButt = angular.element($scope.lastIdSelected);
@@ -24,5 +21,10 @@ angular.module('myApp.teacherMenu', [
       };
 
       $scope.openTab('teacherMenu/teacherTab/teacherTab.html', 'tchEnseignants');
+	  
+		$scope.years = dataFactory.getYearArray();
+		$scope.subjects = dataFactory.getSubjectsArray();
+		$scope.classes = dataFactory.getClassesArray();
+		$scope.teachers = dataFactory.getTeacherArray();
 
   }]);

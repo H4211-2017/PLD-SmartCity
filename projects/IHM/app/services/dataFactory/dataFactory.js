@@ -1,5 +1,3 @@
-// TODO : add/remove for schedule
-
 angular.module('myApp.dataFactory', [])
 
 .factory('dataFactory', function () {
@@ -67,21 +65,24 @@ angular.module('myApp.dataFactory', [])
     return false;
   };
 
-  // TODO Ensure coherency with teacher
   dataFactory.removeHourSlot = function (hourSlotIndex, deleteCascade) {
-    data.schoolInformation.schedule.hoursSlot.splice(hourSlotIndex, 1);
-    return true;
+    var hourSlotDoesNotHaveDependency = ensureCoherencyTeacherScheduleOnDelete(deleteCascade);
+    if (deleteCascade || hourSlotDoesNotHaveDependency) {
+      data.schoolInformation.schedule.hoursSlot.splice(hourSlotIndex, 1);
+      return true;
+    }
+    return false;
   };
 
-  // TODO : improve to check dependencies first
   dataFactory.removeAllHourSlot = function (deleteCascade) {
-    while (data.schoolInformation.schedule.hoursSlot.length > 0) {
+    // Dependency on hour slot does not depend of specific hour slot
+    var hourSlotDoesNotHaveDependency = ensureCoherencyTeacherScheduleOnDelete(deleteCascade);
+    while (hourSlotDoesNotHaveDependency && data.schoolInformation.schedule.hoursSlot.length > 0) {
       dataFactory.removeHourSlot(0);
     }
     return true;
   };
 
-  // TODO ensure coherency with teacher
   dataFactory.addDisableHour = function (dayIndex, hourSlotIndex) {
     var scheduleObject = data.schoolInformation.schedule;
     scheduleObject.disableHours.push({
@@ -90,7 +91,6 @@ angular.module('myApp.dataFactory', [])
     });
   };
 
-  // TODO ensure coherency with teacher
   dataFactory.removeDisableHour = function (dayIndex, hourSlotIndex) {
     var scheduleObject = data.schoolInformation.schedule;
     var dayNameString = scheduleObject.days[dayIndex];
@@ -253,9 +253,10 @@ angular.module('myApp.dataFactory', [])
   };
 
   // SETTER
-  dataFactory.addTeacher = function(firstNameString, lastNameString, subjectsArray, disponibilities) {
+  dataFactory.addTeacher = function (firstNameString, lastNameString, subjectsArray, disponibilities) {
     var teacherArray = data.teacher.teacherList;
-    if (dataFactory.findIndexByKeyValue(teacherArray, ['firstName', 'lastName'], [firstNameString, lastNameString]) === -1) {
+    if (dataFactory.findIndexByKeyValue(teacherArray, ['firstName', 'lastName'], [firstNameString, lastNameString]) ===
+        -1) {
       teacherArray.unshift({
         firstName: firstNameString,
         lastName: lastNameString,
@@ -268,10 +269,17 @@ angular.module('myApp.dataFactory', [])
     }
   };
 
-  dataFactory.removeTeacher = function(teacherToRemoveIndex) {
-
+  dataFactory.removeTeacher = function (teacherToRemoveIndex, deleteCascade) {
+    var teacherArray = data.teacher.teacherList;
+    var teacherToRemove = teacherArray[teacherToRemoveIndex];
+    var teacherDoesNotHaveDependency = ensureCoherencyAttributionTeacherOnDelete(teacherToRemove, deleteCascade);
+    // TODO ensure coherency with attribution
+    if (deleteCascade || teacherDoesNotHaveDependency) {
+      teacherArray.splice(teacherToRemoveIndex, 1);
+      return true;
+    }
+    return false;
   };
-
 
   // =============== UTILITY FUNCTION ==============
   dataFactory.findIndexByKeyValue = function (array, keysArray, valuesArray) {
@@ -291,6 +299,33 @@ angular.module('myApp.dataFactory', [])
   };
 
   //======================================== PRIVATE ================================
+  function ensureCoherencyAttributionSubject(subjectString, isAddOperation, deleteCascade) {
+    var attributionArray = data.teacher.attribution;
+    var subjectArray = data.programme.subjects;
+
+  }
+
+  function ensureCoherencyAttributionClasses(classString, isAddOperation, deleteCascade) {
+
+  }
+
+  // TODO
+  function ensureCoherencyAttributionTeacherOnDelete(teacherToRemove, deleteCascade) {
+    return true;
+  }
+
+  function ensureCoherencyTeacherScheduleOnDelete(deleteCascade) {
+    var teacherArray = data.teacher.teacherList;
+    for (var i = 0, length = teacherArray.length; i < length; i++) {
+      if (deleteCascade) {
+        dataFactory.removeTeacher(i, deleteCascade);
+      } else {
+        return false;
+      }
+    }
+    return true;
+  }
+
   function ensureCoherencyProgrammeYear(yearString, isAddOperation, deleteCascade) {
     var programmeArray = data.programme.programme;
     var subjectArray = data.programme.subjects;

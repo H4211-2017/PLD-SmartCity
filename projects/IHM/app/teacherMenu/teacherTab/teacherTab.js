@@ -30,6 +30,14 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute', 'myApp.dataFactory'])
     }
   };
 
+  $scope.removeTeacher = function(indexTeacherToRemove) {
+    if (!dataFactory.removeTeacher(indexTeacherToRemove, false)) {
+      if (confirm("Cette action supprimera d'autres éléments\nVoulez-vous continuer?")) {
+        dataFactory.removeTeacher(indexTeacherToRemove, true);
+      }
+    }
+  };
+
   $scope.keyPressed = function(key){
     var ENTER_KEY = 13;
     if(key === ENTER_KEY){
