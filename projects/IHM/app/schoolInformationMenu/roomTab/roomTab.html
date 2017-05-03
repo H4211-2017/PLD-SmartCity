@@ -40,17 +40,18 @@
 
 		<tr ng-repeat="room in roomsArray">
 		  <td>
-			{{room.name}}
+              <input type="text" readonly ng-model="room.name" />
 		  </td>
 		  <td>
 			<ul>
 			  <li class="dotlessList" ng-repeat="roomType in room.roomTypes">
 				{{roomType}}
+                  <input type="text" readonly ng-model="roomTy" />
 			  </li>
 			</ul>
 		  </td>
 		  <td>
-			<input type="number" min="0" max="300" ng-model="room.capacity"></input>
+			<input type="text" readonly ng-model="room.capacity" />
 		  </td>
 		  <td>
 			<md-button class="md-icon-button" aria-label="supprimmer ce type de salle" ng-click="removeRoom($index)">

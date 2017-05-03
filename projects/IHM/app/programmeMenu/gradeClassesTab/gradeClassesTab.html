@@ -18,7 +18,8 @@
 		</tr>
 
 		<tr ng-repeat-start="(indexGrade , grade) in grades">
-		  <td>{{grade.name}}</td>
+		  <td>
+			  <input type="text" readonly ng-model="grade.name" /></td>
 		  <td></td>
 		  <td></td>
 		  <td>
@@ -31,10 +32,12 @@
 		<tr ng-repeat="(indexClass , class) in grade.classes">
 		  <td></td>
 		  <td>
-			{{class.name}}
+
+			  <input type="text" readonly ng-model="class.name" />
 		  </td>
 		  <td>
-			{{class.studentNumber}}
+
+			  <input type="text" readonly ng-model="class.studentNumber" />
 		  </td>
 		  <td>
 			<md-button class="md-icon-button" ng-click="deleteClass(indexGrade,indexClass)">

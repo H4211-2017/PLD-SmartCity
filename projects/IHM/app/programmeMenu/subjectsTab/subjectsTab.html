@@ -38,7 +38,7 @@
 		</tr>
 		<tr ng-repeat="subject in subjectsArray track by subject.name">
 		  <td>
-			{{subject.name}}
+			  <input type="text" readonly ng-model="subject.name" />
 		  </td>
 		  <td>
 			{{subject.roomType}}

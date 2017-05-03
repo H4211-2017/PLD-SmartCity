@@ -41,10 +41,10 @@
 
       <tr ng-repeat="teacher in teachersArray">
         <td>
-          {{teacher.firstName}}
+          <input type="text" readonly ng-model="teacher.firstName" />
         </td>
         <td>
-          {{teacher.lastName}}
+          <input type="text" readonly ng-model="teacher.lastName" />
         </td>
         <td class="coursName">
           <ul>

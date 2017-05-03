@@ -101,6 +101,11 @@ div.tab button:disabled {
   list-style-type:none;
 }
 
+input[readonly] {
+    border: none;
+    background-color: inherit;
+}
+
 /** CSS for Menu end **/
 
 
