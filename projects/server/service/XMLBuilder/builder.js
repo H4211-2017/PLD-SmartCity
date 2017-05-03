@@ -4,7 +4,7 @@ var outputGenerator = require('./output/outputGenerator');
 
 var ioDay = require('./io/day');
 var ioHour = require('./io/hour');
-var ioDisableHours = ('./io/diableHours');
+var ioDisableHours = require('./io/disableHours');
 var ioYear = require('./io/year');
 var ioClass = require('./io/class');
 var ioSubject = require('./io/subject');
@@ -43,17 +43,10 @@ var jsonObjectEntryToXml = function(jsonObjectEntry) {
 	
 	function afterParseHours(err) {
 		
-		async.forEach(tableDisableHours, parseDisableHours, afterParseYear);
-	}
-	
-	function parseDisableHours(jsonDisableHour, callback) {
+		ioDisableHours.parse(tableDisableHours, outputJsonGenerator, function() {
 		
-		ioHour.parse(jsonDisableHour, outputJsonGenerator, callback);
-	}
-	
-	function afterParseHours(err) {
-		
-		async.forEach(tableYears, parseYear, afterParseYear);
+			async.forEach(tableYears, parseYear, afterParseYear);
+		});
 	}	
 	
 	function parseYear(stringYear, callback) {

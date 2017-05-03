@@ -192,7 +192,7 @@
         "unavaibility": [
 			{
 				"day": "Mardi",
-				"hourSlot": [
+				"hoursSlot": [
 					5,
 					7
 				]

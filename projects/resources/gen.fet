@@ -268,6 +268,23 @@
 						<Comments/>
 
 				</ConstraintBasicCompulsoryTime>
+				<ConstraintBreakTimes>
+						<Weight_Percentage>100</Weight_Percentage>
+						<Number_of_Break_Times>2</Number_of_Break_Times>
+						<Break_Time>
+								<Day>Lundi</Day>
+								<Hour>8h35 - 9h30</Hour>
+
+						</Break_Time>
+						<Break_Time>
+								<Day>Mardi</Day>
+								<Hour>13h45 - 14h40</Hour>
+
+						</Break_Time>
+						<Active>true</Active>
+						<Comments/>
+
+				</ConstraintBreakTimes>
 				<ConstraintTeacherNotAvailableTimes>
 						<Weight_Percentage>100</Weight_Percentage>
 						<Teacher>Arthur Auklo</Teacher>
