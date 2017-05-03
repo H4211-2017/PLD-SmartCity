@@ -45,7 +45,8 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory','myApp.se
         if (dataFactory.addYear(inputYear)) {
           $scope.updateDisplay();
           $scope.inputGrade = "";
-          $scope.inputClass[$scope.grades.length + 1]="";
+          $scope.inputClass[$scope.grades.length - 1] = "";
+          $scope.inputStudentNumber[$scope.grades.length - 1] = 0;
         } else {
           alert("Une année avec ce nom existe déjà");
           $scope.inputGrade = "";

@@ -38,6 +38,9 @@ var printObjectCaracteristic = function (object, ignoreProperties) {
       || key === "$isolateScopeNoTemplate") {
       return "id : " + value.id;
     }
+    if (key === '$$hashKey') {
+      return undefined;
+    }
     if (ignoreProperties && ignoreProperties.includes(key)){
       return undefined;
     }
