@@ -252,6 +252,9 @@ angular.module('myApp.dataFactory', [])
     return data.teacher.teacherList;
   };
 
+  dataFactory.getAttributionArray = function() {
+	return data.teacher.attribution;  
+  };
   // SETTER
   dataFactory.addTeacher = function (firstNameString, lastNameString, subjectsArray, disponibilities) {
     var teacherArray = data.teacher.teacherList;
@@ -279,6 +282,14 @@ angular.module('myApp.dataFactory', [])
       return true;
     }
     return false;
+  };
+  
+  dataFactory.addAttribution = function(classNameString, teacherFirstNameString, teacherLastNameString){
+	  
+  };
+  
+  dataFactory.removeAttribution = function(classNameString, teacherFirstNameString, teacherLastNameString){
+	  
   };
 
   // =============== UTILITY FUNCTION ==============
