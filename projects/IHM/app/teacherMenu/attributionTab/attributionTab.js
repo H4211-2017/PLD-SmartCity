@@ -37,22 +37,5 @@ angular.module('myApp.attributionTab', ['ngRoute', 'myApp.dataFactory'])
 	  var index = dataFactory.findIndexByKeyValue($scope.subjectArray, ["name"], [subjectName] );
 	  return $scope.teachersBySubject[index]
   };
-	
-  // $scope.currentFirstName = "";
-  // $scope.currentLastName = "";
-  // $scope.currentSubjectsSelected = [];
-  //
-  // $scope.addTeacher = function() {
-  //   if ($scope.currentFirstName.trim() && $scope.currentLastName.trim() && $scope.currentSubjectsSelected.length > 0) {
-  //     if (!dataFactory.addTeacher($scope.currentFirstName.trim(), $scope.currentLastName.trim(), $scope.currentSubjectsSelected)) {
-  //       alert("Un enseignant avec ce nom et ce prénom existe déjà");
-  //     }
-  //     $scope.currentFirstName = "";
-  //     $scope.currentLastName = "";
-  //     $scope.currentSubectsSelected = [];
-  //   }
-  // };
-
-
 }
 ]);

@@ -27,7 +27,6 @@ angular.module('myApp.dataFactory', [])
     }
   };
 
-
   // ======================================= PUBLIC ==================================
   // ================ DATA =========================
   //GETTER
@@ -46,7 +45,7 @@ angular.module('myApp.dataFactory', [])
     return data.schoolInformation.schedule;
   };
 
-  dataFactory.getScheduleArrayBool = function(){
+  dataFactory.getScheduleArrayBool = function () {
     return scheduleArrayBool;
   };
 
@@ -270,7 +269,7 @@ angular.module('myApp.dataFactory', [])
     return data.teacher.teacherList;
   };
 
-  dataFactory.getTeacherArrayBySubject = function(subjectString) {
+  dataFactory.getTeacherArrayBySubject = function (subjectString) {
     var teacherArray = data.teacher.teacherList;
     var result = [];
     for (var i = 0, length = teacherArray.length; i < length; i++) {
@@ -280,8 +279,8 @@ angular.module('myApp.dataFactory', [])
     }
   };
 
-  dataFactory.getAttributionArray = function() {
-	return data.teacher.attribution;  
+  dataFactory.getAttributionArray = function () {
+    return data.teacher.attribution;
   };
   // SETTER
   dataFactory.addTeacher = function (firstNameString, lastNameString, subjectsArray, unavailabilities) {
@@ -311,13 +310,13 @@ angular.module('myApp.dataFactory', [])
     }
     return false;
   };
-  
-  dataFactory.addAttribution = function(classNameString, teacherFirstNameString, teacherLastNameString){
-	  
+
+  dataFactory.addAttribution = function (classNameString, teacherFirstNameString, teacherLastNameString) {
+
   };
-  
-  dataFactory.removeAttribution = function(classNameString, teacherFirstNameString, teacherLastNameString){
-	  
+
+  dataFactory.removeAttribution = function (classNameString, teacherFirstNameString, teacherLastNameString) {
+
   };
 
   // =============== UTILITY FUNCTION ==============
@@ -342,7 +341,7 @@ angular.module('myApp.dataFactory', [])
    */
   dataFactory.createScheduleArrayBool = function(){
     var schedule = dataFactory.getScheduleObject();
-    angular.forEach(schedule.days, function(day){
+    angular.forEach(schedule.days, function (day) {
       scheduleArrayBool[schedule.days.indexOf(day)] = new Array(schedule.hoursSlot.length).fill(false);
     });
   };
@@ -422,6 +421,19 @@ angular.module('myApp.dataFactory', [])
 
   // TODO
   function ensureCoherencyAttributionTeacherOnDelete(teacherToRemove, deleteCascade) {
+    var attributionArray = data.teacher.attribution;
+
+    for (var i = 0; i < attributionArray.length; i++) {
+      var subjectWithTeacherIndex = dataFactory.findIndexByKeyValue(attributionArray[i].subjects,
+          ['firstName', 'lastName'], [teacherToRemove.firstName, teacherToRemove.lastName]);
+      if (subjectWithTeacherIndex !== -1) {
+        if (deleteCascade) {
+          attributionArray[i].subjects[subjectWithTeacherIndex].teacher = {};
+        } else {
+          return false;
+        }
+      }
+    }
     return true;
   }
 
@@ -554,7 +566,6 @@ angular.module('myApp.dataFactory', [])
     }
     return false;
   }
-
 
   return dataFactory;
 });
