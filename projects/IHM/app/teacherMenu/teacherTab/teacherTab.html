@@ -31,7 +31,9 @@
                   ng-model="currentSubjectsSelected" ng-keypress="keyPressed($event.keyCode)">
           </select>
         </td>
-        <td></td> <!-- TODO add disponibility button!-->
+        <td>
+          <md-button ng-click="openOverlay()">DISP</md-button>
+        </td>
         <td>
           <md-button class="md-icon-button" ng-click="addTeacher()">
             <i class="material-icons">add</i>
@@ -65,14 +67,10 @@
     </table>
 
     <div id="addTeacherOverlay" class="overlay">
-            <i class="material-icons">done</i>
-          </md-button>
-        </div>
+      <h3>Entrez vos diponibilités</h3>
 
-      </div>
-
+      <md-button ng-click="closeOverlay()">fermez</md-button>
     </div>
 
   </div>
-
 </section>

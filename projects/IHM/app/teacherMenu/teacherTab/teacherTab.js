@@ -14,10 +14,13 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute', 'myApp.dataFactory'])
 
   $scope.teachersArray = dataFactory.getTeacherArray();
   $scope.subjectsArray = dataFactory.getSubjectsArray();
+  $scope.hourSlots = dataFactory.getScheduleObject();
 
+  $scope.teacherFocus = {};
   $scope.currentFirstName = "";
   $scope.currentLastName = "";
   $scope.currentSubjectsSelected = [];
+  $scope.currentUnavailabilities = [];
 
   $scope.addTeacher = function() {
     if ($scope.currentFirstName.trim() && $scope.currentLastName.trim() && $scope.currentSubjectsSelected.length > 0) {
@@ -41,8 +44,10 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute', 'myApp.dataFactory'])
     $('#addTeacherOverlay').css('width', '0%');
   };
 
-  $scope.openAddTeacher = function () {
+  $scope.openOverlay = function () {
     $('#addTeacherOverlay').css('width', 'inherit');
   };
+
+
 }
 ]);
