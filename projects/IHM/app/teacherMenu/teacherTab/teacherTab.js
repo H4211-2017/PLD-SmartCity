@@ -50,23 +50,27 @@ angular.module('myApp.teacherTab', ['ngRoute', 'myApp.dataFactory'])
    * We then close the overlay.
    */
   $scope.setCurrentUnavailability = function(){
+    $scope.currentUnavailabilities = [];
+    console.log("teacherTab l-53");
+    printObjectCaracteristic($scope.unavailabilityInput);
     for(var i = 0;i < $scope.schedule.days.length; i++)
     {
       var isEmpty = true;
-      var newunavailability = {
+      var newUnavailability = {};
+      newUnavailability = {
         day:$scope.schedule.days[i],
         hoursSlot : []
       };
       for(var j = 0;j < $scope.schedule.hoursSlot.length; j++){
         if($scope.unavailabilityInput[i][j] === true)
         {
-          newunavailability.hoursSlot.push(j);
+          newUnavailability.hoursSlot.push(j);
           isEmpty = false;
         }
       }
       if(!isEmpty)
       {
-        $scope.currentUnavailabilities.push(newunavailability);
+        $scope.currentUnavailabilities.push(newUnavailability);
       }
     }
     $scope.closeOverlay();
@@ -116,6 +120,8 @@ angular.module('myApp.teacherTab', ['ngRoute', 'myApp.dataFactory'])
   };
 
   $scope.openOverlay = function () {
+    console.log("teacher tab l-124");
+    printObjectCaracteristic($scope.unavailabilityInput)
     $('#addTeacherOverlay').css('width', 'inherit');
   };
 
