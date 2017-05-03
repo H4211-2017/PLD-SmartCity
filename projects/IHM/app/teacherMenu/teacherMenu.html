@@ -2,7 +2,11 @@
 <section ng-controller="teacherMenuCtrl">
 
   <div class="tab" expanded="false">
-    <button id='tchEnseignants' class="tablinks" onclick="openTab('teacherMenu/teacherTab/teacherTab.html', 'tchEnseignants')">Professeurs</button>
+    <button id='tchEnseignants' class="tablinks" ng-click="openTab('teacherMenu/teacherTab/teacherTab.html', 'tchEnseignants')">Professeurs</button>
+	<button ng-disabled="teachers.length == 0 || subjects.length == 0 || classes.length == 0 || years.length == 0" 
+		id='tchAttribution' class="tablinks" ng-click="openTab('teacherMenu/attributionTab/attributionTab.html', 'tchAttribution')">
+		Attribution des professeurs
+	</button>
   </div>
 
   <div ng-include="page">

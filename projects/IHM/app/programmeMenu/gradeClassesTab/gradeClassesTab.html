@@ -32,7 +32,6 @@
 		<tr ng-repeat="(indexClass , class) in grade.classes">
 		  <td></td>
 		  <td>
-
 			  <input type="text" readonly ng-model="class.name" />
 		  </td>
 		  <td>
@@ -49,6 +48,7 @@
 		<tr ng-repeat-end>
 		  <td></td>
 		  <td>
+			{{grade.name}} - 
 			<input type="text" ng-model="inputClass[indexGrade]" ng-keypress="keyPressedClass($event.keyCode, indexGrade)">
 		  </td>
 		  <td>
@@ -66,6 +66,7 @@
 			<input type="text" ng-model="inputGrade" ng-keypress="keyPressedGrade($event.keyCode)">
 		  </td>
 		  <td></td>
+      <td></td>
 		  <td>
 			<md-button class="md-icon-button" ng-click="addGrade()">
 			  <md-icon>add</md-icon>

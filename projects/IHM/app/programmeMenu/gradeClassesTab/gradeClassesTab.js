@@ -13,7 +13,7 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory','myApp.se
 
     const ENTER_KEY = 13;
 
-    $scope.grades = []
+    $scope.grades = [];
     $scope.inputClass = [""];
     $scope.inputStudentNumber = [0];
     $scope.inputGrade = "";
@@ -55,7 +55,8 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory','myApp.se
       var inputClass = $scope.inputClass[index].trim();
       var inputStudentNumber = $scope.inputStudentNumber[index];
       if (inputClass && (inputStudentNumber === 0 || inputStudentNumber)) {
-        if (dataFactory.addClass(inputClass, $scope.grades[index].name, inputStudentNumber)) {
+		var className = $scope.grades[index].name + " - " + inputClass;
+        if (dataFactory.addClass(className, $scope.grades[index].name, inputStudentNumber)) {
           $scope.updateDisplay();
         } else {
           alert("Une classe avec ce nom existe déjà");
