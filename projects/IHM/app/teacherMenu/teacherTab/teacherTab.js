@@ -27,16 +27,15 @@ angular.module('myApp.teacherTab', ['ngRoute', 'myApp.dataFactory'])
   $scope.teacherFocused = {};
   $scope.availabilityTeacherFocused = [];
 
-
   /**
    * this function is used so we can have a boolean 2-D array of the availability of a teacher for each time slot
    */
-  $scope.setAvailabilityTeacherFocused = function(){
+  $scope.setAvailabilityTeacherFocused = function () {
     $scope.availabilityTeacherFocused = dataFactory.getScheduleArrayBool();
-    dataFactory.resetScheduleArrayBool(true, function(){
-      angular.forEach($scope.teacherFocused.unavailability, function(day){
+    dataFactory.resetScheduleArrayBool(true, function () {
+      angular.forEach($scope.teacherFocused.unavailability, function (day) {
 
-        angular.forEach(day.hoursSlot, function(slot){
+        angular.forEach(day.hoursSlot, function (slot) {
 
           $scope.availabilityTeacherFocused[$scope.schedule.days.indexOf(day.day)][slot] = false;
 
@@ -49,23 +48,20 @@ angular.module('myApp.teacherTab', ['ngRoute', 'myApp.dataFactory'])
    * From the inpt in the check boxes, we create the variables that are used by datafactory.
    * We then close the overlay.
    */
-  $scope.setCurrentUnavailability = function(){
-    for(var i = 0;i < $scope.schedule.days.length; i++)
-    {
+  $scope.setCurrentUnavailability = function () {
+    for (var i = 0; i < $scope.schedule.days.length; i++) {
       var isEmpty = true;
       var newunavailability = {
-        day:$scope.schedule.days[i],
-        hoursSlot : []
+        day: $scope.schedule.days[i],
+        hoursSlot: []
       };
-      for(var j = 0;j < $scope.schedule.hoursSlot.length; j++){
-        if($scope.unavailabilityInput[i][j] === true)
-        {
+      for (var j = 0; j < $scope.schedule.hoursSlot.length; j++) {
+        if ($scope.unavailabilityInput[i][j] === true) {
           newunavailability.hoursSlot.push(j);
           isEmpty = false;
         }
       }
-      if(!isEmpty)
-      {
+      if (!isEmpty) {
         $scope.currentUnavailabilities.push(newunavailability);
       }
     }
@@ -75,22 +71,23 @@ angular.module('myApp.teacherTab', ['ngRoute', 'myApp.dataFactory'])
   /**
    * Sends the paramters to create a new teacher to dataFactory
    */
-  $scope.addTeacher = function() {
+  $scope.addTeacher = function () {
     if ($scope.currentFirstName.trim() && $scope.currentLastName.trim() && $scope.currentSubjectsSelected.length > 0) {
-      if (!dataFactory.addTeacher($scope.currentFirstName.trim(), $scope.currentLastName.trim(), $scope.currentSubjectsSelected,$scope.currentUnavailabilities)) {
+      if (!dataFactory.addTeacher($scope.currentFirstName.trim(), $scope.currentLastName.trim(),
+              $scope.currentSubjectsSelected, $scope.currentUnavailabilities)) {
         alert("Un enseignant avec ce nom et ce prénom existe déjà");
       }
       $scope.currentFirstName = "";
       $scope.currentLastName = "";
       $scope.currentSubectsSelected = [];
     }
-    };
+  };
 
   /**
    * Removing a teacher from data factory
    * @param indexTeacherToRemove
    */
-  $scope.removeTeacher = function(indexTeacherToRemove) {
+  $scope.removeTeacher = function (indexTeacherToRemove) {
     if (!dataFactory.removeTeacher(indexTeacherToRemove, false)) {
       if (confirm("Cette action supprimera d'autres éléments\nVoulez-vous continuer?")) {
         dataFactory.removeTeacher(indexTeacherToRemove, true);
@@ -102,15 +99,15 @@ angular.module('myApp.teacherTab', ['ngRoute', 'myApp.dataFactory'])
    *
    * @param key
    */
-  $scope.keyPressed = function(key){
+  $scope.keyPressed = function (key) {
     var ENTER_KEY = 13;
-    if(key === ENTER_KEY){
+    if (key === ENTER_KEY) {
       $scope.addTeacher();
     }
   };
 
   $scope.closeOverlay = function () {
-    dataFactory.resetScheduleArrayBool(false, function(){
+    dataFactory.resetScheduleArrayBool(false, function () {
     });
     $('#addTeacherOverlay').css('width', '0%');
   };
@@ -119,48 +116,47 @@ angular.module('myApp.teacherTab', ['ngRoute', 'myApp.dataFactory'])
     $('#addTeacherOverlay').css('width', 'inherit');
   };
 
-
   $scope.readOnly = true;
-  $scope.toggleModification = function() {
+  $scope.toggleModification = function () {
 
-      var readOnlyToggable = $('.readOnlyToggable');
-      var toggables = $('#teacherTab').find(readOnlyToggable);
+    var readOnlyToggable = $('.readOnlyToggable');
+    var toggables = $('#teacherTab').find(readOnlyToggable);
 
-      if($scope.readOnly === true) {
+    if ($scope.readOnly === true) {
 
-          toggables.removeAttr('readonly');
+      toggables.removeAttr('readonly');
 
-          $scope.readOnly = false;
-      }
-      else {
+      $scope.readOnly = false;
+    }
+    else {
 
-          toggables.attr('readonly', true);
+      toggables.attr('readonly', true);
 
-          $scope.readOnly = true;
-      }
+      $scope.readOnly = true;
+    }
   };
 
-  $scope.displayAvailabilityWrite = function(){
-    dataFactory.resetScheduleArrayBool(false, function(){
+  $scope.displayAvailabilityWrite = function () {
+    dataFactory.resetScheduleArrayBool(false, function () {
       $scope.overlayIsReadOnly = false;
       $scope.openOverlay();
     });
   };
 
-  $scope.displayAvailabilityRead = function(teacher){
+  $scope.displayAvailabilityRead = function (teacher) {
     $scope.teacherFocused = teacher
     $scope.overlayIsReadOnly = true;
     $scope.setAvailabilityTeacherFocused();
     $scope.openOverlay();
   };
 
-  $scope.returnClassOnAvailability = function(boolean){
-    if(boolean){
+  $scope.returnClassOnAvailability = function (boolean) {
+    if (boolean) {
       return "available"; //{'background-color':'green'};
     }
-    else
-    {
+    else {
       return "unavailable";//{'background-color':'red'};
     }
   };
-}]);
+}
+]);
