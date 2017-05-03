@@ -31,7 +31,7 @@
 		<tr ng-repeat="(indexClass , class) in grade.classes">
 		  <td></td>
 		  <td>
-			{{class.name}}
+				{{class.name}}
 		  </td>
 		  <td>
 			{{class.studentNumber}}
@@ -46,6 +46,7 @@
 		<tr ng-repeat-end>
 		  <td></td>
 		  <td>
+			{{grade.name}} - 
 			<input type="text" ng-model="inputClass[indexGrade]" ng-keypress="keyPressedClass($event.keyCode, indexGrade)">
 		  </td>
 		  <td>
