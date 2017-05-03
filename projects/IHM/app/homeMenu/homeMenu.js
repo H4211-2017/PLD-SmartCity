@@ -84,7 +84,7 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 			}
 		};
 		    
-		xhrGetConfig.open('GET', '/resources/' + $scope.__etablissement + '/getConfig', true);
+		xhrGetConfig.open('GET', '/configs', true);
 		xhrGetConfig.send();
 				
 			/**
@@ -143,7 +143,7 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 				}
 			};
 			
-			xhr.open('GET', '/input?input=' + JSON.stringify(dataFactory.getData()), true);
+			xhr.open('GET', '/generate' + JSON.stringify(dataFactory.getData()), true);
 			xhr.send();  
 	  };
 	  

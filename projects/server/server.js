@@ -53,6 +53,8 @@ app.get('/login?', function(request, response){
 		sess.configs = [];
 		console.log(sess.institutionName);
 	}
+	
+	response.send('logged');
 });
 
 app.get('/data', function(request, response) {
