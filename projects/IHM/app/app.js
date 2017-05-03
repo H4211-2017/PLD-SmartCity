@@ -29,19 +29,6 @@ app.controller("IndexCtrl", ["$scope", function ($scope) {
 
 }]);
 
-//  Js for Menu
-// function openTab(evt) {
-//   // Declare all variables
-//   var i, menulinks;
-//
-//   // Get all elements with class="tablinks" and remove the class "active"
-//   menulinks = document.getElementsByClassName("menulinks");
-//   for (i = 0; i < menulinks.length; i++) {
-//     menulinks[i].className = menulinks[i].className.replace(" active", "");
-//   }
-//   evt.currentTarget.className += " active";
-// }
-
 var printObjectCaracteristic = function (object, ignoreProperties) {
   var str = JSON.stringify(object, function (key, value) {
     if (value === null) {
