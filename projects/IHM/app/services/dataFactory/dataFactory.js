@@ -277,20 +277,25 @@ angular.module('myApp.dataFactory', [])
         result.push(teacherArray[i]);
       }
     }
+    return result;
   };
 
   dataFactory.getAttributionArray = function () {
     return data.teacher.attribution;
   };
   // SETTER
-  dataFactory.addTeacher = function (firstNameString, lastNameString, subjectsArray, unavailabilities) {
+  dataFactory.addTeacher = function (firstNameString, lastNameString, subjectsObjectArray, unavailabilities) {
     var teacherArray = data.teacher.teacherList;
     if (dataFactory.findIndexByKeyValue(teacherArray, ['firstName', 'lastName'], [firstNameString, lastNameString]) ===
         -1) {
+      var subjectsStringArray = subjectsObjectArray.map(function(e) {
+        return e.name;
+      });
+
       teacherArray.unshift({
         firstName: firstNameString,
         lastName: lastNameString,
-        subject: subjectsArray,
+        subject: subjectsStringArray,
         unavailability: unavailabilities
       });
       return true;
