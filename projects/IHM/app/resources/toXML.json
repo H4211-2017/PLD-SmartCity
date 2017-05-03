@@ -203,16 +203,16 @@
     "attribution": [
       {
         "class": "6A",
-        "subjectTeachers": [
+        "subjects": [
           {
-            "subject": "Math",
+            "subjectName": "Math",
             "teacher": {
               "firstName": "Arthur",
               "lastName": "Auklo"
             }
           },
           {
-            "subject": "Latin",
+            "subjectName": "Latin",
             "teacher": {
               "firstName": "Beatrice",
               "lastName": "Beaugrand"
