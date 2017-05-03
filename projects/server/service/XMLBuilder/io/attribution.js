@@ -4,13 +4,13 @@ var parse = function(jsonAttribution, jsonProgram, outputJsonGenerator, callback
 		
 		//TODO verify if parameters exist
 		var stringClass = jsonAttribution.class;
-		var tableSubjectTeachers = jsonAttribution.subjectTeachers;
+		var tableSubjects = jsonAttribution.subjects;
 		
-		async.forEach(tableSubjectTeachers, parseSubjectsTeachers, afterParseSubjectsTeachers);
+		async.forEach(tableSubjects, parseSubjects, afterParseSubjects);
 		
-		function parseSubjectsTeachers(jsonSubjectTeachers, callback2) {
+		function parseSubjects(jsonSubjectTeachers, callback2) {
 		
-			var stringSubject = jsonSubjectTeachers.subject;
+			var stringSubject = jsonSubjectTeachers.subjectName;
 			var stringTeacher = jsonSubjectTeachers.teacher.firstName + ' ' + jsonSubjectTeachers.teacher.lastName;
 			
 			var i = 0;
@@ -21,7 +21,7 @@ var parse = function(jsonAttribution, jsonProgram, outputJsonGenerator, callback
 				i++;
 				
 				if (i >= jsonProgram.classes.length) {					
-					throw 'ERROR : builder::parseSubjectsTeachers : la classe ' + stringClass + ' n\'existe pas';
+					throw 'ERROR : builder::parseSubjects : la classe ' + stringClass + ' n\'existe pas';
 				}
 				
 				jsonClass = jsonProgram.classes[i];
@@ -37,7 +37,7 @@ var parse = function(jsonAttribution, jsonProgram, outputJsonGenerator, callback
 				i++;
 				
 				if (i >= jsonProgram.programme.length) {					
-					throw 'ERROR : builder::parseSubjectsTeachers : l\'annee ' + stringYear + ' n\'a pas de programme';
+					throw 'ERROR : builder::parseSubjects : l\'annee ' + stringYear + ' n\'a pas de programme';
 				}
 				
 				jsonUnderProgram = jsonProgram.programme[i];
@@ -51,7 +51,7 @@ var parse = function(jsonAttribution, jsonProgram, outputJsonGenerator, callback
 				i++;
 				
 				if (i >= jsonUnderProgram.programme.length) {					
-					throw 'ERROR : builder::parseSubjectsTeachers : le sujet ' + stringSubject + 'n\'est pas etudiee pour l\'annee ' + stringYear;
+					throw 'ERROR : builder::parseSubjects : le sujet ' + stringSubject + 'n\'est pas etudiee pour l\'annee ' + stringYear;
 				}
 				
 				jsonUnderUnderProgram = jsonUnderProgram.programme[i];
@@ -63,8 +63,13 @@ var parse = function(jsonAttribution, jsonProgram, outputJsonGenerator, callback
 			callback2();
 		}
 		
-		function afterParseSubjectsTeachers(err) {
+		function afterParseSubjects(err) {
 		
+			if(err) {
+				
+				console.error('ERREUR : attribution.js::parse :' + err);
+			}
+			
 			callback1();
 		}
 }

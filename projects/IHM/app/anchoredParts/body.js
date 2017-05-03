@@ -65,14 +65,19 @@ angular.module('myApp')
         };
         
         $scope.disconnect = function() {
-        	$rootScope.__etablissement = '';
-        	$rootScope.__mdp = '';
-        	$("#connect").css("display", "block");
-        	$("#disconnect").css("display", "none");
-        	$("#homeSave").attr("disabled", "true");
-        	$("#homeLoad").attr("disabled", "true");
-        	$("#homeGen").attr("disabled", "true");
-        	$("#etablissement").val('');
+			
+        	$http.get('/logout').then(function(){
+				$rootScope.__etablissement = '';
+				$scope.etablissement = '';
+				$scope.mdp = '';
+				$rootScope.__mdp = '';
+				$("#connect").css("display", "block");
+				$("#disconnect").css("display", "none");
+				$("#homeSave").attr("disabled", "true");
+				$("#homeLoad").attr("disabled", "true");
+				$("#homeGen").attr("disabled", "true");
+				$("#etablissement").val('');
+            });
         };
 
         // Update scope of open menu

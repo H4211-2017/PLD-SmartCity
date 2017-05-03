@@ -283,7 +283,7 @@ angular.module('myApp.dataFactory', [])
     return data.teacher.attribution;
   };
   // SETTER
-  dataFactory.addTeacher = function (firstNameString, lastNameString, subjectsArray, disponibilities) {
+  dataFactory.addTeacher = function (firstNameString, lastNameString, subjectsArray, unavailabilities) {
     var teacherArray = data.teacher.teacherList;
     if (dataFactory.findIndexByKeyValue(teacherArray, ['firstName', 'lastName'], [firstNameString, lastNameString]) ===
         -1) {
@@ -291,7 +291,7 @@ angular.module('myApp.dataFactory', [])
         firstName: firstNameString,
         lastName: lastNameString,
         subject: subjectsArray,
-        disponibility: disponibilities
+        unavailability: unavailabilities
       });
       return true;
     } else {
@@ -336,11 +336,24 @@ angular.module('myApp.dataFactory', [])
     return -1;
   };
 
-  dataFactory.createScheduleArrayBool = function () {
+  /**
+   * THis function is used to share across different scopes, it creates a 2-d boolean array of time slots.
+   */
+  dataFactory.createScheduleArrayBool = function(){
     var schedule = dataFactory.getScheduleObject();
     angular.forEach(schedule.days, function (day) {
       scheduleArrayBool[schedule.days.indexOf(day)] = new Array(schedule.hoursSlot.length).fill(false);
     });
+  };
+
+  /**
+   * fills the 2-d bool array of time slots with the boolean in parameter.
+   */
+  dataFactory.resetScheduleArrayBool = function(boolean, callback){
+    angular.forEach(scheduleArrayBool, function(array){
+      array.fill(boolean);
+    });
+    callback();
   };
 
   //======================================== PRIVATE ================================
