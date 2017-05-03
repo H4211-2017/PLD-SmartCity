@@ -7,8 +7,22 @@
     <p>
       Description </p>
 
-    <table id="teacherTab" class="framedTable">
-      
+    <table id="attributionTable" class="framedTable">
+		<!-- Column Headers -->
+		<tr>
+		  <th></th>
+		  <th scope="col" ng-repeat="subject in subjectArray">
+			{{subject.name}}
+		  </th>
+		</tr>
+		<!-- Table Body -->
+		<tr ng-repeat="attribution in attributionArray">
+		  <th>{{attribution.class}}</th>
+		  <td ng-repeat="subject in attribution.subjects">
+			{{subject.subjectName}}
+		  </td>
+		</tr>
+		
     </table>
 
   </div>
