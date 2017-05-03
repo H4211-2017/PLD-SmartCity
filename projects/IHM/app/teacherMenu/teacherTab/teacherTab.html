@@ -68,8 +68,18 @@
 
     <div id="addTeacherOverlay" class="overlay">
       <h3>Entrez vos diponibilités</h3>
-
-      <md-button ng-click="closeOverlay()">fermez</md-button>
+      <table>
+        <tr>
+          <td>days</td>
+          </td><td ng-repeat="(indexHourTitle,hour) in schedule.hoursSlot">{{hour.start}}-{{hour.end}}</td>
+        </tr>
+        <tr ng-repeat="(indexDay, day) in schedule.days">
+          <td>{{day}}</td>
+          <td ng-repeat="(indexHour,hour) in schedule.hoursSlot"><input type="checkbox" ng-model="unavailabilityInput[indexDay][indexHour]"></input></td>
+        </tr>
+      </table>
+      <md-button ng-click="setCurrentUnavailability()">Done</md-button>
+      <md-button ng-click="closeOverlay()">fermer</md-button>
     </div>
 
   </div>
