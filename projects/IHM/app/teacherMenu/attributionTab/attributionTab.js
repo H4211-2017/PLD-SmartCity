@@ -33,8 +33,6 @@ angular.module('myApp.attributionTab', ['ngRoute', 'myApp.dataFactory'])
   for (var i = 0, lengthAttribution = $scope.attributionArray.length; i < lengthAttribution; i++) {
     $scope.currentTeacherSelectedArray.push([]);
     for (var j = 0, lengthSubject = $scope.attributionArray[i].subjects.length; j < lengthSubject; j++) {
-      console.log("attributionTab::ctrl : i : " + i + " j : " + j + " attributionArray : ");
-      printObjectCaracteristic($scope.attributionArray);
       var teacherFirstName = $scope.attributionArray[i].subjects[j].teacher.firstName;
       var teacherLastName = $scope.attributionArray[i].subjects[j].teacher.lastName;
       var indexTeacher = dataFactory.findIndexByKeyValue($scope.teacherArray, ['firstName', 'lastName'],

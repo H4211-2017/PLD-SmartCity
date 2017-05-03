@@ -381,7 +381,8 @@ angular.module('myApp.dataFactory', [])
       for (i = 0, attributionLength = attributionArray.length; i < attributionLength; i++) {
         var indexSubject = dataFactory.findIndexByKeyValue(attributionArray[i].subjects, ['subjectName'],
             [subjectString]);
-        if (indexSubject != -1) {
+        // teacher.firsName == undefined => this property does not exist => teacher is empty
+        if (indexSubject != -1 && attributionArray[i].subjects[indexSubject].teacher.firstName) {
           if (deleteCascade) {
             attributionArray[i].subjects.splice(indexSubject, 1);
           } else {
@@ -471,6 +472,7 @@ angular.module('myApp.dataFactory', [])
         }
       }
     }
+    return true;
   }
 
   function ensureCoherencyProgrammeYear(yearString, isAddOperation, deleteCascade) {
