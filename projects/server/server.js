@@ -31,6 +31,7 @@ app.use(session({
 app.get('/logout', function(request, response) {
 
 	var sess = request.session;
+	console.log(sess.institutionName + ' logged out');
 	sess.destroy();
 	response.send('logged out');
 });
@@ -48,26 +49,60 @@ app.get('/login?', function(request, response){
 	
 	var sess = request.session;
 	var institutionName = request.query.schoolname;
+	
+	console.log('login :');
+	
 	if(!sess.institutionName){
 		sess.institutionName = institutionName;
 		sess.configs = [];
+		sess.data = {};
 		console.log(sess.institutionName);
+	}
+	
+	response.send('logged');
+});
+
+app.get('/data?', function(request, response) {
+	
+	var sess = request.session;
+	var config = request.query.config;
+	
+	if(sess.institutionName) {
+		
+		if (sess.data[config]) {
+		
+			response.status(200).json(sess.data[config]);
+	
+		} else {
+	
+			response.status(404).send('configuration inconnue...');
+		}
+		
+	} else {
+		
+		response.status(401).send('indentification requise');
 	}
 });
 
-app.get('/data', function(request, response) {
+app.post('/data?', function(request, response){
 	
 	var sess = request.session;
-	//checking that person is logged in
-	sess.data = request.body;
-});
-
-app.post('/data', function(request, response){
+	var config = request.query.config;
 	
-	var sess = request.session;
-	console.log('posted');
+	console.log('Posted :');
 	console.log(request.body);
+	
 	if(sess.institutionName){
+		
+		console.log('Saved :');
+		sess.data[config] = request.body;
+		sess.configs.push(config);
+		console.log(sess.data);
+		response.status(200).end();
+		
+	} else {
+		
+		response.status(401).send('indentification requise');
 	}
 });
 
@@ -92,23 +127,43 @@ app.get('/generate', function(request, response) {
 		if(result.length != 0) {
 		
 			response.send(result);
-				
+		
 		} else {
 		
-			response.send('Données de l\'emploi du temps generées');
+			response.status(200).send('Données de l\'emploi du temps generées');
 		}	
 	}
 });
 
+
+// TODO useless ?
 app.post('/configs', function(request, response){
+	
 	var sess = request.session;
-	sess.configs = request.body;
+	
+	if(sess.institutionName) {
+		
+		sess.configs = request.body;
+		response.end(200);
+	
+	} else {
+		
+		response.send(401, 'indentification requise');
+	}
 });
 
 app.get('/configs', function(request, response) {
 
 	var sess = request.session;
-	response.send(session.configs);
+	
+	if(sess.institutionName) {
+	
+		response.status(200).json(sess.configs);
+	
+	} else {
+		
+		response.status(401).send('indentification requise');
+	}
 	/*
 	service.readConfigurations(ihmPath + '/resources/' + request.params.institutionName + '/.__configs.json', function(string) {
 	

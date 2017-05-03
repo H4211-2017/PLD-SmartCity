@@ -84,7 +84,7 @@ angular.module('myApp.teacherTab', ['ngRoute', 'myApp.dataFactory'])
       $scope.currentLastName = "";
       $scope.currentSubectsSelected = [];
     }
-  };
+    };
 
   /**
    * Removing a teacher from data factory

@@ -256,7 +256,7 @@ var OutputJsonGenerator = function() {
 		});
 	};
 	
-	// tableBreakTimes is table of objects type { day: "Day", hour: "00h00 - 00h00" }
+	// tableBreakDayHour is table of objects type { day: "Day", hour: "00h00 - 00h00" }
 	
 	this.addBreakTimes = function(tableBreakDayHour, intWeightPercentage, boolActive, stringComments, callback) {
 		
@@ -274,7 +274,7 @@ var OutputJsonGenerator = function() {
 			{name: 'Number_of_Break_Times', text: tableBreakDayHour.length},
 		]};
 		
-		async.forEach(tableBreakTimes, function(breakDayHour, callback2) {
+		async.forEach(tableBreakDayHour, function(breakDayHour, callback2) {
 			
 			var breakTime = {name: 'Break_Time', children: [
 				{name: 'Day', text: breakDayHour.day},

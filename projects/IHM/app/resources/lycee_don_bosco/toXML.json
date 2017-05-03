@@ -164,7 +164,7 @@
           "Francais",
           "Grec"
         ],
-        "unavailability": [
+        "unavaibility": [
 			{
 				"day": "Lundi",
 				"hoursSlot": [
@@ -210,10 +210,6 @@
               "firstName": "Arthur",
               "lastName": "Auklo"
             }
-          },
-          {
-            "subjectName": "Francais",
-            "teacher": {}
           },
           {
             "subjectName": "Latin",
