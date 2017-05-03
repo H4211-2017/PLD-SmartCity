@@ -36,5 +36,25 @@ angular.module('myApp.roomTypeTab', ['ngRoute', 'myApp.dataFactory'])
       }
     };
 
+      $scope.readOnly = true;
+      $scope.toggleModification = function() {
+
+          var readOnlyToggable = $('.readOnlyToggable');
+          var toggables = $('#roomTypeTable').find(readOnlyToggable);
+
+          if($scope.readOnly === true) {
+
+              toggables.removeAttr('readonly');
+
+              $scope.readOnly = false;
+          }
+          else {
+
+              toggables.attr('readonly', true);
+
+              $scope.readOnly = true;
+          }
+      };
+
   }]);
 

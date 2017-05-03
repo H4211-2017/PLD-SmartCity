@@ -16,6 +16,11 @@
 		<th>
 		  Type de salle
 		</th>
+		  <th>
+			  <md-button class="md-icon-button" ng-click="toggleModification()">
+				  <i class="material-icons">create</i>
+			  </md-button>
+		  </th>
 		<tr>
 		  <td>
 			<md-inputcontainer>
@@ -38,7 +43,7 @@
 		</tr>
 		<tr ng-repeat="subject in subjectsArray track by subject.name">
 		  <td>
-			{{subject.name}}
+			  <input class="readOnlyToggable" type="text" readonly ng-model="subject.name" />
 		  </td>
 		  <td>
 			{{subject.roomType}}

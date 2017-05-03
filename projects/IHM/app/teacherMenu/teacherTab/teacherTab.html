@@ -16,6 +16,11 @@
         <th>Nom</th>
         <th>Matières</th>
         <th>Disponibilités</th>
+        <th>
+          <md-button class="md-icon-button" ng-click="toggleModification()">
+            <i class="material-icons">create</i>
+          </md-button>
+        </th>
       </tr>
 
       <tr>
@@ -41,10 +46,10 @@
 
       <tr ng-repeat="teacher in teachersArray">
         <td>
-          {{teacher.firstName}}
+          <input class="readOnlyToggable" type="text" readonly ng-model="teacher.firstName" />
         </td>
         <td>
-          {{teacher.lastName}}
+          <input class="readOnlyToggable" type="text" readonly ng-model="teacher.lastName" />
         </td>
         <td class="coursName">
           <ul>

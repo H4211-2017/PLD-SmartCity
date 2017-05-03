@@ -24,6 +24,7 @@ angular.module('myApp.roomTab', ['ngRoute', 'myApp.dataFactory'])
         /*$scope.roomTypesSelected = [];
         $scope.roomCapacity = 1;*/
       }
+      console.log("roomTab::addRoom : roomsArray");
       printObjectCaracteristic($scope.roomsArray, ['$$hashKey']);
     };
 
@@ -37,4 +38,29 @@ angular.module('myApp.roomTab', ['ngRoute', 'myApp.dataFactory'])
         $scope.addRoom();
       }
     };
+
+      $scope.readOnly = true;
+      $scope.toggleModification = function() {
+
+          var readOnlyToggable = $('.readOnlyToggable');
+          var toNumber = $('.number');
+          var toggables = $('#roomTab').find(readOnlyToggable);
+          var numbers = $('#roomTab').find(toNumber);
+
+          if($scope.readOnly === true) {
+
+              toggables.removeAttr('readonly');
+              numbers.attr('type', 'number');
+
+              $scope.readOnly = false;
+          }
+          else {
+
+              toggables.attr('readonly', true);
+              numbers.attr('type', 'text');
+
+              $scope.readOnly = true;
+          }
+      };
+
   }]);

@@ -8,7 +8,15 @@
 		  <br/><br/> Exemple : amphithéâtres, salle de travaux dirigés, salle avec vidéoprojecteur, salle de TP Chimie...
 	  </p>
 
-	  <table id="subjectTable" class="framedTable">
+	  <table id="roomTypeTable" class="framedTable">
+		  <tr>
+			  <th>Type de salle</th>
+			  <th>
+				  <md-button class="md-icon-button" ng-click="toggleModification()">
+					  <i class="material-icons">create</i>
+				  </md-button>
+			  </th>
+		  </tr>
 		<tr>
 		  <td>
 			<md-inputcontainer>
@@ -26,7 +34,7 @@
 		</tr>
 		<tr ng-repeat="roomType in roomTypesArray track by $index">
 		  <td>
-			{{roomType}}
+			  <input class="readOnlyToggable" type="text" readonly ng-model="roomType" />
 		  </td>
 		  <td>
 			<md-button class="md-icon-button" aria-label="supprimmer ce type de salle"
