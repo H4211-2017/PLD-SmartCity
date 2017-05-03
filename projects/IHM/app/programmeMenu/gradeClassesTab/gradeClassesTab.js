@@ -28,7 +28,9 @@ angular.module('myApp.gradeClassesTab', ['ngRoute','myApp.dataFactory','myApp.se
     };
 
     $scope.deleteClass = function(indexGrade, indexClassInGrade){
-      var indexClass = dataFactory.getClassesArray().indexOf($scope.grades[indexGrade].classes[indexClassInGrade]);
+      var classToDelete = $scope.grades[indexGrade].classes[indexClassInGrade];
+      var indexClass = dataFactory.findIndexByKeyValue(dataFactory.getClassesArray(), ["name"], [classToDelete.name]);
+
       if (!dataFactory.removeClass(indexClass, false)) {
         if (confirm("Cette action supprimera d'autres éléments\nVoulez-vous continuer?")) {
           dataFactory.removeClass(indexClass, true);

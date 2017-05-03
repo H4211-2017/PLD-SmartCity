@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.teacherMenu.teacherTab', ['ngRoute', 'myApp.dataFactory'])
+angular.module('myApp.teacherTab', ['ngRoute', 'myApp.dataFactory'])
 
 .config(['$routeProvider', function ($routeProvider) {
   $routeProvider.when('/teacherMenu/teacherTab', {
@@ -58,8 +58,6 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute', 'myApp.dataFactory'])
       $scope.currentLastName = "";
       $scope.currentSubectsSelected = [];
     }
-
-    console.log(printObjectCaracteristic(dataFactory.getData()));
   };
 
   $scope.removeTeacher = function(indexTeacherToRemove) {

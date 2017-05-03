@@ -249,9 +249,9 @@ angular.module('myApp.dataFactory', [])
 
   dataFactory.removeClass = function (indexClassToRemove, deleteCascade) {
     var classArray = data.programme.classes;
-    var classToRemoveString = classArray[indexClassToRemove];
 
-    var classDoesNotHaveDependency = ensureCoherencyAttributionClasses(classToRemoveString, false, deleteCascade);
+    var classToRemove = classArray[indexClassToRemove];
+    var classDoesNotHaveDependency = ensureCoherencyAttributionClasses(classToRemove.name, false, deleteCascade);
 
     if (deleteCascade || classDoesNotHaveDependency) {
       classArray.splice(indexClassToRemove, 1);
@@ -351,7 +351,7 @@ angular.module('myApp.dataFactory', [])
             [subjectString]);
         if (indexSubject != -1) {
           if (deleteCascade) {
-            attributionArray[i].splice(indexSubject, 1);
+            attributionArray[i].subjects.splice(indexSubject, 1);
           } else {
             return false;
           }
@@ -380,7 +380,13 @@ angular.module('myApp.dataFactory', [])
     } else {
       var indexClassToRemove = dataFactory.findIndexByKeyValue(attributionArray, ['class'], [classString]);
       if (indexClassToRemove != -1) {
-        if (deleteCascade) {
+        var noTeacherAssigned = true;
+        for (var i = 0, length = attributionArray[indexClassToRemove].subjects.length; i < length; i++) {
+          if (attributionArray[indexClassToRemove].subjects[i].firstName) { // teacher.firstName == undefined => teacher is empty
+            noTeacherAssigned = false;
+          }
+        }
+        if (deleteCascade || noTeacherAssigned) {
           attributionArray.splice(indexClassToRemove, 1);
           return true;
         } else {

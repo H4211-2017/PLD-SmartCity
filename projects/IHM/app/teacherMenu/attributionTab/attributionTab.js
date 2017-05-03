@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.teacherMenu.attributionTab', ['ngRoute', 'myApp.dataFactory'])
+angular.module('myApp.attributionTab', ['ngRoute', 'myApp.dataFactory'])
 
 .config(['$routeProvider', function ($routeProvider) {
   $routeProvider.when('/teacherMenu/attributionTab', {
@@ -12,8 +12,8 @@ angular.module('myApp.teacherMenu.attributionTab', ['ngRoute', 'myApp.dataFactor
 
 .controller('attributionTabCtrl', ['$scope', 'dataFactory', function ($scope, dataFactory) {
 
-  console.log("attributionTab::ctrl : attribution : ");
-  printObjectCaracteristic(dataFactory.getAttributionArray(), ['$$hashKey']);
+
+  // TODO sort subjects
 
   $scope.teacherArray = dataFactory.getTeacherArray();
   $scope.subjectArray = dataFactory.getSubjectsArray().sort(function (a, b) {
