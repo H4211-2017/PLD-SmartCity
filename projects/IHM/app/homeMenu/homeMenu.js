@@ -21,7 +21,33 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 	  };
 
 	  $scope.saveAs = function() {
-
+		  
+		  $http.post('/data?config=' + $scope.configName, dataFactory.getData()).success(function(data, status) {
+			  
+			  if (status == 200) {
+				  
+				  alert('configuration sauvegardée sur le serveur');
+				  
+			  } else {
+				  
+				  alert('erreur du serveur : configuration non sauvegardée');
+			  }
+			  
+			  $('#overlaySave').css('display', 'none');
+			  
+          }).error(function(data, status) {
+			  
+			  if (status == 401) {
+				  
+				  alert(status + ' : authentification requise');  
+			  
+			  } else {
+				  
+				  alert(status + ' : ' + data);
+			  }
+			  
+			  $('#overlaySave').css('display', 'none');
+		  });
 	  };
 
 	  function createConfigBalise(name) {
@@ -37,20 +63,19 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 	  	var overlayToFill = $("#selectorConfig");
 	  	overlayToFill.innerHTML = "";
 	  	
-	  	var xhrGetConfig = getXMLHttpRequest();
 	  	var configs = [];
 		var selector = $("#selectorConfig");
 	    var newHtml = '<section ng-controller="homeMenuCtrl">';
 		
-	    xhrGetConfig.onreadystatechange = function() {
-
-			if (xhrGetConfig.readyState == 4 && (xhrGetConfig.status == 200 || xhrGetConfig.status == 0)) {
+	    $http.get('/configs').success(function(data, status) {
 			
-				configs = JSON.parse(xhrGetConfig.responseText);
+			if (status = 200) {
+				
+				configs = data;
 				console.log(configs);	
-
-				 for(var i=0; i<configs.length; i++) {
-					console.log(i);
+				
+				for(var i = 0; i < configs.length; i++) {
+					
 					newHtml += createConfigBalise(configs[i]);
 				}
 
@@ -59,14 +84,21 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 				newHtml += "</section>";
 				var compiledContent = $compile(newHtml)($scope);
 				selector.html(compiledContent);
-				$("#overlayLoad").css("display", "block");
-				
+				$("#overlayLoad").css("display", "block");			
 			}
-		};
-		    
-		xhrGetConfig.open('GET', '/configs', true);
-		xhrGetConfig.send();
-				
+			
+		}).error(function(data, status) {
+			
+			if (status == 401) {
+				  
+				alert(status + ' : authentification requise');  
+			  
+			} else {
+				  
+				alert(status + ' : ' + data);
+			}
+		});
+		
 			/**
 			//simulate an input of type file
 			var newElem = document.createElement('input');
@@ -126,26 +158,6 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 			xhr.open('GET', '/generate', true);
 			xhr.send();  
 	  };
-	  
- 	function getXMLHttpRequest() {
-		var xhr = null;
-		if (window.XMLHttpRequest || window.ActiveXObject) {
-			if (window.ActiveXObject) {
-				try {
-				    xhr = new ActiveXObject("Msxml2.XMLHTTP");
-				} catch(e) {
-				    xhr = new ActiveXObject("Microsoft.XMLHTTP");
-				}
-			} else {
-				xhr = new XMLHttpRequest(); 
-			}
-		} else {
-			alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
-			return null;
-		}
-		return xhr;
-	};
-	
 	
 		$scope.lastHighLighted = "";
 		$scope.highlight = function(name) {
@@ -161,19 +173,18 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 		$scope.chooseConfig = function() {
 			
 			if($scope.lastHighLighted === '') {
+				
 				alert('Veuillez choisir une configuration');
 				
 			}else {
 				
 				var fileName = $scope.lastHighLighted+".json";
-		  
-				var xhr = getXMLHttpRequest();
 			
-				xhr.onreadystatechange = function() {
+				$http.get('/data?config=' + $scope.lastHighLighted).success(function(data, status) {
 
-					if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+					if (status == 200 || status == 0) {
 					
-						dataFactory.setData(JSON.parse(xhr.responseText));
+						dataFactory.setData(data);
 						console.log(dataFactory.getData());
 						alert('Configuration Chargée'); // C'est bon \o/	
 						$('#overlayLoad').css('display', 'none');
@@ -181,11 +192,23 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 						$scope.lastHighLighted = '';
 						
 						$http.post('/data', dataFactory.getData());
-					}
-				};
 					
-				xhr.open('GET', '/resources/lycee_don_bosco' + "/" + fileName, true);
-				xhr.send();				
+					} else {
+						
+						alert(status + ' : erreur du serveur')
+					}
+					
+				}).error(function(data, status) {
+					
+					if (status == 404) {
+						
+						alert(status + ' : configuration inconnue du serveur');
+					
+					} else if (status == 401) {
+						
+						alert(status + ' : authentification requise');
+					}
+				});
 			}	
 		};		
   }]);

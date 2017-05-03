@@ -71,16 +71,16 @@ app.get('/data?', function(request, response) {
 		
 		if (sess.data[config]) {
 		
-			response.json(data[config]);
+			response.status(200).json(sess.data[config]);
 	
 		} else {
 	
-			response.send(404, 'configuration inconnue...');
+			response.status(404).send('configuration inconnue...');
 		}
 		
 	} else {
 		
-		response.send(401, 'indentification requise');
+		response.status(401).send('indentification requise');
 	}
 });
 
@@ -89,19 +89,20 @@ app.post('/data?', function(request, response){
 	var sess = request.session;
 	var config = request.query.config;
 	
-	console.log('posted');
+	console.log('Posted :');
 	console.log(request.body);
 	
 	if(sess.institutionName){
 		
+		console.log('Saved :');
 		sess.data[config] = request.body;
 		sess.configs.push(config);
 		console.log(sess.data);
-		response.end(200);
+		response.status(200).end();
 		
 	} else {
 		
-		response.send(401, 'indentification requise');
+		response.status(401).send('indentification requise');
 	}
 });
 
@@ -126,10 +127,10 @@ app.get('/generate', function(request, response) {
 		if(result.length != 0) {
 		
 			response.send(result);
-				
+		
 		} else {
 		
-			response.send(200, 'Données de l\'emploi du temps generées');
+			response.status(200).send('Données de l\'emploi du temps generées');
 		}	
 	}
 });
@@ -157,11 +158,11 @@ app.get('/configs', function(request, response) {
 	
 	if(sess.institutionName) {
 	
-		response.json(session.configs);
+		response.status(200).json(sess.configs);
 	
 	} else {
 		
-		response.send(401, 'indentification requise');
+		response.status(401).send('indentification requise');
 	}
 	/*
 	service.readConfigurations(ihmPath + '/resources/' + request.params.institutionName + '/.__configs.json', function(string) {
