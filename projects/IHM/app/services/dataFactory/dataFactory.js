@@ -3,6 +3,8 @@ angular.module('myApp.dataFactory', [])
 .factory('dataFactory', function () {
   var dataFactory = {};
 
+  var scheduleArrayBool = [];
+
   var data = {
     schoolInformation: {
       schedule: {
@@ -25,6 +27,7 @@ angular.module('myApp.dataFactory', [])
     }
   };
 
+
   // ======================================= PUBLIC ==================================
   // ================ DATA =========================
   //GETTER
@@ -41,6 +44,10 @@ angular.module('myApp.dataFactory', [])
   // GETTER
   dataFactory.getScheduleObject = function () {
     return data.schoolInformation.schedule;
+  };
+
+  dataFactory.getScheduleArrayBool = function(){
+    return scheduleArrayBool;
   };
 
   dataFactory.getRoomTypeArray = function () {
@@ -60,15 +67,18 @@ angular.module('myApp.dataFactory', [])
         start: hourSlotStartString,
         end: hourSlotEndString
       });
+      dataFactory.createScheduleArrayBool();
       return true;
     }
     return false;
   };
 
   dataFactory.removeHourSlot = function (hourSlotIndex, deleteCascade) {
+
     var hourSlotDoesNotHaveDependency = ensureCoherencyTeacherScheduleOnDelete(deleteCascade);
     if (deleteCascade || hourSlotDoesNotHaveDependency) {
       data.schoolInformation.schedule.hoursSlot.splice(hourSlotIndex, 1);
+      dataFactory.createScheduleArrayBool();
       return true;
     }
     return false;
@@ -252,6 +262,9 @@ angular.module('myApp.dataFactory', [])
     return data.teacher.teacherList;
   };
 
+  dataFactory.getAttributionArray = function() {
+	return data.teacher.attribution;  
+  };
   // SETTER
   dataFactory.addTeacher = function (firstNameString, lastNameString, subjectsArray, disponibilities) {
     var teacherArray = data.teacher.teacherList;
@@ -280,6 +293,14 @@ angular.module('myApp.dataFactory', [])
     }
     return false;
   };
+  
+  dataFactory.addAttribution = function(classNameString, teacherFirstNameString, teacherLastNameString){
+	  
+  };
+  
+  dataFactory.removeAttribution = function(classNameString, teacherFirstNameString, teacherLastNameString){
+	  
+  };
 
   // =============== UTILITY FUNCTION ==============
   dataFactory.findIndexByKeyValue = function (array, keysArray, valuesArray) {
@@ -298,11 +319,23 @@ angular.module('myApp.dataFactory', [])
     return -1;
   };
 
+  dataFactory.createScheduleArrayBool = function(){
+    var schedule = dataFactory.getScheduleObject();
+    angular.forEach(schedule.days, function(day){
+      scheduleArrayBool[schedule.days.indexOf(day)] = new Array(schedule.hoursSlot.length).fill(false);
+    });
+  };
+
   //======================================== PRIVATE ================================
   function ensureCoherencyAttributionSubject(subjectString, isAddOperation, deleteCascade) {
     var attributionArray = data.teacher.attribution;
     var subjectArray = data.programme.subjects;
 
+    if (isAddOperation) {
+
+    } else {
+
+    }
   }
 
   function ensureCoherencyAttributionClasses(classString, isAddOperation, deleteCascade) {
@@ -443,6 +476,7 @@ angular.module('myApp.dataFactory', [])
     }
     return false;
   }
+
 
   return dataFactory;
 });

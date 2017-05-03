@@ -1,20 +1,25 @@
 'use strict';
 
-angular.module('myApp.teacherMenu.teacherTab', ['ngRoute', 'myApp.dataFactory'])
+angular.module('myApp.teacherMenu.attributionTab', ['ngRoute', 'myApp.dataFactory'])
 
 .config(['$routeProvider', function ($routeProvider) {
-  $routeProvider.when('/teacherMenu/teacherTab', {
-    templateUrl: 'teacherMenu/teacherTab/teacherTab.html',
-    controller: 'teacherTabCtrl'
+  $routeProvider.when('/teacherMenu/attributionTab', {
+    templateUrl: 'teacherMenu/attributionTab/attributionTab.html',
+    controller: 'attributionTabCtrl'
   });
 }
 ])
 
-.controller('teacherTabCtrl', ['$scope', 'dataFactory', function ($scope, dataFactory) {
+.controller('attributionTabCtrl', ['$scope', 'dataFactory', function ($scope, dataFactory) {
 
-  $scope.teachersArray = dataFactory.getTeacherArray();
-  $scope.subjectsArray = dataFactory.getSubjectsArray();
-
+  $scope.teacherArray = dataFactory.getTeacherArray();
+  $scope.subjectArray = dataFactory.getSubjectsArray().sort(function (a, b) {
+      return a.name.localeCompare(b.name);
+    });
+  $scope.classeArray = dataFactory.getClassesArray();
+  
+  $scope.attributionArray = dataFactory.getAttributionArray();
+  
   $scope.currentFirstName = "";
   $scope.currentLastName = "";
   $scope.currentSubjectsSelected = [];
@@ -30,19 +35,6 @@ angular.module('myApp.teacherMenu.teacherTab', ['ngRoute', 'myApp.dataFactory'])
     }
   };
 
-  $scope.keyPressed = function(key){
-    var ENTER_KEY = 13;
-    if(key === ENTER_KEY){
-      $scope.addTeacher();
-    }
-  };
 
-  $scope.closeOverlay = function () {
-    $('#addTeacherOverlay').css('width', '0%');
-  };
-
-  $scope.openAddTeacher = function () {
-    $('#addTeacherOverlay').css('width', 'inherit');
-  };
 }
 ]);
