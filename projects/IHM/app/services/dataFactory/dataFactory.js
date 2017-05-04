@@ -86,7 +86,11 @@ angular.module('myApp.dataFactory', [])
   dataFactory.removeAllHourSlot = function (deleteCascade) {
     // Dependency on hour slot does not depend of specific hour slot
     var hourSlotDoesNotHaveDependency = ensureCoherencyTeacherScheduleOnDelete(deleteCascade);
-    while (hourSlotDoesNotHaveDependency && data.schoolInformation.schedule.hoursSlot.length > 0) {
+    if (!(hourSlotDoesNotHaveDependency || deleteCascade)){
+      return false;
+    }
+
+    while (data.schoolInformation.schedule.hoursSlot.length > 0) {
       dataFactory.removeHourSlot(0);
     }
     return true;
@@ -197,6 +201,7 @@ angular.module('myApp.dataFactory', [])
 
     var subjectDoesNotHaveDependency = ensureCoherencyProgrammeSubject(subjectToRemoveString, false, deleteCascade);
     subjectDoesNotHaveDependency &= ensureCoherencyAttributionSubject(subjectToRemoveString, false, deleteCascade);
+    subjectDoesNotHaveDependency &= ensureCoherencyTeacherSubjectOnDelete(subjectToRemoveString, deleteCascade);
 
     if (deleteCascade || subjectDoesNotHaveDependency) {
       data.programme.subjects.splice(indexSubjectToRemove, 1);
@@ -376,7 +381,8 @@ angular.module('myApp.dataFactory', [])
       for (i = 0, attributionLength = attributionArray.length; i < attributionLength; i++) {
         var indexSubject = dataFactory.findIndexByKeyValue(attributionArray[i].subjects, ['subjectName'],
             [subjectString]);
-        if (indexSubject != -1) {
+        // teacher.firsName == undefined => this property does not exist => teacher is empty
+        if (indexSubject != -1 && attributionArray[i].subjects[indexSubject].teacher.firstName) {
           if (deleteCascade) {
             attributionArray[i].subjects.splice(indexSubject, 1);
           } else {
@@ -424,7 +430,6 @@ angular.module('myApp.dataFactory', [])
     return true;
   }
 
-  // TODO
   function ensureCoherencyAttributionTeacherOnDelete(teacherToRemove, deleteCascade) {
     var attributionArray = data.teacher.attribution;
 
@@ -444,11 +449,27 @@ angular.module('myApp.dataFactory', [])
 
   function ensureCoherencyTeacherScheduleOnDelete(deleteCascade) {
     var teacherArray = data.teacher.teacherList;
-    for (var i = 0, length = teacherArray.length; i < length; i++) {
+    for (var i = 0; i < teacherArray.length; i++) {
       if (deleteCascade) {
-        dataFactory.removeTeacher(i, deleteCascade);
+        dataFactory.removeTeacher(i, true);
+        i--; // As deleteCascade is true, a teacher had been removed
       } else {
         return false;
+      }
+    }
+    return true;
+  }
+
+  function ensureCoherencyTeacherSubjectOnDelete(subjectToRemoveString, deleteCascade) {
+    var teacherArray = data.teacher.teacherList;
+    for (var i = 0; i < teacherArray.length; i++) {
+      if (teacherArray[i].subject.indexOf(subjectToRemoveString) !== -1) {
+        if (deleteCascade) {
+          dataFactory.removeTeacher(i, true);
+          i--; // As deleteCascade is set to true, a teacher had been removed
+        } else {
+          return false;
+        }
       }
     }
     return true;
