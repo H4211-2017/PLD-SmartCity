@@ -85,6 +85,7 @@ angular.module('myApp.teacherTab', ['ngRoute', 'myApp.dataFactory'])
       $scope.currentFirstName = "";
       $scope.currentLastName = "";
       $scope.currentSubectsSelected = [];
+      $scope.currentUnavailabilities = [];
     }
   };
 
