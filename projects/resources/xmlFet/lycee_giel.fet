@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fet version="5.31.4">
+		<Institution_Name>institution par defaut</Institution_Name>
+		<Comments>commentaires par defaut</Comments>
+		<Days_List>
+				<Number_of_Days>6</Number_of_Days>
+				<Day>
+						<Name>Lundi</Name>
+
+				</Day>
+				<Day>
+						<Name>Mardi</Name>
+
+				</Day>
+				<Day>
+						<Name>Mercredi</Name>
+
+				</Day>
+				<Day>
+						<Name>Jeudi</Name>
+
+				</Day>
+				<Day>
+						<Name>Vendredi</Name>
+
+				</Day>
+				<Day>
+						<Name>Samedi</Name>
+
+				</Day>
+
+		</Days_List>
+		<Hours_List>
+				<Number_of_Hours>4</Number_of_Hours>
+				<Hour>
+						<Name>8h - 9h</Name>
+
+				</Hour>
+				<Hour>
+						<Name>9h - 10h</Name>
+
+				</Hour>
+				<Hour>
+						<Name>14h - 15h</Name>
+
+				</Hour>
+				<Hour>
+						<Name>15h - 16h</Name>
+
+				</Hour>
+
+		</Hours_List>
+		<Subjects_List>
+				<Subject>
+						<Name>Mathématiques</Name>
+						<Comments/>
+
+				</Subject>
+				<Subject>
+						<Name>Musique</Name>
+						<Comments/>
+
+				</Subject>
+				<Subject>
+						<Name>TP de physique</Name>
+						<Comments/>
+
+				</Subject>
+
+		</Subjects_List>
+		<Activity_Tags_List>
+
+		</Activity_Tags_List>
+		<Teachers_List>
+				<Teacher>
+						<Name>François Fillon</Name>
+						<Target_Number_of_Hours>0</Target_Number_of_Hours>
+						<Qualified_Subjects>
+
+						</Qualified_Subjects>
+						<Comments/>
+
+				</Teacher>
+				<Teacher>
+						<Name>Moi Même</Name>
+						<Target_Number_of_Hours>0</Target_Number_of_Hours>
+						<Qualified_Subjects>
+
+						</Qualified_Subjects>
+						<Comments/>
+
+				</Teacher>
+				<Teacher>
+						<Name>Marc Dupont</Name>
+						<Target_Number_of_Hours>0</Target_Number_of_Hours>
+						<Qualified_Subjects>
+
+						</Qualified_Subjects>
+						<Comments/>
+
+				</Teacher>
+
+		</Teachers_List>
+		<Students_List>
+				<Year>
+						<Name>3e</Name>
+						<Number_of_Students>0</Number_of_Students>
+						<Comments/>
+						<Group>
+								<Name>3e - A</Name>
+								<Number_of_Students>0</Number_of_Students>
+								<Comments/>
+
+						</Group>
+						<Group>
+								<Name>3e - B</Name>
+								<Number_of_Students>0</Number_of_Students>
+								<Comments/>
+
+						</Group>
+
+				</Year>
+				<Year>
+						<Name>4e</Name>
+						<Number_of_Students>0</Number_of_Students>
+						<Comments/>
+						<Group>
+								<Name>4e - A</Name>
+								<Number_of_Students>0</Number_of_Students>
+								<Comments/>
+
+						</Group>
+
+				</Year>
+				<Year>
+						<Name>5e</Name>
+						<Number_of_Students>0</Number_of_Students>
+						<Comments/>
+						<Group>
+								<Name>5e - A</Name>
+								<Number_of_Students>0</Number_of_Students>
+								<Comments/>
+
+						</Group>
+
+				</Year>
+				<Year>
+						<Name>6e</Name>
+						<Number_of_Students>0</Number_of_Students>
+						<Comments/>
+
+				</Year>
+
+		</Students_List>
+		<Activities_List>
+				<Activity>
+						<Teacher>Marc Dupont</Teacher>
+						<Subject>Mathématiques</Subject>
+						<Students>3e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>4</Total_Duration>
+						<Id>1</Id>
+						<Activity_Group_Id>1</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Marc Dupont</Teacher>
+						<Subject>Mathématiques</Subject>
+						<Students>3e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>4</Total_Duration>
+						<Id>2</Id>
+						<Activity_Group_Id>1</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Marc Dupont</Teacher>
+						<Subject>Mathématiques</Subject>
+						<Students>3e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>4</Total_Duration>
+						<Id>3</Id>
+						<Activity_Group_Id>1</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Marc Dupont</Teacher>
+						<Subject>Mathématiques</Subject>
+						<Students>3e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>4</Total_Duration>
+						<Id>4</Id>
+						<Activity_Group_Id>1</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>François Fillon</Teacher>
+						<Subject>Musique</Subject>
+						<Students>3e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>1</Total_Duration>
+						<Id>6</Id>
+						<Activity_Group_Id>6</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Moi Même</Teacher>
+						<Subject>TP de physique</Subject>
+						<Students>3e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>2</Total_Duration>
+						<Id>8</Id>
+						<Activity_Group_Id>8</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Moi Même</Teacher>
+						<Subject>TP de physique</Subject>
+						<Students>3e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>2</Total_Duration>
+						<Id>9</Id>
+						<Activity_Group_Id>8</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Marc Dupont</Teacher>
+						<Subject>Mathématiques</Subject>
+						<Students>3e - B</Students>
+						<Duration>1</Duration>
+						<Total_Duration>4</Total_Duration>
+						<Id>11</Id>
+						<Activity_Group_Id>11</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Marc Dupont</Teacher>
+						<Subject>Mathématiques</Subject>
+						<Students>3e - B</Students>
+						<Duration>1</Duration>
+						<Total_Duration>4</Total_Duration>
+						<Id>12</Id>
+						<Activity_Group_Id>11</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Marc Dupont</Teacher>
+						<Subject>Mathématiques</Subject>
+						<Students>3e - B</Students>
+						<Duration>1</Duration>
+						<Total_Duration>4</Total_Duration>
+						<Id>13</Id>
+						<Activity_Group_Id>11</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Marc Dupont</Teacher>
+						<Subject>Mathématiques</Subject>
+						<Students>3e - B</Students>
+						<Duration>1</Duration>
+						<Total_Duration>4</Total_Duration>
+						<Id>14</Id>
+						<Activity_Group_Id>11</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>François Fillon</Teacher>
+						<Subject>Musique</Subject>
+						<Students>3e - B</Students>
+						<Duration>1</Duration>
+						<Total_Duration>1</Total_Duration>
+						<Id>16</Id>
+						<Activity_Group_Id>16</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Moi Même</Teacher>
+						<Subject>TP de physique</Subject>
+						<Students>3e - B</Students>
+						<Duration>1</Duration>
+						<Total_Duration>2</Total_Duration>
+						<Id>18</Id>
+						<Activity_Group_Id>18</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Moi Même</Teacher>
+						<Subject>TP de physique</Subject>
+						<Students>3e - B</Students>
+						<Duration>1</Duration>
+						<Total_Duration>2</Total_Duration>
+						<Id>19</Id>
+						<Activity_Group_Id>18</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Marc Dupont</Teacher>
+						<Subject>Mathématiques</Subject>
+						<Students>4e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>3</Total_Duration>
+						<Id>21</Id>
+						<Activity_Group_Id>21</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Marc Dupont</Teacher>
+						<Subject>Mathématiques</Subject>
+						<Students>4e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>3</Total_Duration>
+						<Id>22</Id>
+						<Activity_Group_Id>21</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Marc Dupont</Teacher>
+						<Subject>Mathématiques</Subject>
+						<Students>4e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>3</Total_Duration>
+						<Id>23</Id>
+						<Activity_Group_Id>21</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>François Fillon</Teacher>
+						<Subject>Musique</Subject>
+						<Students>4e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>5</Total_Duration>
+						<Id>25</Id>
+						<Activity_Group_Id>25</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>François Fillon</Teacher>
+						<Subject>Musique</Subject>
+						<Students>4e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>5</Total_Duration>
+						<Id>26</Id>
+						<Activity_Group_Id>25</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>François Fillon</Teacher>
+						<Subject>Musique</Subject>
+						<Students>4e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>5</Total_Duration>
+						<Id>27</Id>
+						<Activity_Group_Id>25</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>François Fillon</Teacher>
+						<Subject>Musique</Subject>
+						<Students>4e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>5</Total_Duration>
+						<Id>28</Id>
+						<Activity_Group_Id>25</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>François Fillon</Teacher>
+						<Subject>Musique</Subject>
+						<Students>4e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>5</Total_Duration>
+						<Id>29</Id>
+						<Activity_Group_Id>25</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Moi Même</Teacher>
+						<Subject>TP de physique</Subject>
+						<Students>4e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>2</Total_Duration>
+						<Id>31</Id>
+						<Activity_Group_Id>31</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Moi Même</Teacher>
+						<Subject>TP de physique</Subject>
+						<Students>4e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>2</Total_Duration>
+						<Id>32</Id>
+						<Activity_Group_Id>31</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Marc Dupont</Teacher>
+						<Subject>Mathématiques</Subject>
+						<Students>5e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>4</Total_Duration>
+						<Id>34</Id>
+						<Activity_Group_Id>34</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Marc Dupont</Teacher>
+						<Subject>Mathématiques</Subject>
+						<Students>5e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>4</Total_Duration>
+						<Id>35</Id>
+						<Activity_Group_Id>34</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Marc Dupont</Teacher>
+						<Subject>Mathématiques</Subject>
+						<Students>5e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>4</Total_Duration>
+						<Id>36</Id>
+						<Activity_Group_Id>34</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Marc Dupont</Teacher>
+						<Subject>Mathématiques</Subject>
+						<Students>5e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>4</Total_Duration>
+						<Id>37</Id>
+						<Activity_Group_Id>34</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>François Fillon</Teacher>
+						<Subject>Musique</Subject>
+						<Students>5e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>5</Total_Duration>
+						<Id>39</Id>
+						<Activity_Group_Id>39</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>François Fillon</Teacher>
+						<Subject>Musique</Subject>
+						<Students>5e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>5</Total_Duration>
+						<Id>40</Id>
+						<Activity_Group_Id>39</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>François Fillon</Teacher>
+						<Subject>Musique</Subject>
+						<Students>5e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>5</Total_Duration>
+						<Id>41</Id>
+						<Activity_Group_Id>39</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>François Fillon</Teacher>
+						<Subject>Musique</Subject>
+						<Students>5e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>5</Total_Duration>
+						<Id>42</Id>
+						<Activity_Group_Id>39</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>François Fillon</Teacher>
+						<Subject>Musique</Subject>
+						<Students>5e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>5</Total_Duration>
+						<Id>43</Id>
+						<Activity_Group_Id>39</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Moi Même</Teacher>
+						<Subject>TP de physique</Subject>
+						<Students>5e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>2</Total_Duration>
+						<Id>45</Id>
+						<Activity_Group_Id>45</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+				<Activity>
+						<Teacher>Moi Même</Teacher>
+						<Subject>TP de physique</Subject>
+						<Students>5e - A</Students>
+						<Duration>1</Duration>
+						<Total_Duration>2</Total_Duration>
+						<Id>46</Id>
+						<Activity_Group_Id>45</Activity_Group_Id>
+						<Active>true</Active>
+						<Comments/>
+
+				</Activity>
+
+		</Activities_List>
+		<Buildings_List>
+
+		</Buildings_List>
+		<Rooms_List>
+				<Room>
+						<Name>B106</Name>
+						<Building/>
+						<Capacity>32</Capacity>
+						<Comments/>
+
+				</Room>
+				<Room>
+						<Name>A102</Name>
+						<Building/>
+						<Capacity>32</Capacity>
+						<Comments/>
+
+				</Room>
+				<Room>
+						<Name>A101</Name>
+						<Building/>
+						<Capacity>32</Capacity>
+						<Comments/>
+
+				</Room>
+
+		</Rooms_List>
+		<Time_Constraints_List>
+				<ConstraintBasicCompulsoryTime>
+						<Weight_Percentage>100</Weight_Percentage>
+						<Active>true</Active>
+						<Comments/>
+
+				</ConstraintBasicCompulsoryTime>
+				<ConstraintBreakTimes>
+						<Weight_Percentage>100</Weight_Percentage>
+						<Number_of_Break_Times>6</Number_of_Break_Times>
+						<Break_Time>
+								<Day>Mercredi</Day>
+								<Hour>14h - 15h</Hour>
+
+						</Break_Time>
+						<Break_Time>
+								<Day>Mercredi</Day>
+								<Hour>15h - 16h</Hour>
+
+						</Break_Time>
+						<Break_Time>
+								<Day>Samedi</Day>
+								<Hour>8h - 9h</Hour>
+
+						</Break_Time>
+						<Break_Time>
+								<Day>Samedi</Day>
+								<Hour>9h - 10h</Hour>
+
+						</Break_Time>
+						<Break_Time>
+								<Day>Samedi</Day>
+								<Hour>14h - 15h</Hour>
+
+						</Break_Time>
+						<Break_Time>
+								<Day>Samedi</Day>
+								<Hour>15h - 16h</Hour>
+
+						</Break_Time>
+						<Active>true</Active>
+						<Comments/>
+
+				</ConstraintBreakTimes>
+				<ConstraintTeacherNotAvailableTimes>
+						<Weight_Percentage>100</Weight_Percentage>
+						<Teacher>François Fillon</Teacher>
+						<Number_of_Not_Available_Times>2</Number_of_Not_Available_Times>
+						<Not_Available_Time>
+								<Day>Vendredi</Day>
+								<Hour>14h - 15h</Hour>
+
+						</Not_Available_Time>
+						<Not_Available_Time>
+								<Day>Vendredi</Day>
+								<Hour>15h - 16h</Hour>
+
+						</Not_Available_Time>
+						<Active>true</Active>
+						<Comments/>
+
+				</ConstraintTeacherNotAvailableTimes>
+				<ConstraintTeacherNotAvailableTimes>
+						<Weight_Percentage>100</Weight_Percentage>
+						<Teacher>Moi Même</Teacher>
+						<Number_of_Not_Available_Times>2</Number_of_Not_Available_Times>
+						<Not_Available_Time>
+								<Day>Vendredi</Day>
+								<Hour>14h - 15h</Hour>
+
+						</Not_Available_Time>
+						<Not_Available_Time>
+								<Day>Vendredi</Day>
+								<Hour>15h - 16h</Hour>
+
+						</Not_Available_Time>
+						<Active>true</Active>
+						<Comments/>
+
+				</ConstraintTeacherNotAvailableTimes>
+				<ConstraintTeacherNotAvailableTimes>
+						<Weight_Percentage>100</Weight_Percentage>
+						<Teacher>Marc Dupont</Teacher>
+						<Number_of_Not_Available_Times>2</Number_of_Not_Available_Times>
+						<Not_Available_Time>
+								<Day>Vendredi</Day>
+								<Hour>14h - 15h</Hour>
+
+						</Not_Available_Time>
+						<Not_Available_Time>
+								<Day>Vendredi</Day>
+								<Hour>15h - 16h</Hour>
+
+						</Not_Available_Time>
+						<Active>true</Active>
+						<Comments/>
+
+				</ConstraintTeacherNotAvailableTimes>
+
+		</Time_Constraints_List>
+		<Space_Constraints_List>
+				<ConstraintBasicCompulsorySpace>
+						<Weight_Percentage>100</Weight_Percentage>
+						<Active>true</Active>
+						<Comments/>
+
+				</ConstraintBasicCompulsorySpace>
+				<ConstraintSubjectPreferredRooms>
+						<Weight_Percentage>100</Weight_Percentage>
+						<Subject>Mathématiques</Subject>
+						<Number_of_Preferred_Rooms>2</Number_of_Preferred_Rooms>
+						<Preferred_Room>A102</Preferred_Room>
+						<Preferred_Room>A101</Preferred_Room>
+						<Active>true</Active>
+						<Comments/>
+
+				</ConstraintSubjectPreferredRooms>
+				<ConstraintSubjectPreferredRooms>
+						<Weight_Percentage>100</Weight_Percentage>
+						<Subject>Musique</Subject>
+						<Number_of_Preferred_Rooms>2</Number_of_Preferred_Rooms>
+						<Preferred_Room>A102</Preferred_Room>
+						<Preferred_Room>A101</Preferred_Room>
+						<Active>true</Active>
+						<Comments/>
+
+				</ConstraintSubjectPreferredRooms>
+				<ConstraintSubjectPreferredRooms>
+						<Weight_Percentage>100</Weight_Percentage>
+						<Subject>TP de physique</Subject>
+						<Number_of_Preferred_Rooms>1</Number_of_Preferred_Rooms>
+						<Preferred_Room>B106</Preferred_Room>
+						<Active>true</Active>
+						<Comments/>
+
+				</ConstraintSubjectPreferredRooms>
+
+		</Space_Constraints_List>
+
+</fet>

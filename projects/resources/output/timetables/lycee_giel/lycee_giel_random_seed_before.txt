@@ -1,0 +1,5 @@
+﻿Génération débutée à : 04/05/2017 09:13
+
+Le noyau aléatoire au début de la génération est : X = 1493881993, Y = 233483663
+
+Ce fichier a été généré automatiquement avec FET 5.31.4.

@@ -1,0 +1,10 @@
+﻿Conflits légers de lycee_giel.fet
+Généré avec FET 5.31.4 le 04/05/2017 09:13
+
+Nombre de contraintes légères rompues : 0
+Total des conflits légers : 0
+
+Liste des conflits légers (par ordre décroissant) :
+
+
+Fin de fichier.

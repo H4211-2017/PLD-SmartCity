@@ -1,17 +1,18 @@
 var shell = require('shelljs');
+var os = require('os').type();
 
 var language = 'fr';
-var os = 'win';
 
 var callfet = function(stringInputFile, stringOutputDir, callback) {
 
-	var slash = (os = 'win') ? '\\' : '/';
+	var slash = (os.includes('Win')) ? '\\' : '/';
+	var type =  (os.includes('Win')) ? 'win' : 'linux';
 
-	shell.exec(__dirname + '/fet-' + os + '/fet-cl --inputfile=' + stringInputFile + ' --outputdir=' + stringOutputDir + ' --language=' + language + ' --verbose=true', function(code, stdout, stderr) {
+	shell.exec(__dirname + '/fet-' + type + '/fet-cl --inputfile=' + stringInputFile + ' --outputdir=' + stringOutputDir + ' --language=' + language + ' --verbose=true', function(code, stdout, stderr) {
 	
 		if (code != 0) {
 		
-			shell.exec(__dirname + '/fet-' + os + '/fet-cl --inputfile=' + stringInputFile + ' --outputdir=' + stringOutputDir + ' --language=' + language + ' --verbose=true', function(code, stdout, stderr) {
+			shell.exec(__dirname + '/fet-' + type + '/fet-cl --inputfile=' + stringInputFile + ' --outputdir=' + stringOutputDir + ' --language=' + language + ' --verbose=true', function(code, stdout, stderr) {
 				
 				if (code != 0) {
 		

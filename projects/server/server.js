@@ -30,9 +30,11 @@ var repositoryPath = __dirname.slice(0, -16);
 // 'C:/Users/PL/git/PLD-SmartCity (projects/server)';
 var ihmPath = __dirname.slice(0, -6) + 'IHM/app'; // ../IHM/app
 var testPath = __dirname + '/htmlTest';
+var outputPath = __dirname.slice(0, -6) + '/resources/output';
 
 app.use(express.static(testPath));
 app.use(express.static(ihmPath));
+app.use(express.static(outputPath));
 app.use(bodyParser.json());
 
 app.use(session({
@@ -253,16 +255,12 @@ app.post('/generate', function(request, response) {
 
 		service.generateTimetable(data, outputFile, outputDir, callback);
 
-		response.status(201).send('emploi du temps généré, vous pourrez le récupérer');
-
 	} else {
 
 		var outputFile = repositoryPath + '/projects/resources/xmlFet/withoutSession.fet';
 		var outputDir = repositoryPath + '/projects/resources/output';
 
 		service.generateTimetable(data, outputFile, outputDir, callback);
-
-		response.status(201).send('emploi du temps généré, vous ne pourrez le récupérer que maintenant');
 	}
 
 	function callback(result) {
@@ -273,7 +271,7 @@ app.post('/generate', function(request, response) {
 
 		} else {
 
-			response.status(201).send('Données de l\'emploi du temps generées');
+			response.status(201).send('emploi du temps généré, vous pourrez le récupérer');
 		}
 	}
 });
@@ -284,13 +282,13 @@ app.get('/display', function(request, response) {
 
 	if (sess.institutionName) {
 
-		var timeTableIndexPath = repositoryPath + '/projects/resources/output/timetables/' + sess.institutionName + '/' + sess.institutionName + '_index.html';
-		response.sendFile(timeTableIndexPath);
+		var timeTableIndexPath = '/resources/output/timetables/' + sess.institutionName + '/' + sess.institutionName + '_index.html';
+		response.status(200).send(timeTableIndexPath);
 
 	} else {
 
-		var timeTableIndexPath = repositoryPath + '/projects/resources/output/timetables/withoutSession/withoutSession_index.html';
-		response.status(200).sendFile(timeTableIndexPath);
+		var timeTableIndexPath = '/resources/output/timetables/withoutSession/withoutSession_index.html';
+		response.status(200).send(timeTableIndexPath);
 	}
 });
 

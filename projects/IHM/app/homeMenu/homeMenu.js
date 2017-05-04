@@ -106,9 +106,22 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 			//$("#overlayWait").css("display", "block");
 			$http.post('/generate', dataFactory.getData()).success(function(data, status) {
 				
-				if (status == 200 ||  status == 0) {
-			  
-					alert('emploi du temps généré');
+				if (status == 201 || status == 200 ||  status == 0) {
+					
+					$http.get('/display').success(function(data, status) {
+						
+						if (status == 200 ||  status == 0) {
+				
+							window.open(data, "_blank");
+						}
+						
+					}).error(function(data, status) {
+						
+						if (status == 500) {
+							
+							alert(status + ' : erreur interne du serveur');
+						}
+					});
 				}
 				
 				//$("#overlayWait").css("display", "none");
@@ -147,7 +160,7 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 					
 						dataFactory.setData(data);
 						console.log(dataFactory.getData());
-						alert('Configuration Chargée'); // C'est bon \o/	
+						// alert('Configuration Chargée'); // C'est bon \o/	
 						$('#overlayLoad').css('display', 'none');
 						$("#id"+$scope.lastHighLighted).removeAttr('selected');
 						$scope.lastHighLighted = '';
