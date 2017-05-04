@@ -6,7 +6,18 @@
 angular.module('myApp')
 
     .controller('BodyCtrl', ['$scope', '$rootScope','$http', '$timeout', 'dataFactory', function($scope, $rootScope, $http, $timeout, dataFactory) {
-    
+
+        $rootScope.displayQuietMessage = function(text, duration) {
+
+            console.log("coucou");
+            $("#quietInfo").html(text);
+            $("#quietInfo").css('color', 'black');
+            $timeout(function() {
+
+                $("#quietInfo").css('color', 'transparent');
+            }, duration);
+        };
+
 		$rootScope.__etablissement = '';
     	$rootScope.__mdp = '';
 		$scope.etablissement = "";

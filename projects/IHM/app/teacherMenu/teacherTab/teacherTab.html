@@ -95,7 +95,7 @@
           </tr>
           <tr ng-repeat="(indexDay, day) in schedule.days">
             <td>{{day}}</td>
-            <td ng-repeat="(indexHour,hour) in schedule.hoursSlot"><input type="checkbox"
+            <td ng-repeat="(indexHour,hour) in schedule.hoursSlot"><input type="checkbox" style="width: 75px !important;"
                                                                           ng-model="unavailabilityInput[indexDay][indexHour]"></input></td>
           </tr>
         </table>

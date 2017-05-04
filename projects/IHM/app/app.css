@@ -416,5 +416,13 @@ input[readonly] {
   display: none;
 }
 
+.quietInfo {
+  position: fixed;
+  color: transparent;
+  transition-duration: 0.8s;
+  bottom: 20px;
+  right: 20px;
+}
+
 
 
