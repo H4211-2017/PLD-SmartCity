@@ -3,38 +3,38 @@
   <Teacher name="François Fillon">
    <Day name="Lundi">
     <Hour name="8h - 9h">
-     <Subject name="Musique"></Subject><Students name="5e - A"></Students><Room name="A101"></Room>
-    </Hour>
-    <Hour name="9h - 10h">
      
     </Hour>
-    <Hour name="14h - 15h">
+    <Hour name="9h - 10h">
      <Subject name="Musique"></Subject><Students name="5e - A"></Students><Room name="A101"></Room>
     </Hour>
+    <Hour name="14h - 15h">
+     
+    </Hour>
     <Hour name="15h - 16h">
-     <Subject name="Musique"></Subject><Students name="4e - A"></Students><Room name="A102"></Room>
+     <Subject name="Musique"></Subject><Students name="4e - A"></Students><Room name="A101"></Room>
     </Hour>
    </Day>
    <Day name="Mardi">
     <Hour name="8h - 9h">
-     
+     <Subject name="Musique"></Subject><Students name="3e - A"></Students><Room name="A102"></Room>
     </Hour>
     <Hour name="9h - 10h">
-     
+     <Subject name="Musique"></Subject><Students name="5e - A"></Students><Room name="A102"></Room>
     </Hour>
     <Hour name="14h - 15h">
-     <Subject name="Musique"></Subject><Students name="5e - A"></Students><Room name="A101"></Room>
+     <Subject name="Musique"></Subject><Students name="5e - A"></Students><Room name="A102"></Room>
     </Hour>
     <Hour name="15h - 16h">
-     <Subject name="Musique"></Subject><Students name="4e - A"></Students><Room name="A102"></Room>
+     <Subject name="Musique"></Subject><Students name="5e - A"></Students><Room name="A102"></Room>
     </Hour>
    </Day>
    <Day name="Mercredi">
     <Hour name="8h - 9h">
-     <Subject name="Musique"></Subject><Students name="3e - A"></Students><Room name="A101"></Room>
+     <Subject name="Musique"></Subject><Students name="4e - A"></Students><Room name="A101"></Room>
     </Hour>
     <Hour name="9h - 10h">
-     <Subject name="Musique"></Subject><Students name="4e - A"></Students><Room name="A101"></Room>
+     <Subject name="Musique"></Subject><Students name="3e - B"></Students><Room name="A101"></Room>
     </Hour>
     <Hour name="14h - 15h">
      
@@ -45,24 +45,24 @@
    </Day>
    <Day name="Jeudi">
     <Hour name="8h - 9h">
-     <Subject name="Musique"></Subject><Students name="4e - A"></Students><Room name="A102"></Room>
-    </Hour>
-    <Hour name="9h - 10h">
      <Subject name="Musique"></Subject><Students name="4e - A"></Students><Room name="A101"></Room>
     </Hour>
+    <Hour name="9h - 10h">
+     <Subject name="Musique"></Subject><Students name="5e - A"></Students><Room name="A101"></Room>
+    </Hour>
     <Hour name="14h - 15h">
-     <Subject name="Musique"></Subject><Students name="5e - A"></Students><Room name="A102"></Room>
+     
     </Hour>
     <Hour name="15h - 16h">
-     <Subject name="Musique"></Subject><Students name="3e - B"></Students><Room name="A101"></Room>
+     <Subject name="Musique"></Subject><Students name="4e - A"></Students><Room name="A102"></Room>
     </Hour>
    </Day>
    <Day name="Vendredi">
     <Hour name="8h - 9h">
-     <Subject name="Musique"></Subject><Students name="5e - A"></Students><Room name="A102"></Room>
+     
     </Hour>
     <Hour name="9h - 10h">
-     
+     <Subject name="Musique"></Subject><Students name="4e - A"></Students><Room name="A101"></Room>
     </Hour>
     <Hour name="14h - 15h">
      
@@ -89,10 +89,10 @@
   <Teacher name="Moi Même">
    <Day name="Lundi">
     <Hour name="8h - 9h">
-     <Subject name="TP de physique"></Subject><Students name="3e - A"></Students><Room name="B106"></Room>
+     
     </Hour>
     <Hour name="9h - 10h">
-     
+     <Subject name="TP de physique"></Subject><Students name="4e - A"></Students><Room name="B106"></Room>
     </Hour>
     <Hour name="14h - 15h">
      
@@ -106,21 +106,21 @@
      
     </Hour>
     <Hour name="9h - 10h">
-     <Subject name="TP de physique"></Subject><Students name="4e - A"></Students><Room name="B106"></Room>
+     
     </Hour>
     <Hour name="14h - 15h">
-     <Subject name="TP de physique"></Subject><Students name="3e - B"></Students><Room name="B106"></Room>
+     
     </Hour>
     <Hour name="15h - 16h">
-     
+     <Subject name="TP de physique"></Subject><Students name="4e - A"></Students><Room name="B106"></Room>
     </Hour>
    </Day>
    <Day name="Mercredi">
     <Hour name="8h - 9h">
-     <Subject name="TP de physique"></Subject><Students name="3e - B"></Students><Room name="B106"></Room>
+     <Subject name="TP de physique"></Subject><Students name="3e - A"></Students><Room name="B106"></Room>
     </Hour>
     <Hour name="9h - 10h">
-     
+     <Subject name="TP de physique"></Subject><Students name="5e - A"></Students><Room name="B106"></Room>
     </Hour>
     <Hour name="14h - 15h">
      
@@ -131,24 +131,24 @@
    </Day>
    <Day name="Jeudi">
     <Hour name="8h - 9h">
-     <Subject name="TP de physique"></Subject><Students name="3e - A"></Students><Room name="B106"></Room>
+     
     </Hour>
     <Hour name="9h - 10h">
-     <Subject name="TP de physique"></Subject><Students name="5e - A"></Students><Room name="B106"></Room>
+     
     </Hour>
     <Hour name="14h - 15h">
-     <Subject name="TP de physique"></Subject><Students name="4e - A"></Students><Room name="B106"></Room>
+     <Subject name="TP de physique"></Subject><Students name="3e - A"></Students><Room name="B106"></Room>
     </Hour>
     <Hour name="15h - 16h">
-     <Subject name="TP de physique"></Subject><Students name="5e - A"></Students><Room name="B106"></Room>
+     <Subject name="TP de physique"></Subject><Students name="3e - B"></Students><Room name="B106"></Room>
     </Hour>
    </Day>
    <Day name="Vendredi">
     <Hour name="8h - 9h">
-     
+     <Subject name="TP de physique"></Subject><Students name="5e - A"></Students><Room name="B106"></Room>
     </Hour>
     <Hour name="9h - 10h">
-     
+     <Subject name="TP de physique"></Subject><Students name="3e - B"></Students><Room name="B106"></Room>
     </Hour>
     <Hour name="14h - 15h">
      
@@ -175,27 +175,27 @@
   <Teacher name="Marc Dupont">
    <Day name="Lundi">
     <Hour name="8h - 9h">
-     <Subject name="Mathématiques"></Subject><Students name="4e - A"></Students><Room name="A102"></Room>
+     <Subject name="Mathématiques"></Subject><Students name="4e - A"></Students><Room name="A101"></Room>
     </Hour>
     <Hour name="9h - 10h">
-     <Subject name="Mathématiques"></Subject><Students name="3e - B"></Students><Room name="A101"></Room>
+     <Subject name="Mathématiques"></Subject><Students name="3e - B"></Students><Room name="A102"></Room>
     </Hour>
     <Hour name="14h - 15h">
-     <Subject name="Mathématiques"></Subject><Students name="3e - A"></Students><Room name="A102"></Room>
+     <Subject name="Mathématiques"></Subject><Students name="5e - A"></Students><Room name="A101"></Room>
     </Hour>
     <Hour name="15h - 16h">
-     <Subject name="Mathématiques"></Subject><Students name="5e - A"></Students><Room name="A101"></Room>
+     <Subject name="Mathématiques"></Subject><Students name="3e - A"></Students><Room name="A102"></Room>
     </Hour>
    </Day>
    <Day name="Mardi">
     <Hour name="8h - 9h">
-     <Subject name="Mathématiques"></Subject><Students name="4e - A"></Students><Room name="A101"></Room>
+     <Subject name="Mathématiques"></Subject><Students name="5e - A"></Students><Room name="A101"></Room>
     </Hour>
     <Hour name="9h - 10h">
-     <Subject name="Mathématiques"></Subject><Students name="5e - A"></Students><Room name="A102"></Room>
+     <Subject name="Mathématiques"></Subject><Students name="3e - A"></Students><Room name="A101"></Room>
     </Hour>
     <Hour name="14h - 15h">
-     <Subject name="Mathématiques"></Subject><Students name="3e - A"></Students><Room name="A102"></Room>
+     <Subject name="Mathématiques"></Subject><Students name="3e - B"></Students><Room name="A101"></Room>
     </Hour>
     <Hour name="15h - 16h">
      <Subject name="Mathématiques"></Subject><Students name="3e - A"></Students><Room name="A101"></Room>
@@ -203,10 +203,10 @@
    </Day>
    <Day name="Mercredi">
     <Hour name="8h - 9h">
-     <Subject name="Mathématiques"></Subject><Students name="4e - A"></Students><Room name="A102"></Room>
+     <Subject name="Mathématiques"></Subject><Students name="5e - A"></Students><Room name="A102"></Room>
     </Hour>
     <Hour name="9h - 10h">
-     <Subject name="Mathématiques"></Subject><Students name="5e - A"></Students><Room name="A102"></Room>
+     
     </Hour>
     <Hour name="14h - 15h">
      
@@ -217,24 +217,24 @@
    </Day>
    <Day name="Jeudi">
     <Hour name="8h - 9h">
-     <Subject name="Mathématiques"></Subject><Students name="3e - B"></Students><Room name="A101"></Room>
+     <Subject name="Mathématiques"></Subject><Students name="3e - B"></Students><Room name="A102"></Room>
     </Hour>
     <Hour name="9h - 10h">
      <Subject name="Mathématiques"></Subject><Students name="3e - B"></Students><Room name="A102"></Room>
     </Hour>
     <Hour name="14h - 15h">
-     <Subject name="Mathématiques"></Subject><Students name="3e - B"></Students><Room name="A101"></Room>
+     <Subject name="Mathématiques"></Subject><Students name="4e - A"></Students><Room name="A101"></Room>
     </Hour>
     <Hour name="15h - 16h">
-     <Subject name="Mathématiques"></Subject><Students name="3e - A"></Students><Room name="A102"></Room>
+     <Subject name="Mathématiques"></Subject><Students name="5e - A"></Students><Room name="A101"></Room>
     </Hour>
    </Day>
    <Day name="Vendredi">
     <Hour name="8h - 9h">
-     
+     <Subject name="Mathématiques"></Subject><Students name="4e - A"></Students><Room name="A102"></Room>
     </Hour>
     <Hour name="9h - 10h">
-     <Subject name="Mathématiques"></Subject><Students name="5e - A"></Students><Room name="A102"></Room>
+     <Subject name="Mathématiques"></Subject><Students name="3e - A"></Students><Room name="A102"></Room>
     </Hour>
     <Hour name="14h - 15h">
      

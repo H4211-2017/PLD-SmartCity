@@ -26,11 +26,11 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 			  
 			  if (status == 200) {
 				  
-				  alert('configuration sauvegardée sur le serveur');
+				  $scope.displayQuietMessage('Configuration sauvegardée sur le serveur', 4000, 'blue');
 				  
 			  } else {
 				  
-				  alert('erreur du serveur : configuration non sauvegardée');
+				  $scope.displayQuietMessage('Erreur du serveur : Configuration non sauvegardée', 4000, 'red');
 			  }
 			  
 			  $('#overlaySave').css('display', 'none');
@@ -39,11 +39,11 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 			  
 			  if (status == 401) {
 				  
-				  alert(status + ' : authentification requise');  
+				  $scope.displayQuietMessage(status + ' : Authentification requise', 4000, 'red');  
 			  
 			  } else {
 				  
-				  alert(status + ' : ' + data);
+				  $scope.displayQuietMessage(status + ' : ' + data, 4000, 'red');
 			  }
 			  
 			  $('#overlaySave').css('display', 'none');
@@ -69,7 +69,7 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 		
 	    $http.get('/configs').success(function(data, status) {
 			
-			if (status = 200) {
+			if (status = 200 || status == 0) {
 				
 				configs = data;
 				console.log(configs);	
@@ -91,11 +91,11 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 			
 			if (status == 401) {
 				  
-				alert(status + ' : authentification requise');  
+				$scope.displayQuietMessage(status + ' : Authentification requise', 4000, 'red');  
 			  
 			} else {
 				  
-				alert(status + ' : ' + data);
+				$scope.displayQuietMessage(status + ' : ' + data, 4000, 'red');
 			}
 		});
 	  };
@@ -119,7 +119,7 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 						
 						if (status == 500) {
 							
-							alert(status + ' : erreur interne du serveur');
+							$scope.displayQuietMessage(status + ' : Erreur interne du serveur', 4000, 'red');
 						}
 					});
 				}
@@ -127,7 +127,7 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 				//$("#overlayWait").css("display", "none");
 			}).error(function(data, status) {
 				
-				alert(status + 'erreur interne du serveur');
+				$scope.displayQuietMessage(status + 'Erreur interne du serveur', 4000, 'red');
 				
 				//$("#overlayWait").css("display", "none");
 			});
@@ -148,7 +148,7 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 			
 			if($scope.lastHighLighted === '') {
 				
-				alert('Veuillez choisir une configuration');
+				$scope.displayQuietMessage('Veuillez choisir une configuration', 4000, 'red');
 				
 			}else {
 				
@@ -160,25 +160,25 @@ angular.module('myApp.homeMenu', ['ngRoute', 'myApp.dataFactory'])
 					
 						dataFactory.setData(data);
 						console.log(dataFactory.getData());
-						// alert('Configuration Chargée'); // C'est bon \o/	
+						$scope.displayQuietMessage('Configuration chargée', 4000, 'blue'); // C'est bon \o/	
 						$('#overlayLoad').css('display', 'none');
 						$("#id"+$scope.lastHighLighted).removeAttr('selected');
 						$scope.lastHighLighted = '';
 					
 					} else {
 						
-						alert(status + ' : erreur du serveur')
+						$scope.displayQuietMessage(status + ' : Erreur du serveur', 4000, 'red');
 					}
 					
 				}).error(function(data, status) {
 					
 					if (status == 404) {
 						
-						alert(status + ' : configuration inconnue du serveur');
+						$scope.displayQuietMessage(status + ' : Configuration inconnue du serveur', 4000, 'red');
 					
 					} else if (status == 401) {
 						
-						alert(status + ' : authentification requise');
+						$scope.displayQuietMessage(status + ' : Authentification requise', 4000, 'red');
 					}
 				});
 			}	

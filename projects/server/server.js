@@ -282,12 +282,12 @@ app.get('/display', function(request, response) {
 
 	if (sess.institutionName) {
 
-		var timeTableIndexPath = '/resources/output/timetables/' + sess.institutionName + '/' + sess.institutionName + '_index.html';
+		var timeTableIndexPath = '/timetables/' + sess.institutionName + '/' + sess.institutionName + '_index.html';
 		response.status(200).send(timeTableIndexPath);
 
 	} else {
 
-		var timeTableIndexPath = '/resources/output/timetables/withoutSession/withoutSession_index.html';
+		var timeTableIndexPath = '/timetables/withoutSession/withoutSession_index.html';
 		response.status(200).send(timeTableIndexPath);
 	}
 });

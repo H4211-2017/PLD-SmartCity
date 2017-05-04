@@ -421,7 +421,7 @@ input[readonly] {
   color: transparent;
   transition-duration: 0.8s;
   bottom: 20px;
-  right: 20px;
+  left: 20px;
 }
 
 

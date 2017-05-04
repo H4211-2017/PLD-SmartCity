@@ -7,11 +7,20 @@ angular.module('myApp')
 
     .controller('BodyCtrl', ['$scope', '$rootScope','$http', '$timeout', 'dataFactory', function($scope, $rootScope, $http, $timeout, dataFactory) {
 
-        $rootScope.displayQuietMessage = function(text, duration) {
+        $rootScope.displayQuietMessage = function(text, duration, color) {
 
-            console.log("coucou");
+			if (color == undefined) {
+				
+				color = 'black';	
+			}
+			
+			if (duration == undefined) {
+				
+				duration = 4000;
+			}
+			
             $("#quietInfo").html(text);
-            $("#quietInfo").css('color', 'black');
+            $("#quietInfo").css('color', color);
             $timeout(function() {
 
                 $("#quietInfo").css('color', 'transparent');
